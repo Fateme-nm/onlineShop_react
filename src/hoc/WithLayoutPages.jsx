@@ -1,6 +1,6 @@
 import React from "react";
-import UserLayout from "Layout/userLayout";
-import AdminLayout from "Layout/adminLayout";
+import UserLayout from "layout/userLayout";
+import AdminLayout from "layout/adminLayout";
 
 const WithLayoutpages = (Component, role = 'user') => {
   return (props) => {

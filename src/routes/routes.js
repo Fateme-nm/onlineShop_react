@@ -1,15 +1,15 @@
-import Cart from 'pages/cart/Cart';
-import FinalizePurchase from 'pages/finalizePurchase/FinalizePurchase';
-import Home from 'pages/home/Home';
-import LoginToPanel from 'pages/loginToPanel/LoginToPanel';
-import NotFound from 'pages/notFound/NotFound';
-import Payment from 'pages/payment/Payment';
-import PaymentResult from 'pages/paymentResult/PaymentResult';
-import ProductDetails from 'pages/productDetails/ProductDetails';
-import ProductsList from 'pages/productsList/ProductsList';
-import Orders from 'pages/admin/orders/Orders';
-import Prices from 'pages/admin/prices/Prices';
-import Products from 'pages/admin/products/Products';
+import Cart from 'pages/Cart/Cart';
+import FinalizePurchase from 'pages/FinalizePurchase/FinalizePurchase';
+import Home from 'pages/Home/Home';
+import LoginToPanel from 'pages/LoginToPanel/LoginToPanel';
+import NotFound from 'pages/NotFound/NotFound';
+import Payment from 'pages/Payment/Payment';
+import PaymentResult from 'pages/PaymentResult/PaymentResult';
+import ProductDetails from 'pages/ProductDetails/ProductDetails';
+import ProductsList from 'pages/ProductsList/ProductsList';
+import Orders from 'pages/admin/Orders/Orders';
+import Prices from 'pages/admin/Prices/Prices';
+import Products from 'pages/admin/Products/Products';
 
 export default Object.freeze({
     ROOT: {
