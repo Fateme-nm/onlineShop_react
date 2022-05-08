@@ -6,5 +6,5 @@
 @tailwind utilities;
 
 * {
-    text-align: rtl;
+    text-align: right !important;
 }

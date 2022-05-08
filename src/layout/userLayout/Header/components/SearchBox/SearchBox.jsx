@@ -4,9 +4,9 @@ const Searchbox = () => {
   return (
     <div className="w-full max-w-xl relative flex">
       {/* search icon */}
-      <span className="absolute left-4 top-3 text-lg text-gray-400">
+      {/* <span className="absolute left-4 top-3 text-lg text-gray-400">
         <i className="fas fa-search"></i>
-      </span>
+      </span> */}
       {/* search input */}
       <input
         type="text"
