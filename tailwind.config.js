@@ -9,6 +9,10 @@ module.exports = {
       lg: '992px',
       xl: '1200px'
     },
+    container: {
+      center: true,
+      padding: '1rem'
+    },
     extend: {
       fontFamily: {
         iranSans: "'Iranian Sans', sans-serif"
