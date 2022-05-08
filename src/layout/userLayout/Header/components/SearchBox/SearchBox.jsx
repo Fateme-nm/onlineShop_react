@@ -2,8 +2,8 @@ import React from 'react';
 
 const Searchbox = () => {
     return (
-        <div>
-            SearchBox
+        <div className='w-full max-w-xl relative'>
+            
         </div>
     );
 }
