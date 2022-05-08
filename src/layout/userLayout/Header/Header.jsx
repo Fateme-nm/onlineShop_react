@@ -9,12 +9,26 @@ const Header = () => {
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between">
+        {/* nav icons */}
         <div className="space-x-4 flex items-center">
-          <NavIcon icon={<i class="far fa-user"></i>}>مدیریت</NavIcon>
-          <NavIcon icon={<i class="fas fa-shopping-bag"></i>} number={4}>
+          <NavIcon
+            icon={<i class="far fa-user"></i>}
+            href={routes.LOGIN_TO_PANEL.path}
+          >
+            مدیریت
+          </NavIcon>
+          <NavIcon
+            icon={<i class="fas fa-shopping-bag"></i>}
+            number={4}
+            href={routes.CART.path}
+          >
             سبد خرید
           </NavIcon>
-          <NavIcon icon={<i class="far fa-heart"></i>} number={8}>
+          <NavIcon
+            icon={<i class="far fa-heart"></i>}
+            number={8}
+            href={routes.LOGIN_TO_PANEL.path}
+          >
             ذخیره شده ها
           </NavIcon>
         </div>
