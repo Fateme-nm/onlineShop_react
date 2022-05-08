@@ -7,6 +7,7 @@ const Header = () => {
     return (
         <header className='py-4 shadow-sm bg-white'>
             <div className='container flex items-center justify-between'>
+                {/* logo */}
                 <Link to={routes.HOME.path}>
                     <img src={logo} alt="logo" className='w-48'/>
                 </Link>
