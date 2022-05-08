@@ -16,6 +16,9 @@ module.exports = {
     extend: {
       fontFamily: {
         iranSans: "'Iranian Sans', sans-serif"
+      },
+      colors: {
+        'primary': '#FD3D57'
       }
     },
   },
