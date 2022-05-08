@@ -1,6 +1,6 @@
 import React from "react";
-import AllCategory from "./AllCategory/AllCategory";
-import NavLink from "./NavLink/NavLink";
+import AllCategory from "./components/AllCategory/AllCategory";
+import NavLink from "./components/NavLink/NavLink";
 import routes from "routes/routes";
 
 const NavBar = () => {
