@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const NavLink = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-}
+const NavLink = ({href, children}) => {
+  return (
+    <Link to={href} className="text-gray-200 hover:text-white transition">
+      {children}
+    </Link>
+  );
+};
 
 export default NavLink;
