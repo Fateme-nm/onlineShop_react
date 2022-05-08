@@ -1,4 +1,5 @@
 import React from "react";
+import AllCategory from "./AllCategory/AllCategory";
 
 const NavBar = () => {
   return (
@@ -6,7 +7,7 @@ const NavBar = () => {
       <div className="container">
         <div className="flex">
           {/* all category */}
-          
+          <AllCategory />
 
         </div>
       </div>
