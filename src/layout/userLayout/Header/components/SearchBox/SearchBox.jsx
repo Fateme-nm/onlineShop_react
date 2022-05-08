@@ -11,7 +11,7 @@ const Searchbox = () => {
       <input
         type="text"
         className="pl-12 w-full border border-r-0 border-primary py-3 pr-3 rounded-l-md focus:outline-none"
-        placeholder="جستجو..."
+        placeholder=". . . جستجو"
       ></input>
       <button
         type="submit"
