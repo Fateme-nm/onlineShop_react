@@ -1,5 +1,7 @@
 import React from "react";
 import AllCategory from "./AllCategory/AllCategory";
+import NavLink from "./NavLink/NavLink";
+import routes from "routes/routes";
 
 const NavBar = () => {
   return (
@@ -9,8 +11,10 @@ const NavBar = () => {
           {/* all category */}
           <AllCategory />
           {/* nav links */}
-          <div className="flex items-center space-x-6 text-base pr-12 flex-grow">
-            
+          <div className="flex flex-row-reverse items-center text-base pr-12 flex-grow">
+            <NavLink href={routes.HOME.path}>خانه</NavLink>
+            <NavLink href={routes.HOME.path}>درباره ما</NavLink>
+            <NavLink href={routes.HOME.path}>ارتباط با ما</NavLink>
           </div>
         </div>
       </div>
