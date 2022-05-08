@@ -29,7 +29,7 @@ const Header = () => {
             number={8}
             href={routes.LOGIN_TO_PANEL.path}
           >
-            ذخیره شده ها
+            ذخیره شده
           </NavIcon>
         </div>
         {/* search box */}
