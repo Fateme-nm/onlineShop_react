@@ -2,9 +2,13 @@ import React from 'react';
 
 const NavBar = () => {
     return (
-        <div>
-            
-        </div>
+        <nav className='bg-gray-800 hidden lg:block'>
+            <div className='container'>
+                <div className='flex'>
+                    
+                </div>
+            </div>
+        </nav>
     );
 }
 
