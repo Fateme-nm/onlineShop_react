@@ -9,20 +9,24 @@ import Botton from "components/Botton/Botton";
 
 const Logintopanel = () => {
   return (
-    <div className="w-full h-screen flex justify-center items-center px-32">
-      <img
-        src={unlock}
-        className="hidden lg:block w-48 hover:scale-110 transition-all duration-500 transform mx-auto basis-1/2"
-      />
-      <form className="flex flex-col justify-center items-center basis-1/2 px-5">
+    <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
+        <img
+          src={unlock}
+          className="hidden lg:block w-56 hover:scale-110 transition-all duration-500 transform"
+        />
+      <form className="flex flex-col justify-center items-center basis-1/2">
         <img src={avatar} className="w-28" />
         <h2 className="my-8 mb-0 font-bold text-3xl text-gray-700 text-center">
           خوش آمدید
         </h2>
-        <InputLogin type="text" iconClass="fa-user">نام کاربری</InputLogin>
-        <InputLogin type="password" iconClass="fa-lock">رمز عبور</InputLogin>
+        <InputLogin type="text" iconClass="fa-user">
+          نام کاربری
+        </InputLogin>
+        <InputLogin type="password" iconClass="fa-lock">
+          رمز عبور
+        </InputLogin>
         <Link to={routes.PRODUCTS.path} className="w-full">
-            <Botton>ورود</Botton>
+          <Botton>ورود</Botton>
         </Link>
       </form>
     </div>
