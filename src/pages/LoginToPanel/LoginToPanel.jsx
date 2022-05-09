@@ -12,13 +12,13 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
-    .min(4, 'خیلی کوتاه است')
-    .max(20, 'خیلی بلند است')
-    .required('این فیلد ضروری است'),
+    .min(4, "خیلی کوتاه است")
+    .max(20, "خیلی بلند است")
+    .required("این فیلد ضروری است"),
   password: Yup.string()
-    .min(4, 'خیلی کوتاه است')
-    .max(50, 'خیلی بلند است')
-    .required('این فیلد ضروری است'),
+    .min(4, "خیلی کوتاه است")
+    .max(50, "خیلی بلند است")
+    .required("این فیلد ضروری است"),
 });
 
 const Logintopanel = () => {
@@ -31,19 +31,19 @@ const Logintopanel = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
-      const admin = await axios
-        .get("http://localhost:3002/whoami")
-        .then(
-          (res) =>
-            res.data.username === values.username &&
-            res.data.password === values.password
-        )
-        .catch((err) => console.log(err));
-      admin
-        ? navigate(routes.PRODUCTS.path, { replace: true })
-        : alert("اطلاعات وارد شده نادرست است!");
+      try {
+        const response = await axios
+        .post("http://localhost:3002/auth/login", {
+          username: values.username,
+          password: values.password,
+        })
+        localStorage.setItem('token', response.data.token)
+        navigate(routes.PRODUCTS.path, { replace: true });
+      }catch(err) {
+        alert("اطلاعات وارد شده نادرست است!");
+      }
     },
-    validationSchema
+    validationSchema,
   });
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
@@ -64,7 +64,6 @@ const Logintopanel = () => {
           iconClass="fa-user"
           formik={formik}
           name="username"
-          value={formik.values.username}
         >
           نام کاربری
         </InputLogin>
@@ -73,7 +72,6 @@ const Logintopanel = () => {
           iconClass="fa-lock"
           formik={formik}
           name="password"
-          value={formik.values.password}
         >
           رمز عبور
         </InputLogin>
