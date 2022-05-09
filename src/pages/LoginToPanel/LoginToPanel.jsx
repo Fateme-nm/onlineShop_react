@@ -9,6 +9,10 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const validate = values => {
+  
+}
+
 const Logintopanel = () => {
   const navigate = useNavigate();
   const formik = useFormik({
@@ -16,7 +20,7 @@ const Logintopanel = () => {
       username: "",
       password: "",
     },
-    // validate,
+    validate,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
