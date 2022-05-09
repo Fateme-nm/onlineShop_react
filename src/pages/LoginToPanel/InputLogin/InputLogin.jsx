@@ -11,7 +11,7 @@ const InputLogin = ({ children, type, iconClass, formik, name, value }) => {
         value={value}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        className="pl-8 border-b-2 focus:outline-none focus:border-primary transition-all duration-500 capitalize text-lg w-full"
+        className="pl-8 border-b-2 focus:outline-none focus:border-primary transition-all duration-500 text-lg w-full"
       />
     </div>
   );

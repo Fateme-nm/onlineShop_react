@@ -3,7 +3,6 @@ import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
 import InputLogin from "./InputLogin/InputLogin";
-import { Link } from "react-router-dom";
 import routes from "routes/routes";
 import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
@@ -25,8 +24,8 @@ const Logintopanel = () => {
         .get("http://localhost:3002/whoami")
         .then(
           (res) =>
-            res.username === formik.values.username &&
-            res.password === formik.values.password
+            res.data.username === values.username &&
+            res.data.password === values.password
         )
         .catch((err) => console.log(err));
       admin
@@ -66,9 +65,7 @@ const Logintopanel = () => {
         >
           رمز عبور
         </InputLogin>
-        <Link to={routes.PRODUCTS.path} className="w-full">
-          <Botton>ورود</Botton>
-        </Link>
+        <Botton>ورود</Botton>
       </form>
     </div>
   );
