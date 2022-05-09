@@ -8,10 +8,18 @@ import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import * as Yup from "yup";
 
-const validate = values => {
-  
-}
+const validationSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(4, 'خیلی کوتاه است')
+    .max(20, 'خیلی بلند است')
+    .required('این فیلد ضروری است'),
+  password: Yup.string()
+    .min(4, 'خیلی کوتاه است')
+    .max(50, 'خیلی بلند است')
+    .required('این فیلد ضروری است'),
+});
 
 const Logintopanel = () => {
   const navigate = useNavigate();
@@ -20,7 +28,6 @@ const Logintopanel = () => {
       username: "",
       password: "",
     },
-    validate,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
@@ -36,6 +43,7 @@ const Logintopanel = () => {
         ? navigate(routes.PRODUCTS.path, { replace: true })
         : alert("اطلاعات وارد شده نادرست است!");
     },
+    validationSchema
   });
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
