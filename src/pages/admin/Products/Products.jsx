@@ -5,7 +5,7 @@ import WithLayoutpages from 'hoc/WithLayoutPages';
 const Products = () => {
     return (
         <div>
-            Products
+            <Table />
         </div>
     );
 }
