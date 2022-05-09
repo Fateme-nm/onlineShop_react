@@ -20,7 +20,7 @@ const Logintopanel = () => {
         <InputLogin type="password" iconClass="fa-lock">رمز عبور</InputLogin>
         <a
           href="#"
-          className="py-3 px-20 bg-primary rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500"
+          
         >
           ورود
         </a>
