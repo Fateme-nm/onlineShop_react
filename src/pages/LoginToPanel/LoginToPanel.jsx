@@ -8,6 +8,7 @@ import routes from "routes/routes";
 import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Logintopanel = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Logintopanel = () => {
       username: "",
       password: "",
     },
-    validate,
+    // validate,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
@@ -47,10 +48,22 @@ const Logintopanel = () => {
         <h2 className="my-8 mb-0 font-bold text-3xl text-gray-700 text-center">
           خوش آمدید
         </h2>
-        <InputLogin type="text" iconClass="fa-user">
+        <InputLogin
+          type="text"
+          iconClass="fa-user"
+          formik={formik}
+          name="username"
+          value={formik.values.username}
+        >
           نام کاربری
         </InputLogin>
-        <InputLogin type="password" iconClass="fa-lock">
+        <InputLogin
+          type="password"
+          iconClass="fa-lock"
+          formik={formik}
+          name="password"
+          value={formik.values.password}
+        >
           رمز عبور
         </InputLogin>
         <Link to={routes.PRODUCTS.path} className="w-full">

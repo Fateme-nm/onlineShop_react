@@ -12,20 +12,20 @@ const Header = () => {
         {/* nav icons */}
         <div className="space-x-4 flex items-center">
           <NavIcon
-            icon={<i class="far fa-user"></i>}
+            icon={<i className="far fa-user"></i>}
             href={routes.LOGIN_TO_PANEL.path}
           >
             مدیریت
           </NavIcon>
           <NavIcon
-            icon={<i class="fas fa-shopping-bag"></i>}
+            icon={<i className="fas fa-shopping-bag"></i>}
             number={4}
             href={routes.CART.path}
           >
             سبد خرید
           </NavIcon>
           <NavIcon
-            icon={<i class="far fa-heart"></i>}
+            icon={<i className="far fa-heart"></i>}
             number={8}
             href={routes.LOGIN_TO_PANEL.path}
           >
