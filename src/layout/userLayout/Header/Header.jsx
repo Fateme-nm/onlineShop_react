@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import routes from "routes/routes";
-import logo from "assets/images/logo-daniellee.png";
+import logo from "assets/images/logo-daniellee_crop.png";
 import SearchBox from "./components/SearchBox/SearchBox";
 import NavIcon from "./components/NavIcon/NavIcon";
 
@@ -36,7 +36,7 @@ const Header = () => {
         <SearchBox />
         {/* logo */}
         <Link to={routes.HOME.path}>
-          <img src={logo} alt="logo" className="w-48" />
+          <img src={logo} alt="logo" className="w-28" />
         </Link>
       </div>
     </header>
