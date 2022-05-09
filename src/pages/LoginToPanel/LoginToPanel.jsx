@@ -2,6 +2,7 @@ import React from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from 'assets/images/undraw_male_avatar.svg';
 import unlock from 'assets/images/undraw_unlock.svg';
+import InputLogin from "./InputLogin/InputLogin";
 
 const Logintopanel = () => {
   return (
@@ -15,6 +16,8 @@ const Logintopanel = () => {
         <h2 className="my-8 font-display font-bold text-3xl text-gray-700 text-center">
           خوش آمدید
         </h2>
+        <InputLogin placehoder='userName' type='text'>نام کاربری</InputLogin>
+        <InputLogin placehoder='password' type='password'>رمز عبور</InputLogin>
         <a href="#" className="self-end pr-10 mt-4 text-gray-500 font-bold text-sm hover:text-primary">
           فراموشی رمز عبور
         </a>
