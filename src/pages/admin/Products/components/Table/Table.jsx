@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
 const Table = ({ products, category }) => {
+  const [showProducts, setShowProducts] = useState(products)
+  const handleFiltering = e => {
+    const categoryId = e.target.value
+    if (categoryId) {
+      const newShow = products.filter(product => product.categoryId == categoryId)
+      setShowProducts(newShow)
+    }
+    else setShowProducts(products)
+  }
   const getCategory = (categoryId) => {
     const cat = category.find((cat) => cat.id == categoryId);
     return cat ? cat.name : null;
@@ -16,13 +25,15 @@ const Table = ({ products, category }) => {
               <tr>
                 <ThThead>حذف</ThThead>
                 <ThThead>ویرایش</ThThead>
-                <ThThead category={category} handleFiltering={handleFiltering}>دسته بندی</ThThead>
+                <ThThead category={category} handleFiltering={handleFiltering}>
+                  دسته بندی
+                </ThThead>
                 <ThThead>نام کالا</ThThead>
                 <ThThead>تصویر</ThThead>
               </tr>
             </thead>
             <tbody className="bg-white">
-              {products.map((product) => {
+              {showProducts.map((product) => {
                 return (
                   <TrTbody
                     imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
