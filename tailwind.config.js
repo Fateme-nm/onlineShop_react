@@ -18,7 +18,8 @@ module.exports = {
         iranSans: "'Iranian Sans', sans-serif"
       },
       colors: {
-        'primary': '#EC4E64'
+        'primary': '#EC4E64',
+        'submit': '#02B39C'
       }
     },
   },
