@@ -13,7 +13,6 @@ const Table = ({ products, category }) => {
       setShowProducts(newShow)
     }
     else setShowProducts(products)
-
   }
 
   const getCategory = (categoryId) => {
