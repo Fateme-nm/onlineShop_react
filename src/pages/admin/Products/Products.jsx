@@ -23,7 +23,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table />
+      <Table products={products}/>
     </div>
   );
 };
