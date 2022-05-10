@@ -1,10 +1,10 @@
 import React from "react";
 
-const ThThead = ({ children, category }) => {
+const ThThead = ({ children, category , handleFiltering}) => {
   if (category) {
     return (
       <div class="relative">
-        <select class="appearance-none h-full block w-full pr-8 focus:outline-none px-6 py-3 text-sm font-medium leading-4 tracking-wider border-b border-primary text-gray-900 bg-white" onChange={handleCahnge}>
+        <select class="appearance-none h-full block w-full pr-8 focus:outline-none px-6 py-3 text-sm font-medium leading-4 tracking-wider border-b border-primary text-gray-900 bg-white" onChange={handleFiltering}>
           <option>{children}</option>
           {category.map((cat) => (
             <option key={cat.id} value={cat.id}>{cat.name}</option>

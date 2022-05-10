@@ -16,7 +16,7 @@ const Table = ({ products, category }) => {
               <tr>
                 <ThThead>حذف</ThThead>
                 <ThThead>ویرایش</ThThead>
-                <ThThead category={category}>دسته بندی</ThThead>
+                <ThThead category={category} handleFiltering={handleFiltering}>دسته بندی</ThThead>
                 <ThThead>نام کالا</ThThead>
                 <ThThead>تصویر</ThThead>
               </tr>
