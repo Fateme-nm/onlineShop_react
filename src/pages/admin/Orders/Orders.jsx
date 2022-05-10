@@ -19,7 +19,12 @@ const Orders = () => {
   }, []);
   
   return (
-    
+    <div>
+      <div className="mt-8 flex justify-between items-center flex-row-reverse container">
+        <h2 className="text-2xl text-bold">مدیریت سفارش ها</h2>
+      </div>
+      <Table orders={orders} />
+    </div>
   );
 };
 
