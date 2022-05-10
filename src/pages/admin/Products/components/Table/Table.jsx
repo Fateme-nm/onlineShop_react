@@ -1,5 +1,5 @@
 import React from "react";
-import ThTable from "./components/Th.Table";
+import ThThead from "./components/Th.Thead";
 
 const Table = () => {
   return (
@@ -9,11 +9,11 @@ const Table = () => {
           <table className="w-full text-right">
             <thead>
               <tr>
-                <ThTable>حذف</ThTable>
-                <ThTable>ویرایش</ThTable>
-                <ThTable>دسته بندی</ThTable>
-                <ThTable>نام کالا</ThTable>
-                <ThTable>تصویر</ThTable>
+                <ThThead>حذف</ThThead>
+                <ThThead>ویرایش</ThThead>
+                <ThThead>دسته بندی</ThThead>
+                <ThThead>نام کالا</ThThead>
+                <ThThead>تصویر</ThThead>
               </tr>
             </thead>
             <tbody className="bg-white">

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ThTable = ({children}) => {
+const ThThead = ({children}) => {
   return (
     <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider  text-white  border-b border-gray-200 bg-primary">
       {children}
@@ -8,4 +8,4 @@ const ThTable = ({children}) => {
   );
 };
 
-export default ThTable;
+export default ThThead;
