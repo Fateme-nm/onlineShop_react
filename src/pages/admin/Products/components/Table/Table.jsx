@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
 const Table = ({ products, category }) => {
-  const [showProducts, setShowProducts] = useState(products)
+  const [showProducts, setShowProducts] = useState([])
+
   const handleFiltering = e => {
     const categoryId = e.target.value
     if (categoryId) {
@@ -12,10 +13,16 @@ const Table = ({ products, category }) => {
     }
     else setShowProducts(products)
   }
+
   const getCategory = (categoryId) => {
     const cat = category.find((cat) => cat.id == categoryId);
     return cat ? cat.name : null;
   };
+
+  useEffect(()=> {
+    setShowProducts(products)
+  }, [products])
+
   return (
     <div className="flex flex-col mt-8 container">
       <div className="py-2 -my-2">
