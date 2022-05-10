@@ -1,8 +1,29 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
-const Table = () => {
+const Table = ({ products, category }) => {
+  const [showProducts, setShowProducts] = useState([])
+
+  const handleFiltering = e => {
+    const categoryId = e.target.value
+    console.log(categoryId)
+    if (categoryId !== 'all') {
+      const newShow = products.filter(product => product.categoryId == categoryId)
+      setShowProducts(newShow)
+    }
+    else setShowProducts(products)
+  }
+
+  const getCategory = (categoryId) => {
+    const cat = category.find((cat) => cat.id == categoryId);
+    return cat ? cat.name : null;
+  };
+
+  useEffect(()=> {
+    setShowProducts(products)
+  }, [products])
+
   return (
     <div className="flex flex-col mt-8 container">
       <div className="py-2 -my-2">
@@ -12,17 +33,24 @@ const Table = () => {
               <tr>
                 <ThThead>حذف</ThThead>
                 <ThThead>ویرایش</ThThead>
-                <ThThead>دسته بندی</ThThead>
+                <ThThead category={category} handleFiltering={handleFiltering}>
+                  دسته بندی
+                </ThThead>
                 <ThThead>نام کالا</ThThead>
                 <ThThead>تصویر</ThThead>
               </tr>
             </thead>
             <tbody className="bg-white">
-              <TrTbody
-                imgSrc={"https://source.unsplash.com/user/erondu"}
-                name={"name"}
-                category={"category"}
-              />
+              {showProducts.map((product) => {
+                return (
+                  <TrTbody
+                    imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
+                    name={product.name}
+                    category={getCategory(product.categoryId)}
+                    key={product.id}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>
