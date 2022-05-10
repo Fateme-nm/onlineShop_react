@@ -6,7 +6,7 @@ const AdminLayout = ({children}) => {
     return (
         <>
             <Header />
-            <main className='bg-gray-50 h-screen'>
+            <main>
                 <Sidebar />
                 {children}
             </main>
