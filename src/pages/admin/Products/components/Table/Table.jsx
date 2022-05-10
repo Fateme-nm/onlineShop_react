@@ -1,4 +1,5 @@
 import React from "react";
+import ThTable from "./components/Th.Table";
 
 const Table = () => {
   return (
@@ -8,21 +9,11 @@ const Table = () => {
           <table className="w-full text-right">
             <thead>
               <tr>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider  text-white uppercase border-b border-gray-200 bg-primary">
-                  حذف
-                </th>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider  text-white uppercase border-b border-gray-200 bg-primary">
-                  ویرایش
-                </th>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider  text-white uppercase border-b border-gray-200 bg-primary">
-                  دسته بندی
-                </th>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider  text-white uppercase border-b border-gray-200 bg-primary">
-                  نام کالا
-                </th>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider  text-white uppercase border-b border-gray-200 bg-primary">
-                  تصویر
-                </th>
+                <ThTable>حذف</ThTable>
+                <ThTable>ویرایش</ThTable>
+                <ThTable>دسته بندی</ThTable>
+                <ThTable>نام کالا</ThTable>
+                <ThTable>تصویر</ThTable>
               </tr>
             </thead>
             <tbody className="bg-white">
