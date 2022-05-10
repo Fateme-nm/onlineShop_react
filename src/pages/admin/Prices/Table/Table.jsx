@@ -2,12 +2,7 @@ import React, {useState, useEffect} from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
-const Table = ({ products, category }) => {
-  const [showProducts, setShowProducts] = useState([])
-
-  useEffect(()=> {
-    setShowProducts(products)
-  }, [products])
+const Table = ({ products }) => {
 
   return (
     <div className="flex flex-col mt-8 container">
@@ -26,7 +21,7 @@ const Table = ({ products, category }) => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {showProducts.map((product) => {
+              {products.map((product) => {
                 return (
                   <TrTbody
                     imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
