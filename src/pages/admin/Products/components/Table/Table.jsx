@@ -3,6 +3,9 @@ import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
 const Table = ({ products, category }) => {
+  const getCategory = categoryId => {
+    return category.find(cat => cat.id === categoryId)
+  }
   return (
     <div className="flex flex-col mt-8 container">
       <div className="py-2 -my-2">
