@@ -5,11 +5,6 @@ import TrTbody from "./components/Tr.Tbody";
 const Table = ({ products, category }) => {
   const [showProducts, setShowProducts] = useState([])
 
-  const getCategory = (categoryId) => {
-    const cat = category.find((cat) => cat.id == categoryId);
-    return cat ? cat.name : null;
-  };
-
   useEffect(()=> {
     setShowProducts(products)
   }, [products])
