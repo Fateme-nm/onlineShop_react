@@ -8,3 +8,7 @@
 * {
     text-align: right;
 }
+
+tr:nth-child(odd) {
+    @apply bg-gray-50;
+}
