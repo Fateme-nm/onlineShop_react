@@ -5,16 +5,16 @@ const TrTbody = ({imgSrc, name, category}) => {
   return (
     <tr className="hover:bg-gray-50">
       <td className={sameClassName}>
-        <i className="fa fa-trash text-red-400 cursor-pointer"></i>
+        <i className="fa fa-trash text-red-400 cursor-pointer text-lg"></i>
       </td>
       <td className={sameClassName}>
-        <i class="fas fa-edit text-blue-400 cursor-pointer"></i>
+        <i class="fas fa-edit text-blue-400 cursor-pointer text-lg"></i>
       </td>
       <td className={sameClassName}>
-        <div className="text-sm leading-5 text-gray-500">{category}</div>
+        <div className="text-sm leading-5 text-gray-900">{category}</div>
       </td>
       <td className={sameClassName}>
-        <div className="text-sm leading-5 text-gray-500">{name}</div>
+        <div className="text-sm leading-5 text-gray-900">{name}</div>
       </td>
       <td className={`flex justify-end ${sameClassName}`}>
         <div className="flex items-center">
