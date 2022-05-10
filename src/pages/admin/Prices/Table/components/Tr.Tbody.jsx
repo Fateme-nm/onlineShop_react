@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 const TrTbody = ({ name, price, count }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
+  const [disCount, setDisCount] = useState(true)
+  const [disPrice, setDisPrice] = useState(true)
+
+  const handleClick = e => {
+    if(e.target.name === "count") setDisCount(false)
+    else setDisPrice(false)
+  }
 
   return (
     <tr className="hover:bg-pink-50">
@@ -11,7 +18,7 @@ const TrTbody = ({ name, price, count }) => {
           disabled={disCount}
           value={count}
           name="count"
-          className="text-sm leading-5 text-gray-900 cursor-pointer"
+          className="text-sm leading-5 text-gray-900 cursor-pointer bg-transparent"
         />
       </td>
       <td className={sameClassName} onClick={handleClick}>
@@ -20,7 +27,7 @@ const TrTbody = ({ name, price, count }) => {
           disabled={disPrice}
           value={price}
           name="price"
-          className="text-sm leading-5 text-gray-900 cursor-pointer"
+          className="text-sm leading-5 text-gray-900 cursor-pointer bg-transparent"
         />
       </td>
       <td className={sameClassName}>
