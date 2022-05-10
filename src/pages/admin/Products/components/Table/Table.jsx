@@ -7,11 +7,13 @@ const Table = ({ products, category }) => {
 
   const handleFiltering = e => {
     const categoryId = e.target.value
-    if (categoryId) {
+    console.log(categoryId)
+    if (categoryId !== 'all') {
       const newShow = products.filter(product => product.categoryId == categoryId)
       setShowProducts(newShow)
     }
     else setShowProducts(products)
+
   }
 
   const getCategory = (categoryId) => {
