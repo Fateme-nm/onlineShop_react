@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavLink = ({href, children}) => {
+const NavLink = ({href, icon, children}) => {
   return (
-    <Link to={href} className="text-gray-200 hover:text-white transition ml-10">
+    <Link to={href} className={`text-gray-200 hover:text-white transition ${icon && 'flex justify-end items-center'}`}>
+      {icon && <span className="mr-3">{icon}</span>}
       {children}
     </Link>
   );
