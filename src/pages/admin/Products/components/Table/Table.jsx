@@ -5,7 +5,7 @@ import TrTbody from "./components/Tr.Tbody";
 const Table = ({ products, category }) => {
   const getCategory = (categoryId) => {
     const cat = category.find((cat) => cat.id == categoryId);
-    return cat.name;
+    return cat ? cat.name : null;
   };
   return (
     <div className="flex flex-col mt-8 container">
@@ -25,7 +25,7 @@ const Table = ({ products, category }) => {
               {products.map((product) => {
                 return (
                   <TrTbody
-                    imgSrc={"https://source.unsplash.com/user/erondu"}
+                    imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
                     name={product.name}
                     category={getCategory(product.categoryId)}
                     key={product.id}
