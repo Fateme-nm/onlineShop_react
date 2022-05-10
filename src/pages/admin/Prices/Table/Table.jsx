@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
