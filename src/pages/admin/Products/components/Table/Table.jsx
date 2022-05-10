@@ -3,9 +3,10 @@ import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
 const Table = ({ products, category }) => {
-  const getCategory = categoryId => {
-    return category.find(cat => cat.id === categoryId)
-  }
+  const getCategory = (categoryId) => {
+    const cat = category.find((cat) => cat.id == categoryId);
+    return cat.name;
+  };
   return (
     <div className="flex flex-col mt-8 container">
       <div className="py-2 -my-2">
@@ -27,6 +28,7 @@ const Table = ({ products, category }) => {
                     imgSrc={"https://source.unsplash.com/user/erondu"}
                     name={product.name}
                     category={getCategory(product.categoryId)}
+                    key={product.id}
                   />
                 );
               })}

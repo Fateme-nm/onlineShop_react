@@ -5,15 +5,24 @@ import axios from "axios";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
   const getProducts = async () => {
     const response = await axios
       .get("http://localhost:3002/products")
       .then((res) => res.data)
       .catch((err) => console.log(err));
-    setProducts(response)
+    setProducts(response);
+  };
+  const getCategory = async () => {
+    const response = await axios
+      .get("http://localhost:3002/category")
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+    setCategory(response);
   };
   useEffect(() => {
     getProducts();
+    getCategory();
   }, []);
   return (
     <div>
@@ -23,7 +32,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table products={products}/>
+      <Table products={products} category={category}/>
     </div>
   );
 };
