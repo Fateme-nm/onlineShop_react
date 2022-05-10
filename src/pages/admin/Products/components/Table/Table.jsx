@@ -2,7 +2,7 @@ import React from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
-const Table = () => {
+const Table = ({ products, category }) => {
   return (
     <div className="flex flex-col mt-8 container">
       <div className="py-2 -my-2">
@@ -18,11 +18,15 @@ const Table = () => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              <TrTbody
-                imgSrc={"https://source.unsplash.com/user/erondu"}
-                name={"name"}
-                category={"category"}
-              />
+              {products.map((product) => {
+                return (
+                  <TrTbody
+                    imgSrc={"https://source.unsplash.com/user/erondu"}
+                    name={product.name}
+                    category={getCategory(product.categoryId)}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>
