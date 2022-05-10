@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from './Header/Header';
+import NavBar from './NavBar/NavBar';
 import Sidebar from './SideBar/SideBar';
 
 const AdminLayout = ({children}) => {
     return (
         <>
-            <Header />
+            <NavBar />
             <main>
                 <Sidebar />
                 {children}
