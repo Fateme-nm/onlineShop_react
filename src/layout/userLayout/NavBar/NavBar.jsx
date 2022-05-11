@@ -11,7 +11,7 @@ const NavBar = () => {
           {/* all category */}
           <AllCategory />
           {/* nav links */}
-          <div className="flex flex-row-reverse items-center text-base pr-12 flex-grow">
+          <div className="flex flex-row-reverse items-center text-base pr-12 flex-grow space-x-12 space-x-reverse">
             <NavLink href={routes.HOME.path}>خانه</NavLink>
             <NavLink href={routes.HOME.path}>درباره ما</NavLink>
             <NavLink href={routes.HOME.path}>ارتباط با ما</NavLink>
