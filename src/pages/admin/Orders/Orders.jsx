@@ -3,7 +3,6 @@ import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import axios from "axios";
 import Radio from "./components/Table/components/Radio";
-import ReactPaginate from "react-paginate";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
