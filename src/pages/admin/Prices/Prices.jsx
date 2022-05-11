@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Table from "./Table/Table";
 import axios from "axios";
+import { ExpireTime } from "utils";
+import { useNavigate } from "react-router-dom";
+import routes from "routes/routes";
 
 const Prices = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   const getProducts = async () => {
     const response = await axios
@@ -15,7 +19,9 @@ const Prices = () => {
   };
 
   useEffect(() => {
-    getProducts();
+    if (ExpireTime()) {
+      navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
+    } else getProducts();
   }, []);
 
   return (
