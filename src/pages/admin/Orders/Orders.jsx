@@ -46,7 +46,7 @@ const Orders = () => {
         previousLabel={"Previous"}
         nextLabel={"Next"}
         pageCount={pageCount}
-        onPageChange={changePage}
+        onPageChange={({ selected }) => setPageNumber(selected)}
         containerClassName={"paginationBttns"}
         previousLinkClassName={"previousBttn"}
         nextLinkClassName={"nextBttn"}
