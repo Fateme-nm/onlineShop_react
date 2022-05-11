@@ -8,6 +8,9 @@ const Table = ({ orders, activeStatus }) => {
   const [showOrders, setShowOrders] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
+  const ordersPerPage = 4;
+  const pagesVisited = pageNumber * ordersPerPage;
+
   const getOrderDate = (timestamp) => {
     const date = new Date(timestamp);
     const jalaliDate = miladi_be_shamsi(
