@@ -1,4 +1,5 @@
 import React from "react";
+import WithCheckLogin from "hoc/WithCheckLogin";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
@@ -38,7 +39,7 @@ const Logintopanel = () => {
           password: values.password,
         })
         localStorage.setItem('token', response.data.token)
-        navigate(routes.PRODUCTS.path, { replace: true });
+        navigate(routes.ORDERS.path, { replace: true });
       }catch(err) {
         alert("اطلاعات وارد شده نادرست است!");
       }
@@ -81,4 +82,4 @@ const Logintopanel = () => {
   );
 };
 
-export default WithLayoutpages(Logintopanel);
+export default WithLayoutpages(WithCheckLogin(Logintopanel));
