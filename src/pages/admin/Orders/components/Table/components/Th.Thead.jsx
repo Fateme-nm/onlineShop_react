@@ -4,10 +4,10 @@ const ThThead = ({ children, sort , handleFiltering}) => {
   if (sort) {
     return (
       <th className="relative border-primary border-b">
-        <select className="appearance-none h-full w-full pr-8 focus:outline-none px-6 py-6 text-sm font-medium leading-4 tracking-wider  text-gray-900 bg-white" onChange={handleFiltering}>
-          <option value='all'>{children}</option>
-          {sort.map((cat) => (
-            <option key={cat.id} value={cat.id}>{cat.name}</option>
+        <select className="appearance-none h-full w-full pr-8 focus:outline-none px-6 py-6 text-sm font-medium leading-4 tracking-wider text-gray-900 bg-white" onChange={handleFiltering}>
+          <option value="new">{children}</option>
+          {sort.map((s) => (
+            <option key={s.value} value={s.value}>{s.name}</option>
           ))}
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
