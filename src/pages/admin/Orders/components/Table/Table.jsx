@@ -1,28 +1,15 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 
-const Table = ({ products, category }) => {
-  const [showProducts, setShowProducts] = useState([])
+const Table = ({ orders }) => {
+  const [showOrders, setShowOrders] = useState([]);
 
-  const handleFiltering = e => {
-    const categoryId = e.target.value
-    console.log(categoryId)
-    if (categoryId !== 'all') {
-      const newShow = products.filter(product => product.categoryId == categoryId)
-      setShowProducts(newShow)
-    }
-    else setShowProducts(products)
-  }
+  const handleFiltering = (e) => {};
 
-  const getCategory = (categoryId) => {
-    const cat = category.find((cat) => cat.id == categoryId);
-    return cat ? cat.name : null;
-  };
-
-  useEffect(()=> {
-    setShowProducts(products)
-  }, [products])
+  useEffect(() => {
+    setShowOrders(orders);
+  }, [orders]);
 
   return (
     <div className="flex flex-col mt-8 container">
@@ -31,26 +18,14 @@ const Table = ({ products, category }) => {
           <table className="w-full text-right">
             <thead>
               <tr>
-                <ThThead>حذف</ThThead>
-                <ThThead>ویرایش</ThThead>
-                <ThThead category={category} handleFiltering={handleFiltering}>
-                  دسته بندی
-                </ThThead>
-                <ThThead>نام کالا</ThThead>
-                <ThThead>تصویر</ThThead>
+                <ThThead>بررسی سفارش</ThThead>
+                <ThThead>زمان ثبت سفارش</ThThead>
+                <ThThead>مجموع مبلغ</ThThead>
+                <ThThead>نام کاربر</ThThead>
               </tr>
             </thead>
             <tbody className="bg-white">
-              {showProducts.map((product) => {
-                return (
-                  <TrTbody
-                    imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
-                    name={product.name}
-                    category={getCategory(product.categoryId)}
-                    key={product.id}
-                  />
-                );
-              })}
+              
             </tbody>
           </table>
         </div>
