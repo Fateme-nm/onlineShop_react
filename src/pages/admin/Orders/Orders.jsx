@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import routes from "routes/routes";
 
 const Orders = () => {
+  const navigate = useNavigate()
   const [orders, setOrders] = useState([]);
   const [activeStatus, setActiveStatus] = useState(null);
 
