@@ -3,6 +3,7 @@ import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import axios from "axios";
 import Radio from "./components/Table/components/Radio";
+import ReactPaginate from "react-paginate";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -29,7 +30,7 @@ const Orders = () => {
 
   return (
     <div>
-      <div className="mt-8 flex justify-between items-center flex-row-reverse container">
+      <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت سفارش ها</h2>
         <div className="flex justify-center space-x-5">
           <Radio status="1" handleClick={handleClickStatus}>
@@ -41,6 +42,17 @@ const Orders = () => {
         </div>
       </div>
       <Table orders={orders} activeStatus={activeStatus} />
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
     </div>
   );
 };
