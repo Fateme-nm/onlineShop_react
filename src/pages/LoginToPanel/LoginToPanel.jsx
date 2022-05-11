@@ -1,4 +1,5 @@
 import React from "react";
+import WithCheckLogin from "hoc/WithCheckLogin";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
@@ -81,4 +82,4 @@ const Logintopanel = () => {
   );
 };
 
-export default WithLayoutpages(Logintopanel);
+export default WithLayoutpages(WithCheckLogin(Logintopanel));

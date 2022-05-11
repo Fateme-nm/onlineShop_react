@@ -1,15 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import routes from "routes/routes";
 
 const WithCheckLogin = (Component) => {
-  const navigate = useNavigate();
-  const isAuth = !!localStorage.getItem("token");
   return (props) => {
-    isAuth ? (
-      navigate(routes.ORDERS.path, { replace: true })
+    const isAuth = !!localStorage.getItem("token");
+    return isAuth ? (
+      <Navigate to={routes.ORDERS.path} replace/>
     ) : (
-      <Component {...props} />
+       <Component {...props} />
     );
   };
 };
