@@ -5,10 +5,10 @@ const TrTbody = ({imgSrc, name, category}) => {
   return (
     <tr className="hover:bg-pink-50">
       <td className={sameClassName}>
-        <i className="fa fa-trash text-red-400 cursor-pointer text-lg"></i>
+        <i className="fa fa-trash text-red-400 cursor-pointer text-xl"></i>
       </td>
       <td className={sameClassName}>
-        <i class="fas fa-edit text-blue-400 cursor-pointer text-lg"></i>
+        <i className="fas fa-edit text-blue-400 cursor-pointer text-xl"></i>
       </td>
       <td className={sameClassName}>
         <div className="text-sm leading-5 text-gray-900">{category}</div>
