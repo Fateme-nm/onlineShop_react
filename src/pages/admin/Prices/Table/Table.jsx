@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
+import {separate} from 'utils';
 
 const Table = ({ products }) => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -28,7 +29,7 @@ const Table = ({ products }) => {
                   return (
                     <TrTbody
                       name={product.name}
-                      price={product.price}
+                      price={separate(product.price)}
                       count={product.count}
                       key={product.id}
                     />
