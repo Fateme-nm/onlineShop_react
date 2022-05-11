@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
-import miladi_be_shamsi from "utils/jalaliDate";
+import {miladi_be_shamsi, separate} from "utils";
 
 const Table = ({ orders, activeStatus }) => {
   const [dateFilter, setDateFilter] = useState(null);
@@ -65,7 +65,7 @@ const Table = ({ orders, activeStatus }) => {
                       " " +
                       order.customerDetail.lastName
                     }
-                    purchaseTotal={order.purchaseTotal}
+                    purchaseTotal={separate(order.purchaseTotal)}
                     orderDate={getOrderDate(order.orderDate)}
                     key={order.id}
                   />
