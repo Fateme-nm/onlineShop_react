@@ -1,6 +1,6 @@
 import React from "react";
 
-const Radio = ({ children, status }) => {
+const Radio = ({ children, status, handleClick }) => {
   return (
     <div className="form-check flex space-x-2 items-center">
       <input

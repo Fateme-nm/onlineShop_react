@@ -3,7 +3,7 @@ import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import miladi_be_shamsi from 'utils/jalaliDate'
 
-const Table = ({ orders }) => {
+const Table = ({ orders, activeStatus }) => {
   const [showOrders, setShowOrders] = useState([]);
 
   const getOrderDate = timestamp => {
@@ -26,7 +26,8 @@ const Table = ({ orders }) => {
   }, [orders]);
 
   return (
-    <div className="flex flex-col mt-8 container">
+    <div className="flex flex-col mt-8 container"> 
+    {console.log(activeStatus)}
       <div className="py-2 -my-2">
         <div className="inline-block w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
           <table className="w-full text-right">
