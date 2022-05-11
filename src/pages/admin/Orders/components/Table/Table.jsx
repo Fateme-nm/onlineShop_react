@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
+import miladi_be_shamsi from 'utils/jalaliDate'
 
 const Table = ({ orders }) => {
   const [showOrders, setShowOrders] = useState([]);
 
   const getOrderDate = timestamp => {
     const date = new Date(timestamp)
+    const jalaliDate = miladi_be_shamsi(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      date.getDate()
+    )
+    console.log(jalaliDate)
+    return jalaliDate
   }
 
   const handleFiltering = (e) => {
@@ -49,7 +57,7 @@ const Table = ({ orders }) => {
                       order.customerDetail.lastName
                     }
                     purchaseTotal={order.purchaseTotal}
-                    orderDate={order.orderDate}
+                    orderDate={getOrderDate(order.orderDate)}
                     key={order.id}
                   />
                 );
