@@ -25,7 +25,16 @@ const Table = ({ orders }) => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              
+            {showOrders.map((order) => {
+                return (
+                  <TrTbody
+                    customerDetail={order.customerDetail}
+                    purchaseTotal={order.purchaseTotal}
+                    orderDate={order.orderDate}
+                    key={order.id}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>
