@@ -45,7 +45,7 @@ const Orders = () => {
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
-        pageCount={pageCount}
+        pageCount={Math.ceil(users.length / usersPerPage)}
         onPageChange={({ selected }) => setPageNumber(selected)}
         containerClassName={"paginationBttns"}
         previousLinkClassName={"previousBttn"}
