@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
-import {miladi_be_shamsi, separate} from "utils";
+import { miladi_be_shamsi, separate } from "utils";
 
 const Table = ({ orders, activeStatus }) => {
   const [dateFilter, setDateFilter] = useState(null);
   const [showOrders, setShowOrders] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const getOrderDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -73,6 +74,17 @@ const Table = ({ orders, activeStatus }) => {
               })}
             </tbody>
           </table>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={Math.ceil(users.length / usersPerPage)}
+            onPageChange={({ selected }) => setPageNumber(selected)}
+            containerClassName={"paginationBttns"}
+            previousLinkClassName={"previousBttn"}
+            nextLinkClassName={"nextBttn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />
         </div>
       </div>
     </div>

@@ -42,17 +42,6 @@ const Orders = () => {
         </div>
       </div>
       <Table orders={orders} activeStatus={activeStatus} />
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        pageCount={Math.ceil(users.length / usersPerPage)}
-        onPageChange={({ selected }) => setPageNumber(selected)}
-        containerClassName={"paginationBttns"}
-        previousLinkClassName={"previousBttn"}
-        nextLinkClassName={"nextBttn"}
-        disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
-      />
     </div>
   );
 };
