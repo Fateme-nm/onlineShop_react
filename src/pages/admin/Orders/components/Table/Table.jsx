@@ -5,6 +5,10 @@ import TrTbody from "./components/Tr.Tbody";
 const Table = ({ orders }) => {
   const [showOrders, setShowOrders] = useState([]);
 
+  const getOrderDate = timestamp => {
+    const date = new Date(timestamp)
+  }
+
   const handleFiltering = (e) => {
     const sortName = e.targe.value;
     setShowOrders(sortName === "new" ? orders.reverse() : orders);
