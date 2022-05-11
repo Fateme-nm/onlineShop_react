@@ -13,17 +13,16 @@ const Table = ({ orders }) => {
       date.getMonth() + 1,
       date.getDate()
     )
-    console.log(jalaliDate)
     return jalaliDate
   }
 
   const handleFiltering = (e) => {
-    const sortName = e.targe.value;
+    const sortName = e.target.value;
     setShowOrders(sortName === "new" ? orders.reverse() : orders);
   };
 
   useEffect(() => {
-    setShowOrders(orders);
+    setShowOrders(orders.reverse());
   }, [orders]);
 
   return (
