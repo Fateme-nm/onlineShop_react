@@ -3,6 +3,9 @@ import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import axios from "axios";
 import Radio from "./components/Table/components/Radio";
+import { ExpireTime } from "utils";
+import { useNavigate } from "react-router-dom";
+import routes from "routes/routes";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -24,7 +27,9 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    getOrders();
+    if (ExpireTime()) {
+      navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
+    } else getOrders();
   }, []);
 
   return (
