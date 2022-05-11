@@ -28,7 +28,7 @@ const Table = ({ orders }) => {
             {showOrders.map((order) => {
                 return (
                   <TrTbody
-                    customerDetail={order.customerDetail}
+                    fullName={order.customerDetail.firstName+" "+order.customerDetail.lastName}
                     purchaseTotal={order.purchaseTotal}
                     orderDate={order.orderDate}
                     key={order.id}

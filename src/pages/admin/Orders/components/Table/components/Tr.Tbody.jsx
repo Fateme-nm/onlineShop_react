@@ -1,7 +1,7 @@
 import React from "react";
 
-const TrTbody = ({imgSrc, name, category}) => {
-    const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+const TrTbody = ({ fullName, purchaseTotal, orderDate }) => {
+  const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   return (
     <tr className="hover:bg-pink-50">
       <td className={sameClassName}>
@@ -11,19 +11,13 @@ const TrTbody = ({imgSrc, name, category}) => {
         <i class="fas fa-edit text-blue-400 cursor-pointer text-lg"></i>
       </td>
       <td className={sameClassName}>
-        <div className="text-sm leading-5 text-gray-900">{category}</div>
+        <div className="text-sm leading-5 text-gray-900">{orderDate}</div>
       </td>
       <td className={sameClassName}>
-        <div className="text-sm leading-5 text-gray-900">{name}</div>
+        <div className="text-sm leading-5 text-gray-900">{purchaseTotal}</div>
       </td>
-      <td className={`flex justify-end ${sameClassName}`}>
-        <div className="flex items-center">
-          <img
-            className="w-12 h-12"
-            src={imgSrc}
-            alt="product"
-          />
-        </div>
+      <td className={sameClassName}>
+        <div className="text-sm leading-5 text-gray-900">{fullName}</div>
       </td>
     </tr>
   );
