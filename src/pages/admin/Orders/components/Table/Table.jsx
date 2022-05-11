@@ -11,7 +11,6 @@ const Table = ({ orders, activeStatus }) => {
 
   const ordersPerPage = 4;
   const pagesVisited = pageNumber * ordersPerPage;
-  const pageBtnClass = "h-10 px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline hover:bg-indigo-100"
 
   const getOrderDate = (timestamp) => {
     const date = new Date(timestamp);
