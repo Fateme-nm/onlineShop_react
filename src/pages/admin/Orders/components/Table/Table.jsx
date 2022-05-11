@@ -18,7 +18,7 @@ const Table = ({ orders, activeStatus }) => {
   };
 
   const handleFiltering = () => {
-    const filterList1 = dateFilter === "new" ? orders.reverse() : orders;
+    const filterList1 = dateFilter === "new" ? [...orders].reverse() : orders;
     if (activeStatus) {
       const filterList2 = filterList1.filter(
         (order) => order.orderStatus == activeStatus
@@ -28,7 +28,7 @@ const Table = ({ orders, activeStatus }) => {
   };
 
   useEffect(() => {
-    setShowOrders(orders.reverse());
+    setShowOrders([...orders].reverse());
   }, [orders]);
 
   useEffect(() => {

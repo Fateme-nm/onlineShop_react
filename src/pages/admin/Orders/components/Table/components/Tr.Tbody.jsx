@@ -5,7 +5,7 @@ const TrTbody = ({ fullName, purchaseTotal, orderDate }) => {
   return (
     <tr className="hover:bg-pink-50">
       <td className={`${sameClassName} flex justify-end`}>
-        <div className="text-sm leading-5 text-gray-50 bg-primary rounded-full w-fit px-2 py-1 cursor-pointer">بررسی سفارش</div>
+        <div className="text-xs leading-5 text-gray-50 bg-neutral-400 rounded-full w-fit px-2 py-1 cursor-pointer font-bold">بررسی سفارش</div>
       </td>
       <td className={sameClassName}>
         <div className="text-sm leading-5 text-gray-900">{orderDate}</div>

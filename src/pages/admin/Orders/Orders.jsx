@@ -6,7 +6,6 @@ import Radio from "./components/Table/components/Radio";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const [orderStatus, setOrderStatus] = useState([]);
   const [activeStatus, setActiveStatus] = useState(null);
 
   const getOrders = async () => {
@@ -19,16 +18,6 @@ const Orders = () => {
     setOrders(response);
   };
 
-  const getOrderStatus = async () => {
-    const response = await axios
-      .get("http://localhost:3002/orderStatus", {
-        headers: { token: localStorage.getItem("token") },
-      })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
-    setOrderStatus(response);
-  };
-
   const handleClickStatus = (e) => {
     const status = e.target.id;
     setActiveStatus(status);
@@ -36,7 +25,6 @@ const Orders = () => {
 
   useEffect(() => {
     getOrders();
-    getOrderStatus();
   }, []);
 
   return (
