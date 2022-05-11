@@ -18,7 +18,7 @@ const Table = ({ orders }) => {
           <table className="w-full text-right">
             <thead>
               <tr>
-                <ThThead>بررسی سفارش</ThThead>
+                <ThThead></ThThead>
                 <ThThead>زمان ثبت سفارش</ThThead>
                 <ThThead>مجموع مبلغ</ThThead>
                 <ThThead>نام کاربر</ThThead>
