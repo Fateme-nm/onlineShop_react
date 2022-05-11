@@ -19,16 +19,28 @@ const Table = ({ orders }) => {
             <thead>
               <tr>
                 <ThThead></ThThead>
-                <ThThead>زمان ثبت سفارش</ThThead>
+                <ThThead
+                  handleFiltering={handleFiltering}
+                  sort={[
+                    { name: "جدید ترین", value: "new" },
+                    { name: "قدیمی ترین", value: "old" },
+                  ]}
+                >
+                  زمان ثبت سفارش
+                </ThThead>
                 <ThThead>مجموع مبلغ</ThThead>
                 <ThThead>نام کاربر</ThThead>
               </tr>
             </thead>
             <tbody className="bg-white">
-            {showOrders.map((order) => {
+              {showOrders.map((order) => {
                 return (
                   <TrTbody
-                    fullName={order.customerDetail.firstName+" "+order.customerDetail.lastName}
+                    fullName={
+                      order.customerDetail.firstName +
+                      " " +
+                      order.customerDetail.lastName
+                    }
                     purchaseTotal={order.purchaseTotal}
                     orderDate={order.orderDate}
                     key={order.id}
