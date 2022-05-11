@@ -5,7 +5,10 @@ import TrTbody from "./components/Tr.Tbody";
 const Table = ({ orders }) => {
   const [showOrders, setShowOrders] = useState([]);
 
-  const handleFiltering = (e) => {};
+  const handleFiltering = (e) => {
+    const sortName = e.targe.value;
+    setShowOrders(sortName === "new" ? orders.reverse() : orders);
+  };
 
   useEffect(() => {
     setShowOrders(orders);
