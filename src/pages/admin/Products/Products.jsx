@@ -26,7 +26,7 @@ const Products = () => {
   }, []);
   return (
     <div>
-      <div className="mt-8 flex justify-between items-center flex-row-reverse container">
+      <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت کالا ها</h2>
         <button className="bg-primary rounded-md py-3 px-5 text-sm text-white font-bold transform hover:translate-y-1 transition-all duration-500 text-center">
           افزودن کالا
