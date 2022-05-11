@@ -61,20 +61,22 @@ const Table = ({ orders, activeStatus }) => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {showOrders.map((order) => {
-                return (
-                  <TrTbody
-                    fullName={
-                      order.customerDetail.firstName +
-                      " " +
-                      order.customerDetail.lastName
-                    }
-                    purchaseTotal={separate(order.purchaseTotal)}
-                    orderDate={getOrderDate(order.orderDate)}
-                    key={order.id}
-                  />
-                );
-              })}
+              {showOrders
+                .slice(pagesVisited, pagesVisited + ordersPerPage)
+                .map((order) => {
+                  return (
+                    <TrTbody
+                      fullName={
+                        order.customerDetail.firstName +
+                        " " +
+                        order.customerDetail.lastName
+                      }
+                      purchaseTotal={separate(order.purchaseTotal)}
+                      orderDate={getOrderDate(order.orderDate)}
+                      key={order.id}
+                    />
+                  );
+                })}
             </tbody>
           </table>
           <ReactPaginate
