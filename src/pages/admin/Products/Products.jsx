@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import axios from "axios";
+import { ExpireTime } from "utils";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const navigate = useNavigate()
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const getProducts = async () => {
@@ -21,6 +24,9 @@ const Products = () => {
     setCategory(response);
   };
   useEffect(() => {
+    if (ExpireTime()) {
+      
+    }
     getProducts();
     getCategory();
   }, []);
