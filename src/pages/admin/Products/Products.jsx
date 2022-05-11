@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import axios from "axios";
+import { ExpireTime } from "utils";
+import { useNavigate } from "react-router-dom";
+import routes from "routes/routes";
 
 const Products = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const getProducts = async () => {
@@ -21,8 +25,12 @@ const Products = () => {
     setCategory(response);
   };
   useEffect(() => {
-    getProducts();
-    getCategory();
+    if (ExpireTime()) {
+      navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
+    } else {
+      getProducts();
+      getCategory();
+    }
   }, []);
   return (
     <div>
@@ -32,7 +40,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table products={products} category={category}/>
+      <Table products={products} category={category} />
     </div>
   );
 };
