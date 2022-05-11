@@ -19,9 +19,10 @@ const Prices = () => {
   };
 
   useEffect(() => {
-    if (ExpireTime()) {
-      navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
-    } else getProducts();
+    // if (ExpireTime()) {
+    //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
+    // } 
+    getProducts();
   }, []);
 
   return (

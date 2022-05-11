@@ -28,9 +28,10 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    if (ExpireTime()) {
-      navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
-    } else getOrders();
+    // if (ExpireTime()) {
+    //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
+    // }
+    getOrders();
   }, []);
 
   return (

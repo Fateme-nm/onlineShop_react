@@ -25,12 +25,11 @@ const Products = () => {
     setCategory(response);
   };
   useEffect(() => {
-    if (ExpireTime()) {
-      navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
-    } else {
-      getProducts();
-      getCategory();
-    }
+    // if (ExpireTime()) {
+    //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
+    // } 
+    getProducts();
+    getCategory();
   }, []);
   return (
     <div>
