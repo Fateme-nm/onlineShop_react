@@ -38,7 +38,7 @@ const Logintopanel = () => {
           password: values.password,
         })
         localStorage.setItem('token', response.data.token)
-        navigate(routes.PRODUCTS.path, { replace: true });
+        navigate(routes.ORDERS.path, { replace: true });
       }catch(err) {
         alert("اطلاعات وارد شده نادرست است!");
       }
