@@ -1,4 +1,7 @@
 export default function authHeader() {
-    const token = localStorage.getItem("token")
-    return token ? { token } : {}
+    const admin = localStorage.getItem("admin")
+    if (admin && admin.token) {
+        return { token: admin.token }
+    }
+    return {}
 }
