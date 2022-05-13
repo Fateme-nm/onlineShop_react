@@ -27,7 +27,7 @@ const Logintopanel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoggedIn, isLoading } = useSelector((state) => state.authReducer);
-  const { message } = useSelector((state) => state.messageReducer);
+  const { clearMessage } = useSelector((state) => state.messageReducer);
 
   const formik = useFormik({
     initialValues: {
@@ -51,6 +51,10 @@ const Logintopanel = () => {
     },
     validationSchema,
   });
+
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
 
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
