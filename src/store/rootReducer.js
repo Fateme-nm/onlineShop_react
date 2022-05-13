@@ -1,4 +1,4 @@
-import authSlice from './slices/auth'
-import messageSlice from './slices/message'
+import authReducer from './slices/auth'
+import messageReducer from './slices/message'
 
-export default {authSlice, messageSlice}
+export default { authReducer, messageReducer }
