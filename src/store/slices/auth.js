@@ -36,6 +36,11 @@ const authSlice = createSlice({
         [login.pending]: (state) => {
             state.isLoading = true
         },
+        [login.fulfilled]: (state, action) => {
+            state.isLoggedIn = true;
+            state.admin = action.payload.admin;
+            state.isLoading = false;
+        },
         
     },
 });
