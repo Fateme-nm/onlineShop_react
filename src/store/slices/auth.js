@@ -29,6 +29,16 @@ const initialState = admin ?
     { isLoggedIn: true, isLoading: false, admin } : 
     { isLoggedIn: false, isLoading: true, admin: null };
 
+const authSlice = createSlice({
+    name: "auth",
+    initialState,
+    extraReducers: {
+        [login.pending]: (state) => {
+            state.isLoading = true
+        },
+        
+    },
+});
 
 const { reducer } = authSlice;
 export default reducer;
