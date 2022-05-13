@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/slices/auth";
 import { clearMessage } from "store/slices/message";
 import * as Yup from "yup";
+import Loader from "components/Loader/Loader";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
@@ -95,9 +96,7 @@ const Logintopanel = () => {
         </InputLogin>
         <Botton>
           ورود
-          {isLoading && (
-            <span className="spinner-border spinner-border-sm"></span>
-          )}
+          {isLoading && <Loader />}
         </Botton>
       </form>
     </div>
