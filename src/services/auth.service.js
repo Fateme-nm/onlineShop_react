@@ -15,6 +15,10 @@ const login = (username, password) => {
       });
 };
 
+const logout = () => {
+    localStorage.removeItem("token");
+};
 
+const authService = {login, logout};
 
 export default authService;
