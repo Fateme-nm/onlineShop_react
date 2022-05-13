@@ -9,7 +9,8 @@ import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { authReducer, messageReducer } from './rootReducer'
+import { login } from "store/slices/auth";
+import { clearMessage } from "store/slices/message";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -26,8 +27,8 @@ const validationSchema = Yup.object().shape({
 const Logintopanel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoggedIn, isLoading } = useSelector((state) => state.authReducer);
-  const { clearMessage } = useSelector((state) => state.messageReducer);
+  const { isLoggedIn, isLoading } = useSelector((state) => state.auth);
+  const { clearMessage } = useSelector((state) => state.message);
 
   const formik = useFormik({
     initialValues: {
@@ -37,17 +38,18 @@ const Logintopanel = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
-      try {
-        const response = await axios
-        .post("http://localhost:3002/auth/login", {
-          username: values.username,
-          password: values.password,
-        })
-        localStorage.setItem('token', response.data.token)
-        navigate(routes.ORDERS.path, { replace: true });
-      }catch(err) {
-        alert("اطلاعات وارد شده نادرست است!");
-      }
+      // try {
+      //   const response = await axios
+      //   .post("http://localhost:3002/auth/login", {
+      //     username: values.username,
+      //     password: values.password,
+      //   })
+      //   localStorage.setItem('token', response.data.token)
+      //   navigate(routes.ORDERS.path, { replace: true });
+      // }catch(err) {
+      //   alert("اطلاعات وارد شده نادرست است!");
+      // }
+      dispatch()
     },
     validationSchema,
   });
