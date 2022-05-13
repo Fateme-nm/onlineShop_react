@@ -51,7 +51,7 @@ const Logintopanel = () => {
       // }
       dispatch(login(values)).then(
         navigate(routes.ORDERS.path, { replace: true })
-      )
+      );
     },
     validationSchema,
   });
@@ -59,7 +59,6 @@ const Logintopanel = () => {
   useEffect(() => {
     dispatch(clearMessage());
   }, [dispatch]);
-
 
   if (isLoggedIn) {
     return <Redirect to="/profile" />;
@@ -94,7 +93,12 @@ const Logintopanel = () => {
         >
           رمز عبور
         </InputLogin>
-        <Botton>ورود</Botton>
+        <Botton>
+          ورود
+          {isLoading && (
+            <span className="spinner-border spinner-border-sm"></span>
+          )}
+        </Botton>
       </form>
     </div>
   );
