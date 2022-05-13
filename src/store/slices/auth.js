@@ -41,6 +41,11 @@ const authSlice = createSlice({
             state.admin = action.payload.admin;
             state.isLoading = false;
         },
+        [login.rejected]: (state, action) => {
+            state.isLoggedIn = false;
+            state.admin = null;
+            state.isLoading = false;
+        },
         
     },
 });
