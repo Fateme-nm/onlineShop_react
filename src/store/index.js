@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authSlice, messageSlice } from './rootReducer'
+import { authReducer, messageReducer } from './rootReducer'
 
 const reducer = {
     auth: authReducer,
@@ -10,3 +10,5 @@ export const store = configureStore({
     devTools: true,
     reducer
 })
+
+export default store;
