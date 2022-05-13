@@ -8,7 +8,8 @@ import routes from "routes/routes";
 import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { authReducer, messageReducer } from './rootReducer'
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -24,6 +25,7 @@ const validationSchema = Yup.object().shape({
 
 const Logintopanel = () => {
   const navigate = useNavigate();
+  const { isLoggedIn, isLoading } = useSelector((state) => state.authReducer);
   const formik = useFormik({
     initialValues: {
       username: "",
