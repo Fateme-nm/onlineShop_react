@@ -6,6 +6,10 @@ const getProducts = () => {
   return axios.get(API_URL + "products", { headers: authHeader() });
 };
 
+const getCategoris = () => {
+  return axios.get(API_URL + "category", { headers: authHeader() });
+};
+
 
 
 export default adminService
