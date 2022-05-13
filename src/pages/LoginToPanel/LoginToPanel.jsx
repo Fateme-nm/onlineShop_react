@@ -49,7 +49,9 @@ const Logintopanel = () => {
       // }catch(err) {
       //   alert("اطلاعات وارد شده نادرست است!");
       // }
-      dispatch()
+      dispatch(login(values)).then(
+        navigate(routes.ORDERS.path, { replace: true })
+      )
     },
     validationSchema,
   });
@@ -58,6 +60,10 @@ const Logintopanel = () => {
     dispatch(clearMessage());
   }, [dispatch]);
 
+
+  if (isLoggedIn) {
+    return <Redirect to="/profile" />;
+  }
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
       <img
