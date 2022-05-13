@@ -14,4 +14,15 @@ const getOrders = () => {
   return axios.get(API_URL + "orders", { headers: authHeader() });
 };
 
+const getStatusOrders = () => {
+    return axios.get(API_URL + "orderStatus" + { headers: authHeader() })
+}
+
+const adminService = {
+    getProducts,
+    getCategoreis,
+    getOrders,
+    getStatusOrders,
+};
+
 export default adminService
