@@ -26,6 +26,7 @@ const validationSchema = Yup.object().shape({
 const Logintopanel = () => {
   const navigate = useNavigate();
   const { isLoggedIn, isLoading } = useSelector((state) => state.authReducer);
+  const { message } = useSelector((state) => state.message);
   const formik = useFormik({
     initialValues: {
       username: "",
