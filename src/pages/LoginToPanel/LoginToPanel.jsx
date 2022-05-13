@@ -25,8 +25,10 @@ const validationSchema = Yup.object().shape({
 
 const Logintopanel = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { isLoggedIn, isLoading } = useSelector((state) => state.authReducer);
-  const { message } = useSelector((state) => state.message);
+  const { message } = useSelector((state) => state.messageReducer);
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -49,6 +51,7 @@ const Logintopanel = () => {
     },
     validationSchema,
   });
+
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
       <img
