@@ -9,14 +9,14 @@ const login = (username, password) => {
       })
       .then((response) => {
         if (response.status === 200 && response.data.token) {
-          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("admin", JSON.stringify(response.data));
         }
         return response.data;
       });
 };
 
 const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
 };
 
 const authService = {login, logout};
