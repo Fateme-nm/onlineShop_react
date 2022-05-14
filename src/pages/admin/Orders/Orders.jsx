@@ -3,12 +3,10 @@ import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import axios from "axios";
 import Radio from "./components/Table/components/Radio";
-import { ExpireTime } from "utils";
 import { useNavigate } from "react-router-dom";
 import routes from "routes/routes";
 
 const Orders = () => {
-  console.log("hello")
   const navigate = useNavigate()
   const [orders, setOrders] = useState([]);
   const [activeStatus, setActiveStatus] = useState(null);
