@@ -43,7 +43,7 @@ const ordersSlice = createSlice({
     name: "orders",
     initialState,
     reducers: {
-        handleClickStatus: (state, action) => {
+        setActiveStatus: (state, action) => {
             const status = action.payload
             state.activeStatus = status
         },
@@ -90,7 +90,7 @@ const ordersSlice = createSlice({
 
 const { reducer, actions } = ordersSlice;
 export const { 
-    handleClickStatus, 
+    setActiveStatus, 
     setActiveSort,
     setShowOrders,
     handleShowOrders } 

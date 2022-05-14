@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { handleClickStatus } from 'store/slices/orders'
+import { setActiveStatus } from 'store/slices/orders'
 
 const Radio = ({ children, status }) => {
   const dispatch = useDispatch()
@@ -12,7 +12,7 @@ const Radio = ({ children, status }) => {
         type="radio"
         name="statuses"
         id={status}
-        onClick={(e) => dispatch(handleClickStatus(e.target.id))}
+        onClick={(e) => dispatch(setActiveStatus(e.target.id))}
       />
       <label
         className="form-check-label inline-block text-gray-800"
