@@ -5,7 +5,6 @@ import { miladi_be_shamsi, separate } from "utils";
 import ReactPaginate from "react-paginate";
 
 const Table = ({ orders, activeStatus, activeSort }) => {
-  // const [dateFilter, setDateFilter] = useState(null);
   const [showOrders, setShowOrders] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
