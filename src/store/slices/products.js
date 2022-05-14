@@ -1,15 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
 import AdminService from "services/admin.service";
+import { useDispatch } from "react-redux";
+import { logout } from "./auth";
 
 export const getProducts = createAsyncThunk(
   "panel/products",
   async (thunkAPI) => {
+    const dispatch = useDispatch()
     try {
       const res = await AdminService.getProducts();
       return { products: res.data };
     } catch (error) {
-    //   const message = error.response
+        const message = error.response
+        if (message.status === 401) {
+            dispatch(logout())
+        }
     //   thunkAPI.dispatch(setMessage(message));
       return thunkAPI.rejectWithValue();
     }
@@ -23,7 +29,10 @@ export const getCategories = createAsyncThunk(
             const res = await AdminService.getCategoreis();
             return { categories: res.data };
         } catch (error) {
-          //   const message = error.response
+            const message = error.response
+            if (message.status === 401) {
+                dispatch(logout())
+            }
           //   thunkAPI.dispatch(setMessage(message));
             return thunkAPI.rejectWithValue();
         }
