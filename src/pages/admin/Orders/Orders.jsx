@@ -11,11 +11,6 @@ const Orders = () => {
   const dispatch = useDispatch()
   const { orders } = useSelector(state => state.orders)
 
-  // const handleClickStatus = (e) => {
-  //   const status = e.target.id;
-  //   setActiveStatus(status);
-  // };
-
   useEffect(() => {
     // if (ExpireTime()) {
     //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
@@ -28,21 +23,15 @@ const Orders = () => {
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت سفارش ها</h2>
         <div className="flex justify-center space-x-5">
-          <Radio status="1" 
-          // handleClick={handleClickStatus}
-          >
+          <Radio status="1" >
             سفارش های تحویل شده
           </Radio>
-          <Radio status="3" 
-          // handleClick={handleClickStatus}
-          >
+          <Radio status="3" >
             سفارش های در انتظار ارسال
           </Radio>
         </div>
       </div>
-      <Table orders={orders} 
-      // activeStatus={activeStatus} 
-      />
+      <Table orders={orders} />
     </div>
   );
 };

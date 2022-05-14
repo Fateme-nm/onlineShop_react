@@ -12,7 +12,7 @@ const Radio = ({ children, status }) => {
         type="radio"
         name="statuses"
         id={status}
-        onClick={dispatch(handleClickStatus)}
+        onClick={() => dispatch(handleClickStatus)}
       />
       <label
         className="form-check-label inline-block text-gray-800"
