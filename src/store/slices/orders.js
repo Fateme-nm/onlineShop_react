@@ -33,11 +33,12 @@ export const getStatusOrders = createAsyncThunk(
 const initialState = {
     isLoading: false,
     orders: [],
-    statusOrders: []
+    statusOrders: [],
+    activeStatus: null
 }
 
-const authSlice = createSlice({
-    name: "auth",
+const ordersSlice = createSlice({
+    name: "orders",
     initialState,
     extraReducers: {
         [login.pending]: (state) => {

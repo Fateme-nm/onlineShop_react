@@ -8,18 +8,18 @@ import routes from "routes/routes";
 
 const Orders = () => {
   const navigate = useNavigate()
-  const [orders, setOrders] = useState([]);
-  const [activeStatus, setActiveStatus] = useState(null);
+  // const [orders, setOrders] = useState([]);
+  // const [activeStatus, setActiveStatus] = useState(null);
 
-  const getOrders = async () => {
-    const response = await axios
-      .get("http://localhost:3002/orders", {
-        headers: { token: localStorage.getItem("token") },
-      })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
-    setOrders(response);
-  };
+  // const getOrders = async () => {
+  //   const response = await axios
+  //     .get("http://localhost:3002/orders", {
+  //       headers: { token: localStorage.getItem("token") },
+  //     })
+  //     .then((res) => res.data)
+  //     .catch((err) => console.log(err));
+  //   setOrders(response);
+  // };
 
   const handleClickStatus = (e) => {
     const status = e.target.id;
