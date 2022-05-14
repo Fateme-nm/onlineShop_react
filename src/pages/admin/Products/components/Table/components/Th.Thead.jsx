@@ -1,12 +1,13 @@
 import React from "react";
+import { handleShowProducts } from "store/slices/products";
 
-const ThThead = ({ children, category , handleFiltering}) => {
-  if (category) {
+const ThThead = ({ children, categories }) => {
+  if (categories) {
     return (
       <th className="relative border-primary border-b">
-        <select className="appearance-none h-full w-full pr-8 focus:outline-none px-6 py-4 text-sm font-medium leading-4 tracking-wider  text-gray-900 bg-white" onChange={handleFiltering}>
+        <select className="appearance-none h-full w-full pr-8 focus:outline-none px-6 py-4 text-sm font-medium leading-4 tracking-wider  text-gray-900 bg-white" onChange={(e) => handleShowProducts(e.target.value)}>
           <option value='all'>{children}</option>
-          {category.map((cat) => (
+          {categories.map((cat) => (
             <option key={cat.id} value={cat.id}>{cat.name}</option>
           ))}
         </select>

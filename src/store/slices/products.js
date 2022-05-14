@@ -74,7 +74,7 @@ const ordersSlice = createSlice({
             state.isLoading = false
         },
         [getCategories.fulfilled]: (state, action) => {
-            state.categories = state.payload.categories;
+            state.categories = action.payload.categories;
         },
     },
 });

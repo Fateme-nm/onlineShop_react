@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
-import { handleShowProducts } from "store/slices/products";
 
-const Table = ({ category }) => {
+const Table = ({ categories }) => {
   // const [showProducts, setShowProducts] = useState([]);
   const {showProducts} = useSelector(state => state.products)
   const [pageNumber, setPageNumber] = useState(0);
@@ -25,7 +24,7 @@ const Table = ({ category }) => {
   // };
 
   const getCategory = (categoryId) => {
-    const cat = category.find((cat) => cat.id == categoryId);
+    const cat = categories.find((cat) => cat.id == categoryId);
     return cat ? cat.name : null;
   };
 
@@ -42,7 +41,7 @@ const Table = ({ category }) => {
               <tr>
                 <ThThead>حذف</ThThead>
                 <ThThead>ویرایش</ThThead>
-                <ThThead category={category} handleFiltering={handleFiltering}>
+                <ThThead categories={categories}>
                   دسته بندی
                 </ThThead>
                 <ThThead>نام کالا</ThThead>
