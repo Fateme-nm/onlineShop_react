@@ -10,7 +10,6 @@ const CheckAuth = () => {
 
 const PrivateRoute = ({route}) => {
     const isAuth = CheckAuth()
-    console.log(isAuth)
     return (
         isAuth ? <Navigate to={routes.ORDERS.path} /> : route.element
     );
