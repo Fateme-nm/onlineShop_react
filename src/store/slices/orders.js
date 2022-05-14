@@ -41,25 +41,22 @@ const ordersSlice = createSlice({
     name: "orders",
     initialState,
     extraReducers: {
-        [login.pending]: (state) => {
+        [getOrders.pending]: (state) => {
             state.isLoading = true
         },
-        [login.fulfilled]: (state, action) => {
-            state.isLoggedIn = true;
-            state.admin = action.payload.admin;
+        [getOrders.fulfilled]: (state, action) => {
+            state.orders = action.payload.orders;
             state.isLoading = false
         },
-        [login.rejected]: (state, action) => {
-            state.isLoggedIn = false;
-            state.admin = null;
+        [getOrders.rejected]: (state, action) => {
+            state.orders = [];
             state.isLoading = false
         },
-        [logout.fulfilled]: (state, action) => {
-            state.isLoggedIn = false;
-            state.admin = null;
+        [getStatusOrders.fulfilled]: (state, action) => {
+            state.statusOrders = state.payload.statusOrders;
         },
     },
 });
 
-const { reducer } = authSlice;
+const { reducer } = ordersSlice;
 export default reducer;
