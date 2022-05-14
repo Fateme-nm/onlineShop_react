@@ -25,6 +25,7 @@ export const getProducts = createAsyncThunk(
 export const getCategories = createAsyncThunk(
     "panel/categories", 
     async (thunkAPI) => {
+        const dispatch = useDispatch()
         try {
             const res = await AdminService.getCategoreis();
             return { categories: res.data };

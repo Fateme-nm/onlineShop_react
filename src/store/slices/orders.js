@@ -7,6 +7,7 @@ import { logout } from "./auth";
 export const getOrders = createAsyncThunk(
   "panel/orders",
   async (thunkAPI) => {
+    const dispatch = useDispatch()
     try {
       const res = await AdminService.getOrders();
       return { orders: res.data };
@@ -24,6 +25,7 @@ export const getOrders = createAsyncThunk(
 export const getStatusOrders = createAsyncThunk(
     "panel/statusOrders", 
     async (thunkAPI) => {
+        const dispatch = useDispatch()
         try {
             const res = await AdminService.getStatusOrders();
             return { statusOrders: res.data };
