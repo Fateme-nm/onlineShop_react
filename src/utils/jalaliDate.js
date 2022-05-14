@@ -1,4 +1,4 @@
-export default function miladi_be_shamsi(gy, gm, gd) {
+function miladi_be_shamsi(gy, gm, gd) {
   var g_d_m, jy, jm, jd, gy2, days;
   g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
   gy2 = (gm > 2) ? (gy + 1) : gy;
@@ -20,3 +20,13 @@ export default function miladi_be_shamsi(gy, gm, gd) {
   }
   return [jy + '/' + jm + '/' + jd];
 }
+
+export default (timestamp) => {
+    const date = new Date(timestamp);
+    const jalaliDate = miladi_be_shamsi(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      date.getDate()
+    );
+    return jalaliDate;
+};

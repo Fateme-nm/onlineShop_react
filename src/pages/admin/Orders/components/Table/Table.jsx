@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
-import { miladi_be_shamsi, separate } from "utils";
+import { jalaliDate, separate } from "utils";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { handleShowOrders } from "store/slices/orders";
@@ -13,16 +13,6 @@ const Table = ({ activeStatus, activeSort }) => {
 
   const ordersPerPage = 4;
   const pagesVisited = pageNumber * ordersPerPage;
-
-  const getOrderDate = (timestamp) => {
-    const date = new Date(timestamp);
-    const jalaliDate = miladi_be_shamsi(
-      date.getFullYear(),
-      date.getMonth() + 1,
-      date.getDate()
-    );
-    return jalaliDate;
-  };
 
   useEffect(() => {
     dispatch(handleShowOrders())
@@ -60,7 +50,7 @@ const Table = ({ activeStatus, activeSort }) => {
                         order.customerDetail.lastName
                       }
                       purchaseTotal={separate(order.purchaseTotal)}
-                      orderDate={getOrderDate(order.orderDate)}
+                      orderDate={jalaliDate(order.orderDate)}
                       key={order.id}
                     />
                   );
