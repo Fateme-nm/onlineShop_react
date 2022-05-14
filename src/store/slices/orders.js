@@ -16,7 +16,19 @@ export const getOrders = createAsyncThunk(
   }
 );
 
-
+export const getStatusOrders = createAsyncThunk(
+    "panel/statusOrders", 
+    async (thunkAPI) => {
+        try {
+            const res = await AdminService.getStatusOrders();
+            return { statusOrders: res.data };
+        } catch (error) {
+          //   const message = error.response
+          //   thunkAPI.dispatch(setMessage(message));
+            return thunkAPI.rejectWithValue();
+        }
+    }
+);
 
 const initialState = {
     isLoading: false,
