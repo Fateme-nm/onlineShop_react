@@ -51,9 +51,6 @@ const ordersSlice = createSlice({
             const sort = action.payload
             state.activeSort = sort
         },
-        setShowOrders: (state, action) => {
-            state.showOrders = action.payload
-        },
         handleShowOrders: (state, action) => {
             const filterList1 =
                 state.activeSort === "new" ? 
@@ -92,7 +89,6 @@ const { reducer, actions } = ordersSlice;
 export const { 
     setActiveStatus, 
     setActiveSort,
-    setShowOrders,
     handleShowOrders } 
 = actions
 export default reducer;

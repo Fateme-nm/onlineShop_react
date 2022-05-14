@@ -9,9 +9,7 @@ import { getOrders } from "store/slices/orders";
 const Orders = () => {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { orders, activeStatus, activeSort } = useSelector(
-    (state) => state.orders
-  );
+  const { activeStatus, activeSort } = useSelector((state) => state.orders);
 
   useEffect(() => {
     // if (ExpireTime()) {
@@ -30,7 +28,6 @@ const Orders = () => {
         </div>
       </div>
       <Table
-        orders={orders}
         activeStatus={activeStatus}
         activeSort={activeSort}
       />

@@ -6,7 +6,7 @@ import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { handleShowOrders } from "store/slices/orders";
 
-const Table = ({ orders, activeStatus, activeSort }) => {
+const Table = ({ activeStatus, activeSort }) => {
   const dispatch = useDispatch()
   const {showOrders} = useSelector(state => state.orders)
   const [pageNumber, setPageNumber] = useState(0);
