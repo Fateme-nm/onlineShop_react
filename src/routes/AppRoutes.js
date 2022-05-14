@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import PrivateRoute from "./PrivateRoute";
 import routeConstants from "routes/routes";
 
 const {
@@ -24,7 +25,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path={ROOT.path} element={ROOT.element} />
       <Route path={HOME.path} element={HOME.element} />
-      <Route path={LOGIN_TO_PANEL.path} element={LOGIN_TO_PANEL.element} />
+      <Route path={LOGIN_TO_PANEL.path} element={<PrivateRoute route={LOGIN_TO_PANEL}/>} />
       <Route path={PRODUCTS_LIST.path} element={PRODUCTS_LIST.element} />
       <Route path={PROUDUCT_DETAILS.path} element={PROUDUCT_DETAILS.element} />
       <Route path={CART.path} element={CART.element} />
