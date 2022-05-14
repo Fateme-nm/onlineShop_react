@@ -28,7 +28,7 @@ const Logintopanel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.auth);
-  const [loadStatus, setLoadStatud] = useState(isLoading)
+  // const [loadStatus, setLoadStatud] = useState(isLoading)
   const { message } = useSelector((state) => state.message);
 
   const formik = useFormik({
@@ -56,9 +56,9 @@ const Logintopanel = () => {
     dispatch(clearMessage())
   }, [dispatch])
 
-  useEffect(() => {
-    setLoadStatud(isLoading)
-  }, [isLoading])
+  // useEffect(() => {
+  //   setLoadStatud(isLoading)
+  // }, [isLoading])
 
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
@@ -92,7 +92,7 @@ const Logintopanel = () => {
         </InputLogin>
         <Botton>
           ورود
-          {loadStatus && <Loader />}
+          {/* {loadStatus && <Loader />} */}
         </Botton>
       </form>
     </div>
