@@ -4,7 +4,7 @@ import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
 
 const Table = ({ products, category }) => {
-  const [showProducts, setShowProducts] = useState([]);
+  // const [showProducts, setShowProducts] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 4;

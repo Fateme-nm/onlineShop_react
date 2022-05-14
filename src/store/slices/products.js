@@ -33,6 +33,7 @@ export const getCategories = createAsyncThunk(
 const initialState = {
     isLoading: false,
     products: [],
+    showProducts: [],
     categories: []
 }
 
