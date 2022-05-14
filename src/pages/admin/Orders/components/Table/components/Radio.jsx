@@ -1,6 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-const Radio = ({ children, status, handleClick }) => {
+const Radio = ({ children, status }) => {
+  const dispatch = useDispatch()
   return (
     <div className="form-check flex space-x-2 items-center">
       <input
