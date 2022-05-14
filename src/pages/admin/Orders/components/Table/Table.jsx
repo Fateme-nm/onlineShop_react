@@ -3,12 +3,12 @@ import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import { miladi_be_shamsi, separate } from "utils";
 import ReactPaginate from "react-paginate";
-import { useDispatch } from "react-redux";
-import { setShowOrders, handleShowOrders } from "store/slices/orders";
+import { useDispatch, useSelector } from "react-redux";
+import { handleShowOrders } from "store/slices/orders";
 
 const Table = ({ orders, activeStatus, activeSort }) => {
-  // const [showOrders, setShowOrders] = useState([]);
   const dispatch = useDispatch()
+  const {showOrders} = useSelector(state => state.orders)
   const [pageNumber, setPageNumber] = useState(0);
 
   const ordersPerPage = 4;
@@ -23,20 +23,6 @@ const Table = ({ orders, activeStatus, activeSort }) => {
     );
     return jalaliDate;
   };
-
-  // const handleFiltering = () => {
-  //   const filterList1 = activeSort === "new" ? [...orders].reverse() : orders;
-  //   if (activeStatus) {
-  //     const filterList2 = filterList1.filter(
-  //       (order) => order.orderStatus == activeStatus
-  //     );
-  //     setShowOrders(filterList2);
-  //   } else setShowOrders(filterList1);
-  // };
-
-  // useEffect(() => {
-  //   dispatch(setShowOrders([...orders].reverse()))
-  // }, [orders]);
 
   useEffect(() => {
     dispatch(handleShowOrders())

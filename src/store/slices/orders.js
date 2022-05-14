@@ -56,10 +56,11 @@ const ordersSlice = createSlice({
         },
         handleShowOrders: (state, action) => {
             const filterList1 =
-                state.activeSort === "new" ? [...orders].reverse() : orders;
+                state.activeSort === "new" ? 
+                    [...state.orders].reverse() : state.orders;
             if (state.activeStatus) {
                 const filterList2 = filterList1.filter(
-                    (order) => order.orderStatus === state.activeStatus
+                    (order) => order.orderStatus == state.activeStatus
                 );
                 state.showOrders = filterList2
             } else {
