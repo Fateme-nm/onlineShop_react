@@ -9,7 +9,7 @@ import { getProducts, getCategories } from "store/slices/products";
 const Products = () => {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const { products, categories } = useSelector((state) => state.products);
   // const [products, setProducts] = useState([]);
   // const [category, setCategory] = useState([]);
 
@@ -42,7 +42,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table products={products} category={category} />
+      <Table products={products} categories={categories} />
     </div>
   );
 };
