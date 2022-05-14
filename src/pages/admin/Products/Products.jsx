@@ -1,36 +1,14 @@
 import React, { useEffect } from "react";
 import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
-// import { ExpireTime } from "utils";
-// import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getCategories } from "store/slices/products";
 
 const Products = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.products);
-  // const [products, setProducts] = useState([]);
-  // const [category, setCategory] = useState([]);
 
-  // const getProducts = async () => {
-  //   const response = await axios
-  //     .get("http://localhost:3002/products")
-  //     .then((res) => res.data)
-  //     .catch((err) => console.log(err));
-  //   setProducts(response);
-  // };
-  // const getCategory = async () => {
-  //   const response = await axios
-  //     .get("http://localhost:3002/category")
-  //     .then((res) => res.data)
-  //     .catch((err) => console.log(err));
-  //   setCategory(response);
-  // };
   useEffect(() => {
-    // if (ExpireTime()) {
-    //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
-    // } 
     dispatch(getProducts())
     dispatch(getCategories())
   }, []);

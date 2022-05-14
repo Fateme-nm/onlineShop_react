@@ -1,20 +1,14 @@
 import React, { useEffect } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Table from "./Table/Table";
-// import { ExpireTime } from "utils";
-// import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "store/slices/products";
 
 const Prices = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    // if (ExpireTime()) {
-    //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
-    // } 
     dispatch(getProducts())
   }, []);
 
