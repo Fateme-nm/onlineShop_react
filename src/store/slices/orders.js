@@ -47,7 +47,7 @@ const ordersSlice = createSlice({
             state.activeStatus = status
         },
         setActiveSort: (state, action) => {
-            const sort = action.payload.target.value
+            const sort = action.payload
             state.activeSort = sort
         }
     },
