@@ -11,9 +11,9 @@ export const login = createAsyncThunk(
       const data = await AuthService.login(username, password);
       return { admin: data };
     } catch (error) {
-      const message = error.response
-      thunkAPI.dispatch(setMessage(message));
-      return thunkAPI.rejectWithValue();
+    //   const message = error.response
+    //   thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue('kjkjk');
     }
   }
 );
@@ -27,7 +27,7 @@ export const logout = createAsyncThunk(
 
 const initialState = admin ? 
     { isLoggedIn: true, isLoading: false, admin } : 
-    { isLoggedIn: false, isLoading: true, admin: null };
+    { isLoggedIn: false, isLoading: false, admin: null };
 
 const authSlice = createSlice({
     name: "auth",
@@ -38,7 +38,9 @@ const authSlice = createSlice({
         },
         [login.fulfilled]: (state, action) => {
             state.isLoggedIn = true;
+            console.log(action.payload.admin)
             state.admin = action.payload.admin;
+            console.log(state.admin)
             state.isLoading = false;
         },
         [login.rejected]: (state, action) => {

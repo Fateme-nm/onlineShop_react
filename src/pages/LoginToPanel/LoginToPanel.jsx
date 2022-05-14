@@ -1,5 +1,5 @@
-import React from "react";
-import WithCheckLogin from "hoc/WithCheckLogin";
+import React, {useEffect} from "react";
+// import WithCheckLogin from "hoc/WithCheckLogin";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
@@ -7,10 +7,10 @@ import InputLogin from "./InputLogin/InputLogin";
 import routes from "routes/routes";
 import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/slices/auth";
-import { clearMessage } from "store/slices/message";
+// import { clearMessage } from "store/slices/message";
 import * as Yup from "yup";
 import Loader from "components/Loader/Loader";
 
@@ -29,7 +29,7 @@ const Logintopanel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoggedIn, isLoading } = useSelector((state) => state.auth);
-  const { clearMessage } = useSelector((state) => state.message);
+  // const { message  } = useSelector((state) => state.message);
 
   const formik = useFormik({
     initialValues: {
@@ -39,31 +39,33 @@ const Logintopanel = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
-      // try {
-      //   const response = await axios
-      //   .post("http://localhost:3002/auth/login", {
-      //     username: values.username,
-      //     password: values.password,
-      //   })
-      //   localStorage.setItem('token', response.data.token)
+      try {
+        dispatch(login({ username: values.username, password: values.password }))
+        // localStorage.setItem('token', response.data.token)
+        navigate(routes.ORDERS.path, { replace: true });
+      }catch(err) {
+        alert("اطلاعات وارد شده نادرست است!");
+      }
+      // dispatch(login({ username: values.username, password: values.password }))
+      // .unwrap()
+      // .then(() => {
       //   navigate(routes.ORDERS.path, { replace: true });
-      // }catch(err) {
-      //   alert("اطلاعات وارد شده نادرست است!");
-      // }
-      dispatch(login(values)).then(
-        navigate(routes.ORDERS.path, { replace: true })
-      );
+      // })
+      // .catch((err) => {
+      //   console.log(err)
+      // });
     },
     validationSchema,
   });
 
-  useEffect(() => {
-    dispatch(clearMessage());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(clearMessage());
+  // }, [dispatch]);
 
-  if (isLoggedIn) {
-    return <Redirect to="/profile" />;
-  }
+  // if (isLoggedIn) {
+  //   console.log("hii")
+  //   return <Navigate to={routes.ORDERS.path} replace/>
+  // }
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
       <img
@@ -103,4 +105,4 @@ const Logintopanel = () => {
   );
 };
 
-export default WithLayoutpages(WithCheckLogin(Logintopanel));
+export default WithLayoutpages(Logintopanel);
