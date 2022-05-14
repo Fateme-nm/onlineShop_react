@@ -5,7 +5,7 @@ import { miladi_be_shamsi, separate } from "utils";
 import ReactPaginate from "react-paginate";
 
 const Table = ({ orders, activeStatus, activeSort }) => {
-  const [showOrders, setShowOrders] = useState([]);
+  // const [showOrders, setShowOrders] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
   const ordersPerPage = 4;
@@ -21,15 +21,15 @@ const Table = ({ orders, activeStatus, activeSort }) => {
     return jalaliDate;
   };
 
-  const handleFiltering = () => {
-    const filterList1 = activeSort === "new" ? [...orders].reverse() : orders;
-    if (activeStatus) {
-      const filterList2 = filterList1.filter(
-        (order) => order.orderStatus == activeStatus
-      );
-      setShowOrders(filterList2);
-    } else setShowOrders(filterList1);
-  };
+  // const handleFiltering = () => {
+  //   const filterList1 = activeSort === "new" ? [...orders].reverse() : orders;
+  //   if (activeStatus) {
+  //     const filterList2 = filterList1.filter(
+  //       (order) => order.orderStatus == activeStatus
+  //     );
+  //     setShowOrders(filterList2);
+  //   } else setShowOrders(filterList1);
+  // };
 
   useEffect(() => {
     setShowOrders([...orders].reverse());
