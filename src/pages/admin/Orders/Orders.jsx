@@ -9,6 +9,7 @@ import { getOrders } from "store/slices/orders";
 const Orders = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { orders } = useSelector(state => state.orders)
   // const [orders, setOrders] = useState([]);
   // const [activeStatus, setActiveStatus] = useState(null);
 
@@ -21,11 +22,12 @@ const Orders = () => {
   //     .catch((err) => console.log(err));
   //   setOrders(response);
   // };
-
-  const handleClickStatus = (e) => {
-    const status = e.target.id;
-    setActiveStatus(status);
-  };
+//////////////////////////////////////////////////
+  // const handleClickStatus = (e) => {
+  //   const status = e.target.id;
+  //   setActiveStatus(status);
+  // };
+  /////////////////////////////////////////////////
 
   useEffect(() => {
     // if (ExpireTime()) {
@@ -40,15 +42,21 @@ const Orders = () => {
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت سفارش ها</h2>
         <div className="flex justify-center space-x-5">
-          <Radio status="1" handleClick={handleClickStatus}>
+          <Radio status="1" 
+          // handleClick={handleClickStatus}
+          >
             سفارش های تحویل شده
           </Radio>
-          <Radio status="3" handleClick={handleClickStatus}>
+          <Radio status="3" 
+          // handleClick={handleClickStatus}
+          >
             سفارش های در انتظار ارسال
           </Radio>
         </div>
       </div>
-      <Table orders={orders} activeStatus={activeStatus} />
+      <Table orders={orders} 
+      // activeStatus={activeStatus} 
+      />
     </div>
   );
 };
