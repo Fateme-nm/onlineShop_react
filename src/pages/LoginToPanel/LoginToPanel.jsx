@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-// import WithCheckLogin from "hoc/WithCheckLogin";
+import WithCheckLogin from "hoc/WithCheckLogin";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
@@ -10,7 +10,6 @@ import { useFormik } from "formik";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/slices/auth";
-// import { clearMessage } from "store/slices/message";
 import * as Yup from "yup";
 import Loader from "components/Loader/Loader";
 
@@ -39,33 +38,19 @@ const Logintopanel = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       resetForm();
-      try {
-        dispatch(login({ username: values.username, password: values.password }))
-        // localStorage.setItem('token', response.data.token)
-        navigate(routes.ORDERS.path, { replace: true });
-      }catch(err) {
-        alert("اطلاعات وارد شده نادرست است!");
-      }
-      // dispatch(login({ username: values.username, password: values.password }))
-      // .unwrap()
-      // .then(() => {
-      //   navigate(routes.ORDERS.path, { replace: true });
-      // })
-      // .catch((err) => {
-      //   console.log(err)
-      // });
+      const {username, password} = values
+      dispatch(login({username, password}))
+        .unwrap()
+        .then(() => {
+          navigate(routes.ORDERS.path, { replace: true });
+        })
+        .catch((err) => {
+          console.log(err)
+        });
     },
     validationSchema,
   });
 
-  // useEffect(() => {
-  //   dispatch(clearMessage());
-  // }, [dispatch]);
-
-  // if (isLoggedIn) {
-  //   console.log("hii")
-  //   return <Navigate to={routes.ORDERS.path} replace/>
-  // }
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
       <img
@@ -105,4 +90,4 @@ const Logintopanel = () => {
   );
 };
 
-export default WithLayoutpages(Logintopanel);
+export default WithCheckLogin(WithLayoutpages(Logintopanel));
