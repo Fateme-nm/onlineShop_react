@@ -4,8 +4,8 @@ import TrTbody from "./components/Tr.Tbody";
 import { miladi_be_shamsi, separate } from "utils";
 import ReactPaginate from "react-paginate";
 
-const Table = ({ orders, activeStatus }) => {
-  const [dateFilter, setDateFilter] = useState(null);
+const Table = ({ orders, activeStatus, activeSort }) => {
+  // const [dateFilter, setDateFilter] = useState(null);
   const [showOrders, setShowOrders] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -23,7 +23,7 @@ const Table = ({ orders, activeStatus }) => {
   };
 
   const handleFiltering = () => {
-    const filterList1 = dateFilter === "new" ? [...orders].reverse() : orders;
+    const filterList1 = activeSort === "new" ? [...orders].reverse() : orders;
     if (activeStatus) {
       const filterList2 = filterList1.filter(
         (order) => order.orderStatus == activeStatus
@@ -38,7 +38,7 @@ const Table = ({ orders, activeStatus }) => {
 
   useEffect(() => {
     handleFiltering();
-  }, [activeStatus, dateFilter]);
+  }, [activeStatus, activeSort]);
 
   return (
     <div className="flex flex-col mt-8 container">
@@ -49,7 +49,6 @@ const Table = ({ orders, activeStatus }) => {
               <tr>
                 <ThThead></ThThead>
                 <ThThead
-                  handleFiltering={(e) => setDateFilter(e.target.value)}
                   sort={[
                     { name: "جدید ترین", value: "new" },
                     { name: "قدیمی ترین", value: "old" },

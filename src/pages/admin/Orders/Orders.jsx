@@ -7,15 +7,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "store/slices/orders";
 
 const Orders = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { orders, activeStatus } = useSelector(state => state.orders)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { orders, activeStatus, activeSort } = useSelector(
+    (state) => state.orders
+  );
 
   useEffect(() => {
     // if (ExpireTime()) {
     //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
     // }
-    dispatch(getOrders())
+    dispatch(getOrders());
   }, []);
 
   return (
@@ -23,15 +25,15 @@ const Orders = () => {
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت سفارش ها</h2>
         <div className="flex justify-center space-x-5">
-          <Radio status="1" >
-            سفارش های تحویل شده
-          </Radio>
-          <Radio status="3" >
-            سفارش های در انتظار ارسال
-          </Radio>
+          <Radio status="1">سفارش های تحویل شده</Radio>
+          <Radio status="3">سفارش های در انتظار ارسال</Radio>
         </div>
       </div>
-      <Table orders={orders} activeStatus={activeStatus}/>
+      <Table
+        orders={orders}
+        activeStatus={activeStatus}
+        activeSort={activeSort}
+      />
     </div>
   );
 };

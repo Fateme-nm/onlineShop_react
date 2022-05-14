@@ -45,6 +45,10 @@ const ordersSlice = createSlice({
         handleClickStatus: (state, action) => {
             const status = action.payload.target.id
             state.activeStatus = status
+        },
+        setActiveSort: (state, action) => {
+            const sort = action.payload.target.value
+            state.activeSort = sort
         }
     },
     extraReducers: {
@@ -66,5 +70,5 @@ const ordersSlice = createSlice({
 });
 
 const { reducer, actions } = ordersSlice;
-export const { handleClickStatus } = actions
+export const { handleClickStatus, setActiveSort } = actions
 export default reducer;

@@ -1,12 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setActiveSort } from 'store/slices/orders';
 
-const ThThead = ({ children, sort, handleFiltering }) => {
+const ThThead = ({ children, sort }) => {
+  const dispatch = useDispatch()
   if (sort) {
     return (
       <th className="relative border-primary border-b">
         <select
           className="appearance-none h-full w-full pr-8 focus:outline-none px-6 py-4 text-sm font-medium leading-4 tracking-wider text-gray-900 bg-white"
-          onChange={handleFiltering}
+          onChange={() => dispatch(setActiveSort)}
         >
           <option value="new">{children}</option>
           {sort.map((s) => (
