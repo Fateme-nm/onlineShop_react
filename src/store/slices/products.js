@@ -41,16 +41,9 @@ const ordersSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        // setActiveStatus: (state, action) => {
-        //     const status = action.payload
-        //     state.activeStatus = status
-        // },
-        // setActiveSort: (state, action) => {
-        //     const sort = action.payload
-        //     state.activeSort = sort
-        // },
         handleShowProducts: (state, action) => {
             const categoryId = action.payload;
+            console.log(categoryId)
             if (categoryId !== "all") {
                 const newShow = state.products.filter(
                     (product) => product.categoryId == categoryId
@@ -80,8 +73,5 @@ const ordersSlice = createSlice({
 });
 
 const { reducer, actions } = ordersSlice;
-export const { 
-    handleShowProducts
-} 
-= actions
+export const { handleShowProducts } = actions
 export default reducer;

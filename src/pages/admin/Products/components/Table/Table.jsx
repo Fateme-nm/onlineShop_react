@@ -5,32 +5,16 @@ import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 
 const Table = ({ categories }) => {
-  // const [showProducts, setShowProducts] = useState([]);
   const {showProducts} = useSelector(state => state.products)
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 4;
   const pagesVisited = pageNumber * productsPerPage;
 
-  // const handleFiltering = (e) => {
-  //   const categoryId = e.target.value;
-  //   console.log(categoryId);
-  //   if (categoryId !== "all") {
-  //     const newShow = products.filter(
-  //       (product) => product.categoryId == categoryId
-  //     );
-  //     setShowProducts(newShow);
-  //   } else setShowProducts(products);
-  // };
-
   const getCategory = (categoryId) => {
     const cat = categories.find((cat) => cat.id == categoryId);
     return cat ? cat.name : null;
   };
-
-  // useEffect(() => {
-  //   setShowProducts(products);
-  // }, [products]);
 
   return (
     <div className="flex flex-col mt-8 container">
