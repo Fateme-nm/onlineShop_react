@@ -49,19 +49,15 @@ const ordersSlice = createSlice({
         //     const sort = action.payload
         //     state.activeSort = sort
         // },
-        // handleShowOrders: (state, action) => {
-        //     const filterList1 =
-        //         state.activeSort === "new" ? 
-        //             [...state.orders].reverse() : state.orders;
-        //     if (state.activeStatus) {
-        //         const filterList2 = filterList1.filter(
-        //             (order) => order.orderStatus == state.activeStatus
-        //         );
-        //         state.showOrders = filterList2
-        //     } else {
-        //         state.showOrders = filterList1
-        //     }
-        // }
+        handleShowProducts: (state, action) => {
+            const categoryId = action.payload;
+            if (categoryId !== "all") {
+                const newShow = state.products.filter(
+                    (product) => product.categoryId == categoryId
+                );
+                state.showProducts = newShow
+            } else state.showProducts = state.products
+        }
     },
     extraReducers: {
         [getProducts.pending]: (state) => {
@@ -84,9 +80,8 @@ const ordersSlice = createSlice({
 });
 
 const { reducer, actions } = ordersSlice;
-// export const { 
-//     setActiveStatus, 
-//     setActiveSort,
-//     handleShowOrders } 
-// = actions
+export const { 
+    handleShowProducts
+} 
+= actions
 export default reducer;

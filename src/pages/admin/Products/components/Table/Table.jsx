@@ -10,16 +10,16 @@ const Table = ({ products, category }) => {
   const productsPerPage = 4;
   const pagesVisited = pageNumber * productsPerPage;
 
-  const handleFiltering = (e) => {
-    const categoryId = e.target.value;
-    console.log(categoryId);
-    if (categoryId !== "all") {
-      const newShow = products.filter(
-        (product) => product.categoryId == categoryId
-      );
-      setShowProducts(newShow);
-    } else setShowProducts(products);
-  };
+  // const handleFiltering = (e) => {
+  //   const categoryId = e.target.value;
+  //   console.log(categoryId);
+  //   if (categoryId !== "all") {
+  //     const newShow = products.filter(
+  //       (product) => product.categoryId == categoryId
+  //     );
+  //     setShowProducts(newShow);
+  //   } else setShowProducts(products);
+  // };
 
   const getCategory = (categoryId) => {
     const cat = category.find((cat) => cat.id == categoryId);
