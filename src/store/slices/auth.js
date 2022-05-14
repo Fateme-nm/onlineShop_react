@@ -39,12 +39,12 @@ const authSlice = createSlice({
         [login.fulfilled]: (state, action) => {
             state.isLoggedIn = true;
             state.admin = action.payload.admin;
-            state.isLoading = false;
+            setTimeout(() => state.isLoading = false, 2500)
         },
         [login.rejected]: (state, action) => {
             state.isLoggedIn = false;
             state.admin = null;
-            state.isLoading = false;
+            setTimeout(() => state.isLoading = false, 2500)
         },
         [logout.fulfilled]: (state, action) => {
             state.isLoggedIn = false;
