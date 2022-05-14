@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Table from "./Table/Table";
-import axios from "axios";
 // import { ExpireTime } from "utils";
 // import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
