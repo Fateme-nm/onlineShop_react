@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/slices/auth";
+import { clearMessage } from "store/slices/message";
 import * as Yup from "yup";
 import Loader from "components/Loader/Loader";
 
@@ -26,8 +27,9 @@ const validationSchema = Yup.object().shape({
 const Logintopanel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoggedIn, isLoading } = useSelector((state) => state.auth);
-  // const { message  } = useSelector((state) => state.message);
+  const { isLoading } = useSelector((state) => state.auth);
+  const [loadStatus, setLoadStatud] = useState(isLoading)
+  const { message } = useSelector((state) => state.message);
 
   const formik = useFormik({
     initialValues: {
@@ -36,7 +38,6 @@ const Logintopanel = () => {
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
-      resetForm();
       const {username, password} = values
       dispatch(login({username, password}))
         .unwrap()
@@ -45,10 +46,19 @@ const Logintopanel = () => {
         })
         .catch((err) => {
           console.log(err)
-        });
+        })
+        .finally(() => resetForm())
     },
     validationSchema,
   });
+
+  useEffect(() => {
+    dispatch(clearMessage())
+  }, [dispatch])
+
+  useEffect(() => {
+    setLoadStatud(isLoading)
+  }, [isLoading])
 
   return (
     <div className="w-full h-screen flex justify-center lg:justify-between items-center px-56 flex-row-reverse">
@@ -82,7 +92,7 @@ const Logintopanel = () => {
         </InputLogin>
         <Botton>
           ورود
-          {isLoading && <Loader />}
+          {loadStatus && <Loader />}
         </Botton>
       </form>
     </div>
