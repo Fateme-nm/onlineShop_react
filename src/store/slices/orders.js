@@ -1,39 +1,30 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
 import AdminService from "services/admin.service";
-import { useDispatch } from "react-redux";
 import { logout } from "./auth";
 
 export const getOrders = createAsyncThunk(
   "panel/orders",
-  async (thunkAPI) => {
-    const dispatch = useDispatch()
+  async (_, thunkAPI) => {
     try {
       const res = await AdminService.getOrders();
       return { orders: res.data };
     } catch (error) {
-        const message = error.response
-        if (message.status === 401) {
-            dispatch(logout())
-        }
+        error.response.status === 401 && thunkAPI.dispatch(logout())
     //   thunkAPI.dispatch(setMessage(message));
-      return thunkAPI.rejectWithValue();
+        return thunkAPI.rejectWithValue();
     }
   }
 );
 
 export const getStatusOrders = createAsyncThunk(
     "panel/statusOrders", 
-    async (thunkAPI) => {
-        const dispatch = useDispatch()
+    async (_, thunkAPI) => {
         try {
             const res = await AdminService.getStatusOrders();
             return { statusOrders: res.data };
         } catch (error) {
-            const message = error.response
-            if (message.status === 401) {
-                dispatch(logout())
-            }
+            error.response.status === 401 && thunkAPI.dispatch(logout())
           //   thunkAPI.dispatch(setMessage(message));
             return thunkAPI.rejectWithValue();
         }
