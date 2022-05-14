@@ -72,7 +72,9 @@ const ordersSlice = createSlice({
             state.isLoading = true
         },
         [getOrders.fulfilled]: (state, action) => {
-            state.orders = action.payload.orders;
+            const orders = action.payload.orders
+            state.orders = orders;
+            state.showOrders = [...orders].reverse()
             state.isLoading = false
         },
         [getOrders.rejected]: (state, action) => {
@@ -86,5 +88,10 @@ const ordersSlice = createSlice({
 });
 
 const { reducer, actions } = ordersSlice;
-export const { handleClickStatus, setActiveSort } = actions
+export const { 
+    handleClickStatus, 
+    setActiveSort,
+    setShowOrders,
+    handleShowOrders } 
+= actions
 export default reducer;

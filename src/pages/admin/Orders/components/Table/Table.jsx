@@ -3,9 +3,12 @@ import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import { miladi_be_shamsi, separate } from "utils";
 import ReactPaginate from "react-paginate";
+import { useDispatch } from "react-redux";
+import { setShowOrders, handleShowOrders } from "store/slices/orders";
 
 const Table = ({ orders, activeStatus, activeSort }) => {
   // const [showOrders, setShowOrders] = useState([]);
+  const dispatch = useDispatch()
   const [pageNumber, setPageNumber] = useState(0);
 
   const ordersPerPage = 4;
@@ -31,12 +34,12 @@ const Table = ({ orders, activeStatus, activeSort }) => {
   //   } else setShowOrders(filterList1);
   // };
 
-  useEffect(() => {
-    setShowOrders([...orders].reverse());
-  }, [orders]);
+  // useEffect(() => {
+  //   dispatch(setShowOrders([...orders].reverse()))
+  // }, [orders]);
 
   useEffect(() => {
-    handleFiltering();
+    dispatch(handleShowOrders())
   }, [activeStatus, activeSort]);
 
   return (
