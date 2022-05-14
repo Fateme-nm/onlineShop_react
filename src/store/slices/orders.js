@@ -51,6 +51,9 @@ const ordersSlice = createSlice({
             const sort = action.payload
             state.activeSort = sort
         },
+        setShowOrders: (state, action) => {
+            state.showOrders = action.payload
+        },
         handleShowOrders: (state, action) => {
             const filterList1 =
                 state.activeSort === "new" ? [...orders].reverse() : orders;
