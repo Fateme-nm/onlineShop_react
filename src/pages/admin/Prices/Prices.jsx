@@ -11,7 +11,7 @@ const Prices = () => {
   // const [products, setProducts] = useState([]);
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+  const { products } = useSelector((state) => state.products);
 
   // const getProducts = async () => {
   //   const response = await axios
