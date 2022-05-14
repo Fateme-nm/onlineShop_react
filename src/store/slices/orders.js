@@ -43,7 +43,7 @@ const ordersSlice = createSlice({
     initialState,
     reducers: {
         handleClickStatus: (state, action) => {
-            const status = action.payload.target.id
+            const status = action.payload
             state.activeStatus = status
         },
         setActiveSort: (state, action) => {
