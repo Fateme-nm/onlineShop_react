@@ -10,30 +10,16 @@ const Orders = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { orders } = useSelector(state => state.orders)
-  // const [orders, setOrders] = useState([]);
-  // const [activeStatus, setActiveStatus] = useState(null);
 
-  // const getOrders = async () => {
-  //   const response = await axios
-  //     .get("http://localhost:3002/orders", {
-  //       headers: { token: localStorage.getItem("token") },
-  //     })
-  //     .then((res) => res.data)
-  //     .catch((err) => console.log(err));
-  //   setOrders(response);
-  // };
-//////////////////////////////////////////////////
   // const handleClickStatus = (e) => {
   //   const status = e.target.id;
   //   setActiveStatus(status);
   // };
-  /////////////////////////////////////////////////
 
   useEffect(() => {
     // if (ExpireTime()) {
     //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
     // }
-    // getOrders();
     dispatch(getOrders())
   }, []);
 

@@ -40,6 +40,12 @@ const initialState = {
 const ordersSlice = createSlice({
     name: "orders",
     initialState,
+    reducers: {
+        handleClickStatus: (state, action) => {
+            const status = action.payload.target.id
+            state.activeStatus = status
+        }
+    },
     extraReducers: {
         [getOrders.pending]: (state) => {
             state.isLoading = true
