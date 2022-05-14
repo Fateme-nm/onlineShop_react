@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
-import axios from "axios";
 import Radio from "./components/Table/components/Radio";
 import { useNavigate } from "react-router-dom";
-import routes from "routes/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrders } from "store/slices/orders";
 
 const Orders = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   // const [orders, setOrders] = useState([]);
   // const [activeStatus, setActiveStatus] = useState(null);
 
@@ -30,7 +31,8 @@ const Orders = () => {
     // if (ExpireTime()) {
     //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
     // }
-    getOrders();
+    // getOrders();
+    dispatch(getOrders())
   }, []);
 
   return (
