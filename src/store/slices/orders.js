@@ -33,6 +33,7 @@ export const getStatusOrders = createAsyncThunk(
 const initialState = {
     isLoading: false,
     orders: [],
+    showOrders: [],
     statusOrders: [],
     activeStatus: null,
     activeSort: "new"
