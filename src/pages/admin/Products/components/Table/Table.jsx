@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
+import { useSelector } from "react-redux";
+import { handleShowProducts } from "store/slices/products";
 
-const Table = ({ products, category }) => {
+const Table = ({ category }) => {
   // const [showProducts, setShowProducts] = useState([]);
+  const {showProducts} = useSelector(state => state.products)
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 4;
