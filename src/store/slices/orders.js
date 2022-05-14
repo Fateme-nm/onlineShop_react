@@ -1,15 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
-import AuthService from "services/auth.service";
+import AdminService from "services/admin.service";
 
-const admin = localStorage.getItem("admin");
-
-export const login = createAsyncThunk(
-  "auth/login",
-  async ({ username, password }, thunkAPI) => {
+export const getOrders = createAsyncThunk(
+  "panel/orders",
+  async (thunkAPI) => {
     try {
-      const data = await AuthService.login(username, password);
-      return { admin: data };
+      const res = await AdminService.getOrders();
+      return { orders: res.data };
     } catch (error) {
     //   const message = error.response
     //   thunkAPI.dispatch(setMessage(message));
@@ -18,16 +16,13 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk(
-    "auth/logout", 
-    async () => {
-        await AuthService.logout();
-    }
-);
 
-const initialState = admin ? 
-    { isLoggedIn: true, isLoading: false, admin } : 
-    { isLoggedIn: false, isLoading: false, admin: null };
+
+const initialState = {
+    isLoading: false,
+    orders: [],
+    statusOrders: []
+}
 
 const authSlice = createSlice({
     name: "auth",
