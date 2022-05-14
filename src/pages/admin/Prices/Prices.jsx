@@ -2,21 +2,20 @@ import React, { useState, useEffect } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Table from "./Table/Table";
 import axios from "axios";
-import { ExpireTime } from "utils";
-import { useNavigate } from "react-router-dom";
-import routes from "routes/routes";
+// import { ExpireTime } from "utils";
+// import { useNavigate } from "react-router-dom";
 
 const Prices = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const getProducts = async () => {
-    const response = await axios
-      .get("http://localhost:3002/products")
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
-    setProducts(response);
-  };
+  // const getProducts = async () => {
+  //   const response = await axios
+  //     .get("http://localhost:3002/products")
+  //     .then((res) => res.data)
+  //     .catch((err) => console.log(err));
+  //   setProducts(response);
+  // };
 
   useEffect(() => {
     // if (ExpireTime()) {
