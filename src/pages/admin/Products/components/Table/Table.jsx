@@ -26,9 +26,9 @@ const Table = ({ products, category }) => {
     return cat ? cat.name : null;
   };
 
-  useEffect(() => {
-    setShowProducts(products);
-  }, [products]);
+  // useEffect(() => {
+  //   setShowProducts(products);
+  // }, [products]);
 
   return (
     <div className="flex flex-col mt-8 container">

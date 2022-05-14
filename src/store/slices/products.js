@@ -68,7 +68,9 @@ const ordersSlice = createSlice({
             state.isLoading = true
         },
         [getProducts.fulfilled]: (state, action) => {
-            state.products = action.payload.products;
+            const products = action.payload.products;
+            state.products = products
+            state.showProducts = products
             state.isLoading = false
         },
         [getProducts.rejected]: (state, action) => {
