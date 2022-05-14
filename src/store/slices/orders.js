@@ -64,5 +64,6 @@ const ordersSlice = createSlice({
     },
 });
 
-const { reducer } = ordersSlice;
+const { reducer, actions } = ordersSlice;
+export const { handleClickStatus } = actions
 export default reducer;
