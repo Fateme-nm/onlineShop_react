@@ -4,10 +4,14 @@ import Table from "./Table/Table";
 import axios from "axios";
 // import { ExpireTime } from "utils";
 // import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "store/slices/products";
 
 const Prices = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
 
   // const getProducts = async () => {
   //   const response = await axios
@@ -21,7 +25,7 @@ const Prices = () => {
     // if (ExpireTime()) {
     //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
     // } 
-    getProducts();
+    dispatch(getProducts())
   }, []);
 
   return (
