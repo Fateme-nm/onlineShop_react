@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
-import axios from "axios";
-import { ExpireTime } from "utils";
-import { useNavigate } from "react-router-dom";
-import routes from "routes/routes";
+// import { ExpireTime } from "utils";
+// import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, getCategories } from "store/slices/products";
 
 const Products = () => {
-  const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
-  const getProducts = async () => {
-    const response = await axios
-      .get("http://localhost:3002/products")
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
-    setProducts(response);
-  };
-  const getCategory = async () => {
-    const response = await axios
-      .get("http://localhost:3002/category")
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
-    setCategory(response);
-  };
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // const [products, setProducts] = useState([]);
+  // const [category, setCategory] = useState([]);
+
+  // const getProducts = async () => {
+  //   const response = await axios
+  //     .get("http://localhost:3002/products")
+  //     .then((res) => res.data)
+  //     .catch((err) => console.log(err));
+  //   setProducts(response);
+  // };
+  // const getCategory = async () => {
+  //   const response = await axios
+  //     .get("http://localhost:3002/category")
+  //     .then((res) => res.data)
+  //     .catch((err) => console.log(err));
+  //   setCategory(response);
+  // };
   useEffect(() => {
     // if (ExpireTime()) {
     //   navigate(routes.LOGIN_TO_PANEL.path, { replace: true });
     // } 
-    getProducts();
-    getCategory();
+    dispatch(getProducts())
+    dispatch(getCategories())
   }, []);
   return (
     <div>

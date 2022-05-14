@@ -7,18 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "store/slices/products";
 
 const Prices = () => {
-  // const [products, setProducts] = useState([]);
   // const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-
-  // const getProducts = async () => {
-  //   const response = await axios
-  //     .get("http://localhost:3002/products")
-  //     .then((res) => res.data)
-  //     .catch((err) => console.log(err));
-  //   setProducts(response);
-  // };
 
   useEffect(() => {
     // if (ExpireTime()) {
