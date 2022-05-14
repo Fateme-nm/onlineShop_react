@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Table from "./components/Table/Table";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Radio from "./components/Table/components/Radio";
@@ -9,7 +9,7 @@ import { getOrders } from "store/slices/orders";
 const Orders = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { orders } = useSelector(state => state.orders)
+  const { orders, activeStatus } = useSelector(state => state.orders)
 
   useEffect(() => {
     // if (ExpireTime()) {
@@ -31,7 +31,7 @@ const Orders = () => {
           </Radio>
         </div>
       </div>
-      <Table orders={orders} />
+      <Table orders={orders} activeStatus={activeStatus}/>
     </div>
   );
 };

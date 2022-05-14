@@ -34,7 +34,8 @@ const initialState = {
     isLoading: false,
     orders: [],
     statusOrders: [],
-    activeStatus: null
+    activeStatus: null,
+    activeSort: "new"
 }
 
 const ordersSlice = createSlice({
