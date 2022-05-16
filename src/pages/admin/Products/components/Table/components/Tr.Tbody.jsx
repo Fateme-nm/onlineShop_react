@@ -1,9 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteProduct } from "store/slices/products";
 
 const TrTbody = ({ imgSrc, name, category, id, setRemoveModalOn }) => {
-  const dispatch = useDispatch();
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
 
   return (

@@ -1,6 +1,12 @@
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "store/slices/products";
+
 const Modal = ({ setRemoveModalOn }) => {
+  const dispatch = useDispatch();
+  
   const handleOKClick = () => {
     setRemoveModalOn(false);
+    dispatch(deleteProduct(id));
   };
   const handleCancelClick = () => {
     setRemoveModalOn(false);
