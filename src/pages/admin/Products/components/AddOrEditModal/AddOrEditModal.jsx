@@ -19,6 +19,7 @@ const AddOrEditModal = () => {
               <input
                 type="text"
                 id="img"
+                name="image"
                 className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
               />
               <label htmlFor="name" className="mb-2">
@@ -27,6 +28,7 @@ const AddOrEditModal = () => {
               <input
                 type="text"
                 id="name"
+                name="name"
                 className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
               />
               <label htmlFor="category" className="mb-2">
@@ -37,9 +39,9 @@ const AddOrEditModal = () => {
                 name="category"
                 className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
               >
-                <option>اول</option>
-                <option>دوم</option>
-                <option>سوم</option>
+                <option value={1}>اول</option>
+                <option value={2}>دوم</option>
+                <option value={3}>سوم</option>
               </select>
               <label htmlFor="description" className="mb-2">
                 توضیحات
