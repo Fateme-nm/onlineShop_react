@@ -15,7 +15,11 @@ const getOrders = () => {
 };
 
 const getStatusOrders = () => {
-    return axios.get(API_URL + "orderStatus" + { headers: authHeader() })
+    return axios.get(API_URL + "orderStatus", { headers: authHeader() })
+}
+
+const deleteProduct = (id) => {
+  return axios.delete(API_URL + `products/${id}`, { headers: authHeader() })
 }
 
 const adminService = {
@@ -23,6 +27,7 @@ const adminService = {
     getCategoreis,
     getOrders,
     getStatusOrders,
+    deleteProduct
 };
 
 export default adminService
