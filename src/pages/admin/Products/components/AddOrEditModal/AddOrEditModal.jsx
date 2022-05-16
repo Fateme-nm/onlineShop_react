@@ -1,6 +1,10 @@
 import React from "react";
 
 const AddOrEditModal = () => {
+const handleSubmit = e => {
+    e.preventDefault()
+}
+
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
