@@ -4,7 +4,7 @@ import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 
-const Table = ({ categories, setRemoveModalOn }) => {
+const Table = ({ categories }) => {
   const {showProducts} = useSelector(state => state.products)
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -42,7 +42,6 @@ const Table = ({ categories, setRemoveModalOn }) => {
                       name={product.name}
                       category={getCategory(product.categoryId)}
                       id={product.id}
-                      setRemoveModalOn={setRemoveModalOn}
                       key={product.id}
                     />
                   );

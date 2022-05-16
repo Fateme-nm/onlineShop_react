@@ -1,6 +1,6 @@
 import React from "react";
 
-const TrTbody = ({ imgSrc, name, category, id, setRemoveModalOn }) => {
+const TrTbody = ({ imgSrc, name, category, id }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
 
   return (
@@ -8,7 +8,7 @@ const TrTbody = ({ imgSrc, name, category, id, setRemoveModalOn }) => {
       <td className={sameClassName}>
         <i
           className="fa fa-trash text-red-400 cursor-pointer text-xl"
-          onClick={() => setRemoveModalOn(true)}
+          onClick={}
         ></i>
       </td>
       <td className={sameClassName}>

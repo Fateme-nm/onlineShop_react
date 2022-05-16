@@ -27,8 +27,8 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table categories={categories} setRemoveModalOn={setRemoveModalOn}/>
-      {removeModalOn && <Modal setRemoveModalOn={setRemoveModalOn}/>}
+      <Table categories={categories}/>
+      {removeModalOn && <Modal/>}
     </div>
   );
 };
