@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux";
 import { clearId } from "store/slices/removeId";
 
-const Modal = ({ setRemoveModalOn }) => {
+const Modal = () => {
   const dispatch = useDispatch();
   
   const handleOKClick = () => {
-    setRemoveModalOn(false);
+    dispatch(clearId())
   };
   const handleCancelClick = () => {
-    setRemoveModalOn(false);
+    dispatch(clearId())
   };
 
   return (
