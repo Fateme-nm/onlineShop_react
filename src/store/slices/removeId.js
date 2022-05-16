@@ -11,7 +11,9 @@ const removeIdSlice = createSlice({
     setId: (state, action) => {
       return { id: action.payload };
     },
-    
+    clearId: () => {
+      return { id: null };
+    },
   },
 });
 
