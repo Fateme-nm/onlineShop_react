@@ -4,6 +4,7 @@ import RemoveModal from "./components/RemoveModal/RemoveModal";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getCategories } from "store/slices/products";
+import AddOrEditModal from "./components/AddOrEditModal/AddOrEditModal";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Products = () => {
       </div>
       <Table categories={categories} />
       {removeModalOn && <RemoveModal />}
+      {addOrEditModalOn && <AddOrEditModal />}
     </div>
   );
 };
