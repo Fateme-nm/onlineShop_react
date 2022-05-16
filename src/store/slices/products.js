@@ -82,6 +82,9 @@ const ordersSlice = createSlice({
         [getCategories.fulfilled]: (state, action) => {
             state.categories = action.payload.categories;
         },
+        [deleteProduct.fulfilled]: (state, action) => {
+
+        }
     },
 });
 
