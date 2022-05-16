@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "./components/Table/Table";
-import Modal from "./components/Modal/Modal";
+import RemoveModal from "./components/RemoveModal/RemoveModal";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getCategories } from "store/slices/products";
@@ -36,7 +36,7 @@ const Products = () => {
         </button>
       </div>
       <Table categories={categories} />
-      {removeModalOn && <Modal />}
+      {removeModalOn && <RemoveModal />}
     </div>
   );
 };

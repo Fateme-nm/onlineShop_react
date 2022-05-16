@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearId } from "store/slices/removeId";
 import { deleteProduct } from "store/slices/products";
 
-const Modal = () => {
+const RemoveModal = () => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.removeId);
 
@@ -42,4 +42,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default RemoveModal;
