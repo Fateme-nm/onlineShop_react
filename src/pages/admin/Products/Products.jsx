@@ -6,7 +6,7 @@ import { getProducts, getCategories } from "store/slices/products";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { deletedProducts , categories } = useSelector((state) => state.products);
+  const { deletedProducts, categories } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getProducts())
