@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./components/Table/Table";
+import Modal from "./components/Modal/Modal";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getCategories } from "store/slices/products";
@@ -7,7 +8,7 @@ import { getProducts, getCategories } from "store/slices/products";
 const Products = () => {
   const dispatch = useDispatch();
   const { deletedProducts, categories } = useSelector((state) => state.products);
-  const [modalOn, setModalOn] = useState(false);
+  const [removeModalOn, setRemoveModalOn] = useState(false);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -26,8 +27,8 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table categories={categories} />
-      {modalOn && < Modal setModalOn={setModalOn} />}
+      <Table categories={categories} setRemoveModalOn={setRemoveModalOn}/>
+      {removeModalOn && <Modal setRemoveModalOn={setRemoveModalOn}/>}
     </div>
   );
 };
