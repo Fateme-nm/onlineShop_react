@@ -11,7 +11,7 @@ const TrTbody = ({ imgSrc, name, category, id }) => {
       <td className={sameClassName}>
         <i
           className="fa fa-trash text-red-400 cursor-pointer text-xl"
-          onClick={}
+          onClick={() => dispatch(setId(id))}
         ></i>
       </td>
       <td className={sameClassName}>
