@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setId } from "store/slices/removeId";
 
 const TrTbody = ({ imgSrc, name, category, id }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
+  const dispatch = useDispatch()
 
   return (
     <tr className="hover:bg-pink-50">
