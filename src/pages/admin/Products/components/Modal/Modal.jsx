@@ -6,7 +6,6 @@ const Modal = ({ setRemoveModalOn }) => {
   
   const handleOKClick = () => {
     setRemoveModalOn(false);
-    dispatch(deleteProduct(id));
   };
   const handleCancelClick = () => {
     setRemoveModalOn(false);

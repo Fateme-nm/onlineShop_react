@@ -8,6 +8,7 @@ import { getProducts, getCategories } from "store/slices/products";
 const Products = () => {
   const dispatch = useDispatch();
   const { deletedProducts, categories } = useSelector((state) => state.products);
+  const { id } = useSelector((state) => state.removeId);
   const [removeModalOn, setRemoveModalOn] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,10 @@ const Products = () => {
     dispatch(getProducts());
   }, [deletedProducts]);
 
+  useEffect(() => {
+    setRemoveModalOn(id ? true : false)
+  }, [id])
+
   return (
     <div>
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
@@ -27,8 +32,8 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table categories={categories}/>
-      {removeModalOn && <Modal/>}
+      <Table categories={categories} />
+      {removeModalOn && <Modal />}
     </div>
   );
 };
