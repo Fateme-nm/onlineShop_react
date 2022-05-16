@@ -7,7 +7,7 @@ const Modal = () => {
   const { id } = useSelector((state) => state.removeId);
 
   const handleOKClick = () => {
-    // dispatch(deleteProduct())
+    dispatch(deleteProduct(id))
     dispatch(clearId());
   };
   const handleCancelClick = () => {
