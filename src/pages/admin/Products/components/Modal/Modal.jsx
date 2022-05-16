@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteProduct } from "store/slices/products";
+import { clearId } from "store/slices/removeId";
 
 const Modal = ({ setRemoveModalOn }) => {
   const dispatch = useDispatch();
