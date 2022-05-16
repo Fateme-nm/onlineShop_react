@@ -31,6 +31,18 @@ export const getCategories = createAsyncThunk(
     }
 );
 
+export const deleteProduct = createAsyncThunk(
+    "panel/deletePro",
+    async (_, thunkAPI) => {
+        try {
+            await AdminService.deleteProduct(id);
+        } catch (error) {
+            error.response.status === 401 && thunkAPI.dispatch(logout())
+            return thunkAPI.rejectWithValue();
+        }
+    }
+)
+
 const initialState = {
     isLoading: false,
     products: [],
