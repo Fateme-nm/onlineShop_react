@@ -33,7 +33,7 @@ export const getCategories = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
     "panel/deletePro",
-    async (_, thunkAPI) => {
+    async (_, thunkAPI, id) => {
         try {
             await AdminService.deleteProduct(id);
         } catch (error) {
