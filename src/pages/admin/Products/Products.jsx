@@ -7,14 +7,15 @@ import { getProducts, getCategories } from "store/slices/products";
 const Products = () => {
   const dispatch = useDispatch();
   const { deletedProducts, categories } = useSelector((state) => state.products);
+  const [modalOn, setModalOn] = useState(false);
 
   useEffect(() => {
-    dispatch(getProducts())
-    dispatch(getCategories())
+    dispatch(getProducts());
+    dispatch(getCategories());
   }, []);
 
   useEffect(() => {
-    dispatch(getProducts())
+    dispatch(getProducts());
   }, [deletedProducts]);
 
   return (
@@ -26,6 +27,7 @@ const Products = () => {
         </button>
       </div>
       <Table categories={categories} />
+      {modalOn && < Modal setModalOn={setModalOn} />}
     </div>
   );
 };
