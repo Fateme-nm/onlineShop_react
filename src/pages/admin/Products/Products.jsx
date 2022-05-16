@@ -6,12 +6,17 @@ import { getProducts, getCategories } from "store/slices/products";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.products);
+  const { deletedProducts , categories } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getProducts())
     dispatch(getCategories())
   }, []);
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [deletedProducts]);
+
   return (
     <div>
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">

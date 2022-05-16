@@ -41,7 +41,7 @@ const Table = ({ categories }) => {
                       imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
                       name={product.name}
                       category={getCategory(product.categoryId)}
-                      id={String(product.id)}
+                      id={product.id}
                       key={product.id}
                     />
                   );

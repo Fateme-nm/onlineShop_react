@@ -8,6 +8,7 @@ export const getProducts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await AdminService.getProducts();
+      console.log(res)
       return { products: res.data };
     } catch (error) {
         error.response.status === 401 && thunkAPI.dispatch(logout())
@@ -33,9 +34,9 @@ export const getCategories = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
     "panel/deletePro",
-    async (_, thunkAPI, id) => {
+    async (id, _, thunkAPI) => {
         try {
-            await AdminService.deleteProduct(id);
+            await AdminService.deleteProduct(id)
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
@@ -47,7 +48,8 @@ const initialState = {
     isLoading: false,
     products: [],
     showProducts: [],
-    categories: []
+    categories: [],
+    deletedProducts: 0
 }
 
 const ordersSlice = createSlice({
@@ -56,7 +58,6 @@ const ordersSlice = createSlice({
     reducers: {
         handleShowProducts: (state, action) => {
             const categoryId = action.payload;
-            console.log(categoryId)
             if (categoryId !== "all") {
                 const newShow = state.products.filter(
                     (product) => product.categoryId == categoryId
@@ -81,9 +82,9 @@ const ordersSlice = createSlice({
         },
         [getCategories.fulfilled]: (state, action) => {
             state.categories = action.payload.categories;
-        },
+        }, 
         [deleteProduct.fulfilled]: (state, action) => {
-
+            state.deletedProducts = state.deletedProducts + 1
         }
     },
 });
