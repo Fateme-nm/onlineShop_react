@@ -7,9 +7,12 @@ import { getProducts, getCategories } from "store/slices/products";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { deletedProducts, categories } = useSelector((state) => state.products);
+  const { deletedProducts, categories } = useSelector(
+    (state) => state.products
+  );
   const { id } = useSelector((state) => state.removeId);
   const [removeModalOn, setRemoveModalOn] = useState(false);
+  const [addOrEditModalOn, setAddOrEditModalOn] = useState(false);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -21,8 +24,8 @@ const Products = () => {
   }, [deletedProducts]);
 
   useEffect(() => {
-    setRemoveModalOn(id ? true : false)
-  }, [id])
+    setRemoveModalOn(id ? true : false);
+  }, [id]);
 
   return (
     <div>
