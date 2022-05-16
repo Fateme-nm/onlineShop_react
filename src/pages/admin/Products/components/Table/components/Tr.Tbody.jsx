@@ -1,11 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "store/slices/products";
 
-const TrTbody = ({imgSrc, name, category}) => {
-    const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+const TrTbody = ({ imgSrc, name, category, id }) => {
+  const dispatch = useDispatch();
+  const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
+
   return (
     <tr className="hover:bg-pink-50">
       <td className={sameClassName}>
-        <i className="fa fa-trash text-red-400 cursor-pointer text-xl"></i>
+        <i
+          className="fa fa-trash text-red-400 cursor-pointer text-xl"
+          onClick={() => dispatch(deleteProduct(id))}
+        ></i>
       </td>
       <td className={sameClassName}>
         <i className="fas fa-edit text-blue-400 cursor-pointer text-xl"></i>
@@ -18,11 +25,7 @@ const TrTbody = ({imgSrc, name, category}) => {
       </td>
       <td className={`flex justify-end ${sameClassName}`}>
         <div className="flex items-center">
-          <img
-            className="w-12 h-12"
-            src={imgSrc}
-            alt="product"
-          />
+          <img className="w-12 h-12" src={imgSrc} alt="product" />
         </div>
       </td>
     </tr>
