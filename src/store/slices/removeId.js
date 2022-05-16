@@ -8,15 +8,13 @@ const removeIdSlice = createSlice({
   name: "removeId",
   initialState,
   reducers: {
-    setMessage: (state, action) => {
-      return { message: action.payload };
+    setId: (state, action) => {
+      return { id: action.payload };
     },
-    clearMessage: () => {
-      return { message: "" };
-    },
+    
   },
 });
 
-const { reducer, actions } = messageSlice;
-export const { setMessage, clearMessage } = actions
+const { reducer, actions } = removeIdSlice;
+export const { setId, clearId } = actions;
 export default reducer;
