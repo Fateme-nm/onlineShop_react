@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const AddOrEditModal = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-}
+  return (
+    
+  );
+};
 
 export default AddOrEditModal;
