@@ -8,7 +8,6 @@ export const getProducts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await AdminService.getProducts();
-      console.log(res)
       return { products: res.data };
     } catch (error) {
         error.response.status === 401 && thunkAPI.dispatch(logout())
