@@ -4,7 +4,7 @@ const initialState = {
   edit_id: null
 };
 
-const addOrEditSlice = createSlice({
+const editIdSlice = createSlice({
   name: "editId",
   initialState,
   reducers: {
@@ -17,6 +17,6 @@ const addOrEditSlice = createSlice({
   },
 });
 
-const { reducer, actions } = addOrEditSlice;
+const { reducer, actions } = editIdSlice;
 export const { setEditId, clearEditId } = actions;
 export default reducer;

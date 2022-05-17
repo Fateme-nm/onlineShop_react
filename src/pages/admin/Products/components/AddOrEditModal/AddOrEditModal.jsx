@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
 import { postProduct } from "store/slices/products";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -19,6 +19,7 @@ const validationSchema = Yup.object().shape({
 
 const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const dispatch = useDispatch();
+  const {edit_id} = useSelector(state => state.editId)
 
   const formik = useFormik({
     initialValues: {
