@@ -18,8 +18,8 @@ const getStatusOrders = () => {
     return axios.get(API_URL + "orderStatus", { headers: authHeader() })
 }
 
-const postProduct = (obj) => {
-  return axios.post(API_URL + "products", obj, 
+const postProduct = (formData) => {
+  return axios.post(API_URL + "products", formData, 
     { headers: authHeader(), "Content-Type": "multipart/form-data"})
 }
 
