@@ -27,6 +27,11 @@ const postProduct = (formData) => {
     { headers: authHeader(), "Content-Type": "multipart/form-data"})
 }
 
+const updateProduct = (formData) => {
+  return axios.put(API_URL + "products", formData, 
+    { headers: authHeader(), "Content-Type": "multipart/form-data"})
+}
+
 const postUpload = (img) => {
   return axios.post(API_URL + "upload", {image: img}, { headers: authHeader() })
 }
@@ -42,6 +47,7 @@ const adminService = {
     getOrders,
     getStatusOrders,
     postProduct,
+    updateProduct,
     postUpload,
     deleteProduct
 };
