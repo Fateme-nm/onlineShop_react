@@ -30,11 +30,11 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   }
 
   const getSelectedProduct = (id) => {
-    return products.find(pro => pro.id === id)
+    return products.find(pro => pro.id == id)
   }
 
   useEffect(() => {
-    setEditProduct(getSelectedProduct())
+    setEditProduct(getSelectedProduct(edit_id))
   }, [edit_id])
 
   const formik = useFormik({
@@ -65,6 +65,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
 
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
+      {console.log(editProduct)}
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
           <div className="flex text-md justify-between items-center w-full">
