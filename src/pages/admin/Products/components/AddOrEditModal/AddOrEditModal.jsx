@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
-import { postProduct } from "store/slices/products";
+import { postProduct, updateProduct } from "store/slices/products";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEditId } from "store/slices/editId";
 
@@ -23,6 +23,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const { edit_id } = useSelector((state) => state.editId);
   const { products } = useSelector((state) => state.products);
   const [editProduct, setEditProduct] = useState(null);
+  const imageRef = useRef()
 
   const handleClose = () => {
     setAddOrEditModalOn(false);
@@ -52,14 +53,27 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       setSubmitting(false);
       const formData = new FormData();
       Object.entries(values).map((key, value) => {
-        formData.append(key[0], key[1]);
+        if(key[0] === "image") {
+          formData.append("image", imageRef.current)
+        }
+        else formData.append(key[0], key[1]);
       });
-      dispatch(postProduct(formData))
-        .unwrap()
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => resetForm());
+      console.log(formData.get("image"))
+      if (edit_id) {
+        dispatch(updateProduct(formData))
+          .unwrap()
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => resetForm());
+      } else {
+        dispatch(postProduct(formData))
+          .unwrap()
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => resetForm());
+      }
     },
     validationSchema,
   });
@@ -88,6 +102,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                   name="image"
                   formik={formik}
                   input={true}
+                  imageRef={imageRef}
+                  // onChange={}
                 />
                 <FieldModal
                   label="نام کالا"
