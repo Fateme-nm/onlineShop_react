@@ -13,6 +13,8 @@ const validationSchema = Yup.object().shape({
     .required("این فیلد ضروری است"),
   categoryId: Yup.string().required("این فیلد ضروری است"),
   description: Yup.string().min(8, "خیلی کوتاه است").max(300, "خیلی بلند است"),
+  price: Yup.number().required("این فیلد ضروری است"),
+  count: Yup.number().required("این فیلد ضروری است"),
 });
 
 const AddOrEditModal = ({ setAddOrEditModalOn }) => {
