@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setId } from "store/slices/removeId";
 
-const TrTbody = ({ imgSrc, name, category, id }) => {
+const TrTbody = ({ imgSrc, name, category, id, setAddOrEditModalOn }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <tr className="hover:bg-pink-50">
@@ -15,7 +15,10 @@ const TrTbody = ({ imgSrc, name, category, id }) => {
         ></i>
       </td>
       <td className={sameClassName}>
-        <i className="fas fa-edit text-blue-400 cursor-pointer text-xl"></i>
+        <i
+          className="fas fa-edit text-blue-400 cursor-pointer text-xl"
+          onClick={() => setAddOrEditModalOn(true)}
+        ></i>
       </td>
       <td className={sameClassName}>
         <div className="text-sm leading-5 text-gray-900">{category}</div>
