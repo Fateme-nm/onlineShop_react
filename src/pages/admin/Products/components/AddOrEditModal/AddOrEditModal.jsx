@@ -14,6 +14,17 @@ const AddOrEditModal = () => {
       category: "",
       description: ""
     },
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      setSubmitting(false);
+      const {image, name, category, description} = values
+      dispatch(login({image, name, category, description}))
+        .unwrap()
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => resetForm())
+    },
+    validationSchema,
   })
 
   return (
