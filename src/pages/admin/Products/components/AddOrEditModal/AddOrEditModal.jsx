@@ -55,7 +55,8 @@ const AddOrEditModal = () => {
             >
               <FieldModal
                 label="تصویر کالا"
-                type="text"
+                type="file"
+                accept="image/*"
                 id="image"
                 name="image"
                 formik={formik}
