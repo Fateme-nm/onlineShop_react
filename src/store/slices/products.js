@@ -71,9 +71,9 @@ export const postProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
     "panel/updatePro",
-    async (formData, _, thunkAPI) => {
+    async (formData, id, _, thunkAPI) => {
         try {
-            await AdminService.updateProduct(formData)
+            await AdminService.updateProduct(formData, id)
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
