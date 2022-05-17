@@ -8,7 +8,7 @@ import AddOrEditModal from "./components/AddOrEditModal/AddOrEditModal";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { deletedProducts, addedProducts, categories } = useSelector(
+  const { modifiedProducts, categories } = useSelector(
     (state) => state.products
   );
   const { id: remove_id } = useSelector((state) => state.removeId);
@@ -24,7 +24,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, [deletedProducts, addedProducts]);
+  }, [modifiedProducts]);
 
   useEffect(() => {
     setRemoveModalOn(remove_id ? true : false);

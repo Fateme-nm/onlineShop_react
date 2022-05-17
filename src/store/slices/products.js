@@ -87,8 +87,7 @@ const initialState = {
     showProducts: [],
     categories: [],
     colors: [],
-    addedProducts: 0,
-    deletedProducts: 0
+    modifiedProducts: 0
 }
 
 const ordersSlice = createSlice({
@@ -126,13 +125,13 @@ const ordersSlice = createSlice({
             state.colors = action.payload.colors
         },
         [postProduct.fulfilled]: (state,action) => {
-            state.addedProducts = state.addedProducts + 1
+            state.modifiedProducts = state.modifiedProducts + 1
         },
         [updateProduct.fulfilled]: (state, actions) => {
-            state.addedProducts = state.addedProducts
+            state.modifiedProducts = state.modifiedProducts + 1
         },
         [deleteProduct.fulfilled]: (state, action) => {
-            state.deletedProducts = state.deletedProducts + 1
+            state.modifiedProducts = state.modifiedProducts + 1
         }
     },
 });
