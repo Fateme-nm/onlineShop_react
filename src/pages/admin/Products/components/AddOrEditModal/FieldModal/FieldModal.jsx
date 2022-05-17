@@ -48,7 +48,7 @@ const FieldModal = ({
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm"
+          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm my-2"
         >
           <option>دسته بندی</option>
           <option value={1}>اول</option>
