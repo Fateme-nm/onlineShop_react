@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
 import { postProduct } from "store/slices/products";
 import { useDispatch, useSelector } from "react-redux";
+import { clearEditId } from "store/slices/editId";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -22,6 +23,11 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const { edit_id } = useSelector(state => state.editId)
   const { products } = useSelector(state => state.products)
   const [editProduct, setEditProduct] = useState(null)
+
+  const handleClose = () => {
+    setAddOrEditModalOn(false);
+    dispatch(clearEditId())
+  }
 
   const getSelectedProduct = (id) => {
     return products.find(pro => pro.id === id)
@@ -62,7 +68,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
           <div className="flex text-md justify-between items-center w-full">
-            <button onClick={() => {setAddOrEditModalOn(false);}}>
+            <button onClick={handleClose}>
               <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
             </button>
             <p>افزودن/ویرایش کالا</p>
