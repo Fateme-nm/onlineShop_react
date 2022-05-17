@@ -19,11 +19,12 @@ const getStatusOrders = () => {
 }
 
 const postProduct = (obj) => {
-  return axios.post(API_URL + "products", obj, { headers: authHeader() })
+  return axios.post(API_URL + "products", obj, 
+    { headers: authHeader(), "Content-Type": "multipart/form-data"})
 }
 
 const postUpload = (img) => {
-  return axios.post(API_URL + "upload", img, { headers: authHeader() })
+  return axios.post(API_URL + "upload", {image: img}, { headers: authHeader() })
 }
 
 const deleteProduct = (id) => {

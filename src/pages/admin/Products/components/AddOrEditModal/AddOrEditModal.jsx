@@ -27,8 +27,11 @@ const AddOrEditModal = ({setAddOrEditModalOn}) => {
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
-      const { image, name, categoryId, description } = values;
-      dispatch(postProduct({ image, name, categoryId, description }))
+      const formData = new FormData();
+      Object.entries(values).map((key, value)=> {
+        formData.append(key[0], key[1])
+      })
+      dispatch(postProduct(formData))
         .unwrap()
         .catch((err) => {
           console.log(err);
