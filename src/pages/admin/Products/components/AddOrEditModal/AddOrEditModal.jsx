@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
@@ -19,11 +19,20 @@ const validationSchema = Yup.object().shape({
 
 const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const dispatch = useDispatch();
-  const {edit_id} = useSelector(state => state.editId)
+  const { edit_id } = useSelector(state => state.editId)
+  const { products } = useSelector(state => state.products)
+
+  const getSelectedProduct = (id) => {
+    return products.find(pro => pro.id === id)
+  }
+
+  useEffect(() => {
+    getSelectedProduct()
+  }, [edit_id])
 
   const formik = useFormik({
     initialValues: {
-      image: "",
+      image: edit_id ? "",
       name: "",
       categoryId: "",
       colorId: "",
