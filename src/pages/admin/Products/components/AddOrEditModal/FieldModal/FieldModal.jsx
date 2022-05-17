@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const FieldModal = ({
   label,
@@ -10,6 +11,7 @@ const FieldModal = ({
   textarea,
   select,
 }) => {
+  const {categories} = useSelector(state => state.products)
   return (
     <div className="relative mt-4 w-full">
       {(input || textarea) && (
