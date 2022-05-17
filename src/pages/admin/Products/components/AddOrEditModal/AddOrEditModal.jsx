@@ -24,6 +24,8 @@ const AddOrEditModal = ({setAddOrEditModalOn}) => {
       name: "",
       categoryId: "",
       description: "",
+      price: "",
+      count: ""
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
@@ -70,6 +72,22 @@ const AddOrEditModal = ({setAddOrEditModalOn}) => {
                 type="text"
                 id="name"
                 name="name"
+                formik={formik}
+                input={true}
+              />
+              <FieldModal
+                label="قیمت"
+                type="text"
+                id="price"
+                name="price"
+                formik={formik}
+                input={true}
+              />
+              <FieldModal
+                label="تعداد"
+                type="number"
+                id="count"
+                name="count"
                 formik={formik}
                 input={true}
               />
