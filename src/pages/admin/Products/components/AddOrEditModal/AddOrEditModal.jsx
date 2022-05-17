@@ -51,6 +51,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
+      setAddOrEditModalOn(false)
       const formData = new FormData();
       Object.entries(values).map((key, value) => {
         if(key[0] === "image") {
