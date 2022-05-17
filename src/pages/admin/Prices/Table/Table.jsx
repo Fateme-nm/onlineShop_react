@@ -31,6 +31,7 @@ const Table = ({ products, submitChanges }) => {
                       name={product.name}
                       price={separate(product.price)}
                       count={product.count}
+                      id={product.id}
                       submitChanges={submitChanges}
                       key={product.id}
                     />

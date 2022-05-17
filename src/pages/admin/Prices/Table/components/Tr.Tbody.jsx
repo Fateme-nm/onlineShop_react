@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const TrTbody = ({ name, price, count, submitChanges }) => {
+const TrTbody = ({ name, price, count, id, submitChanges }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const [disCount, setDisCount] = useState(true);
   const [disPrice, setDisPrice] = useState(true);
@@ -20,11 +20,11 @@ const TrTbody = ({ name, price, count, submitChanges }) => {
   useEffect(()=> {
     if (submitChanges && (changeCount || changePrice)) {
       if (changeCount) {
-        dispatch(updateCount(changeCount))
+        dispatch(updateCount(changeCount, id))
         setDisCount(true) 
       }
       if (changePrice) {
-        dispatch(updatePrice(changePrice))
+        dispatch(updatePrice(changePrice, id))
         setDisPrice(true)
       }
     }
