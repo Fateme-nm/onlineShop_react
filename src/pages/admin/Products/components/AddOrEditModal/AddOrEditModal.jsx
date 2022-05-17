@@ -59,6 +59,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
         else formData.append(key[0], key[1]);
       });
       if (edit_id) {
+        formData.append("id", edit_id)
         dispatch(updateProduct(formData))
           .unwrap()
           .catch((err) => {
