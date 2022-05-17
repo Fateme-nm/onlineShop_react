@@ -5,7 +5,10 @@ import * as Yup from "yup";
 const validationSchema = Yup.object().shape({
   image: Yup.string()
     .required("این فیلد ضروری است"),
-  
+  name: Yup.string()
+    .min(8, "خیلی کوتاه است")
+    .max(60, "خیلی بلند است")
+    .required("این فیلد ضروری است"),
 });
 
 const AddOrEditModal = () => {
