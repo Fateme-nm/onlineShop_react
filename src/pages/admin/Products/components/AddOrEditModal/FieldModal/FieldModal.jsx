@@ -11,7 +11,7 @@ const FieldModal = ({
   textarea,
   select,
 }) => {
-  const {categories} = useSelector(state => state.products)
+  const { categories } = useSelector((state) => state.products);
   return (
     <div className="relative mt-4 w-full">
       {(input || textarea) && (
@@ -53,9 +53,11 @@ const FieldModal = ({
           className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm my-2"
         >
           <option>دسته بندی</option>
-          <option value={1}>اول</option>
-          <option value={2}>دوم</option>
-          <option value={3}>سوم</option>
+          {categories.map((cat) => (
+            <option value={cat.id} key={cat.id}>
+              {cat.name}
+            </option>
+          ))}
         </select>
       )}
       {formik.errors[name] && formik.touched[name] ? (
