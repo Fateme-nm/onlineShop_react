@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const FieldModal = ({
   label,
   type,
+  accept,
   formik,
   name,
   id,
@@ -22,6 +23,7 @@ const FieldModal = ({
       {input && (
         <input
           type={type}
+          accept={accept}
           name={name}
           id={id}
           value={formik.values[name]}
