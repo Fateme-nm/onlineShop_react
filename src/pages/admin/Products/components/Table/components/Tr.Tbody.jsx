@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setId } from "store/slices/removeId";
-import { setEditId } from "store/slices/EditId";
+import { setEditId } from "store/slices/editId";
 
 const TrTbody = ({ imgSrc, name, category, id }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";

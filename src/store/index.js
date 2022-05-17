@@ -4,7 +4,7 @@ import messageReducer from './slices/message';
 import ordersReducer from './slices/orders';
 import productsReducer from './slices/products';
 import removeIdReducer from './slices/removeId';
-import editIdReducer from './slices/EditId'
+import editIdReducer from './slices/editId'
 
 const reducer = {
     auth: authReducer,

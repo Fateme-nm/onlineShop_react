@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
@@ -21,6 +21,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const dispatch = useDispatch();
   const { edit_id } = useSelector(state => state.editId)
   const { products } = useSelector(state => state.products)
+  const [editProduct, setEditProduct] = useState(null)
 
   const getSelectedProduct = (id) => {
     return products.find(pro => pro.id === id)
@@ -32,13 +33,13 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
 
   const formik = useFormik({
     initialValues: {
-      image: edit_id ? "",
-      name: "",
-      categoryId: "",
-      colorId: "",
-      description: "",
-      price: "",
-      count: "",
+      image: editProduct ? editProduct.image : "",
+      name: editProduct ? editProduct.name : "",
+      categoryId: editProduct ? editProduct.categoryId : "",
+      colorId: editProduct ? editProduct.colorId : "",
+      description: editProduct ? editProduct.description : "",
+      price: editProduct ? editProduct.price : "",
+      count: editProduct ? editProduct.count : "",
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
