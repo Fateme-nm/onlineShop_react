@@ -26,7 +26,6 @@ const FieldModal = ({
           className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm"
         />
       )}
-
       {textarea && (
         <textarea
           cols="30"
@@ -40,7 +39,6 @@ const FieldModal = ({
           className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm"
         ></textarea>
       )}
-
       {select && (
         <select
           name={name}
@@ -55,7 +53,6 @@ const FieldModal = ({
           <option value={3}>سوم</option>
         </select>
       )}
-
       {formik.errors[name] && formik.touched[name] ? (
         <div className="text-primary">{formik.errors[name]}</div>
       ) : null}
