@@ -28,7 +28,7 @@ const postProduct = (formData) => {
 }
 
 const updateProduct = (formData, id) => {
-  return axios.put(API_URL + `products/${id}`, formData, 
+  return axios.patch(API_URL + `products/${id}`, formData, 
     { headers: authHeader(), "Content-Type": "multipart/form-data"})
 }
 
