@@ -12,13 +12,14 @@ const Products = () => {
     (state) => state.products
   );
   const { id } = useSelector((state) => state.removeId);
+  const { edit } = useSelector((state) => state.addOrEdit);
   const [removeModalOn, setRemoveModalOn] = useState(false);
   const [addOrEditModalOn, setAddOrEditModalOn] = useState(false);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
-    dispatch(getColors())
+    dispatch(getColors());
   }, []);
 
   useEffect(() => {
@@ -33,13 +34,21 @@ const Products = () => {
     <div>
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت کالا ها</h2>
-        <button className="bg-primary rounded-md py-3 px-5 text-sm text-white font-bold transform hover:translate-y-1 transition-all duration-500 text-center" onClick={() => setAddOrEditModalOn(true)}>
+        <button
+          className="bg-primary rounded-md py-3 px-5 text-sm text-white font-bold transform hover:translate-y-1 transition-all duration-500 text-center"
+          onClick={() => setAddOrEditModalOn(true)}
+        >
           افزودن کالا
         </button>
       </div>
-      <Table categories={categories} setAddOrEditModalOn={setAddOrEditModalOn}/>
+      <Table
+        categories={categories}
+        setAddOrEditModalOn={setAddOrEditModalOn}
+      />
       {removeModalOn && <RemoveModal />}
-      {addOrEditModalOn && <AddOrEditModal setAddOrEditModalOn={setAddOrEditModalOn}/>}
+      {addOrEditModalOn && (
+        <AddOrEditModal setAddOrEditModalOn={setAddOrEditModalOn} />
+      )}
     </div>
   );
 };
