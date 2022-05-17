@@ -9,6 +9,9 @@ const validationSchema = Yup.object().shape({
     .max(60, "خیلی بلند است")
     .required("این فیلد ضروری است"),
   category: Yup.string().required("این فیلد ضروری است"),
+  description: Yup.string()
+    .min(8, "خیلی کوتاه است")
+    .max(300, "خیلی بلند است")
 });
 
 const AddOrEditModal = () => {
