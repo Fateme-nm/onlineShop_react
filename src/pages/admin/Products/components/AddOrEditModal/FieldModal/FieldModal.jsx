@@ -11,7 +11,7 @@ const FieldModal = ({
   select,
 }) => {
   return (
-    <div className="relative mt-8 w-full">
+    <div className="relative mt-4 w-full">
       <label htmlFor={id} className="mb-2">
         {label}
       </label>
