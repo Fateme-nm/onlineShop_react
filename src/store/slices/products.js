@@ -43,11 +43,24 @@ export const deleteProduct = createAsyncThunk(
     }
 )
 
+export const postProduct = createAsyncThunk(
+    "panel/postPro",
+    async (obj, _, thunkAPI) => {
+        try {
+            await AdminService.postProduct(obj)
+        } catch (error) {
+            error.response.status === 401 && thunkAPI.dispatch(logout())
+            return thunkAPI.rejectWithValue();
+        }
+    }
+)
+
 const initialState = {
     isLoading: false,
     products: [],
     showProducts: [],
     categories: [],
+    addedProducts: 0,
     deletedProducts: 0
 }
 
@@ -82,6 +95,9 @@ const ordersSlice = createSlice({
         [getCategories.fulfilled]: (state, action) => {
             state.categories = action.payload.categories;
         }, 
+        [postProduct.fulfilled]: (state,action) => {
+            state.addedProducts = state.addedProducts + 1
+        },
         [deleteProduct.fulfilled]: (state, action) => {
             state.deletedProducts = state.deletedProducts + 1
         }
