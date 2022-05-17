@@ -3,12 +3,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  image: Yup.string()
-    .required("این فیلد ضروری است"),
+  image: Yup.string().required("این فیلد ضروری است"),
   name: Yup.string()
     .min(8, "خیلی کوتاه است")
     .max(60, "خیلی بلند است")
     .required("این فیلد ضروری است"),
+  category: Yup.string().required("این فیلد ضروری است"),
 });
 
 const AddOrEditModal = () => {
@@ -21,20 +21,20 @@ const AddOrEditModal = () => {
       image: "",
       name: "",
       category: "",
-      description: ""
+      description: "",
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
-      const {image, name, category, description} = values
-      dispatch(login({image, name, category, description}))
+      const { image, name, category, description } = values;
+      dispatch(login({ image, name, category, description }))
         .unwrap()
         .catch((err) => {
-          console.log(err)
+          console.log(err);
         })
-        .finally(() => resetForm())
+        .finally(() => resetForm());
     },
     validationSchema,
-  })
+  });
 
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
