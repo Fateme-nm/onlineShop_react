@@ -12,9 +12,11 @@ const FieldModal = ({
 }) => {
   return (
     <div className="relative mt-4 w-full">
-      <label htmlFor={id} className="mb-2">
-        {label}
-      </label>
+      {(input || textarea) && (
+        <label htmlFor={id} className="mb-2">
+          {label}
+        </label>
+      )}
       {input && (
         <input
           type={type}
@@ -48,6 +50,7 @@ const FieldModal = ({
           onBlur={formik.handleBlur}
           className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm"
         >
+          <option>دسته بندی</option>
           <option value={1}>اول</option>
           <option value={2}>دوم</option>
           <option value={3}>سوم</option>
