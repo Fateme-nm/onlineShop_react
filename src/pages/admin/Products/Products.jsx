@@ -37,7 +37,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table categories={categories} />
+      <Table categories={categories} setAddOrEditModalOn={setAddOrEditModalOn}/>
       {removeModalOn && <RemoveModal />}
       {addOrEditModalOn && <AddOrEditModal setAddOrEditModalOn={setAddOrEditModalOn}/>}
     </div>
