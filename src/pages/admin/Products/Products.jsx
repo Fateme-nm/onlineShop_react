@@ -11,8 +11,8 @@ const Products = () => {
   const { deletedProducts, addedProducts, categories } = useSelector(
     (state) => state.products
   );
-  const { id } = useSelector((state) => state.removeId);
-  const { edit } = useSelector((state) => state.addOrEdit);
+  const { id: remove_id } = useSelector((state) => state.removeId);
+  const { edit: edit_id } = useSelector((state) => state.editId);
   const [removeModalOn, setRemoveModalOn] = useState(false);
   const [addOrEditModalOn, setAddOrEditModalOn] = useState(false);
 
@@ -27,8 +27,12 @@ const Products = () => {
   }, [deletedProducts, addedProducts]);
 
   useEffect(() => {
-    setRemoveModalOn(id ? true : false);
-  }, [id]);
+    setRemoveModalOn(remove_id ? true : false);
+  }, [remove_id]);
+
+  useEffect(() => {
+    setAddOrEditModalOn(edit_id ? true : false)
+  }, [edit_id])
 
   return (
     <div>
@@ -41,10 +45,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table
-        categories={categories}
-        setAddOrEditModalOn={setAddOrEditModalOn}
-      />
+      <Table categories={categories}/>
       {removeModalOn && <RemoveModal />}
       {addOrEditModalOn && (
         <AddOrEditModal setAddOrEditModalOn={setAddOrEditModalOn} />
