@@ -15,11 +15,9 @@ const FieldModal = ({
   const { categories } = useSelector((state) => state.products);
   return (
     <div className="relative mt-4 w-full">
-      {(input || textarea) && (
-        <label htmlFor={id} className="mb-2">
-          {label}
-        </label>
-      )}
+      <label htmlFor={id} className="mb-2">
+        {label}
+      </label>
       {input && (
         <input
           type={type}
@@ -29,7 +27,7 @@ const FieldModal = ({
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm"
+          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm h-8"
         />
       )}
       {textarea && (
@@ -52,9 +50,9 @@ const FieldModal = ({
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm my-2"
+          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm h-8"
         >
-          <option>دسته بندی</option>
+          <option></option>
           {categories.map((cat) => (
             <option value={cat.id} key={cat.id}>
               {cat.name}
