@@ -25,6 +25,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       image: "",
       name: "",
       categoryId: "",
+      colorId: "",
       description: "",
       price: "",
       count: "",
@@ -100,6 +101,13 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                   label="دسته بندی"
                   id="categoryId"
                   name="categoryId"
+                  formik={formik}
+                  select={true}
+                />
+                <FieldModal
+                  label="رنگ"
+                  id="colorId"
+                  name="colorId"
                   formik={formik}
                   select={true}
                 />

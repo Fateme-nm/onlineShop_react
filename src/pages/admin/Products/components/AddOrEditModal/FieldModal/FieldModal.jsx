@@ -14,7 +14,7 @@ const FieldModal = ({
 }) => {
   const { categories } = useSelector((state) => state.products);
   const { colors } = useSelector((state) => state.products);
-  const selectFor = name === "color" ? colors : categories;
+  const selectFor = name === "colorId" ? colors : categories;
 
   return (
     <div className="relative mt-4 w-full">

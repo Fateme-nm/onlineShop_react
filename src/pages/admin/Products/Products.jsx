@@ -3,7 +3,7 @@ import Table from "./components/Table/Table";
 import RemoveModal from "./components/RemoveModal/RemoveModal";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, getCategories } from "store/slices/products";
+import { getProducts, getCategories, getColors } from "store/slices/products";
 import AddOrEditModal from "./components/AddOrEditModal/AddOrEditModal";
 
 const Products = () => {
@@ -18,6 +18,7 @@ const Products = () => {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
+    dispatch(getColors())
   }, []);
 
   useEffect(() => {
