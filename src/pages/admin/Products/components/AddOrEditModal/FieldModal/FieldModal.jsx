@@ -13,7 +13,7 @@ const FieldModal = ({ label, type, formik, name, id }) => {
         value={formik.values[name]}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        className="pl-8 border-b-2 focus:outline-none focus:border-primary transition-all duration-500 text-lg w-full"
+        className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
       />
       {formik.errors[name] && formik.touched[name] ? (
         <div className="text-primary">{formik.errors[name]}</div>

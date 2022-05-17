@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import FieldModal from "./FieldModal/FieldModal";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -9,9 +10,7 @@ const validationSchema = Yup.object().shape({
     .max(60, "خیلی بلند است")
     .required("این فیلد ضروری است"),
   category: Yup.string().required("این فیلد ضروری است"),
-  description: Yup.string()
-    .min(8, "خیلی کوتاه است")
-    .max(300, "خیلی بلند است")
+  description: Yup.string().min(8, "خیلی کوتاه است").max(300, "خیلی بلند است"),
 });
 
 const AddOrEditModal = () => {
@@ -29,12 +28,12 @@ const AddOrEditModal = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       const { image, name, category, description } = values;
-      dispatch(login({ image, name, category, description }))
-        .unwrap()
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => resetForm());
+      // dispatch(login({ image, name, category, description }))
+      //   .unwrap()
+      //   .catch((err) => {
+      //     console.log(err);
+      //   })
+      //   .finally(() => resetForm());
     },
     validationSchema,
   });
@@ -54,7 +53,7 @@ const AddOrEditModal = () => {
               className="flex flex-col items-end w-full"
               onSubmit={handleSubmit}
             >
-              <label htmlFor="img" className="mb-2">
+              {/* <label htmlFor="img" className="mb-2">
                 تصویر کالا
               </label>
               <input
@@ -62,6 +61,13 @@ const AddOrEditModal = () => {
                 id="img"
                 name="image"
                 className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
+              /> */}
+              <FieldModal
+                label="تصویر کالا"
+                type="text"
+                id="image"
+                name="image"
+                formik={formik}
               />
               <label htmlFor="name" className="mb-2">
                 نام کالا
