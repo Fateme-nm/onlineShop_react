@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setId } from "store/slices/removeId";
+import { setEditId } from "store/slices/EditId";
 
-const TrTbody = ({ imgSrc, name, category, id, setAddOrEditModalOn }) => {
+const TrTbody = ({ imgSrc, name, category, id }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const dispatch = useDispatch();
 
@@ -17,7 +18,7 @@ const TrTbody = ({ imgSrc, name, category, id, setAddOrEditModalOn }) => {
       <td className={sameClassName}>
         <i
           className="fas fa-edit text-blue-400 cursor-pointer text-xl"
-          onClick={() => setAddOrEditModalOn(true)}
+          onClick={() => dispatch(setEditId(id))}
         ></i>
       </td>
       <td className={sameClassName}>
