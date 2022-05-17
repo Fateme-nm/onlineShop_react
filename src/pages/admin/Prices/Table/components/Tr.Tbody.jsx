@@ -17,6 +17,11 @@ const TrTbody = ({ name, price, count, submitChanges }) => {
     else setChangePrice(e.target.value)
   }
 
+  useEffect(()=> {
+    changeCount && dispatch(updateCount(changeCount))
+    changePrice && dispatch(updatePrice(changePrice))
+  }, [submitChanges])
+
   return (
     <tr className="hover:bg-pink-50">
       <td className={sameClassName} onClick={handleClick}>
