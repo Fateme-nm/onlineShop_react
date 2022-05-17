@@ -23,7 +23,7 @@ const TrTbody = ({ name, price, count }) => {
         <input
           type="text"
           disabled={disCount}
-          value={count}
+          value={changeCount || count}
           name="count"
           onChange={handleChange}
           className={`text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 ${
@@ -35,7 +35,7 @@ const TrTbody = ({ name, price, count }) => {
         <input
           type="text"
           disabled={disPrice}
-          value={price}
+          value={changePrice || price}
           name="price"
           onChange={handleChange}
           className={`text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 ${
