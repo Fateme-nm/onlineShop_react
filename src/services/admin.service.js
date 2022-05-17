@@ -10,6 +10,10 @@ const getCategoreis = () => {
   return axios.get(API_URL + "category", { headers: authHeader() });
 };
 
+const getColors = () => {
+  return axios.get(API_URL + "color", { headers: authHeader() });
+}
+
 const getOrders = () => {
   return axios.get(API_URL + "orders", { headers: authHeader() });
 };
@@ -34,6 +38,7 @@ const deleteProduct = (id) => {
 const adminService = {
     getProducts,
     getCategoreis,
+    getColors,
     getOrders,
     getStatusOrders,
     postProduct,
