@@ -1,22 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: null
+  add: false,
+  edit: null,
 };
 
-const addOrEdit = createSlice({
+const addOrEditSlice = createSlice({
   name: "addOrEdit",
   initialState,
   reducers: {
-    setId: (state, action) => {
-      return { id: action.payload };
+    setAdd: (state, action) => {
+      state.add = action.payload
     },
-    clearId: () => {
-      return { id: null };
-    },
+    setEdit: (state, action) => {
+      const id = action.payload
+      state.edit = id
+    }
   },
 });
 
-const { reducer, actions } = removeIdSlice;
-export const { setId, clearId } = actions;
+const { reducer, actions } = addOrEditSlice;
+export const { setAdd, setEdit } = actions;
 export default reducer;
