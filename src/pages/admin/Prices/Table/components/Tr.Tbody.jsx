@@ -18,8 +18,10 @@ const TrTbody = ({ name, price, count, submitChanges }) => {
   }
 
   useEffect(()=> {
-    changeCount && dispatch(updateCount(changeCount))
-    changePrice && dispatch(updatePrice(changePrice))
+    if (submitChanges) {
+      changeCount && dispatch(updateCount(changeCount))
+      changePrice && dispatch(updatePrice(changePrice))
+    }
   }, [submitChanges])
 
   return (
