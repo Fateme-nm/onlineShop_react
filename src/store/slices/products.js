@@ -31,6 +31,20 @@ export const getCategories = createAsyncThunk(
     }
 );
 
+export const getColors = createAsyncThunk(
+    "panel/colors", 
+    async (_, thunkAPI) => {
+        try {
+            const res = await AdminService.getColors();
+            return { colors: res.data };
+        } catch (error) {
+            error.response.status === 401 && thunkAPI.dispatch(logout())
+          //   thunkAPI.dispatch(setMessage(message));
+            return thunkAPI.rejectWithValue();
+        }
+    }
+);
+
 export const deleteProduct = createAsyncThunk(
     "panel/deletePro",
     async (id, _, thunkAPI) => {
@@ -60,6 +74,7 @@ const initialState = {
     products: [],
     showProducts: [],
     categories: [],
+    colors: [],
     addedProducts: 0,
     deletedProducts: 0
 }
@@ -95,6 +110,9 @@ const ordersSlice = createSlice({
         [getCategories.fulfilled]: (state, action) => {
             state.categories = action.payload.categories;
         }, 
+        [getColors.fulfilled]: (state, action) => {
+            state.colors = action.payload.colors
+        },
         [postProduct.fulfilled]: (state,action) => {
             state.addedProducts = state.addedProducts + 1
         },
