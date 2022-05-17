@@ -2,6 +2,12 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+const validationSchema = Yup.object().shape({
+  image: Yup.string()
+    .required("این فیلد ضروری است"),
+  
+});
+
 const AddOrEditModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
