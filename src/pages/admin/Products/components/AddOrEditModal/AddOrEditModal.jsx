@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
@@ -20,24 +20,25 @@ const validationSchema = Yup.object().shape({
 
 const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const dispatch = useDispatch();
-  const { edit_id } = useSelector(state => state.editId)
-  const { products } = useSelector(state => state.products)
-  const [editProduct, setEditProduct] = useState(null)
+  const { edit_id } = useSelector((state) => state.editId);
+  const { products } = useSelector((state) => state.products);
+  const [editProduct, setEditProduct] = useState(null);
 
   const handleClose = () => {
     setAddOrEditModalOn(false);
-    dispatch(clearEditId())
-  }
+    dispatch(clearEditId());
+  };
 
   const getSelectedProduct = (id) => {
-    return products.find(pro => pro.id == id)
-  }
+    return products.find((pro) => pro.id == id);
+  };
 
   useEffect(() => {
-    setEditProduct(getSelectedProduct(edit_id))
-  }, [edit_id])
+    setEditProduct(getSelectedProduct(edit_id));
+  }, [edit_id]);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       image: editProduct ? editProduct.image : "",
       name: editProduct ? editProduct.name : "",
@@ -65,7 +66,6 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
 
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
-      {console.log(editProduct)}
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
           <div className="flex text-md justify-between items-center w-full">
