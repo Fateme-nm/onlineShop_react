@@ -53,60 +53,36 @@ const AddOrEditModal = () => {
               className="flex flex-col items-end w-full"
               onSubmit={handleSubmit}
             >
-              {/* <label htmlFor="img" className="mb-2">
-                تصویر کالا
-              </label>
-              <input
-                type="text"
-                id="img"
-                name="image"
-                className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
-              /> */}
               <FieldModal
                 label="تصویر کالا"
                 type="text"
                 id="image"
                 name="image"
                 formik={formik}
+                input={true}
               />
-              {/* <label htmlFor="name" className="mb-2">
-                نام کالا
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
-              /> */}
               <FieldModal
                 label="نام کالا"
                 type="text"
                 id="name"
                 name="name"
                 formik={formik}
+                input={true}
               />
-              <label htmlFor="category" className="mb-2">
-                دسته بندی
-              </label>
-              <select
+              <FieldModal
+                label="دسته بندی"
                 id="category"
                 name="category"
-                className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
-              >
-                <option value={1}>اول</option>
-                <option value={2}>دوم</option>
-                <option value={3}>سوم</option>
-              </select>
-              <label htmlFor="description" className="mb-2">
-                توضیحات
-              </label>
-              <textarea
-                name="description"
+                formik={formik}
+                select={true}
+              />
+              <FieldModal
+                label="دسته بندی"
                 id="description"
-                cols="30"
-                rows="5"
-                className="w-full border-2 border-gray-300 focus:outline-0 mb-4 rounded-sm"
-              ></textarea>
+                name="description"
+                formik={formik}
+                textarea={true}
+              />
               <button type="submit" className="bg-submit rounded-md py-2 px-4">
                 ذخیره
               </button>
