@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const TrTbody = ({ name, price, count }) => {
+const TrTbody = ({ name, price, count, submitChanges }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const [disCount, setDisCount] = useState(true);
   const [disPrice, setDisPrice] = useState(true);

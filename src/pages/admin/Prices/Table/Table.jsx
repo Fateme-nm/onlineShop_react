@@ -4,7 +4,7 @@ import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
 import {separate} from 'utils';
 
-const Table = ({ products }) => {
+const Table = ({ products, submitChanges }) => {
   const [pageNumber, setPageNumber] = useState(0);
 
   const pricesPerPage = 4;
@@ -31,6 +31,7 @@ const Table = ({ products }) => {
                       name={product.name}
                       price={separate(product.price)}
                       count={product.count}
+                      submitChanges={submitChanges}
                       key={product.id}
                     />
                   );
