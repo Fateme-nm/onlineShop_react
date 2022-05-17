@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: null
+  remove_id: null
 };
 
 const removeIdSlice = createSlice({
@@ -9,10 +9,10 @@ const removeIdSlice = createSlice({
   initialState,
   reducers: {
     setId: (state, action) => {
-      return { id: action.payload };
+      state.remove_id = action.payload
     },
     clearId: () => {
-      return { id: null };
+      state.remove_id = null
     },
   },
 });
