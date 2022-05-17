@@ -38,7 +38,7 @@ const Table = ({ categories }) => {
                 .map((product) => {
                   return (
                     <TrTbody
-                      imgSrc={`http://localhost:3002/files/${product.thumbnail}`}
+                      imgSrc={`http://localhost:3002${product.image}`}
                       name={product.name}
                       category={getCategory(product.categoryId)}
                       id={product.id}
