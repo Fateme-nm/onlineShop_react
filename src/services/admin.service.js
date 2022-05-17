@@ -22,6 +22,10 @@ const postProduct = (obj) => {
   return axios.post(API_URL + "products", obj, { headers: authHeader() })
 }
 
+const postUpload = (img) => {
+  return axios.post(API_URL + "upload", img, { headers: authHeader() })
+}
+
 const deleteProduct = (id) => {
   return axios.delete(API_URL + `products/${id}`, { headers: authHeader() })
 }
@@ -32,6 +36,7 @@ const adminService = {
     getOrders,
     getStatusOrders,
     postProduct,
+    postUpload,
     deleteProduct
 };
 
