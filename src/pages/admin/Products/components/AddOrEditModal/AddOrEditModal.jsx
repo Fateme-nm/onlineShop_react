@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   description: Yup.string().min(8, "خیلی کوتاه است").max(300, "خیلی بلند است"),
 });
 
-const AddOrEditModal = ({setAddOrEditModalOn}) => {
+const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -25,14 +25,14 @@ const AddOrEditModal = ({setAddOrEditModalOn}) => {
       categoryId: "",
       description: "",
       price: "",
-      count: ""
+      count: "",
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       const formData = new FormData();
-      Object.entries(values).map((key, value)=> {
-        formData.append(key[0], key[1])
-      })
+      Object.entries(values).map((key, value) => {
+        formData.append(key[0], key[1]);
+      });
       dispatch(postProduct(formData))
         .unwrap()
         .catch((err) => {
@@ -58,46 +58,50 @@ const AddOrEditModal = ({setAddOrEditModalOn}) => {
               className="flex flex-col items-end w-full"
               onSubmit={formik.handleSubmit}
             >
-              <FieldModal
-                label="تصویر کالا"
-                type="file"
-                accept="image/*"
-                id="image"
-                name="image"
-                formik={formik}
-                input={true}
-              />
-              <FieldModal
-                label="نام کالا"
-                type="text"
-                id="name"
-                name="name"
-                formik={formik}
-                input={true}
-              />
-              <FieldModal
-                label="قیمت"
-                type="text"
-                id="price"
-                name="price"
-                formik={formik}
-                input={true}
-              />
-              <FieldModal
-                label="تعداد"
-                type="number"
-                id="count"
-                name="count"
-                formik={formik}
-                input={true}
-              />
-              <FieldModal
-                label="دسته بندی"
-                id="categoryId"
-                name="categoryId"
-                formik={formik}
-                select={true}
-              />
+              <div className="w-full flex justify-between space-x-3">
+                <FieldModal
+                  label="تصویر کالا"
+                  type="file"
+                  accept="image/*"
+                  id="image"
+                  name="image"
+                  formik={formik}
+                  input={true}
+                />
+                <FieldModal
+                  label="نام کالا"
+                  type="text"
+                  id="name"
+                  name="name"
+                  formik={formik}
+                  input={true}
+                />
+              </div>
+              <div className="w-full flex justify-between space-x-3">
+                <FieldModal
+                  label="قیمت"
+                  type="text"
+                  id="price"
+                  name="price"
+                  formik={formik}
+                  input={true}
+                />
+                <FieldModal
+                  label="تعداد"
+                  type="number"
+                  id="count"
+                  name="count"
+                  formik={formik}
+                  input={true}
+                />
+                <FieldModal
+                  label="دسته بندی"
+                  id="categoryId"
+                  name="categoryId"
+                  formik={formik}
+                  select={true}
+                />
+              </div>
               <FieldModal
                 label="توضیحات"
                 id="description"
