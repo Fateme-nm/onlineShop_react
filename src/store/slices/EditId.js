@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const addOrEditSlice = createSlice({
-  name: "addOrEdit",
+  name: "editId",
   initialState,
   reducers: {
     setEditId: (state, action) => {
