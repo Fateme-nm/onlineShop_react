@@ -1,9 +1,20 @@
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const AddOrEditModal = () => {
-const handleSubmit = e => {
-    e.preventDefault()
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      image: "",
+      name: "",
+      category: "",
+      description: ""
+    },
+  })
 
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
@@ -16,7 +27,10 @@ const handleSubmit = e => {
             <p>افزودن/ویرایش کالا</p>
           </div>
           <div className="flex justify-between">
-            <form className="flex flex-col items-end w-full" onSubmit={handleSubmit}>
+            <form
+              className="flex flex-col items-end w-full"
+              onSubmit={handleSubmit}
+            >
               <label htmlFor="img" className="mb-2">
                 تصویر کالا
               </label>
