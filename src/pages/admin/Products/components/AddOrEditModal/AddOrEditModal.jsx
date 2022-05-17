@@ -58,7 +58,6 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
         }
         else formData.append(key[0], key[1]);
       });
-      console.log(formData.get("image"))
       if (edit_id) {
         dispatch(updateProduct(formData))
           .unwrap()
@@ -103,7 +102,6 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                   formik={formik}
                   input={true}
                   imageRef={imageRef}
-                  // onChange={}
                 />
                 <FieldModal
                   label="نام کالا"
