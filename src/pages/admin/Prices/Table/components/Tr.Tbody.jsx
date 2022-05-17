@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { updateProduct } from "store/slices/products";
+import { useDispatch } from "react-redux";
 
 const TrTbody = ({ name, price, count, id, submitChanges }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
@@ -6,6 +8,7 @@ const TrTbody = ({ name, price, count, id, submitChanges }) => {
   const [disPrice, setDisPrice] = useState(true);
   const [changeCount, setChangeCount] = useState()
   const [changePrice, setChangePrice] = useState()
+  const dispatch = useDispatch()
 
   const handleClick = (e) => {
     if (e.target.name === "count") setDisCount(false);
@@ -20,11 +23,17 @@ const TrTbody = ({ name, price, count, id, submitChanges }) => {
   useEffect(()=> {
     if (submitChanges && (changeCount || changePrice)) {
       if (changeCount) {
-        dispatch(updateCount(changeCount, id))
+        const formData = new FormData()
+        formData.append("count", changeCount)
+        formData.append("id", id)
+        dispatch(updateProduct(formData))
         setDisCount(true) 
       }
       if (changePrice) {
-        dispatch(updatePrice(changePrice, id))
+        const formData = new FormData()
+        formData.append("price", changePrice)
+        formData.append("id", id)
+        dispatch(updateProduct(formData))
         setDisPrice(true)
       }
     }
