@@ -28,7 +28,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   }
 
   useEffect(() => {
-    getSelectedProduct()
+    setEditProduct(getSelectedProduct())
   }, [edit_id])
 
   const formik = useFormik({
@@ -62,7 +62,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
           <div className="flex text-md justify-between items-center w-full">
-            <button onClick={() => setAddOrEditModalOn(false)}>
+            <button onClick={() => {setAddOrEditModalOn(false);}}>
               <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
             </button>
             <p>افزودن/ویرایش کالا</p>

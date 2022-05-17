@@ -12,7 +12,7 @@ const Products = () => {
     (state) => state.products
   );
   const { id: remove_id } = useSelector((state) => state.removeId);
-  const { edit: edit_id } = useSelector((state) => state.editId);
+  const { edit_id } = useSelector((state) => state.editId);
   const [removeModalOn, setRemoveModalOn] = useState(false);
   const [addOrEditModalOn, setAddOrEditModalOn] = useState(false);
 
