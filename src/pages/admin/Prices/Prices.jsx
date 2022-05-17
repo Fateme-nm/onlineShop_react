@@ -11,11 +11,7 @@ const Prices = () => {
 
   useEffect(() => {
     dispatch(getProducts())
-  }, []);
-
-  useEffect(() => {
-    
-  })
+  }, [submitChanges]);
 
   return (
     <div>
