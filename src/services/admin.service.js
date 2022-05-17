@@ -18,6 +18,10 @@ const getStatusOrders = () => {
     return axios.get(API_URL + "orderStatus", { headers: authHeader() })
 }
 
+const postProduct = (obj) => {
+  return axios.post(API_URL + "products", obj, { headers: authHeader() })
+}
+
 const deleteProduct = (id) => {
   return axios.delete(API_URL + `products/${id}`, { headers: authHeader() })
 }
@@ -27,6 +31,7 @@ const adminService = {
     getCategoreis,
     getOrders,
     getStatusOrders,
+    postProduct,
     deleteProduct
 };
 
