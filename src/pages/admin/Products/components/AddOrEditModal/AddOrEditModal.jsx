@@ -2,6 +2,8 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FieldModal from "./FieldModal/FieldModal";
+import { postProduct } from "store/slices/products";
+import { useDispatch } from "react-redux";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -14,9 +16,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const AddOrEditModal = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -28,12 +28,12 @@ const AddOrEditModal = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
       const { image, name, category, description } = values;
-      // dispatch(login({ image, name, category, description }))
-      //   .unwrap()
-      //   .catch((err) => {
-      //     console.log(err);
-      //   })
-      //   .finally(() => resetForm());
+      dispatch(postProduct({ image, name, category, description }))
+        .unwrap()
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => resetForm());
     },
     validationSchema,
   });
