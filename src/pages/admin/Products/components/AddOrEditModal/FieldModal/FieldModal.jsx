@@ -13,6 +13,9 @@ const FieldModal = ({
   select,
 }) => {
   const { categories } = useSelector((state) => state.products);
+  const { colors } = useSelector((state) => state.products);
+  const selectFor = name === "color" ? colors : categories;
+
   return (
     <div className="relative mt-4 w-full">
       <label htmlFor={id} className="mb-2">
@@ -53,7 +56,7 @@ const FieldModal = ({
           className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm h-8"
         >
           <option></option>
-          {categories.map((cat) => (
+          {selectFor.map((cat) => (
             <option value={cat.id} key={cat.id}>
               {cat.name}
             </option>
