@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   description: Yup.string().min(8, "خیلی کوتاه است").max(300, "خیلی بلند است"),
 });
 
-const AddOrEditModal = () => {
+const AddOrEditModal = ({setAddOrEditModalOn}) => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -43,7 +43,7 @@ const AddOrEditModal = () => {
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
           <div className="flex text-md justify-between items-center w-80">
-            <button>
+            <button onClick={() => setAddOrEditModalOn(false)}>
               <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
             </button>
             <p>افزودن/ویرایش کالا</p>

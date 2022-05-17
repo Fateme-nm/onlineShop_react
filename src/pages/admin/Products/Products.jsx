@@ -38,7 +38,7 @@ const Products = () => {
       </div>
       <Table categories={categories} />
       {removeModalOn && <RemoveModal />}
-      {addOrEditModalOn && <AddOrEditModal />}
+      {addOrEditModalOn && <AddOrEditModal setAddOrEditModalOn={setAddOrEditModalOn}/>}
     </div>
   );
 };
