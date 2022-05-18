@@ -49,7 +49,7 @@ const initialState = {
     orders: [],
     showOrders: [],
     statusOrders: [],
-    activeStatus: null,
+    activeStatus: "all",
     activeSort: "new",
     modifiedStatusOrder: 0
 }

@@ -8,7 +8,7 @@ import OrderModal from "./components/OrderModal/OrderModal";
 
 const Orders = () => {
   const dispatch = useDispatch();
-  const { activeStatus, activeSort, modifiedStatusOrder } = useSelector(
+  const { activeStatus, activeSort, modifiedStatusOrder, orders } = useSelector(
     (state) => state.orders);
   const { check_id } = useSelector((state) => state.checkId);
   const [checkModalOn, setCheckModalOn] = useState(false);
@@ -20,6 +20,10 @@ const Orders = () => {
   useEffect(() => {
     setCheckModalOn(check_id ? true : false)
   }, [check_id])
+
+  useEffect(() => {
+    
+  })
 
   return (
     <div>
