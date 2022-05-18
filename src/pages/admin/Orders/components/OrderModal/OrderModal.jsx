@@ -15,13 +15,22 @@ const OrderModal = () => {
     dispatch(clearCheckId());
   };
 
+  const handleClickDelivery = () => {
+      const date = new Date()
+      setCheckOrder({...checkOrder, deliveredAt: date})
+  }
+
   const handleDelivery = () => {
     if (checkOrder && checkOrder.deliveredAt) {
         return <p>{jalaliDate(checkOrder.deliveredAt)} : زمان تحویل</p>
     }
     else if (checkOrder && !checkOrder.deliveredAt) {
         return (
-            <button type="submit" className="bg-submit rounded-md py-2 px-4">
+            <button 
+                type="submit" 
+                className="bg-submit rounded-md py-2 px-4" 
+                onClick={handleClickDelivery}
+            >
                 تحویل شد
             </button>
         )
@@ -46,26 +55,26 @@ const OrderModal = () => {
             </button>
             <p>نمایش سفارش</p>
           </div>
-          <div className="shadow-lg p-4 my-5 rounded-md">
-            <div className="flex justify-between flex-row-reverse mb-2">
+          <div className="shadow-lg p-4 my-5 rounded-md divide-y divide-neutral-200">
+            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: نام مشتری</p>
               <p>{checkOrder && checkOrder.customerDetail.firstName +
                     " " + checkOrder.customerDetail.lastName}
               </p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2">
+            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: آدرس</p>
               <p>{checkOrder && checkOrder.customerDetail.billingAddress}</p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2">
+            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: تلفن</p>
               <p>{checkOrder && checkOrder.customerDetail.phone}</p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2">
+            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: زمان تحویل</p>
               <p>{checkOrder && jalaliDate(checkOrder.delivery)}</p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2">
+            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: زمان سفارش</p>
               <p>{checkOrder && jalaliDate(checkOrder.orderDate)}</p>
             </div>
@@ -79,7 +88,7 @@ const OrderModal = () => {
                 </thead>
                 <tbody>
                     {checkOrder && checkOrder.orderItems.map(item => {
-                        return <TrTbody orderItem={item}/>
+                        return <TrTbody orderItem={item} key={item.id}/>
                     })}
                 </tbody>
             </table>
