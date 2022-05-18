@@ -4,7 +4,8 @@ import messageReducer from './slices/message';
 import ordersReducer from './slices/orders';
 import productsReducer from './slices/products';
 import removeIdReducer from './slices/removeId';
-import editIdReducer from './slices/editId'
+import editIdReducer from './slices/editId';
+import checkIdReducer from './slices/checkId';
 
 const reducer = {
     auth: authReducer,
@@ -12,7 +13,8 @@ const reducer = {
     orders: ordersReducer,
     products: productsReducer,
     removeId: removeIdReducer,
-    editId: editIdReducer
+    editId: editIdReducer,
+    checkId: checkIdReducer
 }
 
 export const store = configureStore({
