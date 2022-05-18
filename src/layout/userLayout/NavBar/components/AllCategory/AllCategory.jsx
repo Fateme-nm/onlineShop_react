@@ -19,11 +19,7 @@ const AllCategory = () => {
               className="px-6 py-3 flex items-center justify-end hover:bg-gray-100 transition"
               key={cat.id}
             >
-              <span className="ml-6 text-gray-600 text-sm">{cat.name}</span>
-              <img
-                src="images/icons/restaurant.svg"
-                className="w-5 h-5 object-contain"
-              />
+              <span className="mr-3 text-gray-600 text-sm">{cat.name}</span>
             </Link>
           );
         })}
