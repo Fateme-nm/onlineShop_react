@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "components/Card/Card";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const CardsGroup = ({ title, id }) => {
   const [products, setProducts] = useState([]);
@@ -15,10 +16,13 @@ const CardsGroup = ({ title, id }) => {
   }, []);
   return (
     <div className="container py-8">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-8 cursor-pointer hover:text-primary flex justify-end items-center">
+      <Link
+        to={"/products"}
+        class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-8 cursor-pointer hover:text-primary flex justify-end items-center"
+      >
         <p>کفش {title}</p>
         <i className="fas fa-caret-left ml-3"></i>
-      </h2>
+      </Link>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6 px-8">
         {React.Children.toArray(
           products.map((pro) => {
