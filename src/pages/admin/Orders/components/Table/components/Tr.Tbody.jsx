@@ -5,7 +5,22 @@ import { setCheckId } from "store/slices/checkId";
 const TrTbody = ({ fullName, purchaseTotal, orderDate, id, orderItem }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const dispatch = useDispatch();
+
   if (orderItem) {
+    const {name, price, quantity} = orderItem
+    return (
+      <tr className="hover:bg-pink-50">
+        <td className={sameClassName}>
+          <div className="text-xs leading-5 text-gray-900">{quantity}</div>
+        </td>
+        <td className={sameClassName}>
+          <div className="text-xs leading-5 text-gray-900">{price}</div>
+        </td>
+        <td className={sameClassName}>
+          <div className="text-xs leading-5 text-gray-900">{name}</div>
+        </td>
+      </tr>
+    );
   }
   return (
     <tr className="hover:bg-pink-50">
