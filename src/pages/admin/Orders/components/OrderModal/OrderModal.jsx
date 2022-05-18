@@ -15,6 +15,19 @@ const OrderModal = () => {
     dispatch(clearCheckId());
   };
 
+  const handleDelivery = () => {
+    if (checkOrder && checkOrder.deliveredAt) {
+        return <p>{jalaliDate(checkOrder.deliveredAt)} : زمان تحویل</p>
+    }
+    else if (checkOrder && !checkOrder.deliveredAt) {
+        return (
+            <button type="submit" className="bg-submit rounded-md py-2 px-4">
+                تحویل شد
+            </button>
+        )
+    }
+  }
+
   const getSelectedOrder = (id) => {
     return orders.find((order) => order.id == id);
   };
@@ -26,7 +39,7 @@ const OrderModal = () => {
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl overflow-hidden items-center">
+        <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl overflow-hidden">
           <div className="flex text-md justify-between items-center w-full">
             <button onClick={handleClose}>
               <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
@@ -71,9 +84,9 @@ const OrderModal = () => {
                 </tbody>
             </table>
           </div>
-          <button type="submit" className="bg-submit rounded-md py-2 px-4">
-            ذخیره
-          </button>
+          <div>
+              {handleDelivery()}
+          </div>
         </div>
       </div>
     </div>
