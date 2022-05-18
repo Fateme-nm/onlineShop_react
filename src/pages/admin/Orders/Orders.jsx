@@ -15,6 +15,10 @@ const Orders = () => {
     dispatch(getOrders());
   }, []);
 
+  useEffect(() => {
+    setCheckModalOn(check_id ? true : false)
+  }, [check_id])
+
   return (
     <div>
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
