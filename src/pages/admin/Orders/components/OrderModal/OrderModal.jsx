@@ -65,7 +65,7 @@ const OrderModal = () => {
               </thead>
               <tbody>
                   {checkOrder && checkOrder.orderItems.map(item => {
-                      <TrTbody></TrTbody>
+                      return <TrTbody orderItem={item}/>
                   })}
               </tbody>
           </table>
