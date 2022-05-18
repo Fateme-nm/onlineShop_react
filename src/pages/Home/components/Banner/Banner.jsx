@@ -18,7 +18,7 @@ const Banner = () => {
         </p>
         <div className="mt-12">
           <Link
-            to={routes.PRODUCTS.path}
+            to={routes.PRODUCTS_LIST.path}
             className="bg-primary border border-primary text-white px-8 py-3 font-medium rounded-md hover:bg-transparent
                hover:text-primary transition"
           >
