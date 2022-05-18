@@ -1,12 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Card = ({imgSrc, name, price, id}) => {
+const Card = ({ imgSrc, name, price, id }) => {
   return (
     <div class="rounded bg-white shadow overflow-hidden">
       <div class="relative">
         <img src={`https://localhost:3002${imgSrc}`} class="w-full" />
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
-          
+      </div>
+      <div class="pt-4 pb-3 px-4">
+        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+          {name}
+        </h4>
+        
+      </div>
     </div>
   );
 };
