@@ -28,6 +28,7 @@ const Orders = () => {
         <div className="flex justify-center space-x-5">
           <Radio status="1">سفارش های تحویل شده</Radio>
           <Radio status="3">سفارش های در انتظار ارسال</Radio>
+          <Radio>همه سفارش ها</Radio>
         </div>
       </div>
       <Table activeStatus={activeStatus} activeSort={activeSort} />
