@@ -52,6 +52,10 @@ export default Object.freeze({
         element: <ProductsList />,
         path: '/products'
     },
+    CATEGORY: {
+        element: <ProductsList />,
+        path: '/products/:category'
+    },
     ORDERS: {
         element: <Orders />,
         path: '/panel/orders'
