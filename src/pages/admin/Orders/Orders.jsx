@@ -8,6 +8,8 @@ import { getOrders } from "store/slices/orders";
 const Orders = () => {
   const dispatch = useDispatch();
   const { activeStatus, activeSort } = useSelector((state) => state.orders);
+  const { check_id } = useSelector((state) => state.checkId);
+  
 
   useEffect(() => {
     dispatch(getOrders());
@@ -22,10 +24,7 @@ const Orders = () => {
           <Radio status="3">سفارش های در انتظار ارسال</Radio>
         </div>
       </div>
-      <Table
-        activeStatus={activeStatus}
-        activeSort={activeSort}
-      />
+      <Table activeStatus={activeStatus} activeSort={activeSort} />
     </div>
   );
 };
