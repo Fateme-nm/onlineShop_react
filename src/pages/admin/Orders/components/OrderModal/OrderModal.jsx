@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCheckId } from "store/slices/checkId";
+import { jalaliDate } from "utils";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
@@ -30,30 +31,29 @@ const OrderModal = () => {
             </button>
             <p>نمایش سفارش</p>
           </div>
-          <div className="flex justify-around flex-row-reverse">
-            <p>: نام مشتری</p>
-            <p>
-              {checkOrder &&
-                checkOrder.customerDetail.firstName +
-                  " " +
-                  checkOrder.customerDetail.lastName}
-            </p>
-          </div>
-          <div className="flex justify-around flex-row-reverse">
-            <p>: آدرس</p>
-            <p>{checkOrder && checkOrder.customerDetail.billingAddress}</p>
-          </div>
-          <div className="flex justify-around flex-row-reverse">
-            <p>: تلفن</p>
-            <p>{checkOrder && checkOrder.customerDetail.phone}</p>
-          </div>
-          <div className="flex justify-around flex-row-reverse">
-            <p>: زمان تحویل</p>
-            <p>{checkOrder && checkOrder.delivery}</p>
-          </div>
-          <div className="flex justify-around flex-row-reverse">
-            <p>: زمان سفارش</p>
-            <p>{checkOrder && checkOrder.orderDate}</p>
+          <div className="bg-red-50 p-4 my-5 rounded-md">
+            <div className="flex justify-between flex-row-reverse mb-2">
+              <p className="font-medium">: نام مشتری</p>
+              <p>{checkOrder && checkOrder.customerDetail.firstName +
+                    " " + checkOrder.customerDetail.lastName}
+              </p>
+            </div>
+            <div className="flex justify-between flex-row-reverse mb-2">
+              <p className="font-medium">: آدرس</p>
+              <p>{checkOrder && checkOrder.customerDetail.billingAddress}</p>
+            </div>
+            <div className="flex justify-between flex-row-reverse mb-2">
+              <p className="font-medium">: تلفن</p>
+              <p>{checkOrder && checkOrder.customerDetail.phone}</p>
+            </div>
+            <div className="flex justify-between flex-row-reverse mb-2">
+              <p className="font-medium">: زمان تحویل</p>
+              <p>{checkOrder && jalaliDate(checkOrder.delivery)}</p>
+            </div>
+            <div className="flex justify-between flex-row-reverse mb-2">
+              <p className="font-medium">: زمان سفارش</p>
+              <p>{checkOrder && jalaliDate(checkOrder.orderDate)}</p>
+            </div>
           </div>
           <button type="submit" className="bg-submit rounded-md py-2 px-4">
             ذخیره
