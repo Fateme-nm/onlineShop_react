@@ -6,6 +6,9 @@ const CardsGroup = ({title}) => {
       <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
         {title}
       </h2>
+      <div className="flex flex-wrap">
+          
+      </div>
     </div>
   );
 };
