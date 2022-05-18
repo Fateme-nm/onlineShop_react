@@ -15,6 +15,7 @@ const {
   PAYMENT_RESULT,
   PROUDUCT_DETAILS,
   PRODUCTS_LIST,
+  CATEGORY,
   ORDERS,
   PRICES,
   PRODUCTS,
@@ -27,6 +28,7 @@ const AppRoutes = () => {
       <Route path={HOME.path} element={HOME.element} />
       <Route path={LOGIN_TO_PANEL.path} element={<PrivateRoute route={LOGIN_TO_PANEL}/>} />
       <Route path={PRODUCTS_LIST.path} element={PRODUCTS_LIST.element} />
+      <Route path={CATEGORY.path} element={CATEGORY.element} />
       <Route path={PROUDUCT_DETAILS.path} element={PROUDUCT_DETAILS.element} />
       <Route path={CART.path} element={CART.element} />
       <Route path={FINALIZE_PURCHASE.path} element={FINALIZE_PURCHASE.element} />
