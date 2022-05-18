@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
-import { getCategories } from "store/slices/products";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const AllCategory = () => {
+  const {categories} = useSelector(state => state.products)
   return (
     <div className="px-8 py-4 bg-primary flex items-center cursor-pointer group relative">
       <span className="mr-3 text-white">دسته بندی محصولات</span>
