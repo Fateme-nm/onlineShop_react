@@ -9,7 +9,7 @@ const Card = ({ imgSrc, name, price, id }) => {
       className="rounded bg-white shadow overflow-hidden w-72"
     >
       <div className="relative">
-        <img src={`https://localhost:3002${imgSrc}`} className="w-full" />
+        <img src={imgSrc} className="w-full" />
       </div>
       <div className="pt-4 pb-3 px-4">
         <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
