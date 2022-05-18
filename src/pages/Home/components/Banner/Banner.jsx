@@ -1,5 +1,7 @@
 import React from "react";
-import banner from 'assets/images/banner.webp'
+import banner from 'assets/images/banner.webp';
+import { Link } from "react-router-dom";
+import routes from "routes/routes";
 
 const Banner = () => {
   return (
@@ -15,13 +17,13 @@ const Banner = () => {
           دنیلی، سبکی برای داستان هر فرد
         </p>
         <div className="mt-12">
-          <a
-            href="shop.html"
+          <Link
+            to={routes.PRODUCTS.path}
             className="bg-primary border border-primary text-white px-8 py-3 font-medium rounded-md hover:bg-transparent
                hover:text-primary transition"
           >
             همین حالا خرید کنید
-          </a>
+          </Link>
         </div>
       </div>
     </div>
