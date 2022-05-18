@@ -17,7 +17,7 @@ const CardsGroup = ({ title, id }) => {
   return (
     <div className="container py-8">
       <Link
-        to={"/products"}
+        to={`/products/${title}`}
         className="text-2xl font-medium text-gray-800 uppercase mb-8 cursor-pointer hover:text-primary flex justify-end items-center"
       >
         <p>کفش {title}</p>
