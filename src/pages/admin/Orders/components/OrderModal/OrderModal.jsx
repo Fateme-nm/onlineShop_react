@@ -89,14 +89,17 @@ const OrderModal = () => {
           <div className="overflow-y-scroll w-96 max-h-40 mb-4">
             <table className="w-full">
                 <thead>
-                    <ThThead>تعداد</ThThead>
-                    <ThThead>قیمت</ThThead>
-                    <ThThead>کالا</ThThead>
+                    <tr>
+                        <ThThead>تعداد</ThThead>
+                        <ThThead>قیمت</ThThead>
+                        <ThThead>کالا</ThThead>
+                    </tr>
                 </thead>
                 <tbody>
-                    {checkOrder && checkOrder.orderItems.map(item => {
-                        return <TrTbody orderItem={item} key={item.id}/>
-                    })}
+                    {checkOrder && 
+                        React.Children.toArray(checkOrder.orderItems.map(item => {
+                            return <TrTbody orderItem={item} />
+                    }))}
                 </tbody>
             </table>
           </div>
