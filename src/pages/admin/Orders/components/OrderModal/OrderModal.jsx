@@ -39,6 +39,22 @@ const OrderModal = () => {
                   checkOrder.customerDetail.lastName}
             </p>
           </div>
+          <div className="flex justify-around flex-row-reverse">
+            <p>: آدرس</p>
+            <p>{checkOrder && checkOrder.customerDetail.billingAddress}</p>
+          </div>
+          <div className="flex justify-around flex-row-reverse">
+            <p>: تلفن</p>
+            <p>{checkOrder && checkOrder.customerDetail.phone}</p>
+          </div>
+          <div className="flex justify-around flex-row-reverse">
+            <p>: زمان تحویل</p>
+            <p>{checkOrder && checkOrder.delivery}</p>
+          </div>
+          <div className="flex justify-around flex-row-reverse">
+            <p>: زمان سفارش</p>
+            <p>{checkOrder && checkOrder.orderDate}</p>
+          </div>
           <button type="submit" className="bg-submit rounded-md py-2 px-4">
             ذخیره
           </button>
