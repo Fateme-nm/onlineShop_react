@@ -18,16 +18,16 @@ const OrderModal = () => {
 
   const handleClickDelivery = () => {
       const date = new Date()
-      //setCheckOrder({...checkOrder, deliveredAt: date, orderStatus: 1})
-      dispatch(updateOrder({...checkOrder, deliveredAt: date, orderStatus: 1}))
+      setCheckOrder({...checkOrder, deliveredAt: date, orderStatus: 1})
   }
 
-//   useEffect(() => {
-
-//   }, [])
+  useEffect(() => {
+    if (checkOrder && checkOrder.deliveredAt) {
+        dispatch(updateOrder(checkOrder))
+    }
+  }, [checkOrder])
 
   const handleDelivery = () => {
-      console.log(checkOrder)
     if (checkOrder && checkOrder.deliveredAt) {
         return <p>{jalaliDate(checkOrder.deliveredAt)} : زمان تحویل</p>
     }
