@@ -64,7 +64,9 @@ const OrderModal = () => {
                   <ThThead>کالا</ThThead>
               </thead>
               <tbody>
-                  
+                  {checkOrder && checkOrder.orderItems.map(item => {
+                      <TrTbody></TrTbody>
+                  })}
               </tbody>
           </table>
           <button type="submit" className="bg-submit rounded-md py-2 px-4">
