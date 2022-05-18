@@ -34,9 +34,9 @@ export const getStatusOrders = createAsyncThunk(
 export const updateOrder = createAsyncThunk(
     "panel/updateOrder",
     async (checkOrder, _, thunkAPI) => {
-        const {deliveredAt, id} = checkOrder
+        const {deliveredAt, orderStatus, id} = checkOrder
         try {
-            await AdminService.updateOrder({deliveredAt}, id)
+            await AdminService.updateOrder({deliveredAt, orderStatus}, id)
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
