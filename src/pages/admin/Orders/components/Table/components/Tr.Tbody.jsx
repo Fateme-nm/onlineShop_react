@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setCheckId } from "store/slices/checkId";
+import { Link } from "react-router-dom";
 
 const TrTbody = ({ fullName, purchaseTotal, orderDate, id, orderItem }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
@@ -17,7 +18,11 @@ const TrTbody = ({ fullName, purchaseTotal, orderDate, id, orderItem }) => {
           <div className="text-xs font-medium leading-5 text-gray-900">{price}</div>
         </td>
         <td className={sameClassName}>
-          <div className="text-xs font-medium leading-5 text-gray-900">{name}</div>
+          <Link 
+            to={`/product/${name}`}
+            className="text-xs font-medium leading-5 text-gray-900 cursor-pointer hover:text-primary"
+          >{name}
+          </Link>
         </td>
       </tr>
     );
