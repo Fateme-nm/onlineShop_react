@@ -50,7 +50,8 @@ const initialState = {
     showOrders: [],
     statusOrders: [],
     activeStatus: null,
-    activeSort: "new"
+    activeSort: "new",
+    modifiedStatusOrder: 0
 }
 
 const ordersSlice = createSlice({
@@ -96,6 +97,9 @@ const ordersSlice = createSlice({
         [getStatusOrders.fulfilled]: (state, action) => {
             state.statusOrders = state.payload.statusOrders;
         },
+        [updateOrder.fulfilled]: (state, action) => {
+            state.modifiedStatusOrder = modifiedStatusOrder + 1
+        }
     },
 });
 
