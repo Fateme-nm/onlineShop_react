@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "components/Card/Card";
 
-const CardsGroup = ({title}) => {
+const CardsGroup = ({title, id}) => {
   return (
     <div className="container py-16">
       <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
