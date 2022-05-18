@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setCheckId } from "store/slices/checkId";
 
-const TrTbody = ({ fullName, purchaseTotal, orderDate }) => {
+const TrTbody = ({ fullName, purchaseTotal, orderDate, id }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const dispatch = useDispatch()
 

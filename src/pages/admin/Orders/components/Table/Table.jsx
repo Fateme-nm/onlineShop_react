@@ -51,6 +51,7 @@ const Table = ({ activeStatus, activeSort }) => {
                       }
                       purchaseTotal={separate(order.purchaseTotal)}
                       orderDate={jalaliDate(order.orderDate)}
+                      id={order.id}
                       key={order.id}
                     />
                   );
