@@ -4,7 +4,7 @@ import routes from "routes/routes";
 
 const NavBar = () => {
   return (
-    <nav className="bg-gray-800 hidden lg:block">
+    <nav className="bg-gray-800 hidden sm:block">
       <div className="container flex justify-between items-center flex-row-reverse">
         <div className="flex flex-row-reverse">
           <h2 className="mr-3 text-white bg-primary text-xl py-4 px-9">

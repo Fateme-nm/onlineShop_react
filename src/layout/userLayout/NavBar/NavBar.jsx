@@ -5,7 +5,7 @@ import routes from "routes/routes";
 
 const NavBar = () => {
   return (
-    <nav className="bg-gray-800 hidden lg:block">
+    <nav className="bg-gray-800 hidden sm:block">
       <div className="container">
         <div className="flex flex-row-reverse">
           {/* all category */}
