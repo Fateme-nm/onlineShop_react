@@ -14,25 +14,25 @@ const CardsGroup = ({ title, id }) => {
     handleRequest();
   }, []);
   return (
-    <div className="container py-16">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
+    <div className="container py-8">
+      <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-8 cursor-pointer hover:text-primary">
         کفش {title}
       </h2>
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
-        {React.Children.toArray(
-          products.map((pro) => {
-              console.log(pro.image)
-            return (
-              <Card
-                name={pro.name}
-                price={pro.price}
-                id={pro.id}
-                imgSrc={`http://localhost:3002${pro.image}`}
-              />
-            );
-          })
-        )}
-      </div>
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6 px-8">
+          {React.Children.toArray(
+            products.map((pro) => {
+              console.log(pro.image);
+              return (
+                <Card
+                  name={pro.name}
+                  price={pro.price}
+                  id={pro.id}
+                  imgSrc={`http://localhost:3002${pro.image}`}
+                />
+              );
+            })
+          )}
+        </div>
     </div>
   );
 };
