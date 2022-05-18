@@ -98,7 +98,7 @@ const ordersSlice = createSlice({
             state.statusOrders = state.payload.statusOrders;
         },
         [updateOrder.fulfilled]: (state, action) => {
-            state.modifiedStatusOrder = modifiedStatusOrder + 1
+            state.modifiedStatusOrder = state.modifiedStatusOrder + 1
         }
     },
 });
