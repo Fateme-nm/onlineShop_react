@@ -15,7 +15,7 @@ const AllCategory = () => {
         {categories.map((cat) => {
           return (
             <Link
-              to={"/products"}
+              to={`/products/${cat.name}`}
               className="px-6 py-3 flex items-center justify-end hover:bg-gray-100 transition"
               key={cat.id}
             >
