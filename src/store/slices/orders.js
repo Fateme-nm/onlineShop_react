@@ -70,7 +70,7 @@ const ordersSlice = createSlice({
             const filterList1 =
                 state.activeSort === "new" ? 
                     [...state.orders].reverse() : state.orders;
-            if (state.activeStatus) {
+            if (state.activeStatus !== "all") {
                 const filterList2 = filterList1.filter(
                     (order) => order.orderStatus == state.activeStatus
                 );

@@ -5,6 +5,7 @@ import Radio from "./components/Table/components/Radio";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "store/slices/orders";
 import OrderModal from "./components/OrderModal/OrderModal";
+import { setActiveStatus } from 'store/slices/orders';
 
 const Orders = () => {
   const dispatch = useDispatch();
@@ -15,15 +16,12 @@ const Orders = () => {
 
   useEffect(() => {
     dispatch(getOrders());
+    dispatch(setActiveStatus("all"))
   }, [modifiedStatusOrder]);
 
   useEffect(() => {
     setCheckModalOn(check_id ? true : false)
   }, [check_id])
-
-  useEffect(() => {
-    
-  })
 
   return (
     <div>
@@ -32,7 +30,7 @@ const Orders = () => {
         <div className="flex justify-center space-x-5">
           <Radio status="1">سفارش های تحویل شده</Radio>
           <Radio status="3">سفارش های در انتظار ارسال</Radio>
-          <Radio>همه سفارش ها</Radio>
+          <Radio status="all">همه سفارش ها</Radio>
         </div>
       </div>
       <Table activeStatus={activeStatus} activeSort={activeSort} />
