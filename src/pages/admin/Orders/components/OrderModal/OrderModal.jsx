@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCheckId } from "store/slices/checkId";
 import { jalaliDate } from "utils";
+import TrTbody from "../Table/components/Tr.Tbody";
+import ThThead from "../Table/components/Th.Thead";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
@@ -55,6 +57,16 @@ const OrderModal = () => {
               <p>{checkOrder && jalaliDate(checkOrder.orderDate)}</p>
             </div>
           </div>
+          <table>
+              <thead>
+                  <ThThead>تعداد</ThThead>
+                  <ThThead>قیمت</ThThead>
+                  <ThThead>کالا</ThThead>
+              </thead>
+              <tbody>
+                  
+              </tbody>
+          </table>
           <button type="submit" className="bg-submit rounded-md py-2 px-4">
             ذخیره
           </button>
