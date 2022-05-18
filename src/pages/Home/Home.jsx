@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <CardsGroup />
+      <CardsGroup title={"گروه ورزشی"}/>
     </div>
   );
 };

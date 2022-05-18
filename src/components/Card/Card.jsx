@@ -6,7 +6,7 @@ const Card = ({ imgSrc, name, price, id }) => {
     <Link
       to={`/product/${name}`}
       state={{ id }}
-      className="rounded bg-white shadow overflow-hidden"
+      className="rounded bg-white shadow overflow-hidden w-72"
     >
       <div className="relative">
         <img src={`https://localhost:3002${imgSrc}`} className="w-full" />
