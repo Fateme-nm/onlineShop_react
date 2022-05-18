@@ -7,7 +7,7 @@ const CardsGroup = ({ title, id }) => {
   const [products, setProducts] = useState([]);
   const handleRequest = async () => {
     await axios
-      .get(`http://localhost:3002/products?_limit=8&&categoryId=${id}`)
+      .get(`http://localhost:3002/products?_limit=3&&categoryId=${id}`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   };
