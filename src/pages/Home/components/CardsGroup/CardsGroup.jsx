@@ -16,7 +16,7 @@ const CardsGroup = ({ title, id }) => {
   return (
     <div className="container py-16">
       <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
-        {title}
+        کفش {title}
       </h2>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
         {React.Children.toArray(
