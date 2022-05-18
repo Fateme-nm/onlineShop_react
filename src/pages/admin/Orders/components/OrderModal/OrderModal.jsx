@@ -28,7 +28,7 @@ const OrderModal = () => {
             <button onClick={handleClose}>
               <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
             </button>
-            <p>افزودن/ویرایش کالا</p>
+            <p>نمایش سفارش</p>
           </div>
           <div className="flex justify-between">
             <button type="submit" className="bg-submit rounded-md py-2 px-4">
