@@ -1,5 +1,5 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCheckId } from "store/slices/checkId";
 
 const OrderModal = () => {
@@ -30,11 +30,18 @@ const OrderModal = () => {
             </button>
             <p>نمایش سفارش</p>
           </div>
-          <div className="flex justify-between">
-            <button type="submit" className="bg-submit rounded-md py-2 px-4">
-              ذخیره
-            </button>
+          <div className="flex justify-around flex-row-reverse">
+            <p>: نام مشتری</p>
+            <p>
+              {checkOrder &&
+                checkOrder.customerDetail.firstName +
+                  " " +
+                  checkOrder.customerDetail.lastName}
+            </p>
           </div>
+          <button type="submit" className="bg-submit rounded-md py-2 px-4">
+            ذخیره
+          </button>
         </div>
       </div>
     </div>
