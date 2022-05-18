@@ -27,7 +27,7 @@ const CardsGroup = ({ title, id }) => {
                 name={pro.name}
                 price={pro.price}
                 id={pro.id}
-                imgSrc={`http://localhost:3002/${pro.image}`}
+                imgSrc={`http://localhost:3002${pro.image}`}
               />
             );
           })
