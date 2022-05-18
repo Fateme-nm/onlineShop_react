@@ -26,14 +26,14 @@ const OrderModal = () => {
   return (
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
+        <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl overflow-hidden items-center">
           <div className="flex text-md justify-between items-center w-full">
             <button onClick={handleClose}>
               <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
             </button>
             <p>نمایش سفارش</p>
           </div>
-          <div className="bg-red-50 p-4 my-5 rounded-md">
+          <div className="shadow-lg p-4 my-5 rounded-md">
             <div className="flex justify-between flex-row-reverse mb-2">
               <p className="font-medium">: نام مشتری</p>
               <p>{checkOrder && checkOrder.customerDetail.firstName +
@@ -57,18 +57,20 @@ const OrderModal = () => {
               <p>{checkOrder && jalaliDate(checkOrder.orderDate)}</p>
             </div>
           </div>
-          <table>
-              <thead>
-                  <ThThead>تعداد</ThThead>
-                  <ThThead>قیمت</ThThead>
-                  <ThThead>کالا</ThThead>
-              </thead>
-              <tbody>
-                  {checkOrder && checkOrder.orderItems.map(item => {
-                      return <TrTbody orderItem={item}/>
-                  })}
-              </tbody>
-          </table>
+          <div className="overflow-y-scroll w-96 max-h-40 mb-4">
+            <table className="w-full">
+                <thead>
+                    <ThThead>تعداد</ThThead>
+                    <ThThead>قیمت</ThThead>
+                    <ThThead>کالا</ThThead>
+                </thead>
+                <tbody>
+                    {checkOrder && checkOrder.orderItems.map(item => {
+                        return <TrTbody orderItem={item}/>
+                    })}
+                </tbody>
+            </table>
+          </div>
           <button type="submit" className="bg-submit rounded-md py-2 px-4">
             ذخیره
           </button>
