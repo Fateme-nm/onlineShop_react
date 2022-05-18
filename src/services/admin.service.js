@@ -32,6 +32,10 @@ const updateProduct = (formData, id) => {
     { headers: authHeader(), "Content-Type": "multipart/form-data"})
 }
 
+const updateOrder = (deliveredAt, id) => {
+  return axios.patch(API_URL + `orders/${id}`, deliveredAt, { headers: authHeader() })
+}
+
 const deleteProduct = (id) => {
   return axios.delete(API_URL + `products/${id}`, { headers: authHeader() })
 }
@@ -44,6 +48,7 @@ const adminService = {
     getStatusOrders,
     postProduct,
     updateProduct,
+    updateOrder,
     deleteProduct
 };
 
