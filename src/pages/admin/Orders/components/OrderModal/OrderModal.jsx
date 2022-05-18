@@ -4,6 +4,9 @@ import { clearCheckId } from "store/slices/checkId";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
+  const { check_id } = useSelector((state) => state.checkId);
+  const { orders } = useSelector((state) => state.orders);
+  const [checkOrder, setCheckOrder] = useState(null);
 
   const handleClose = () => {
     dispatch(clearCheckId());
