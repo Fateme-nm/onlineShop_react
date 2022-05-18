@@ -4,6 +4,7 @@ import { clearCheckId } from "store/slices/checkId";
 import { jalaliDate } from "utils";
 import TrTbody from "../Table/components/Tr.Tbody";
 import ThThead from "../Table/components/Th.Thead";
+import { updateOrder } from "store/slices/orders";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const OrderModal = () => {
   const handleClickDelivery = () => {
       const date = new Date()
       setCheckOrder({...checkOrder, deliveredAt: date})
+      dispatch(updateOrder(checkOrder))
   }
 
   const handleDelivery = () => {

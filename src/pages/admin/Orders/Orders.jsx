@@ -15,6 +15,7 @@ const Orders = () => {
 
   useEffect(() => {
     dispatch(getOrders());
+    console.log(modifiedStatusOrder)
   }, [modifiedStatusOrder]);
 
   useEffect(() => {
