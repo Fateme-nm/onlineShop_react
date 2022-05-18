@@ -1,55 +1,22 @@
 import axios from "axios";
-import authHeader from "./auth-header";
 const API_URL = "http://localhost:3002/";
 
 const getProducts = () => {
-  return axios.get(API_URL + "products", { headers: authHeader() });
+  return axios.get(API_URL + "products");
 };
 
 const getCategoreis = () => {
-  return axios.get(API_URL + "category", { headers: authHeader() });
+  return axios.get(API_URL + "category");
 };
 
 const getColors = () => {
-  return axios.get(API_URL + "color", { headers: authHeader() });
+  return axios.get(API_URL + "color");
 }
 
-const getOrders = () => {
-  return axios.get(API_URL + "orders", { headers: authHeader() });
-};
-
-const getStatusOrders = () => {
-    return axios.get(API_URL + "orderStatus", { headers: authHeader() })
-}
-
-const postProduct = (formData) => {
-  return axios.post(API_URL + "products", formData, 
-    { headers: authHeader(), "Content-Type": "multipart/form-data"})
-}
-
-const updateProduct = (formData, id) => {
-  return axios.patch(API_URL + `products/${id}`, formData, 
-    { headers: authHeader(), "Content-Type": "multipart/form-data"})
-}
-
-const updateOrder = (deliveredAt, id) => {
-  return axios.patch(API_URL + `orders/${id}`, deliveredAt, { headers: authHeader() })
-}
-
-const deleteProduct = (id) => {
-  return axios.delete(API_URL + `products/${id}`, { headers: authHeader() })
-}
-
-const adminService = {
+const userService = {
     getProducts,
     getCategoreis,
     getColors,
-    getOrders,
-    getStatusOrders,
-    postProduct,
-    updateProduct,
-    updateOrder,
-    deleteProduct
 };
 
-export default adminService
+export default userService
