@@ -4,6 +4,7 @@ import WithLayoutpages from "hoc/WithLayoutPages";
 import Radio from "./components/Table/components/Radio";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "store/slices/orders";
+import OrderModal from "./components/OrderModal/OrderModal";
 
 const Orders = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const Orders = () => {
         </div>
       </div>
       <Table activeStatus={activeStatus} activeSort={activeSort} />
+      {checkModalOn && <OrderModal />}
     </div>
   );
 };
