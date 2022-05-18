@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Card from "components/Card/Card";
 import { Link } from "react-router-dom";
-import getProducts from "services/user.service";
+import userService from "services/user.service";
 
 const CardsGroup = ({ title, id }) => {
   const [products, setProducts] = useState([]);
 
   const handleRequest = async () => {
     try {
-      const res = await getProducts(`?_limit=3&&categoryId=${id}`);
+      const res = await userService.getProducts(`?_limit=3&&categoryId=${id}`);
       setProducts(res.data);
     } catch (err) {
       console.log(err);
