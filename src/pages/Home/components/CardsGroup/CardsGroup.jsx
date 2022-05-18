@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
 import Card from "components/Card/Card";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import getProducts from "services/user.service";
 
 const CardsGroup = ({ title, id }) => {
   const [products, setProducts] = useState([]);
+
   const handleRequest = async () => {
-    await axios
-      .get(`http://localhost:3002/products?_limit=3&&categoryId=${id}`)
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
+    try {
+      const res = await getProducts(`?_limit=3&&categoryId=${id}`);
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   useEffect(() => {
     handleRequest();
   }, []);
+  
   return (
     <div className="container py-8">
       <Link
