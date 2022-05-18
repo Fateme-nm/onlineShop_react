@@ -9,7 +9,7 @@ const Orders = () => {
   const dispatch = useDispatch();
   const { activeStatus, activeSort } = useSelector((state) => state.orders);
   const { check_id } = useSelector((state) => state.checkId);
-  
+  const [checkModalOn, setCheckModalOn] = useState(false);
 
   useEffect(() => {
     dispatch(getOrders());
