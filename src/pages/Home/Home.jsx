@@ -10,9 +10,11 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      {categories.map((cat) => {
-        return <CardsGroup title={cat.name} id={cat.id} key={cat.id} />;
-      })}
+      <div className="divide-dashed divide-y-2">
+        {categories.map((cat) => {
+          return <CardsGroup title={cat.name} id={cat.id} key={cat.id} />;
+        })}
+      </div>
     </div>
   );
 };
