@@ -1,8 +1,9 @@
 import axios from "axios";
 const API_URL = "http://localhost:3002/";
 
-const getProducts = () => {
-  return axios.get(API_URL + "products");
+const getProducts = (filters) => {
+  const filters2 = filters || ""
+  return axios.get(API_URL + "products"+ filters2);
 };
 
 const getCategoreis = () => {
