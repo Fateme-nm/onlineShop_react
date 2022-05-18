@@ -5,6 +5,14 @@ import { setActiveStatus } from 'store/slices/orders'
 const Radio = ({ children, status }) => {
   const dispatch = useDispatch()
 
+  const handleClick = (e) => {
+    if (e.target.id) {
+      dispatch(setActiveStatus(e.target.id))
+    }else {
+      dispatch(setActiveStatus(null))
+    }
+  }
+
   return (
     <div className="form-check flex space-x-2 items-center">
       <input
@@ -12,7 +20,7 @@ const Radio = ({ children, status }) => {
         type="radio"
         name="statuses"
         id={status}
-        onClick={(e) => dispatch(setActiveStatus(e.target.id))}
+        onClick={handleClick}
       />
       <label
         className="form-check-label inline-block text-gray-800"
