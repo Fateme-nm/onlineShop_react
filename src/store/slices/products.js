@@ -87,6 +87,7 @@ const initialState = {
     showProducts: [],
     categories: [],
     colors: [],
+    priceEntityChanges: [],
     modifiedProducts: 0
 }
 
