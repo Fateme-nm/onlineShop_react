@@ -5,6 +5,7 @@ import { jalaliDate } from "utils";
 import TrTbody from "../Table/components/Tr.Tbody";
 import ThThead from "../Table/components/Th.Thead";
 import { updateOrder } from "store/slices/orders";
+import ReactDom from 'react-dom'
 
 const OrderModal = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const OrderModal = () => {
     setCheckOrder(getSelectedOrder(check_id));
   }, [check_id]);
 
-  return (
+  return ReactDOM.createPortal(
     <div className="bg-gray-50/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl overflow-hidden">
@@ -108,7 +109,8 @@ const OrderModal = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal")
   );
 };
 
