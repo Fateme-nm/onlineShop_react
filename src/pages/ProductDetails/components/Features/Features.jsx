@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizes, colorId } = product;
-  let count = 1;
+  const [quantity, setQuantity] = useState(1);
 
   const handleClickQuntity = (num) => {
-    if ((num === -1 && count >= 2) || (num === 1 && count <= 12)) {
-      count = count + num;
+    if ((num === -1 && quantity >= 2) || (num === 1 && quantity <= 12)) {
+      setQuantity(quantity + num);
     }
   };
 
@@ -46,14 +46,16 @@ const Features = ({ product }) => {
         <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
           <button
             className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer"
-            onClick={() => handleClickQuntity(1)}
+            onClick={() => handleClickQuntity(-1)}
           >
             -
           </button>
-          <div className="h-8 w-10 flex items-center justify-center">{count}</div>
+          <div className="h-8 w-10 flex items-center justify-center">
+            {quantity}
+          </div>
           <button
             className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer"
-            onClick={() => handleClickQuntity(-1)}
+            onClick={() => handleClickQuntity(1)}
           >
             +
           </button>
