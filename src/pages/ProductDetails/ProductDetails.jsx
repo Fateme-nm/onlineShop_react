@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import userService from "services/user.service";
+import Gallery from "./components/Gallery/Gallery";
 
 const Productdetails = () => {
   // const { name } = useParams();
@@ -25,7 +26,7 @@ const Productdetails = () => {
   return (
     <div>
       <div class="container pt-10 pb-6 flex flex-row-reverse justify-between space-x-32 space-x-reverse">
-        
+        <Gallery mainImg={product.image} images={product.images}/>
         <div className="w-full">
           <h2 class="md:text-3xl text-2xl font-medium mb-4">
             صندل زنانه چرم مشهد مدل J2483001

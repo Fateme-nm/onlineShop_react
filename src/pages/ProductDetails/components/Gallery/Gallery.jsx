@@ -11,6 +11,12 @@ const Gallery = (mainImg, images) => {
         />
       </div>
       <div className="grid grid-cols-5 gap-4 mt-4">
+        <div>
+          <img
+            src={`https://localhost3002${mainImg}`}
+            className="w-full cursor-pointer border border-primary"
+          />
+        </div>
         {images.map((img) => {
           return (
             <div>
