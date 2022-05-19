@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { separate } from "utils";
+import HttpService from "services/HttpService";
+
+const httpService = new HttpService();
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizes, colorId } = product;
   const [quantity, setQuantity] = useState(1);
+  const [category, setCategory] = useState();
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity >= 2) || (num === 1 && quantity <= 12)) {
