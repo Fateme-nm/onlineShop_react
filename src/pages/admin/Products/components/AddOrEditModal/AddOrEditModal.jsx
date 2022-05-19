@@ -95,16 +95,18 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
               onSubmit={formik.handleSubmit}
             >
               <div className="w-full flex justify-between space-x-3">
-                {/* <FieldModal
-                  label="تصویر کالا"
-                  type="file"
-                  accept="image/*"
-                  id="image"
-                  name="image"
-                  formik={formik}
-                  input={true}
-                  imageRef={imageRef}
-                /> */}
+                {editProduct ? null : (
+                  <FieldModal
+                    label="تصویر کالا"
+                    type="file"
+                    accept="image/*"
+                    id="image"
+                    name="image"
+                    formik={formik}
+                    input={true}
+                    imageRef={imageRef}
+                  />
+                )}
                 <FieldModal
                   label="نام کالا"
                   type="text"
