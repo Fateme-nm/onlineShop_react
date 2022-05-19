@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import userService from "services/user.service";
@@ -7,11 +7,12 @@ const Productdetails = () => {
   // const { name } = useParams();
   const location = useLocation();
   const { id } = location.state;
+  const [product, setProduct] = useState()
 
   const handleRequest = async () => {
     try {
       const res = await userService.getProducts(`?id=${id}`)
-      
+      setProduct(res.data)
     }catch(err) {
       console.log(err)
     }
