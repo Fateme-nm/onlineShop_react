@@ -5,7 +5,7 @@ import { jalaliDate } from "utils";
 import TrTbody from "../Table/components/Tr.Tbody";
 import ThThead from "../Table/components/Th.Thead";
 import { updateOrder } from "store/slices/orders";
-import ReactDom from 'react-dom'
+import ReactDOM from "react-dom";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
