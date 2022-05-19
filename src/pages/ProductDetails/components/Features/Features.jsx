@@ -9,12 +9,17 @@ const Features = ({ product }) => {
   const [category, setCategory] = useState();
   const [color, setColor] = useState();
   const [sizes, setSizes] = useState();
+  let selectedSize = null
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
       setQuantity(quantity + num);
     }
   };
+
+  const handleClickSize = (id) => {
+    selectedSize = id
+  }
 
   const handleRequestProduct = async () => {
     await httpService
