@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useParams, useLocation } from "react-router-dom";
 import WithLayoutpages from "hoc/WithLayoutPages";
+import userService from 'services/user.service'
 
 const Productdetails = () => {
   // const { name } = useParams();
   const location = useLocation()
   const {id} = location.state
+
+  useEffect(() => {
+    handleRequest()
+  }, [])
 
   return <div>
     <div class="container pt-10 pb-6 flex flex-row-reverse justify-between space-x-32 space-x-reverse">
