@@ -3,13 +3,20 @@ import { separate, persinaDigit } from "utils";
 import httpService from "services/HttpService";
 
 const Features = ({ product }) => {
-  const { name, categoryId, price, sizeId, colorId, id } = product;
+  const {
+    name,
+    categoryId,
+    price,
+    sizeId,
+    colorId,
+    count: maxQuantity,
+  } = product;
   const [quantity, setQuantity] = useState(1);
-  const [maxQuantity, setMaxQuantity] = useState();
   const [category, setCategory] = useState();
   const [color, setColor] = useState();
   const [sizes, setSizes] = useState();
-  let selectedSize = null
+  const [products, setProducts] = useState([])
+  let selectedSize = null;
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
@@ -18,13 +25,7 @@ const Features = ({ product }) => {
   };
 
   const handleClickSize = (id) => {
-    selectedSize = id
-  }
-
-  const handleRequestProduct = async () => {
-    await httpService
-      .get(`products?id=${id}`)
-      .then((res) => setMaxQuantity(res.data[0].count));
+    selectedSize = id;
   };
 
   const handleRequestCategory = async () => {
@@ -48,11 +49,17 @@ const Features = ({ product }) => {
     setSizes(responses);
   };
 
+  const handleRequestProducts = async () => {
+    await httpService
+      .get(`products?categoryId=${categoryId}&&_limit=3`)
+      .then((res) => setProducts(res.data));
+  }
+
   useEffect(() => {
-    handleRequestProduct();
     handleRequestCategory();
     handleRequestColor();
     handleRequestSize();
+    handleRequestProducts();
   }, []);
 
   return (
