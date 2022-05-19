@@ -1,6 +1,7 @@
 import React from "react";
 
-const Features = ({name, categoryId, price, sizes, colorId}) => {
+const Features = ({product}) => {
+    const {name, categoryId, price, sizes, colorId} = product
   return (
     <>
       <h2 className="md:text-3xl text-2xl font-medium mb-4">
