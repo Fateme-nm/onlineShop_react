@@ -3,11 +3,12 @@ import { separate } from "utils";
 import httpService from "services/HttpService";
 
 const Features = ({ product }) => {
-  const { name, categoryId, price, sizes, colorId, id } = product;
+  const { name, categoryId, price, sizeId, colorId, id } = product;
   const [quantity, setQuantity] = useState(1);
   const [maxQuantity, setMaxQuantity] = useState();
   const [category, setCategory] = useState();
   const [color, setColor] = useState();
+  const [sizes, setSizes] = useState([])
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
@@ -33,14 +34,25 @@ const Features = ({ product }) => {
       .then((res) => setColor(res.data[0].className));
   };
 
+  const handleRequestSize = async () => {
+    const responses = await Promise.all(sizeId.map(sizeId => {
+      return httpService
+        .get(`size?id=${sizeId}`)
+        .then(res => res.data)
+    }))
+    setSizes(responses)
+  };
+
   useEffect(() => {
     handleRequestProduct();
     handleRequestCategory();
     handleRequestColor();
+    handleRequestSize();
   }, []);
 
   return (
     <>
+    {console.log(sizes)}
       <h2 className="md:text-3xl text-2xl font-medium mb-4">{name}</h2>
       <div className="space-x-2 flex flex-row-reverse">
         <span className="text-gray-800">: دسته بندی</span>
@@ -66,7 +78,9 @@ const Features = ({ product }) => {
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">رنگ</h3>
-        <button className={`text-xs border border-gray-200 rounded-sm h-6 w-6 shadow-sm bg-red-600 ${color}`}></button>
+        <button
+          className={`text-xs border border-gray-200 rounded-sm h-6 w-6 shadow-sm bg-red-600 ${color}`}
+        ></button>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">تعداد</h3>
