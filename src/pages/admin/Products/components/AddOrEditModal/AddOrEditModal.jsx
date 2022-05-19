@@ -24,7 +24,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const { edit_id } = useSelector((state) => state.editId);
   const { products } = useSelector((state) => state.products);
   const [editProduct, setEditProduct] = useState(null);
-  const imageRef = useRef()
+  const imageRef = useRef();
 
   const handleClose = () => {
     setAddOrEditModalOn(false);
@@ -52,16 +52,15 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(false);
-      setAddOrEditModalOn(false)
+      setAddOrEditModalOn(false);
       const formData = new FormData();
       Object.entries(values).map((key, value) => {
-        if(key[0] === "image") {
-          formData.append("image", imageRef.current)
-        }
-        else formData.append(key[0], key[1]);
+        if (key[0] === "image") {
+          formData.append("image", imageRef.current);
+        } else formData.append(key[0], key[1]);
       });
       if (edit_id) {
-        formData.append("id", edit_id)
+        formData.append("id", edit_id);
         dispatch(updateProduct(formData))
           .unwrap()
           .catch((err) => {
@@ -96,16 +95,18 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
               onSubmit={formik.handleSubmit}
             >
               <div className="w-full flex justify-between space-x-3">
-                {/* <FieldModal
-                  label="تصویر کالا"
-                  type="file"
-                  accept="image/*"
-                  id="image"
-                  name="image"
-                  formik={formik}
-                  input={true}
-                  imageRef={imageRef}
-                /> */}
+                {editProduct ? null : (
+                  <FieldModal
+                    label="تصویر کالا"
+                    type="file"
+                    accept="image/*"
+                    id="image"
+                    name="image"
+                    formik={formik}
+                    input={true}
+                    imageRef={imageRef}
+                  />
+                )}
                 <FieldModal
                   label="نام کالا"
                   type="text"
