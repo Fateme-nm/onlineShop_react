@@ -3,24 +3,32 @@ import { separate } from "utils";
 import httpService from "services/HttpService";
 
 const Features = ({ product }) => {
-  const { name, categoryId, price, sizes, colorId } = product;
+  const { name, categoryId, price, sizes, colorId, id } = product;
   const [quantity, setQuantity] = useState(1);
+  const [maxQuantity, setMaxQuantity] = useState();
   const [category, setCategory] = useState();
 
   const handleClickQuntity = (num) => {
-    if ((num === -1 && quantity >= 2) || (num === 1 && quantity <= 12)) {
+    if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
       setQuantity(quantity + num);
     }
   };
 
-  const handleRequest = async () => {
+  const handleRequestProduct = async () => {
+    await httpService
+      .get(`products?id=${id}`)
+      .then((res) => setMaxQuantity(res.data[0].count));
+  };
+
+  const handleRequestCategory = async () => {
     await httpService
       .get(`category?id=${categoryId}`)
       .then((res) => setCategory(res.data[0].name));
   };
 
   useEffect(() => {
-    handleRequest();
+    handleRequestProduct();
+    handleRequestCategory();
   }, []);
 
   return (
@@ -58,7 +66,7 @@ const Features = ({ product }) => {
         <h3 className="text-gray-800 mb-1">تعداد</h3>
         <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
           <button
-            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer"
+            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
             onClick={() => handleClickQuntity(-1)}
           >
             -
@@ -67,7 +75,7 @@ const Features = ({ product }) => {
             {quantity}
           </div>
           <button
-            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer"
+            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
             onClick={() => handleClickQuntity(1)}
           >
             +
