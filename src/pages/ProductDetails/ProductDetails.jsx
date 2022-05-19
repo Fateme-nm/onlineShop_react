@@ -12,7 +12,7 @@ const Productdetails = () => {
   const handleRequest = async () => {
     try {
       const res = await userService.getProducts(`?id=${id}`)
-      setProduct(res.data)
+      setProduct(res.data[0])
     }catch(err) {
       console.log(err)
     }
@@ -25,31 +25,7 @@ const Productdetails = () => {
   return (
     <div>
       <div class="container pt-10 pb-6 flex flex-row-reverse justify-between space-x-32 space-x-reverse">
-        <div className="w-full">
-          <div>
-            <img id="main-img" src="./image" class="w-full" />
-          </div>
-          <div class="grid grid-cols-5 gap-4 mt-4">
-            <div>
-              <img
-                src="./image"
-                class="w-full cursor-pointer border border-primary"
-              />
-            </div>
-            <div>
-              <img src="./image" class="w-full cursor-pointer border" />
-            </div>
-            <div>
-              <img src="./image" class="w-full cursor-pointer border" />
-            </div>
-            <div>
-              <img src="./image" class="w-full cursor-pointer border" />
-            </div>
-            <div>
-              <img src="./image" class="w-full cursor-pointer border" />
-            </div>
-          </div>
-        </div>
+        
         <div className="w-full">
           <h2 class="md:text-3xl text-2xl font-medium mb-4">
             صندل زنانه چرم مشهد مدل J2483001
