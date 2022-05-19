@@ -5,6 +5,8 @@ import WithLayoutpages from "hoc/WithLayoutPages";
 const Productdetails = () => {
   // const { name } = useParams();
   const location = useLocation()
+  const {id} = location.state
+
   return <div>
     <div class="container pt-10 pb-6 flex flex-row-reverse justify-between space-x-32 space-x-reverse">
         <div className="w-full">
