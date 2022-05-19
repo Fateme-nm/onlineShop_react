@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { separate } from "utils";
+import { separate, persinaDigit } from "utils";
 import httpService from "services/HttpService";
-import persianDigit from "utils/persianDigit";
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizeId, colorId, id } = product;
@@ -64,7 +63,7 @@ const Features = ({ product }) => {
         <span className="text-gray-600">{category}</span>
       </div>
       <div className="mt-4 space-x-2 flex flex-row-reverse">
-        <span className="text-xl">{separate(price)}</span>
+        <span className="text-xl">{persinaDigit(separate(price))}</span>
         <span className="text-gray-800 pr-2">تومان</span>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
@@ -75,10 +74,10 @@ const Features = ({ product }) => {
               sizes.map((size) => {
                 return (
                   <button
-                    className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
+                    className="text-sm border border-gray-200 rounded-sm h-8 w-8 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
                     onClick={() => handleClickSize(size[0].id)}
                   >
-                    {size[0].name}
+                    {persinaDigit(size[0].name)}
                   </button>
                 );
               })
@@ -88,7 +87,7 @@ const Features = ({ product }) => {
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">رنگ</h3>
         <button
-          className={`text-xs border border-gray-200 rounded-sm h-6 w-6 shadow-sm bg-red-600 ${color}`}
+          className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm bg-red-600 ${color}`}
         ></button>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
@@ -101,7 +100,7 @@ const Features = ({ product }) => {
             -
           </button>
           <div className="h-8 w-10 flex items-center justify-center">
-            {quantity}
+            {persinaDigit(quantity)}
           </div>
           <button
             className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
