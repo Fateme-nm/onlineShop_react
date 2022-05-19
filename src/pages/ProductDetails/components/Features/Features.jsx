@@ -7,6 +7,7 @@ const Features = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [maxQuantity, setMaxQuantity] = useState();
   const [category, setCategory] = useState();
+  const [color, setColor] = useState();
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
@@ -26,9 +27,16 @@ const Features = ({ product }) => {
       .then((res) => setCategory(res.data[0].name));
   };
 
+  const handleRequestColor = async () => {
+    await httpService
+      .get(`color?id=${colorId}`)
+      .then((res) => setColor(res.data[0].className));
+  };
+
   useEffect(() => {
     handleRequestProduct();
     handleRequestCategory();
+    handleRequestColor();
   }, []);
 
   return (
@@ -58,9 +66,7 @@ const Features = ({ product }) => {
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">رنگ</h3>
-        <button className="text-xs border border-gray-200 rounded-sm h-6 w-6 shadow-sm bg-red-600">
-          {colorId}
-        </button>
+        <button className={`text-xs border border-gray-200 rounded-sm h-6 w-6 shadow-sm bg-red-600 ${color}`}></button>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">تعداد</h3>
