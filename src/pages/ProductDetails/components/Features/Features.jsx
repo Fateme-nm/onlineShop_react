@@ -8,7 +8,7 @@ const Features = ({ product }) => {
   const [maxQuantity, setMaxQuantity] = useState();
   const [category, setCategory] = useState();
   const [color, setColor] = useState();
-  const [sizes, setSizes] = useState([])
+  const [sizes, setSizes] = useState();
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
@@ -35,12 +35,12 @@ const Features = ({ product }) => {
   };
 
   const handleRequestSize = async () => {
-    const responses = await Promise.all(sizeId.map(sizeId => {
-      return httpService
-        .get(`size?id=${sizeId}`)
-        .then(res => res.data)
-    }))
-    setSizes(responses)
+    const responses = await Promise.all(
+      sizeId.map((sizeId) => {
+        return httpService.get(`size?id=${sizeId}`).then((res) => res.data);
+      })
+    );
+    setSizes(responses);
   };
 
   useEffect(() => {
@@ -52,7 +52,6 @@ const Features = ({ product }) => {
 
   return (
     <>
-    {console.log(sizes)}
       <h2 className="md:text-3xl text-2xl font-medium mb-4">{name}</h2>
       <div className="space-x-2 flex flex-row-reverse">
         <span className="text-gray-800">: دسته بندی</span>
@@ -65,15 +64,19 @@ const Features = ({ product }) => {
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">سایز</h3>
         <div className="flex items-center space-x-2">
-          <button className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white">
-            38
-          </button>
-          <button className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white">
-            39
-          </button>
-          <button className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white">
-            40
-          </button>
+          {sizes &&
+            React.Children.toArray(
+              sizes.map((size) => {
+                return (
+                  <button
+                    className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
+                    onClick={() => handleClickSize(size[0].id)}
+                  >
+                    {size[0].name}
+                  </button>
+                );
+              })
+            )}
         </div>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
