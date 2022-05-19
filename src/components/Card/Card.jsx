@@ -24,9 +24,9 @@ const Card = ({ imgSrc, name, price, id }) => {
       </div>
       <Link
         to={routes.CART.path}
-        class="absolute bottom-0 block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
+        className="absolute bottom-0 block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
       >
-        <i class="fas fa-shopping-bag pr-2"></i>
+        <i className="fas fa-shopping-bag pr-2"></i>
         افزودن به سبد خرید
       </Link>
     </Link>
