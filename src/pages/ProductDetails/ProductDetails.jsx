@@ -4,6 +4,8 @@ import WithLayoutpages from "hoc/WithLayoutPages";
 import userService from "services/user.service";
 import Gallery from "./components/Gallery/Gallery";
 import Features from "./components/Features/Features";
+import { Link } from "react-router-dom";
+import routes from "routes/routes";
 
 const Productdetails = () => {
   // const { name } = useParams();
@@ -27,62 +29,49 @@ const Productdetails = () => {
   if (product) {
     return (
       <div>
-        <div class="container pt-10 pb-6 flex flex-row-reverse justify-between space-x-32 space-x-reverse">
+        <div class="container pb-6 flex flex-row-reverse justify-between space-x-32 space-x-reverse items-center">
           <Gallery mainImg={product.image} images={product.images} />
           <div className="w-full">
             <Features product={product} />
-            <div class="flex gap-3 pb-5 mt-6">
-              <a
-                href="#"
-                class="bg-primary border border-primary text-white px-8 py-2 font-medium rounded 
+            <div className="flex gap-3 pb-5 mt-6">
+              <Link
+                to={routes.CART.path}
+                className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded 
                       hover:bg-transparent hover:text-primary transition text-sm flex items-center"
               >
-                <span class="mr-2">
-                  <i class="fas fa-shopping-bag"></i>
+                <span className="mr-2">
+                  <i className="fas fa-shopping-bag"></i>
                 </span>{" "}
                 افزودن به سبد خرید
-              </a>
-              <a
-                href="#"
-                class="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded 
+              </Link>
+              <Link
+                to={routes.CART.path}
+                className="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded 
                       hover:bg-transparent hover:text-primary transition text-sm"
               >
-                <span class="mr-2">
-                  <i class="far fa-heart"></i>
+                <span className="mr-2">
+                  <i className="far fa-heart"></i>
                 </span>{" "}
                 ذخیره محصول
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
-        <div class="container pb-16">
-          <h3 class="border-b border-gray-200 text-gray-800 pb-3 font-medium">
+        <div className="container pb-16">
+          <h3 className="border-b border-gray-200 text-gray-800 pb-3 font-medium">
             توضیحات محصول
           </h3>
-          <div class="space-y-3 text-gray-600 pt-3">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis aut
-              corrupti odit maiores qui porro! Corporis architecto voluptate
-              amet odio? Culpa nisi, vitae quia accusamus harum fuga assumenda
-              sed, illo id, sapiente veritatis sunt quis consequuntur dolorem
-              cupiditate? Officia suscipit praesentium facere odit cupiditate
-              quod unde, facilis, officiis accusantium, commodi ad voluptas
-              repellendus itaque blanditiis incidunt enim iure? Quidem quia
-              beatae quis odio dolorem magni, ex natus, pariatur esse,
-              praesentium perferendis nulla neque dolorum nobis. Ullam hic autem
-              earum dolores eos in laborum, similique itaque praesentium magni
-              sequi doloremque eaque, nisi deleniti error officia nemo, sint
-              sunt modi a quos.
-            </p>
+          <div className="space-y-3 text-gray-600 pt-3">
+            <p>{product.description}</p>
           </div>
         </div>
 
-        <div class="container pb-16">
-          <h2 class="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
+        <div className="container pb-16">
+          <h2 className="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
             محصولات مشابه
           </h2>
-          <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-6"></div>
+          <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6"></div>
         </div>
       </div>
     );
