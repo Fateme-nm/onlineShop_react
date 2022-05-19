@@ -5,6 +5,7 @@ import FieldModal from "./FieldModal/FieldModal";
 import { postProduct, updateProduct } from "store/slices/products";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEditId } from "store/slices/editId";
+import ReactDOM from "react-dom";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -78,8 +79,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     validationSchema,
   });
 
-  return (
-    <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
+  return ReactDOM.createPortal(
+    <div className="bg-gray-50/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
           <div className="flex text-md justify-between items-center w-full">
@@ -159,7 +160,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal")
   );
 };
 
