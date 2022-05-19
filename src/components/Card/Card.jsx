@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { separate } from "utils";
+import routes from "routes/routes";
 
 const Card = ({ imgSrc, name, price, id }) => {
   return (
     <Link
       to={`/product/${name}`}
       state={{ id }}
-      className="rounded bg-white shadow-md overflow-hidden w-80 hover:-translate-y-4 transition-all duration-500"
+      className="rounded bg-white shadow-md overflow-hidden w-80 hover:-translate-y-4 transition-all duration-500 relative"
     >
       <div className="relative border-b border-b-gray-200">
         <img src={imgSrc} className="w-full" />
@@ -17,12 +18,17 @@ const Card = ({ imgSrc, name, price, id }) => {
           {name}
         </h4>
         <div className="flex items-baseline mb-1 space-x-2 flex-row-reverse text-gray-600">
-          <p className="pl-2">
-            {separate(price)} 
-          </p>
+          <p className="pl-2 pb-10">{separate(price)}</p>
           <span>تومان</span>
         </div>
       </div>
+      <Link
+        to={routes.CART.path}
+        class="absolute bottom-0 block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
+      >
+        <i class="fas fa-shopping-bag pr-2"></i>
+        افزودن به سبد خرید
+      </Link>
     </Link>
   );
 };

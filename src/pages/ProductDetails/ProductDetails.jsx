@@ -4,7 +4,7 @@ import WithLayoutpages from "hoc/WithLayoutPages";
 
 const Productdetails = () => {
   const { name } = useParams();
-  return <div>ProductDetails</div>;
+  return <div></div>;
 };
 
 export default WithLayoutpages(Productdetails);
