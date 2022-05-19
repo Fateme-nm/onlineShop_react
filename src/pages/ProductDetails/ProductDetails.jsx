@@ -1,30 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import WithLayoutpages from "hoc/WithLayoutPages";
-import userService from "services/user.service";
 import Gallery from "./components/Gallery/Gallery";
 import Features from "./components/Features/Features";
 import { Link } from "react-router-dom";
 import routes from "routes/routes";
+import httpService from "services/HttpService";
+import Card from "components/Card/Card";
 
 const Productdetails = () => {
   // const { name } = useParams();
   const location = useLocation();
   const { id } = location.state;
   const [product, setProduct] = useState();
+  const [products, setProducts] = useState([]);
 
-  const handleRequest = async () => {
-    try {
-      const res = await userService.getProducts(`?id=${id}`);
-      setProduct(res.data[0]);
-    } catch (err) {
-      console.log(err);
-    }
+  const handleRequestSameProducts = async () => {
+    await httpService
+      .get(`products?categoryId=${product.categoryId}&&_limit=3`)
+      .then((res) => setProducts(res.data));
+  };
+
+  const handleRequestProduct = async () => {
+    await httpService
+      .get(`products?id=${id}`)
+      .then((res) => setProduct(res.data[0]));
   };
 
   useEffect(() => {
-    handleRequest();
+    handleRequestProduct();
   }, []);
+
+  useEffect(() => {
+    product && handleRequestSameProducts();
+  }, [product]);
 
   if (product) {
     return (
@@ -71,7 +80,18 @@ const Productdetails = () => {
           <h2 className="text-2xl md:text-3xl font-medium text-gray-800 uppercase mb-6">
             محصولات مشابه
           </h2>
-          <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6"></div>
+          <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
+            {React.Children.toArray(products.map((pro) => {
+              return (
+                <Card
+                  imgSrc={`http://localhost:3002${pro.image}`}
+                  name={pro.name}
+                  price={pro.price}
+                  id={pro.id}
+                />
+              );
+            }))}
+          </div>
         </div>
       </div>
     );

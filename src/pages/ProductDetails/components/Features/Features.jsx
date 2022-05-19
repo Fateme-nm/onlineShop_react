@@ -15,7 +15,6 @@ const Features = ({ product }) => {
   const [category, setCategory] = useState();
   const [color, setColor] = useState();
   const [sizes, setSizes] = useState();
-  const [products, setProducts] = useState([])
   let selectedSize = null;
 
   const handleClickQuntity = (num) => {
@@ -49,17 +48,10 @@ const Features = ({ product }) => {
     setSizes(responses);
   };
 
-  const handleRequestProducts = async () => {
-    await httpService
-      .get(`products?categoryId=${categoryId}&&_limit=3`)
-      .then((res) => setProducts(res.data));
-  }
-
   useEffect(() => {
     handleRequestCategory();
     handleRequestColor();
     handleRequestSize();
-    handleRequestProducts();
   }, []);
 
   return (
