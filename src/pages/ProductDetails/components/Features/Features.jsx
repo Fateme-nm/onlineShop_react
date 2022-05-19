@@ -2,6 +2,14 @@ import React from "react";
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizes, colorId } = product;
+  let count = 1;
+
+  const handleClickQuntity = (num) => {
+    if ((num === -1 && count >= 2) || (num === 1 && count <= 12)) {
+      count = count + num;
+    }
+  };
+
   return (
     <>
       <h2 className="md:text-3xl text-2xl font-medium mb-4">{name}</h2>
@@ -36,11 +44,17 @@ const Features = ({ product }) => {
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">تعداد</h3>
         <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
-          <button className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer" onClick={() => handleClickQuntity(1)}>
+          <button
+            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer"
+            onClick={() => handleClickQuntity(1)}
+          >
             -
           </button>
-          <div className="h-8 w-10 flex items-center justify-center">1</div>
-          <button className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer" onClick={() => handleClickQuntity(-1)}>
+          <div className="h-8 w-10 flex items-center justify-center">{count}</div>
+          <button
+            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer"
+            onClick={() => handleClickQuntity(-1)}
+          >
             +
           </button>
         </div>
