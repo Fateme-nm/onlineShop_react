@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import routes from "routes/routes";
 import httpService from "services/HttpService";
 import Card from "components/Card/Card";
+import { persinaDigit, separate } from "utils";
 
 const Productdetails = () => {
   // const { name } = useParams();
@@ -86,7 +87,7 @@ const Productdetails = () => {
                 <Card
                   imgSrc={`http://localhost:3002${pro.image}`}
                   name={pro.name}
-                  price={pro.price}
+                  price={persinaDigit(separate(pro.price))}
                   id={pro.id}
                 />
               );
