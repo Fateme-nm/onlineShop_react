@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { separate } from "utils";
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizes, colorId } = product;
@@ -18,7 +19,7 @@ const Features = ({ product }) => {
         <span className="text-gray-600">{categoryId}</span>
       </div>
       <div className="mt-4 space-x-2 flex flex-row-reverse">
-        <span className="text-xl">{price}</span>
+        <span className="text-xl">{separate(price)}</span>
         <span className="text-gray-800 pr-2">تومان</span>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
