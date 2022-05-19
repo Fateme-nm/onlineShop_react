@@ -103,6 +103,9 @@ const ordersSlice = createSlice({
                 );
                 state.showProducts = newShow
             } else state.showProducts = state.products
+        },
+        pushToPriceEntityChanges: (state, action) => {
+            state.priceEntityChanges.push(action.payload)
         }
     },
     extraReducers: {
@@ -138,5 +141,5 @@ const ordersSlice = createSlice({
 });
 
 const { reducer, actions } = ordersSlice;
-export const { handleShowProducts } = actions
+export const { handleShowProducts, pushToPriceEntityChanges } = actions
 export default reducer;
