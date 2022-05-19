@@ -2,7 +2,7 @@ import React from "react";
 
 const Gallery = ({mainImg, images}) => {
   return (
-    <div className="w-full">
+    <div className="w-2/3">
       <div>
         <img
           id="main-img"
@@ -10,7 +10,7 @@ const Gallery = ({mainImg, images}) => {
           className="w-full"
         />
       </div>
-      <div className="grid grid-cols-5 gap-4 mt-4">
+      <div className="grid grid-cols-4 gap-4 mb-8">
         <div>
           <img
             src={`http://localhost:3002${mainImg}`}

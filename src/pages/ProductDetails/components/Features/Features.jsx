@@ -58,8 +58,8 @@ const Features = ({ product }) => {
   return (
     <>
       <h2 className="md:text-3xl text-2xl font-medium mb-4">{name}</h2>
-      <div className="space-x-2 flex flex-row-reverse">
-        <span className="text-gray-800">: دسته بندی</span>
+      <div className="flex flex-row-reverse items-center">
+        <span className="text-gray-800 ml-2"> دسته بندی</span>
         <span className="text-gray-600">{category}</span>
       </div>
       <div className="mt-4 space-x-2 flex flex-row-reverse">
