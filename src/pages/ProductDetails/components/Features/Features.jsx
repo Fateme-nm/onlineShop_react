@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { separate } from "utils";
-import HttpService from "services/HttpService";
-
-const httpService = new HttpService();
+import httpService from "services/HttpService";
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizes, colorId } = product;
@@ -15,12 +13,22 @@ const Features = ({ product }) => {
     }
   };
 
+  const handleRequest = async () => {
+    await httpService
+      .get(`category?id=${categoryId}`)
+      .then((res) => setCategory(res.data[0].name));
+  };
+
+  useEffect(() => {
+    handleRequest();
+  }, []);
+
   return (
     <>
       <h2 className="md:text-3xl text-2xl font-medium mb-4">{name}</h2>
       <div className="space-x-2 flex flex-row-reverse">
         <span className="text-gray-800">: دسته بندی</span>
-        <span className="text-gray-600">{categoryId}</span>
+        <span className="text-gray-600">{category}</span>
       </div>
       <div className="mt-4 space-x-2 flex flex-row-reverse">
         <span className="text-xl">{separate(price)}</span>
