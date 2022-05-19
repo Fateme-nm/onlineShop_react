@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearId } from "store/slices/removeId";
 import { deleteProduct } from "store/slices/products";
+import ReactDOM from "react-dom";
 
 const RemoveModal = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const RemoveModal = () => {
     dispatch(clearId());
   };
 
-  return (
+  return ReactDOM.createPortal(
     <div className="bg-zinc-200 opacity-80 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
         <div className="flex-col justify-center bg-white py-10 px-24 border-4 border-primary rounded-xl">
@@ -38,7 +39,8 @@ const RemoveModal = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal")
   );
 };
 
