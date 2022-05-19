@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { separate } from "utils";
 import httpService from "services/HttpService";
+import persianDigit from "utils/persianDigit";
 
 const Features = ({ product }) => {
   const { name, categoryId, price, sizeId, colorId, id } = product;
