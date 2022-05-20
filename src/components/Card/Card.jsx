@@ -8,7 +8,7 @@ const Card = ({ imgSrc, name, price, id }) => {
     <Link
       to={`/product/${name}`}
       state={{ id }}
-      className="rounded bg-white shadow-md overflow-hidden w-80 hover:-translate-y-4 transition-all duration-500 relative"
+      className="rounded bg-white shadow-md overflow-hidden w-80 hover:-translate-y-4 transition-all duration-500 relative mb-5"
     >
       <div className="relative border-b border-b-gray-200">
         <img src={imgSrc} className="w-full" />
