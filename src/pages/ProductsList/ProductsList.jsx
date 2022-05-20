@@ -27,7 +27,7 @@ const Productslist = () => {
   }, []);
   return (
     <div className="container flex flex-row-reverse justify-between items-start mt-8">
-      <Sidebar />
+      <Sidebar activeCategory={id}/>
       <div className="w-full flex flex-col lg:mr-10 xl:mr-20">
         <Filter />
         <div className="flex justify-center md:justify-between flex-wrap">
