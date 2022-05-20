@@ -51,7 +51,7 @@ const Features = ({ product }) => {
   useEffect(() => {
     handleRequestCategory();
     handleRequestColor();
-    handleRequestSize();
+    sizeId && handleRequestSize();
   }, []);
 
   return (
