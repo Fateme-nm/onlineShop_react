@@ -24,6 +24,25 @@ const Sidebar = ({
               دسته بندی
             </h3>
             <div className="space-y-2 flex flex-col items-end">
+              <Link
+                className="flex items-center flex-row-reverse space-x-2 space-x-reverse"
+                to={`/products`}
+                state={{ id: null }}
+              >
+                <input
+                  checked={!activeCategory}
+                  type="checkbox"
+                  id="all"
+                  // onChange={() => {handleChange(cat.id)}}
+                  className="focus:ring-0 rounded-sm cursor-pointer accent-primary"
+                />
+                <label
+                  htmlFor="all"
+                  className="text-gray-600 ml-3 cursor-pointer"
+                >
+                  همه دسته ها
+                </label>
+              </Link>
               {categoris &&
                 categoris.map((cat) => {
                   return (
@@ -96,7 +115,7 @@ const Sidebar = ({
                   return (
                     <button
                       className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm focus:ring-primary focus:ring-2`}
-                      style={{backgroundColor:`${color.hex}`}}
+                      style={{ backgroundColor: `${color.hex}` }}
                     ></button>
                   );
                 })}

@@ -25,8 +25,9 @@ const Productslist = () => {
   //   }
 
   const handleRequestProducts = async () => {
+    const catId = id ? `categoryId=${id}&`: ""
     await httpService
-      .get(`products?categoryId=${id}&_sort=id&_order=desc`)
+      .get(`products?${catId}&_sort=id&_order=desc`)
       .then((res) => setProducts(res.data));
   };
 
