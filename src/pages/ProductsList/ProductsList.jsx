@@ -9,18 +9,20 @@ import { useLocation } from "react-router-dom";
 
 const Productslist = () => {
   const location = useLocation();
-  const {id} = location.state
-//   const [activeCategory, setActiveCategory] = useState(id);
+  const { id } = location.state;
+  //   const [activeCategory, setActiveCategory] = useState(id);
   const [products, setProducts] = useState([]);
   const [categoris, setCategories] = useState();
+  const [sizez, setSizes] = useState();
+  const [colors, setColors] = useState();
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 6;
   const pagesVisited = pageNumber * productsPerPage;
 
-//   const handleAcitveCategory = (catId) => {
-//     setActiveCategory(catId)
-//   }
+  //   const handleAcitveCategory = (catId) => {
+  //     setActiveCategory(catId)
+  //   }
 
   const handleRequestProducts = async () => {
     await httpService
@@ -32,21 +34,33 @@ const Productslist = () => {
     await httpService.get("category").then((res) => setCategories(res.data));
   };
 
+  const handleRequestSize = async () => {
+    await httpService.get("size").then((res) => setSizes(res.data));
+  };
+
+  const handleRequestColor = async () => {
+    await httpService.get("color").then((res) => setColors(res.data));
+  };
+
   useEffect(() => {
     handleRequestProducts();
     handleRequestCategoris();
-  }, []);
+    handleRequestSize();
+    handleRequestColor();
+  }, [id]);
 
-//   useEffect(() => {
-//     handleRequestProducts();
-//   }, [activeCategory]);
+  //   useEffect(() => {
+  //     handleRequestProducts();
+  //   }, [activeCategory]);
 
   return (
     <div className="container flex flex-row-reverse justify-between items-start mt-8">
-        {console.log(products, categoris)}
+      {console.log(products, categoris)}
       <Sidebar
         activeCategory={id}
         categoris={categoris}
+        colors={colors}
+        sizez={sizez}
         // handleAcitveCategory={(catId) => handleAcitveCategory(catId)}
       />
       <div className="w-full flex flex-col lg:mr-10 xl:mr-20">

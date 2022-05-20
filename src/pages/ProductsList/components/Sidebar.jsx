@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { persinaDigit } from "utils";
 
-const Sidebar = ({ activeCategory, categoris, handleAcitveCategory }) => {
+const Sidebar = ({
+  activeCategory,
+  categoris,
+  colors,
+  sizes,
+  handleAcitveCategory,
+}) => {
   // const handleChange = (catId) => {
   //   catId !== activeCategory && handleAcitveCategory(catId)
   // }
@@ -22,7 +29,7 @@ const Sidebar = ({ activeCategory, categoris, handleAcitveCategory }) => {
                   return (
                     <Link
                       className="flex items-center flex-row-reverse space-x-2 space-x-reverse"
-                      to={`/prodcuts/${cat.name}`}
+                      to={`/products/${cat.name}`}
                       state={{ id: cat.id }}
                     >
                       <input
@@ -66,77 +73,17 @@ const Sidebar = ({ activeCategory, categoris, handleAcitveCategory }) => {
               سایز
             </h3>
             <div className="flex items-center gap-2">
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  className="hidden"
-                  id="size-xs"
-                />
-                <label
-                  htmlFor="size-xs"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  XS
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  className="hidden"
-                  id="size-s"
-                />
-                <label
-                  htmlFor="size-s"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  S
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  className="hidden"
-                  id="size-m"
-                  checked
-                />
-                <label
-                  htmlFor="size-m"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  M
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  className="hidden"
-                  id="size-l"
-                />
-                <label
-                  htmlFor="size-l"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  L
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  className="hidden"
-                  id="size-xl"
-                />
-                <label
-                  htmlFor="size-xl"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  XL
-                </label>
-              </div>
+              {sizes &&
+                sizes.map((size) => {
+                  return (
+                    <button
+                      className="text-sm border border-gray-200 rounded-sm h-8 w-8 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
+                      onClick={() => {}}
+                    >
+                      {persinaDigit(size.name)}
+                    </button>
+                  );
+                })}
             </div>
           </div>
           <div className="pt-4">
