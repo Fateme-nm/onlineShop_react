@@ -9,13 +9,18 @@ import { useLocation } from "react-router-dom";
 
 const Productslist = () => {
   const location = useLocation();
-  const {id} = location.state;
+  const {id} = location.state
+//   const [activeCategory, setActiveCategory] = useState(id);
   const [products, setProducts] = useState([]);
-  const [categoris, setCategories] = useState([]);
+  const [categoris, setCategories] = useState();
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 6;
   const pagesVisited = pageNumber * productsPerPage;
+
+//   const handleAcitveCategory = (catId) => {
+//     setActiveCategory(catId)
+//   }
 
   const handleRequestProducts = async () => {
     await httpService
@@ -24,18 +29,26 @@ const Productslist = () => {
   };
 
   const handleRequestCategoris = async () => {
-    await httpService
-      .get(`category`)
-      .then((res) => setCategories(res.data));
+    await httpService.get("category").then((res) => setCategories(res.data));
   };
 
   useEffect(() => {
     handleRequestProducts();
     handleRequestCategoris();
   }, []);
+
+//   useEffect(() => {
+//     handleRequestProducts();
+//   }, [activeCategory]);
+
   return (
     <div className="container flex flex-row-reverse justify-between items-start mt-8">
-      <Sidebar activeCategory={id} categoris={categoris}/>
+        {console.log(products, categoris)}
+      <Sidebar
+        activeCategory={id}
+        categoris={categoris}
+        // handleAcitveCategory={(catId) => handleAcitveCategory(catId)}
+      />
       <div className="w-full flex flex-col lg:mr-10 xl:mr-20">
         <Filter />
         <div className="flex justify-center md:justify-between flex-wrap">

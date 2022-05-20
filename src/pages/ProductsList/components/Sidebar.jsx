@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Sidebar = ({activeCategory, categories}) => {
+const Sidebar = ({ activeCategory, categoris, handleAcitveCategory }) => {
+  // const handleChange = (catId) => {
+  //   catId !== activeCategory && handleAcitveCategory(catId)
+  // }
   return (
     <aside className="hidden lg:block lg:w-1/3 xl:w-1/2">
       <div className="col-span-1 bg-white px-4 pt-4 pb-6 shadow rounded lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
@@ -12,63 +16,31 @@ const Sidebar = ({activeCategory, categories}) => {
             <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
               دسته بندی
             </h3>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="Bedroom"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  htmlFor="Bedroom"
-                  className="text-gray-600 ml-3 cursor-pointer"
-                >
-                  Bedroom
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(15)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="Sofa"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  htmlFor="Sofa"
-                  className="text-gray-600 ml-3 cursor-pointer"
-                >
-                  Sofa
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(05)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="Office"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  htmlFor="Office"
-                  className="text-gray-600 ml-3 cursor-pointer"
-                >
-                  Office
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(09)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="Outdoor"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  htmlFor="Outdoor"
-                  className="text-gray-600 ml-3 cursor-pointer"
-                >
-                  Outdoor
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(19)</div>
-              </div>
+            <div className="space-y-2 flex flex-col items-end">
+              {categoris &&
+                categoris.map((cat) => {
+                  return (
+                    <Link
+                      className="flex items-center flex-row-reverse space-x-2 space-x-reverse"
+                      to={`/prodcuts/${cat.name}`}
+                      state={{ id: cat.id }}
+                    >
+                      <input
+                        checked={cat.id === activeCategory}
+                        type="checkbox"
+                        id={cat.id}
+                        // onChange={() => {handleChange(cat.id)}}
+                        className="focus:ring-0 rounded-sm cursor-pointer accent-primary"
+                      />
+                      <label
+                        htmlFor={cat.id}
+                        className="text-gray-600 ml-3 cursor-pointer"
+                      >
+                        {cat.name}
+                      </label>
+                    </Link>
+                  );
+                })}
             </div>
           </div>
           <div className="pt-4">
