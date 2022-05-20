@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { separate } from "utils";
+import { separate, persinaDigit } from "utils";
 import routes from "routes/routes";
 
 const Card = ({ imgSrc, name, price, id }) => {
@@ -18,7 +18,7 @@ const Card = ({ imgSrc, name, price, id }) => {
           {name}
         </h4>
         <div className="flex items-baseline mb-1 space-x-2 flex-row-reverse text-gray-600">
-          <p className="pl-2 pb-10">{separate(price)}</p>
+          <p className="pl-2 pb-10">{persinaDigit(separate(price))}</p>
           <span>تومان</span>
         </div>
       </div>
