@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Card from "components/Card/Card";
 import { Link } from "react-router-dom";
-import userService from "services/user.service";
+import httpService from "services/HttpService";
 
 const CardsGroup = ({ title, id }) => {
   const [products, setProducts] = useState([]);
 
-  const handleRequest = async () => {
-    try {
-      const res = await userService.getProducts(`?_limit=3&&categoryId=${id}`);
-      setProducts(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+  const handleRequestProducts = async () => {
+    await httpService
+      .get(`products?_limit=3&categoryId=${id}&_sort=id&_order=desc`)
+      .then((res) => setProducts(res.data));
   };
 
   useEffect(() => {
-    handleRequest();
+    handleRequestProducts();
   }, []);
   
   return (
