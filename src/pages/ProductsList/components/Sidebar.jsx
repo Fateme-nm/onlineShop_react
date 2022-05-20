@@ -91,24 +91,11 @@ const Sidebar = ({
               رنگ
             </h3>
             <div className="flex items-center gap-2 flex-wrap justify-end">
-              {/* <div className="color-selector">
-                <input
-                  type="radio"
-                  name="color"
-                  className="hidden"
-                  id="color-red"
-                  checked
-                />
-                <label
-                  htmlFor="color-red"
-                  className="text-xs border border-gray-200 rounded-sm h-5 w-5 flex items-center justify-center cursor-pointer shadow-sm"
-                ></label>
-              </div> */}
               {colors &&
                 colors.map((color) => {
                   return (
                     <button
-                      className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm`}
+                      className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm focus:ring-primary focus:ring-2`}
                       style={{backgroundColor:`${color.hex}`}}
                     ></button>
                   );
