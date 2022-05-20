@@ -23,6 +23,7 @@ const CardsGroup = ({ title, id }) => {
     <div className="container py-8">
       <Link
         to={`/products/${title}`}
+        state={{id}}
         className="text-2xl font-medium text-gray-800 uppercase mb-8 cursor-pointer hover:text-primary flex justify-end items-center"
       >
         <p>کفش {title}</p>

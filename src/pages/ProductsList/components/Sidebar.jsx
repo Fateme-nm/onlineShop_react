@@ -2,8 +2,8 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <aside>
-      <div className="col-span-1 bg-white px-4 pt-4 pb-6 shadow rounded overflow-hidden absolute lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
+    <aside className="hidden lg:block lg:w-1/3 xl:w-1/2">
+      <div className="col-span-1 bg-white px-4 pt-4 pb-6 shadow rounded lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
         <div className="divide-gray-200 divide-y space-y-5 relative">
           <div className="relative">
             <div className="lg:hidden text-gray-400 hover:text-primary text-lg absolute right-0 top-0 cursor-pointer">
