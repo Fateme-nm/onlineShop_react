@@ -36,7 +36,7 @@ const Features = ({ product }) => {
   const handleRequestColor = async () => {
     await httpService
       .get(`color?id=${colorId}`)
-      .then((res) => setColor(res.data[0].className));
+      .then((res) => setColor(res.data[0]));
   };
 
   const handleRequestSize = async () => {
@@ -86,7 +86,8 @@ const Features = ({ product }) => {
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">رنگ</h3>
         <button
-          className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm bg-red-600 ${color}`}
+          className={'text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm'}
+          style={color && {backgroundColor: `${color.hex}`}}
         ></button>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">

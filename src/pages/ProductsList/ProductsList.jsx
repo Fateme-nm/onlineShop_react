@@ -13,7 +13,7 @@ const Productslist = () => {
   //   const [activeCategory, setActiveCategory] = useState(id);
   const [products, setProducts] = useState([]);
   const [categoris, setCategories] = useState();
-  const [sizez, setSizes] = useState();
+  const [sizes, setSizes] = useState();
   const [colors, setColors] = useState();
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -55,12 +55,11 @@ const Productslist = () => {
 
   return (
     <div className="container flex flex-row-reverse justify-between items-start mt-8">
-      {console.log(products, categoris)}
       <Sidebar
         activeCategory={id}
         categoris={categoris}
         colors={colors}
-        sizez={sizez}
+        sizes={sizes}
         // handleAcitveCategory={(catId) => handleAcitveCategory(catId)}
       />
       <div className="w-full flex flex-col lg:mr-10 xl:mr-20">

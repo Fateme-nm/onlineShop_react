@@ -72,7 +72,7 @@ const Sidebar = ({
             <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
               سایز
             </h3>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap justify-end">
               {sizes &&
                 sizes.map((size) => {
                   return (
@@ -90,8 +90,8 @@ const Sidebar = ({
             <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
               رنگ
             </h3>
-            <div className="flex items-center gap-2">
-              <div className="color-selector">
+            <div className="flex items-center gap-2 flex-wrap justify-end">
+              {/* <div className="color-selector">
                 <input
                   type="radio"
                   name="color"
@@ -103,31 +103,16 @@ const Sidebar = ({
                   htmlFor="color-red"
                   className="text-xs border border-gray-200 rounded-sm h-5 w-5 flex items-center justify-center cursor-pointer shadow-sm"
                 ></label>
-              </div>
-              <div className="color-selector">
-                <input
-                  type="radio"
-                  name="color"
-                  class="hidden"
-                  id="color-white"
-                />
-                <label
-                  htmlFor="color-white"
-                  className="text-xs border border-gray-200 rounded-sm h-5 w-5 flex items-center justify-center cursor-pointer shadow-sm"
-                ></label>
-              </div>
-              <div className="color-selector">
-                <input
-                  type="radio"
-                  name="color"
-                  class="hidden"
-                  id="color-black"
-                />
-                <label
-                  htmlFor="color-black"
-                  className="text-xs border border-gray-200 rounded-sm h-5 w-5 flex items-center justify-center cursor-pointer shadow-sm"
-                ></label>
-              </div>
+              </div> */}
+              {colors &&
+                colors.map((color) => {
+                  return (
+                    <button
+                      className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm`}
+                      style={{backgroundColor:`${color.hex}`}}
+                    ></button>
+                  );
+                })}
             </div>
           </div>
         </div>
