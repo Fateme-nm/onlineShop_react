@@ -22,10 +22,8 @@ const Productdetails = () => {
       .then((res) => setProducts(res.data));
   };
 
-  const handleRequestProduct = async () => {
-    await httpService
-      .get(`products?id=${id}`)
-      .then((res) => setProduct(res.data[0]));
+  const handleRequestProduct = () => {
+    httpService.get(`products?id=${id}`).then((res) => setProduct(res.data[0]));
   };
 
   useEffect(() => {
@@ -55,9 +53,7 @@ const Productdetails = () => {
                   افزودن به سبد خرید
                 </Link>
               ) : (
-                <div
-                  className="bg-gray-400 border border-gray-400 text-white px-8 py-2 font-medium rounded transition text-sm flex items-center"
-                >
+                <div className="bg-gray-400 border border-gray-400 text-white px-8 py-2 font-medium rounded transition text-sm flex items-center">
                   <span className="mr-2">
                     <i className="fas fa-shopping-bag"></i>
                   </span>{" "}
