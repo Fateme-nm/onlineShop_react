@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import  ReactDOM from 'react-dom';
 
 const GalleryModal = ({activeImage ,setActiveImage, images}) => {
     return ReactDOM.createPortal(
-        <div className="bg-gray-400/75 fixed inset-0 z-50">
+        <div className="bg-gray-300/75 fixed inset-0 z-50">
           <div className="flex h-screen justify-center items-center">
             <div className="flex-col justify-center bg-white py-6 px-10 rounded-xl overflow-hidden shadow-md" style={{height: '85%'}}>
               <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
