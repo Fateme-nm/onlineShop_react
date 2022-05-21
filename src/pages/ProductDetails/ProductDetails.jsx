@@ -16,8 +16,8 @@ const Productdetails = () => {
   const [product, setProduct] = useState();
   const [products, setProducts] = useState([]);
 
-  const handleRequestSameProducts = async () => {
-    await httpService
+  const handleRequestSimilarProducts = () => {
+    httpService
       .get(`products?categoryId=${product.categoryId}&&_limit=3`)
       .then((res) => setProducts(res.data));
   };
@@ -31,7 +31,7 @@ const Productdetails = () => {
   }, []);
 
   useEffect(() => {
-    product && handleRequestSameProducts();
+    product && handleRequestSimilarProducts();
   }, [product]);
 
   if (product) {
