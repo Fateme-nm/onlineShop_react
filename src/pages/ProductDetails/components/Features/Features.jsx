@@ -63,7 +63,7 @@ const Features = ({ product, addToCart }) => {
     addToCart &&
       dispatch(
         handleAddToCart({
-          name,
+          productId: product.id,
           colorId,
           sizeId: selectedSize,
           price,

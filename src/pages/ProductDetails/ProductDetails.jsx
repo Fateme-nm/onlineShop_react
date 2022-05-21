@@ -45,29 +45,28 @@ const Productdetails = () => {
         <Button classes={"bg-gray-400 border-gray-400"}>اتمام موجودی</Button>
       );
     } else {
-      const isExistInCart = cartProducts.find((pro) => pro.ProductId === id);
+      const isExistInCart = cartProducts.find((pro) => pro.productId === id);
       if (isExistInCart) {
         return (
           <Link to={routes.CART.path}>
-            <Button classes={"border-primary text-gray-500"}>
-              موجود در سبد خرید شما
+            <Button classes={"border-primary text-primary"}>
+              افزوده شده به سبد خرید
             </Button>
           </Link>
         );
-      } else {
-        return (
-          <Button
-            classes={
-              "bg-primary border-primary hover:bg-transparent hover:text-primary"
-            }
-            classIcon={"fas fa-shopping-bag"}
-            cartBtn={true}
-            handleAddToCart={handleAddToCart}
-          >
-            افزودن به سبد خرید
-          </Button>
-        );
       }
+      return (
+        <Button
+          classes={
+            "bg-primary border-primary hover:bg-transparent hover:text-primary"
+          }
+          classIcon={"fas fa-shopping-bag"}
+          cartBtn={true}
+          handleAddToCart={handleAddToCart}
+        >
+          افزودن به سبد خرید
+        </Button>
+      );
     }
   };
 
@@ -82,10 +81,9 @@ const Productdetails = () => {
               {handleShowButton()}
               <Button
                 classes={
-                  "border-gray-300 hover:bg-transparent hover:text-primary text-gray-500"
-                }
+                  "border-gray-300 hover:border-primary hover:text-primary text-gray-500"}
                 classIcon={"far fa-heart"}
-              >
+                >
                 ذخیره محصول
               </Button>
             </div>
