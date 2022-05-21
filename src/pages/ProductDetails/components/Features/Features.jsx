@@ -11,6 +11,11 @@ const Features = ({ product }) => {
     colorId,
     count: maxQuantity,
   } = product;
+  const [quantity, setQuantity] = useState(1); //quantity selected
+  const [category, setCategory] = useState(); //category obj of product selected
+  const [color, setColor] = useState(); //color obj of product selected
+  const [sizes, setSizes] = useState(); //sizes array of product selected
+  const [selectedSize, setSelectedSize] = useState(sizeId[0]); // selected size of product
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
