@@ -3,8 +3,6 @@ import { useParams, useLocation } from "react-router-dom";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Gallery from "./components/Gallery/Gallery";
 import Features from "./components/Features/Features";
-import { Link } from "react-router-dom";
-import routes from "routes/routes";
 import httpService from "services/HttpService";
 import Card from "components/Card/Card";
 import { persinaDigit, separate } from "utils";
@@ -43,25 +41,21 @@ const Productdetails = () => {
             <Features product={product} />
             <div className="flex gap-3 pb-5 mt-6">
               {product.count >= 1 ? (
-                <Link
-                  to={routes.CART.path}
-                  className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded hover:bg-transparent hover:text-primary transition text-sm flex items-center"
-                >
+                <button className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded hover:bg-transparent hover:text-primary transition text-sm flex items-center">
                   <span className="mr-2">
                     <i className="fas fa-shopping-bag"></i>
                   </span>{" "}
                   افزودن به سبد خرید
-                </Link>
+                </button>
               ) : (
-                <div className="bg-gray-400 border border-gray-400 text-white px-8 py-2 font-medium rounded transition text-sm flex items-center">
+                <button className="bg-gray-400 border border-gray-400 text-white px-8 py-2 font-medium rounded transition text-sm flex items-center">
                   <span className="mr-2">
                     <i className="fas fa-shopping-bag"></i>
                   </span>{" "}
                   اتمام موجودی
-                </div>
+                </button>
               )}
-              <Link
-                to={routes.CART.path}
+              <button
                 className="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded 
                       hover:bg-transparent hover:text-primary transition text-sm"
               >
@@ -69,7 +63,7 @@ const Productdetails = () => {
                   <i className="far fa-heart"></i>
                 </span>{" "}
                 ذخیره محصول
-              </Link>
+              </button>
             </div>
           </div>
         </div>
