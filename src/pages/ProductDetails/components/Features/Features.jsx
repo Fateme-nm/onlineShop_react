@@ -63,11 +63,11 @@ const Features = ({ product, addToCart }) => {
     addToCart &&
       dispatch(
         handleAddToCart({
-          name: name,
-          colorId: colorId,
+          name,
+          colorId,
           sizeId: selectedSize,
-          price: price,
-          quantity: quantity,
+          price,
+          quantity,
         })
       );
   }, [addToCart]);
