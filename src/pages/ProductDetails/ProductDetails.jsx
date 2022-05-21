@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import Gallery from "./components/Gallery/Gallery";
 import Features from "./components/Features/Features";
@@ -7,6 +7,8 @@ import httpService from "services/HttpService";
 import Card from "components/Card/Card";
 import { persinaDigit, separate } from "utils";
 import Button from "./components/Button/Button";
+import { useSelector } from "react-redux";
+import routes from "routes/routes";
 
 const Productdetails = () => {
   // const { name } = useParams();
@@ -15,6 +17,7 @@ const Productdetails = () => {
   const [product, setProduct] = useState();
   const [products, setProducts] = useState([]);
   const [addToCart, setAddToCart] = useState(false);
+  const { cartProducts } = useSelector((state) => state.cart);
 
   const handleAddToCart = () => setAddToCart(true);
 
@@ -36,6 +39,38 @@ const Productdetails = () => {
     product && handleRequestSimilarProducts();
   }, [product]);
 
+  const handleShowButton = () => {
+    if (product.count < 1) {
+      return (
+        <Button classes={"bg-gray-400 border-gray-400"}>اتمام موجودی</Button>
+      );
+    } else {
+      const isExistInCart = cartProducts.find((pro) => pro.ProductId === id);
+      if (isExistInCart) {
+        return (
+          <Link to={routes.CART.path}>
+            <Button classes={"border-primary text-gray-500"}>
+              موجود در سبد خرید شما
+            </Button>
+          </Link>
+        );
+      } else {
+        return (
+          <Button
+            classes={
+              "bg-primary border-primary hover:bg-transparent hover:text-primary"
+            }
+            classIcon={"fas fa-shopping-bag"}
+            cartBtn={true}
+            handleAddToCart={handleAddToCart}
+          >
+            افزودن به سبد خرید
+          </Button>
+        );
+      }
+    }
+  };
+
   if (product) {
     return (
       <div>
@@ -44,22 +79,11 @@ const Productdetails = () => {
           <div className="w-full">
             <Features product={product} addToCart={addToCart} />
             <div className="flex gap-3 pb-5 mt-6">
-              {product.count >= 1 ? (
-                <Button
-                  classes={"bg-primary border-primary hover:bg-transparent hover:text-primary"}
-                  classIcon={"fas fa-shopping-bag"}
-                  cartBtn={true}
-                  handleAddToCart={handleAddToCart}
-                >
-                  افزودن به سبد خرید
-                </Button>
-              ) : (
-                <Button classes={"bg-gray-400 border-gray-400"}>
-                  اتمام موجودی
-                </Button>
-              )}
+              {handleShowButton()}
               <Button
-                classes={"border-gray-300 hover:bg-transparent hover:text-primary text-gray-500"}
+                classes={
+                  "border-gray-300 hover:bg-transparent hover:text-primary text-gray-500"
+                }
                 classIcon={"far fa-heart"}
               >
                 ذخیره محصول
