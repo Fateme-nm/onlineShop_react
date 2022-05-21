@@ -1,4 +1,5 @@
 import React from 'react';
+import  ReactDOM from 'react-dom';
 
 const GalleryModal = ({handleClose, images}) => {
     return ReactDOM.createPortal(
@@ -12,7 +13,18 @@ const GalleryModal = ({handleClose, images}) => {
                 <p>تصاویر</p>
               </div>
               <div className="flex justify-between">
-                <div></div>
+                <div className='flex flex-col'>
+                  {images.map(img => {
+                    return (
+                      <div onClick={() => {}}>
+                        <img
+                          src={`http://localhost:3002${img}`}
+                          className="cursor-pointer border border-gray-300 rounded-md hover:border-primary"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
                 <div></div>
               </div>
             </div>

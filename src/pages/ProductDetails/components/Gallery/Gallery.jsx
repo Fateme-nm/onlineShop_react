@@ -14,10 +14,10 @@ const Gallery = ({ mainImg, images }) => {
           />
         </div>
         <div className="grid grid-cols-4 gap-4 mb-8">
-          <div>
+          <div onClick={() => setOpenModal(true)}>
             <img
               src={`http://localhost:3002${mainImg}`}
-              className="w-full cursor-pointer border border-primary"
+              className="w-full cursor-pointer border border-gray-300 rounded-md hover:border-primary"
             />
           </div>
           {images &&
@@ -26,7 +26,7 @@ const Gallery = ({ mainImg, images }) => {
                 <div onClick={() => setOpenModal(true)}>
                   <img
                     src={`http://localhost:3002${img}`}
-                    className="w-full cursor-pointer border border-gray-500"
+                    className="w-full cursor-pointer border border-gray-300 rounded-md hover:border-primary"
                   />
                 </div>
               );
