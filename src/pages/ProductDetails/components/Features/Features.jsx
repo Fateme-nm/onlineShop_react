@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { separate, persinaDigit } from "utils";
 import httpService from "services/HttpService";
+import { useDispatch } from "react-redux";
+import handleAddToCart from 'store/slices/cart'
 
-const Features = ({ product }) => {
+const Features = ({ product, addToCart }) => {
   const {
     name,
     categoryId,
@@ -16,6 +18,8 @@ const Features = ({ product }) => {
   const [color, setColor] = useState(); //color obj of product selected
   const [sizes, setSizes] = useState(); //sizes array of product selected
   const [selectedSize, setSelectedSize] = useState(sizeId[0]); // selected size of product
+
+  const dispatch = useDispatch();
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
@@ -54,6 +58,18 @@ const Features = ({ product }) => {
     handleRequestColor();
     sizeId && handleRequestSize();
   }, []);
+
+  useEffect(() => {
+    dispatch(
+      handleAddToCart({
+        name,
+        colorId,
+        sizeId: selectedSize,
+        price,
+        quantity,
+      })
+    );
+  }, [addToCart]);
 
   return (
     <>
