@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { separate, persinaDigit } from "utils";
 import httpService from "services/HttpService";
 import { useDispatch } from "react-redux";
-import handleAddToCart from 'store/slices/cart'
+import {handleAddToCart} from 'store/slices/cart'
 
 const Features = ({ product, addToCart }) => {
   const {
@@ -62,12 +62,12 @@ const Features = ({ product, addToCart }) => {
   useEffect(() => {
     dispatch(
       handleAddToCart({
-        name,
-        colorId,
+        name: name,
+        colorId: colorId,
         sizeId: selectedSize,
-        price,
-        quantity,
-      })
+        price: price,
+        quantity: quantity,
+    })
     );
   }, [addToCart]);
 

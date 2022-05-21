@@ -6,6 +6,7 @@ import productsReducer from './slices/products';
 import removeIdReducer from './slices/removeId';
 import editIdReducer from './slices/editId';
 import checkIdReducer from './slices/checkId';
+import cartReducer from './slices/cart'
 
 const reducer = {
     auth: authReducer,
@@ -14,7 +15,8 @@ const reducer = {
     products: productsReducer,
     removeId: removeIdReducer,
     editId: editIdReducer,
-    checkId: checkIdReducer
+    checkId: checkIdReducer,
+    cart: cartReducer
 }
 
 export const store = configureStore({
