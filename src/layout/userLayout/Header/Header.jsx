@@ -4,8 +4,10 @@ import routes from "routes/routes";
 import logo from "assets/images/logo-daniellee_crop.png";
 import SearchBox from "./components/SearchBox/SearchBox";
 import NavIcon from "./components/NavIcon/NavIcon";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const numOfCartProducts = useSelector(state => state.cart.cartProducts.length)
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between">
@@ -19,7 +21,7 @@ const Header = () => {
           </NavIcon>
           <NavIcon
             icon={<i className="fas fa-shopping-bag"></i>}
-            number={4}
+            number={numOfCartProducts}
             href={routes.CART.path}
           >
             سبد خرید
