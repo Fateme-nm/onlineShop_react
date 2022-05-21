@@ -16,6 +16,7 @@ const AllCategory = () => {
           return (
             <Link
               to={`/products/${cat.name}`}
+              state={{id: cat.id}}
               className="px-6 py-3 flex items-center justify-end hover:bg-gray-100 transition"
               key={cat.id}
             >
