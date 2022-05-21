@@ -13,6 +13,9 @@ const Productdetails = () => {
   const { id } = location.state;
   const [product, setProduct] = useState();
   const [products, setProducts] = useState([]);
+  const [addToCart, setAddToCart] = useState(false);
+
+  const handleAddToCart = () => setAddToCart(true);
 
   const handleRequestSimilarProducts = () => {
     httpService
@@ -38,10 +41,13 @@ const Productdetails = () => {
         <div className="container pb-6 flex flex-row-reverse justify-end space-x-32 space-x-reverse items-center">
           <Gallery mainImg={product.image} images={product.images} />
           <div className="w-full">
-            <Features product={product} />
+            <Features product={product} addToCart={addToCart}/>
             <div className="flex gap-3 pb-5 mt-6">
               {product.count >= 1 ? (
-                <button className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded hover:bg-transparent hover:text-primary transition text-sm flex items-center">
+                <button
+                  className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded hover:bg-transparent hover:text-primary transition text-sm flex items-center"
+                  onClick={handleAddToCart}
+                >
                   <span className="mr-2">
                     <i className="fas fa-shopping-bag"></i>
                   </span>{" "}
