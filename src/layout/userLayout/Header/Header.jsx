@@ -5,6 +5,7 @@ import logo from "assets/images/logo-daniellee_crop.png";
 import SearchBox from "./components/SearchBox/SearchBox";
 import NavIcon from "./components/NavIcon/NavIcon";
 import { useSelector } from "react-redux";
+import { persinaDigit } from "utils";
 
 const Header = () => {
   const numOfCartProducts = useSelector(state => state.cart.cartProducts.length)
@@ -21,14 +22,14 @@ const Header = () => {
           </NavIcon>
           <NavIcon
             icon={<i className="fas fa-shopping-bag"></i>}
-            number={numOfCartProducts}
+            number={numOfCartProducts != 0 && persinaDigit(numOfCartProducts)}
             href={routes.CART.path}
           >
             سبد خرید
           </NavIcon>
           <NavIcon
             icon={<i className="far fa-heart"></i>}
-            number={8}
+            number={persinaDigit(8)}
             href={routes.LOGIN_TO_PANEL.path}
           >
             ذخیره شده
