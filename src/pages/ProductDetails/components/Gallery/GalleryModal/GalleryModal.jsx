@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GalleryModal = ({handleClose}) => {
+const GalleryModal = ({handleClose, }) => {
     return ReactDOM.createPortal(
         <div className="bg-gray-50/75 fixed inset-0 z-50">
           <div className="flex h-screen justify-center items-center">
@@ -12,7 +12,8 @@ const GalleryModal = ({handleClose}) => {
                 <p>تصاویر</p>
               </div>
               <div className="flex justify-between">
-                
+                <div></div>
+                <div></div>
               </div>
             </div>
           </div>
