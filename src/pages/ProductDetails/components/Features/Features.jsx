@@ -74,7 +74,7 @@ const Features = ({ product, addToCart }) => {
 
   return (
     <>
-      <h2 className="md:text-3xl text-2xl font-medium mb-4">{name}</h2>
+      <h2 className="md:text-3xl text-xl font-medium mb-4">{name}</h2>
       <div className="flex flex-row-reverse items-center">
         <span className="text-gray-800 ml-2"> دسته بندی</span>
         <span className="text-gray-600">{category && category.name}</span>
