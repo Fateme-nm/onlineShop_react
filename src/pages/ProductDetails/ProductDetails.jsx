@@ -6,6 +6,7 @@ import Features from "./components/Features/Features";
 import httpService from "services/HttpService";
 import Card from "components/Card/Card";
 import { persinaDigit, separate } from "utils";
+import Button from "./components/Button/Button";
 
 const Productdetails = () => {
   // const { name } = useParams();
@@ -41,39 +42,31 @@ const Productdetails = () => {
         <div className="container pb-6 flex flex-row-reverse justify-end space-x-32 space-x-reverse items-center">
           <Gallery mainImg={product.image} images={product.images} />
           <div className="w-full">
-            <Features product={product} addToCart={addToCart}/>
+            <Features product={product} addToCart={addToCart} />
             <div className="flex gap-3 pb-5 mt-6">
               {product.count >= 1 ? (
-                <button
-                  className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded hover:bg-transparent hover:text-primary transition text-sm flex items-center"
-                  onClick={handleAddToCart}
+                <Button
+                  classes={"bg-primary border-primary hover:bg-transparent hover:text-primary"}
+                  classIcon={"fas fa-shopping-bag"}
+                  cartBtn={true}
+                  handleAddToCart={handleAddToCart}
                 >
-                  <span className="mr-2">
-                    <i className="fas fa-shopping-bag"></i>
-                  </span>{" "}
                   افزودن به سبد خرید
-                </button>
+                </Button>
               ) : (
-                <button className="bg-gray-400 border border-gray-400 text-white px-8 py-2 font-medium rounded transition text-sm flex items-center">
-                  <span className="mr-2">
-                    <i className="fas fa-shopping-bag"></i>
-                  </span>{" "}
+                <Button classes={"bg-gray-400 border-gray-400"}>
                   اتمام موجودی
-                </button>
+                </Button>
               )}
-              <button
-                className="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded 
-                      hover:bg-transparent hover:text-primary transition text-sm"
+              <Button
+                classes={"border-gray-300 hover:bg-transparent hover:text-primary text-gray-500"}
+                classIcon={"far fa-heart"}
               >
-                <span className="mr-2">
-                  <i className="far fa-heart"></i>
-                </span>{" "}
                 ذخیره محصول
-              </button>
+              </Button>
             </div>
           </div>
         </div>
-
         <div className="container pb-16">
           <h3 className="border-b border-gray-200 text-gray-800 pb-3 font-medium">
             توضیحات محصول
