@@ -15,16 +15,12 @@ const Features = ({ product }) => {
   const [category, setCategory] = useState();
   const [color, setColor] = useState();
   const [sizes, setSizes] = useState();
-  let selectedSize = null;
+  const [selectedSize, setSelectedSize] = useState(sizeId[0]);
 
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
       setQuantity(quantity + num);
     }
-  };
-
-  const handleClickSize = (id) => {
-    selectedSize = id;
   };
 
   const handleRequestCategory = async () => {
@@ -73,8 +69,12 @@ const Features = ({ product }) => {
               sizes.map((size) => {
                 return (
                   <button
-                    className="text-sm border border-gray-200 rounded-sm h-8 w-8 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
-                    onClick={() => handleClickSize(size[0].id)}
+                    className={`text-sm border border-gray-200 rounded-sm h-8 w-8 flex items-center justify-center cursor-pointer shadow-sm ${
+                      size[0].id === selectedSize
+                        ? "bg-primary text-white"
+                        : "text-gray-600"
+                    }`}
+                    onClick={() => setSelectedSize(size[0].id)}
                   >
                     {persinaDigit(size[0].name)}
                   </button>
@@ -86,8 +86,10 @@ const Features = ({ product }) => {
       <div className="mt-4 flex justify-between items-center flex-row-reverse">
         <h3 className="text-gray-800 mb-1">رنگ</h3>
         <button
-          className={'text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm'}
-          style={color && {backgroundColor: `${color.hex}`}}
+          className={
+            "text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm"
+          }
+          style={color && { backgroundColor: `${color.hex}` }}
         ></button>
       </div>
       <div className="mt-4 flex justify-between items-center flex-row-reverse">

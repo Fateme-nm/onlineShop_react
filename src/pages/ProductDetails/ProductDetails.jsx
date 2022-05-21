@@ -37,7 +37,7 @@ const Productdetails = () => {
   if (product) {
     return (
       <div>
-        <div class="container pb-6 flex flex-row-reverse justify-end space-x-32 space-x-reverse items-center">
+        <div className="container pb-6 flex flex-row-reverse justify-end space-x-32 space-x-reverse items-center">
           <Gallery mainImg={product.image} images={product.images} />
           <div className="w-full">
             <Features product={product} />
