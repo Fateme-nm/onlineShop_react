@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GalleryModal from "./GalleryModal/GalleryModal";
 
 const Gallery = ({ mainImg, images }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [activeImage, setActiveImage] = useState(null);
   if (mainImg) {
     return (
       <div className="w-2/3">
@@ -14,7 +14,7 @@ const Gallery = ({ mainImg, images }) => {
           />
         </div>
         <div className="grid grid-cols-4 gap-4 mb-8">
-          <div onClick={() => setOpenModal(true)}>
+          <div onClick={() => setActiveImage(mainImg)}>
             <img
               src={`http://localhost:3002${mainImg}`}
               className="w-full cursor-pointer border border-gray-300 rounded-md hover:border-primary"
@@ -23,7 +23,7 @@ const Gallery = ({ mainImg, images }) => {
           {images &&
             images.map((img) => {
               return (
-                <div onClick={() => setOpenModal(true)}>
+                <div onClick={() => setActiveImage(img)}>
                   <img
                     src={`http://localhost:3002${img}`}
                     className="w-full cursor-pointer border border-gray-300 rounded-md hover:border-primary"
@@ -32,9 +32,10 @@ const Gallery = ({ mainImg, images }) => {
               );
             })}
         </div>
-        {openModal && (
+        {activeImage && (
           <GalleryModal
-            handleClose={() => setOpenModal(false)}
+            activeImage={activeImage}
+            setActiveImage={setActiveImage}
             images={[mainImg, ...images]}
           />
         )}
