@@ -15,6 +15,11 @@ const Productdetails = () => {
   const { id } = location.state;
   const [product, setProduct] = useState();
   const [products, setProducts] = useState([]);
+  const [quantity, setQuantity] = useState(1); //quantity selected
+  const [category, setCategory] = useState(); //category obj of product selected
+  const [color, setColor] = useState(); //color obj of product selected
+  const [sizes, setSizes] = useState(); //sizes array of product selected
+  const [selectedSize, setSelectedSize] = useState(sizeId[0]); // selected size of product
 
   const handleRequestSimilarProducts = () => {
     httpService
