@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GalleryModal = ({handleClose, }) => {
+const GalleryModal = ({handleClose, images}) => {
     return ReactDOM.createPortal(
         <div className="bg-gray-50/75 fixed inset-0 z-50">
           <div className="flex h-screen justify-center items-center">
