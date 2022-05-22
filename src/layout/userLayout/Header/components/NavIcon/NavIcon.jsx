@@ -1,8 +1,26 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { persinaDigit } from "utils";
 
 const NavIcon = ({ icon, number, href, children, cart }) => {
+  // const [showProducts, setShowProducts] = useState(null)
+  // const handleShowCartProduct = () => {
+  //   const {productId, colorId, sizeId, quantity} = action.payload
+  //   const showPro = {quantity}
+  //   const product = httpService.get(`products?id=${productId}`).then(res => res.data[0])
+  //   showPro.name = product.name
+  //   showPro.price = product.price
+  //   showPro.count = product.count
+  //   httpService.get(`color?id=${colorId}`).then(res => showPro.color = res.data[0].hex)
+  //   httpService.get(`size?id=${sizeId}`).then(res => showPro.size = res.data[0].name)
+  // }
+
+  // const handleShow =() => {
+
+  // }
+  // useEffect(() => {
+  //   cart && number && handleShow()
+  // }, [])
   return (
     <div className="group relative">
       <Link
