@@ -66,7 +66,6 @@ const Features = ({ product, addToCart }) => {
           productId: product.id,
           colorId,
           sizeId: selectedSize,
-          price,
           quantity,
         })
       );
