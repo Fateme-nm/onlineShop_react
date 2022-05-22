@@ -24,6 +24,7 @@ const Header = () => {
             icon={<i className="fas fa-shopping-bag"></i>}
             number={numOfCartProducts != 0 && persinaDigit(numOfCartProducts)}
             href={routes.CART.path}
+            cart={true}
           >
             سبد خرید
           </NavIcon>

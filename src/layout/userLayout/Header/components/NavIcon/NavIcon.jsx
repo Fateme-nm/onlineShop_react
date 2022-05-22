@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavIcon = ({ icon, number, href,children }) => {
+const NavIcon = ({ icon, number, href,children, cart }) => {
   return (
     <Link
       to={href}
