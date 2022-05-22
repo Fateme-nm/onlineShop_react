@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { persinaDigit } from "utils";
 
 const Header = () => {
-  const numOfCartProducts = useSelector(state => state.cart.cartProducts.length)
+  const {cartProducts} = useSelector(state => state.cart)
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between">
@@ -22,9 +22,9 @@ const Header = () => {
           </NavIcon>
           <NavIcon
             icon={<i className="fas fa-shopping-bag"></i>}
-            number={numOfCartProducts != 0 && persinaDigit(numOfCartProducts)}
+            number={cartProducts.length != 0 && persinaDigit(cartProducts.length)}
             href={routes.CART.path}
-            cart={true}
+            cart={cartProducts}
           >
             سبد خرید
           </NavIcon>
