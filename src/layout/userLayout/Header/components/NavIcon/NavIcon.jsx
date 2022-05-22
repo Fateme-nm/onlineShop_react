@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { persinaDigit } from "utils";
 
 const NavIcon = ({ icon, number, href, children, cart }) => {
   return (
@@ -24,12 +25,19 @@ const NavIcon = ({ icon, number, href, children, cart }) => {
           {cart.map((pro) => {
             return (
               <div className="felx py-5">
-                <img src={`http://localhost:3002${pro.image}`} alt="image" className="w-16"/>
                 <div>
+                  <img
+                    src={`http://localhost:3002${pro.image}`}
+                    alt="image"
+                    className="w-16"
+                  />
                   <p>
                     <span>تعداد: </span>
                     <span>{pro.quantity}</span>
                   </p>
+                </div>
+                <div>
+                  <p>{pro.name}</p>
                   <p>
                     <span>رنگ: </span>
                     <span>{pro.colorId}</span>
@@ -37,6 +45,10 @@ const NavIcon = ({ icon, number, href, children, cart }) => {
                   <p>
                     <span>سایز: </span>
                     <span>{pro.sizeId}</span>
+                  </p>
+                  <p>
+                    <span>{persinaDigit(pro.price)}</span>
+                    <span>تومان</span>
                   </p>
                 </div>
               </div>
