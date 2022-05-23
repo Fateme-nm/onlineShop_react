@@ -8,6 +8,7 @@ const ImageUploader = ({
   setThumbnailImg,
   isThumbnail,
   isAddImage,
+  imagesArr,
   setImagesArr,
   isJustPreview,
 }) => {
@@ -17,9 +18,14 @@ const ImageUploader = ({
     formData.append("image", e.target.files[0]);
     httpService.post("upload", formData).then((res) => {
       const filename = res.data.filename;
-      isThumbnail ? setThumbnailImg(filename) : setImagesArr(filename);
+      if (isThumbnail) setThumbnailImg(filename);
+      else setImagesArr([...imagesArr, filename]);
       setShowPreview(res.data.filename);
     });
+  };
+
+  const handleRemove = () => {
+    setImagesArr(imagesArr.filter((img) => img !== isJustPreview));
   };
 
   return (
@@ -31,7 +37,9 @@ const ImageUploader = ({
           } ${isJustPreview && "group"}`}
         >
           <div
-            class={`relative flex flex-col items-center justify-center h-full w-full`}
+            class={`relative flex flex-col items-center justify-center h-full w-full ${
+              (isThumbnail || isAddImage) && "cursor-pointer"
+            }`}
           >
             {isThumbnail && (
               <>
@@ -62,8 +70,11 @@ const ImageUploader = ({
                   src={imageUrl(isJustPreview)}
                   class="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className={`absolute invisible group-hover:visible`}>
-                  <i className="fa fa-close text-primary text-3xl cursor-pointer"></i>
+                <div
+                  className={`cursor-pointer absolute invisible group-hover:visible`}
+                  onClick={handleRemove}
+                >
+                  <i className="fa fa-close text-white text-5xl"></i>
                 </div>
               </>
             )}

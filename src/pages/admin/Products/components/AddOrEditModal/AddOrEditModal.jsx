@@ -162,12 +162,17 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                   </div>
                   <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2">
                     {imagesArr.map((img) => (
-                      <ImageUploader isJustPreview={img} />
+                      <ImageUploader
+                        isJustPreview={img}
+                        imagesArr={imagesArr}
+                        setImagesArr={(img) => setImagesArr(img)}
+                      />
                     ))}
                     <ImageUploader
                       name={`images`}
                       formik={formik}
-                      setImagesArr={(img) => setImagesArr([...imagesArr, img])}
+                      imagesArr={imagesArr}
+                      setImagesArr={(img) => setImagesArr(img)}
                       isAddImage={true}
                     />
                   </div>
