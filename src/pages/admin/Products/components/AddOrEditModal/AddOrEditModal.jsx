@@ -89,7 +89,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
         <div
-          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4"
+          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4 overflow-auto"
           style={{ height: "95%" }}
         >
           <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
@@ -169,11 +169,6 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       />
                     );
                   })} */}
-                  <ImageUploader
-                    name={`images`}
-                    formik={formik}
-                    setImagesArr={(img) => setImagesArr([...imagesArr, img])}
-                  />
                   <ImageUploader
                     name={`images`}
                     formik={formik}
