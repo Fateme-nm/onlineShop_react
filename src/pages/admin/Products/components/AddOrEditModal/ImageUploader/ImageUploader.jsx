@@ -36,7 +36,7 @@ const ImageUploader = ({
             {isThumbnail && (
               <>
                 <img
-                  src={imageUrl(showPreview)}
+                  src={showPreview && imageUrl(showPreview)}
                   class="absolute inset-0 w-full h-full object-cover"
                 />
                 <svg
