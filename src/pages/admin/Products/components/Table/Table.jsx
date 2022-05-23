@@ -3,6 +3,7 @@ import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
+import { imageUrl } from "utils";
 
 const Table = ({ categories }) => {
   const {showProducts} = useSelector(state => state.products)
@@ -38,7 +39,7 @@ const Table = ({ categories }) => {
                 .map((product) => {
                   return (
                     <TrTbody
-                      imgSrc={`http://localhost:3002${product.image}`}
+                      imgSrc={imageUrl(product.image)}
                       name={product.name}
                       category={getCategory(product.categoryId)}
                       id={product.id}
