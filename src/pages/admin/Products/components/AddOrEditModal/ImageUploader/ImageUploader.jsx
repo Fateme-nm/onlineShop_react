@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import httpService from "services/HttpService";
+import { imageUrl } from "utils";
 
 const ImageUploader = ({
   name,
@@ -13,9 +14,9 @@ const ImageUploader = ({
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     httpService.post("upload", formData).then((res) => {
-      console.log(res);
-      setThumbnailImg(res.data.filename);
-      setShowPreview(`http://localhost:3002/files/${res.data.filename}`);
+      const filename = res.data.filename
+      isThumbnail ? setThumbnailImg(filename) : setImagesArr(filename)
+      setShowPreview(imageUrl(res.data.filename));
     });
   };
 
