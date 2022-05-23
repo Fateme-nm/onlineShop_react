@@ -4,7 +4,7 @@ const ImageUploader = ({name, formik}) => {
   return (
     <div>
       <div class="flex items-center justify-center w-full">
-        <label class="flex flex-col w-32 h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
+        <label class="flex flex-col w-36 h-34 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
           <div class="relative flex flex-col items-center justify-center pt-7">
             <img id="preview" class="absolute inset-0 w-full h-32" />
             <svg
@@ -29,7 +29,10 @@ const ImageUploader = ({name, formik}) => {
             accept="image/*"
             name={name}
             value={formik.values[name]}
-            onChange={formik.handleChange}
+            onChange={(e) => {
+                formik.handleChange(e)
+                handleChangeImage(e)
+            }}
             onBlur={formik.handleBlur}
           />
         </label>
