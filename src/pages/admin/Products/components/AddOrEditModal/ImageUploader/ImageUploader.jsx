@@ -28,7 +28,7 @@ const ImageUploader = ({
         <label
           class={`flex flex-col border-4 border-dashed hover:bg-gray-100 hover:border-gray-300 ${
             isThumbnail ? "w-40 h-40" : "w-20 h-20"
-          }`}
+          } ${isJustPreview && "group"}`}
         >
           <div
             class={`relative flex flex-col items-center justify-center h-full w-full`}
@@ -57,10 +57,15 @@ const ImageUploader = ({
               </>
             )}
             {isJustPreview && (
-              <img
-                src={imageUrl(isJustPreview)}
-                class="absolute inset-0 w-full h-full object-cover"
-              />
+              <>
+                <img
+                  src={imageUrl(isJustPreview)}
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className={`absolute invisible group-hover:visible`}>
+                  <i className="fa fa-close text-primary text-3xl cursor-pointer"></i>
+                </div>
+              </>
             )}
             {isAddImage && <i className="fa fa-plus text-gray-400"></i>}
           </div>

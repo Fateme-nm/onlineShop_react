@@ -89,7 +89,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
         <div
-          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4 overflow-auto"
+          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4"
           style={{ height: "95%" }}
         >
           <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
@@ -100,7 +100,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           </div>
           <div className="flex justify-between">
             <form onSubmit={formik.handleSubmit}>
-              <div className="flex justify-between space-x-10">
+              <div className="flex justify-between space-x-10 overflow-hidden h-1/2">
                 <div className="flex flex-wrap w-full">
                   <div className="w-full">
                     <FieldModal
@@ -151,14 +151,16 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full justify-start flex-row-reverse">
-                  <ImageUploader
-                    name={"image"}
-                    formik={formik}
-                    setThumbnailImg={(img) => (thumbnailImg.current = img)}
-                    isThumbnail={true}
-                  />
-                  <div className="flex flex-row-reverse flex-wrap">
+                <div className="flex w-full justify-start flex-row-reverse pr-2">
+                  <div className="ml-4">
+                    <ImageUploader
+                      name={"image"}
+                      formik={formik}
+                      setThumbnailImg={(img) => (thumbnailImg.current = img)}
+                      isThumbnail={true}
+                    />
+                  </div>
+                  <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2">
                     {imagesArr.map((img) => (
                       <ImageUploader isJustPreview={img} />
                     ))}
