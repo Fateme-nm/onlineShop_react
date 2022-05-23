@@ -6,6 +6,7 @@ import { postProduct, updateProduct } from "store/slices/products";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEditId } from "store/slices/editId";
 import ReactDOM from "react-dom";
+import httpService from "services/HttpService";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -30,6 +31,10 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     setAddOrEditModalOn(false);
     dispatch(clearEditId());
   };
+
+  const handleChangeImage = (e) => {
+    httpService.post('upload', e.target.files[0])
+  }
 
   const getSelectedProduct = (id) => {
     return products.find((pro) => pro.id == id);
@@ -104,7 +109,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     name="image"
                     formik={formik}
                     input={true}
-                    imageRef={imageRef}
+                    handleChangeImage={handleChangeImage}
                   />
                 )}
                 <FieldModal

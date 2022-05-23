@@ -11,7 +11,6 @@ const FieldModal = ({
   input,
   textarea,
   select,
-  imageRef,
 }) => {
   const { categories } = useSelector((state) => state.products);
   const { colors } = useSelector((state) => state.products);
@@ -29,12 +28,7 @@ const FieldModal = ({
           name={name}
           id={id}
           value={formik.values[name]}
-          onChange={(e) => {
-            if (type === "file") {
-              imageRef.current = e.target.files[0];
-            }
-            formik.handleChange(e);
-          }}
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm h-8"
         />
