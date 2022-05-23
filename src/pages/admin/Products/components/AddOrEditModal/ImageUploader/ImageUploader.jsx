@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import httpService from "services/HttpService";
 
-const ImageUploader = ({ name, formik, setThumbnailImg, isThumbnail }) => {
+const ImageUploader = ({
+  name,
+  formik,
+  setThumbnailImg,
+  isThumbnail,
+  setImagesArr,
+}) => {
   const [showPreview, setShowPreview] = useState();
   const handleChangeImage = (e) => {
     const formData = new FormData();

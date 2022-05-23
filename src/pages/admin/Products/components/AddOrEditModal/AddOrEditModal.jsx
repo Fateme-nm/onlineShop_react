@@ -27,6 +27,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const { products } = useSelector((state) => state.products);
   const [editProduct, setEditProduct] = useState(null);
   const thumbnailImg = useRef();
+  const imagesArr = useRef([]);
 
   const handleClose = () => {
     setAddOrEditModalOn(false);
@@ -152,16 +153,17 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                   <ImageUploader
                     name={"image"}
                     formik={formik}
-                    setThumbnailImg={(img) => thumbnailImg.current = img}
+                    setThumbnailImg={(img) => (thumbnailImg.current = img)}
                     isThumbnail={true}
                   />
                   <ImageUploader
                     name={"images"}
                     formik={formik}
-                    setThumbnailImg={(img) => thumbnailImg.current = img}
+                    setImagesArr={(img) =>
+                      (imagesArr.current = [...imagesArr.current, img])
+                    }
                   />
                 </div>
-
               </div>
               <div className="w-full">
                 <FieldModal
