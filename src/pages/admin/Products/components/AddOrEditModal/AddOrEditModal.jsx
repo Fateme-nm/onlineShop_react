@@ -33,8 +33,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   };
 
   const handleChangeImage = (e) => {
-    httpService.post('upload', e.target.files[0])
-  }
+    httpService.post("upload", e.target.files[0]);
+  };
 
   const getSelectedProduct = (id) => {
     return products.find((pro) => pro.id == id);
@@ -85,82 +85,93 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   });
 
   return ReactDOM.createPortal(
-    <div className="bg-gray-50/75 fixed inset-0 z-50">
+    <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl">
-          <div className="flex text-md justify-between items-center w-full">
+        <div className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-md w-3/4" style={{height: '95%'}}>
+          <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
             <button onClick={handleClose}>
-              <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
+              <i className="fa fa-close rounded px-2 py-1 hover:text-primary"></i>
             </button>
             <p>افزودن/ویرایش کالا</p>
           </div>
           <div className="flex justify-between">
-            <form
-              className="flex flex-col items-end w-full"
-              onSubmit={formik.handleSubmit}
-            >
-              <div className="w-full flex justify-between space-x-3">
-                {editProduct ? null : (
-                  <FieldModal
-                    label="تصویر کالا"
-                    type="file"
-                    accept="image/*"
-                    id="image"
-                    name="image"
-                    formik={formik}
-                    input={true}
-                    handleChangeImage={handleChangeImage}
-                  />
-                )}
+            <form onSubmit={formik.handleSubmit}>
+              <div className="flex justify-between space-x-10">
+                <div className="flex flex-wrap w-full">
+                  <div className="w-full">
+                    <FieldModal
+                      label="نام کالا"
+                      type="text"
+                      id="name"
+                      name="name"
+                      formik={formik}
+                      input={true}
+                    />
+                  </div>
+                  <div className="w-1/2 pr-2">
+                    <FieldModal
+                      label="دسته بندی"
+                      id="categoryId"
+                      name="categoryId"
+                      formik={formik}
+                      select={true}
+                    />
+                  </div>
+                  <div className="w-1/2 pl-2">
+                    <FieldModal
+                      label="قیمت"
+                      type="text"
+                      id="price"
+                      name="price"
+                      formik={formik}
+                      input={true}
+                    />
+                  </div>
+                  <div className="w-1/2 pr-2">
+                    <FieldModal
+                      label="تعداد"
+                      type="number"
+                      id="count"
+                      name="count"
+                      formik={formik}
+                      input={true}
+                    />
+                  </div>
+                  <div className="w-1/2 pl-2">
+                    <FieldModal
+                      label="رنگ"
+                      id="colorId"
+                      name="colorId"
+                      formik={formik}
+                      select={true}
+                    />
+                  </div>
+                </div>
+                <div className="flex w-full">
+                  {editProduct ? null : (
+                    <FieldModal
+                      label="تصویر کالا"
+                      type="file"
+                      accept="image/*"
+                      id="image"
+                      name="image"
+                      formik={formik}
+                      input={true}
+                      handleChangeImage={handleChangeImage}
+                    />
+                  )}
+                </div>
+              </div>
+              <div className="w-full">
                 <FieldModal
-                  label="نام کالا"
-                  type="text"
-                  id="name"
-                  name="name"
+                  label="توضیحات"
+                  id="description"
+                  name="description"
                   formik={formik}
-                  input={true}
+                  textarea={true}
                 />
               </div>
-              <div className="w-full flex justify-between space-x-3">
-                <FieldModal
-                  label="قیمت"
-                  type="text"
-                  id="price"
-                  name="price"
-                  formik={formik}
-                  input={true}
-                />
-                <FieldModal
-                  label="تعداد"
-                  type="number"
-                  id="count"
-                  name="count"
-                  formik={formik}
-                  input={true}
-                />
-                <FieldModal
-                  label="دسته بندی"
-                  id="categoryId"
-                  name="categoryId"
-                  formik={formik}
-                  select={true}
-                />
-                <FieldModal
-                  label="رنگ"
-                  id="colorId"
-                  name="colorId"
-                  formik={formik}
-                  select={true}
-                />
-              </div>
-              <FieldModal
-                label="توضیحات"
-                id="description"
-                name="description"
-                formik={formik}
-                textarea={true}
-              />
-              <button type="submit" className="bg-submit rounded-md py-2 px-4">
+              <button type="submit" className="bg-primary text-white rounded-md py-2 px-8 mt-4">
                 ذخیره
               </button>
             </form>

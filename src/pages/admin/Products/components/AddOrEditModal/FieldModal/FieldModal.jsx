@@ -30,7 +30,7 @@ const FieldModal = ({
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm h-8"
+          className="w-full border border-gray-300 focus:border-primary focus:outline-0 rounded-sm h-8"
         />
       )}
       {textarea && (
@@ -43,7 +43,7 @@ const FieldModal = ({
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm"
+          className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm"
         ></textarea>
       )}
       {select && (
@@ -53,11 +53,11 @@ const FieldModal = ({
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border-2 border-gray-300 focus:outline-0 rounded-sm h-8"
+          className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm h-8"
         >
           <option></option>
           {selectFor.map((cat) => (
-            <option value={cat.id} key={cat.id}>
+            <option value={cat.id} key={cat.id} className="hover:bg-primary">
               {cat.name}
             </option>
           ))}
