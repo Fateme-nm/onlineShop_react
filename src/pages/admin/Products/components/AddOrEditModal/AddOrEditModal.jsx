@@ -26,8 +26,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const { edit_id } = useSelector((state) => state.editId);
   const { products } = useSelector((state) => state.products);
   const [editProduct, setEditProduct] = useState(null);
+  const [imagesArr, setImagesArr] = useState([]);
   const thumbnailImg = useRef();
-  const imagesArr = useRef([]);
 
   const handleClose = () => {
     setAddOrEditModalOn(false);
@@ -62,9 +62,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
         if (key[0] === "image") {
           formData.append("image", thumbnailImg.current);
         } else if (key[0] === "images") {
-          formData.append("images", imagesArr.current);
-        }
-        else formData.append(key[0], key[1]);
+          formData.append("images[0]", imagesArr.current);
+        } else formData.append(key[0], key[1]);
       });
       if (edit_id) {
         formData.append("id", edit_id);
@@ -159,12 +158,26 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     setThumbnailImg={(img) => (thumbnailImg.current = img)}
                     isThumbnail={true}
                   />
+                  {/* {imagesArr.map((img) => {
+                    return (
+                      <ImageUploader
+                        name={`images`}
+                        formik={formik}
+                        setImagesArr={(img) =>
+                          (imagesArr.current = [...imagesArr.current, img])
+                        }
+                      />
+                    );
+                  })} */}
                   <ImageUploader
-                    name={"images"}
+                    name={`images`}
                     formik={formik}
-                    setImagesArr={(img) =>
-                      (imagesArr.current = [...imagesArr.current, img])
-                    }
+                    setImagesArr={(img) => setImagesArr([...imagesArr, img])}
+                  />
+                  <ImageUploader
+                    name={`images`}
+                    formik={formik}
+                    setImagesArr={(img) => setImagesArr([...imagesArr, img])}
                   />
                 </div>
               </div>

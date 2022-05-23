@@ -14,8 +14,11 @@ const ImageUploader = ({
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     httpService.post("upload", formData).then((res) => {
-      const filename = res.data.filename
-      isThumbnail ? setThumbnailImg(filename) : setImagesArr(filename)
+      console.log(3);
+      const filename = res.data.filename;
+      console.log(4);
+      isThumbnail ? setThumbnailImg(filename) : setImagesArr(filename);
+      console.log(6);
       setShowPreview(imageUrl(res.data.filename));
     });
   };
@@ -25,18 +28,13 @@ const ImageUploader = ({
       <div class="flex items-center justify-center w-full ml-2">
         <label
           class={`flex flex-col border-4 border-dashed hover:bg-gray-100 hover:border-gray-300 ${
-            isThumbnail ? "w-36 h-34" : "w-20 h-16"
+            isThumbnail ? "w-36 h-36" : "w-20 h-20"
           }`}
         >
           <div
-            class={`relative flex flex-col items-center justify-center ${
-              isThumbnail ? "pt-7" : "pt-3"
-            }`}
+            class={`relative flex flex-col items-center justify-center h-full w-full`}
           >
-            <img
-              src={showPreview}
-              class={`absolute inset-0 w-full ${isThumbnail ? "h-32" : "h-14"}`}
-            />
+            <img src={showPreview} class={`absolute inset-0 w-full h-full object-cover`} />
             {isThumbnail ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +49,7 @@ const ImageUploader = ({
                 />
               </svg>
             ) : (
-              <i className="fa fa-plus text-gray-400 pt-2"></i>
+              <i className="fa fa-plus text-gray-400"></i>
             )}
             {isThumbnail && (
               <p class="pt-1 text-sm tracking-wider text-gray-400">
@@ -61,7 +59,7 @@ const ImageUploader = ({
           </div>
           <input
             type="file"
-            class="opacity-0"
+            class="hidden"
             accept="image/*"
             name={name}
             value={formik.values[name]}
