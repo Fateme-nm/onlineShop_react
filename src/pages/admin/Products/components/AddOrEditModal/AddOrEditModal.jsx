@@ -62,7 +62,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
         if (key[0] === "image") {
           formData.append("image", thumbnailImg.current);
         } else if (key[0] === "images") {
-          formData.append("images[0]", imagesArr.current);
+          imagesArr.map((img, i) => formData.append(`images[${i}]`, img));
         } else formData.append(key[0], key[1]);
       });
       if (edit_id) {
@@ -158,15 +158,17 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     setThumbnailImg={(img) => (thumbnailImg.current = img)}
                     isThumbnail={true}
                   />
-                  {imagesArr.map((img) => (
-                    <ImageUploader isJustPreview={img} />
-                  ))}
-                  <ImageUploader
-                    name={`images`}
-                    formik={formik}
-                    setImagesArr={(img) => setImagesArr([...imagesArr, img])}
-                    isAddImage={true}
-                  />
+                  <div className="flex flex-row-reverse flex-wrap">
+                    {imagesArr.map((img) => (
+                      <ImageUploader isJustPreview={img} />
+                    ))}
+                    <ImageUploader
+                      name={`images`}
+                      formik={formik}
+                      setImagesArr={(img) => setImagesArr([...imagesArr, img])}
+                      isAddImage={true}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="w-full">
