@@ -17,7 +17,7 @@ const FieldModal = ({
   const selectFor = name === "colorId" ? colors : categories;
 
   return (
-    <div className="relative mt-4 w-full">
+    <div className={`${name !== "name" && 'mt-4'} w-full`}>
       <label htmlFor={id} className="mb-2">
         {label}
       </label>

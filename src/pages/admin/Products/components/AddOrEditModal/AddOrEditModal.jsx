@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearEditId } from "store/slices/editId";
 import ReactDOM from "react-dom";
 import httpService from "services/HttpService";
+import ImageUploader from "./ImageUploader/ImageUploader";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
@@ -87,7 +88,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   return ReactDOM.createPortal(
     <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-md w-3/4" style={{height: '95%'}}>
+        <div className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4" style={{height: '95%'}}>
           <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
             <button onClick={handleClose}>
               <i className="fa fa-close rounded px-2 py-1 hover:text-primary"></i>
@@ -147,19 +148,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full">
-                  {editProduct ? null : (
-                    <FieldModal
-                      label="تصویر کالا"
-                      type="file"
-                      accept="image/*"
-                      id="image"
-                      name="image"
-                      formik={formik}
-                      input={true}
-                      handleChangeImage={handleChangeImage}
-                    />
-                  )}
+                <div className="flex w-full justify-end">
+                  <ImageUploader name={"image"} formik={formik}/>
                 </div>
               </div>
               <div className="w-full">
