@@ -62,7 +62,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       const formData = new FormData();
       Object.entries(values).map((key, value) => {
         if (key[0] === "image") {
-          formData.append("image", imageRef.current);
+          // formData.append("image", imageRef.current);
         } else formData.append(key[0], key[1]);
       });
       if (edit_id) {

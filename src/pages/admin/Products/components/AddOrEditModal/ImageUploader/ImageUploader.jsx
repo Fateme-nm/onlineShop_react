@@ -1,6 +1,15 @@
 import React from "react";
+import httpService from "services/HttpService";
 
-const ImageUploader = ({name, formik}) => {
+const ImageUploader = ({ name, formik, setThumbnailImg }) => {
+  const handleChangeImage = (e) => {
+    const formData = new FormData()
+    formData.append("image",e.target.files[0])
+    httpService.post("upload", formData).then((res) => {
+      setThumbnailImg(res.data);
+      console.log(res.data.filename);
+    });
+  };
   return (
     <div>
       <div class="flex items-center justify-center w-full">
@@ -30,8 +39,8 @@ const ImageUploader = ({name, formik}) => {
             name={name}
             value={formik.values[name]}
             onChange={(e) => {
-                formik.handleChange(e)
-                handleChangeImage(e)
+              formik.handleChange(e);
+              handleChangeImage(e);
             }}
             onBlur={formik.handleBlur}
           />
