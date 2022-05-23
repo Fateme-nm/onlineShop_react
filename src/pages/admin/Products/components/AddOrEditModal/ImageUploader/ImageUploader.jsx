@@ -33,7 +33,7 @@ const ImageUploader = ({
       <div class="flex items-center justify-center w-full ml-2">
         <label
           class={`flex flex-col border-4 border-dashed hover:bg-gray-100 hover:border-gray-300 ${
-            isThumbnail ? "w-40 h-40" : "w-20 h-20"
+            isThumbnail ? "w-52 h-52" : "w-24 h-24"
           } ${isJustPreview && "group"}`}
         >
           <div

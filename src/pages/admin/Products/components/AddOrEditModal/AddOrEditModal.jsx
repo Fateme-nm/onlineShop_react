@@ -98,10 +98,10 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
             </button>
             <p>افزودن/ویرایش کالا</p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between h-min">
             <form onSubmit={formik.handleSubmit}>
-              <div className="flex justify-between space-x-10 overflow-hidden h-1/2">
-                <div className="flex flex-wrap w-full">
+              <div className="flex justify-between space-x-10 overflow-hidden h-56">
+                <div className="flex flex-wrap w-full h-min">
                   <div className="w-full">
                     <FieldModal
                       label="نام کالا"
@@ -160,7 +160,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       isThumbnail={true}
                     />
                   </div>
-                  <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2">
+                  <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2">
                     {imagesArr.map((img) => (
                       <ImageUploader
                         isJustPreview={img}
