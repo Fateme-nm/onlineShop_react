@@ -16,7 +16,7 @@ const ImageUploader = ({
   const [showPreview, setShowPreview] = useState(
     isThumbnail && isEditModal ? isEditModal : undefined
   );
-  console.log(showPreview)
+
   const handleChangeImage = (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
