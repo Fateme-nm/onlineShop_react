@@ -33,10 +33,6 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     dispatch(clearEditId());
   };
 
-  const handleChangeImage = (e) => {
-    httpService.post("upload", e.target.files[0]);
-  };
-
   const getSelectedProduct = (id) => {
     return products.find((pro) => pro.id == id);
   };
@@ -49,6 +45,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     enableReinitialize: true,
     initialValues: {
       image: editProduct ? editProduct.image : "",
+      images: editProduct ? editProduct.images : "",
       name: editProduct ? editProduct.name : "",
       categoryId: editProduct ? editProduct.categoryId : "",
       colorId: editProduct ? editProduct.colorId : "",
@@ -151,13 +148,20 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full justify-end">
+                <div className="flex w-full justify-start flex-row-reverse">
                   <ImageUploader
                     name={"image"}
                     formik={formik}
                     setThumbnailImg={(img) => thumbnailImg.current = img}
+                    isThumbnail={true}
+                  />
+                  <ImageUploader
+                    name={"images"}
+                    formik={formik}
+                    setThumbnailImg={(img) => thumbnailImg.current = img}
                   />
                 </div>
+
               </div>
               <div className="w-full">
                 <FieldModal
