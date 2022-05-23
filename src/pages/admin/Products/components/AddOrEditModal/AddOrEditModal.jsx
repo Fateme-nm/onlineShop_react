@@ -158,17 +158,9 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     setThumbnailImg={(img) => (thumbnailImg.current = img)}
                     isThumbnail={true}
                   />
-                  {/* {imagesArr.map((img) => {
-                    return (
-                      <ImageUploader
-                        name={`images`}
-                        formik={formik}
-                        setImagesArr={(img) =>
-                          (imagesArr.current = [...imagesArr.current, img])
-                        }
-                      />
-                    );
-                  })} */}
+                  {imagesArr.map((img) => (
+                    <ImageUploader isJustPreview={img} />
+                  ))}
                   <ImageUploader
                     name={`images`}
                     formik={formik}
