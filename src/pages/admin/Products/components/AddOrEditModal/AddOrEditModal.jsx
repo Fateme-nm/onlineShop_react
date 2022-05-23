@@ -35,11 +35,14 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   };
 
   const getSelectedProduct = (id) => {
-    return products.find((pro) => pro.id == id);
+    const pro = products.find((pro) => pro.id == id);
+    setImagesArr(pro.images);
+    thumbnailImg.current = pro.image;
+    return pro;
   };
 
   useEffect(() => {
-    setEditProduct(getSelectedProduct(edit_id));
+    edit_id && setEditProduct(getSelectedProduct(edit_id));
   }, [edit_id]);
 
   const formik = useFormik({
@@ -151,32 +154,67 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full justify-start flex-row-reverse pr-2">
-                  <div className="ml-4">
-                    <ImageUploader
-                      name={"image"}
-                      formik={formik}
-                      setThumbnailImg={(img) => (thumbnailImg.current = img)}
-                      isThumbnail={true}
-                    />
-                  </div>
-                  <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2">
-                    {imagesArr.map((img) => (
+                {!edit_id ? (
+                  <div className="flex w-full justify-start flex-row-reverse pr-2">
+                    <div className="ml-4">
                       <ImageUploader
-                        isJustPreview={img}
+                        name={"image"}
+                        formik={formik}
+                        setThumbnailImg={(img) => (thumbnailImg.current = img)}
+                        isThumbnail={true}
+                      />
+                    </div>
+                    <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2">
+                      {imagesArr.map((img) => (
+                        <ImageUploader
+                          isJustPreview={img}
+                          imagesArr={imagesArr}
+                          setImagesArr={(img) => setImagesArr(img)}
+                        />
+                      ))}
+                      <ImageUploader
+                        name={`images`}
+                        formik={formik}
                         imagesArr={imagesArr}
                         setImagesArr={(img) => setImagesArr(img)}
+                        isAddImage={true}
                       />
-                    ))}
-                    <ImageUploader
-                      name={`images`}
-                      formik={formik}
-                      imagesArr={imagesArr}
-                      setImagesArr={(img) => setImagesArr(img)}
-                      isAddImage={true}
-                    />
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex w-full justify-start flex-row-reverse pr-2">
+                    <div className="ml-4">
+                      {editProduct && (
+                        <ImageUploader
+                          name={"image"}
+                          formik={formik}
+                          setThumbnailImg={(img) =>
+                            (thumbnailImg.current = img)
+                          }
+                          isThumbnail={true}
+                          isEditModal={thumbnailImg.current}
+                        />
+                      )}
+                    </div>
+                    <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2">
+                      {editProduct &&
+                        imagesArr.map((img) => (
+                          <ImageUploader
+                            isJustPreview={img}
+                            imagesArr={imagesArr}
+                            setImagesArr={(img) => setImagesArr(img)}
+                          />
+                        ))}
+                      {/* <ImageUploader
+                        name={`images`}
+                        formik={formik}
+                        imagesArr={imagesArr}
+                        setImagesArr={(img) => setImagesArr(img)}
+                        isAddImage={true}
+                      /> */}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="w-full">
                 <FieldModal

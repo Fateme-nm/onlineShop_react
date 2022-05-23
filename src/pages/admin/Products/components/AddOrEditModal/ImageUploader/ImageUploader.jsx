@@ -11,8 +11,12 @@ const ImageUploader = ({
   imagesArr,
   setImagesArr,
   isJustPreview,
+  isEditModal,
 }) => {
-  const [showPreview, setShowPreview] = useState();
+  const [showPreview, setShowPreview] = useState(
+    isThumbnail && isEditModal ? isEditModal : undefined
+  );
+  console.log(showPreview)
   const handleChangeImage = (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
@@ -86,7 +90,6 @@ const ImageUploader = ({
               class="hidden"
               accept="image/*"
               name={name}
-              value={formik.values[name]}
               onChange={(e) => {
                 formik.handleChange(e);
                 handleChangeImage(e);
