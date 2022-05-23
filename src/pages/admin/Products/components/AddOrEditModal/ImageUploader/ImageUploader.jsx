@@ -9,6 +9,7 @@ const ImageUploader = ({
   isThumbnail,
   isAddImage,
   setImagesArr,
+  isJustPreview,
 }) => {
   const [showPreview, setShowPreview] = useState();
   const handleChangeImage = (e) => {
@@ -17,7 +18,7 @@ const ImageUploader = ({
     httpService.post("upload", formData).then((res) => {
       const filename = res.data.filename;
       isThumbnail ? setThumbnailImg(filename) : setImagesArr(filename);
-      setShowPreview(imageUrl(res.data.filename));
+      setShowPreview(res.data.filename);
     });
   };
 
@@ -35,7 +36,7 @@ const ImageUploader = ({
             {isThumbnail && (
               <>
                 <img
-                  src={showPreview}
+                  src={imageUrl(showPreview)}
                   class="absolute inset-0 w-full h-full object-cover"
                 />
                 <svg
@@ -54,6 +55,12 @@ const ImageUploader = ({
                   انتخاب تصویر
                 </p>
               </>
+            )}
+            {isJustPreview && (
+              <img
+                src={imageUrl(isJustPreview)}
+                class="absolute inset-0 w-full h-full object-cover"
+              />
             )}
             {isAddImage && <i className="fa fa-plus text-gray-400"></i>}
           </div>

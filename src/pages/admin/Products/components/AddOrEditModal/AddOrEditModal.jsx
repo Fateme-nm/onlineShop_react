@@ -173,6 +173,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     name={`images`}
                     formik={formik}
                     setImagesArr={(img) => setImagesArr([...imagesArr, img])}
+                    isAddImage={true}
                   />
                 </div>
               </div>
