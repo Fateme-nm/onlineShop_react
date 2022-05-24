@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { updateProduct } from "store/slices/products";
 import { useDispatch } from "react-redux";
 import { persinaDigit, separate } from "utils";
 import EasyEdit, { Types } from "react-easy-edit";
 
-const TrTbody = ({ name, price, count, id, submitChanges }) => {
+const TrTbody = ({ name, price, count, id }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const dispatch = useDispatch();
+  const [isSubmiting, setIsSubmiting] = useState(false)
 
   const handleSubmit = (key, value) => {
+    setIsSubmiting(true)
+    if (value < 0 ) return
     const formData = new FormData()
     formData.append("id", id)
     formData.append(key, value)
