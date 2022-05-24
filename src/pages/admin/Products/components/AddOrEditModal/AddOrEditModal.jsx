@@ -108,8 +108,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           </div>
           <div className="flex justify-between overflow-auto">
             <form onSubmit={formik.handleSubmit}>
-              <div className="flex justify-between space-x-10 overflow-hidden h-56">
-                <div className="flex flex-wrap w-full h-min">
+              <div className="flex justify-between space-x-10 overflow-auto">
+                <div className="flex flex-wrap w-full overflow-auto">
                   <div className="w-full">
                     <FieldModal
                       label="نام کالا"
@@ -171,7 +171,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       />
                     )}
                   </div>
-                  <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2">
+                  <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2 h-56">
                     {(!edit_id || editProduct) &&
                       imagesArr.map((img) => (
                         <ImageUploader
