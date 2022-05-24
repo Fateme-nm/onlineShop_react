@@ -11,8 +11,8 @@ const FieldModal = ({
   name,
   id,
   input,
-  textarea,
   select,
+  description
 }) => {
   const { categories } = useSelector((state) => state.products);
   const { colors } = useSelector((state) => state.products);
@@ -35,12 +35,13 @@ const FieldModal = ({
           className="w-full border border-gray-300 focus:border-primary focus:outline-0 rounded-sm h-8"
         />
       )}
-      {textarea && (
+      {description && (
         <CKEditor
+          id={id}
           editor={ClassicEditor}
-          data={formik.values[name]}
+          data={description}
           onChange={(event, editor) => {
-            formik.handleChange(event)
+            description.current = editor.getData()
           }}
           className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm"
         />

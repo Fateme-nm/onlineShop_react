@@ -26,6 +26,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
   const [editProduct, setEditProduct] = useState(null);
   const [imagesArr, setImagesArr] = useState([]);
   const thumbnailImg = useRef();
+  const description = useRef("");
 
   const handleClose = () => {
     setAddOrEditModalOn(false);
@@ -187,9 +188,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                 <FieldModal
                   label="توضیحات"
                   id="description"
-                  name="description"
-                  formik={formik}
-                  textarea={true}
+                  description={description}
                 />
               </div>
               <button
