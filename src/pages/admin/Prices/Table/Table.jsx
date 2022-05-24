@@ -18,7 +18,7 @@ const Table = ({ products, submitChanges }) => {
             <thead>
               <tr>
                 <ThThead>موجودی</ThThead>
-                <ThThead>قیمت</ThThead>
+                <ThThead>(تومان) قیمت</ThThead>
                 <ThThead>کالا</ThThead>
               </tr>
             </thead>
