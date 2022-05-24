@@ -39,7 +39,7 @@ const FieldModal = ({
         <CKEditor
           id={id}
           editor={ClassicEditor}
-          data={description}
+          data={description.current}
           onChange={(event, editor) => {
             description.current = editor.getData()
           }}
@@ -63,7 +63,7 @@ const FieldModal = ({
           ))}
         </select>
       )}
-      {formik.errors[name] && formik.touched[name] ? (
+      {!description && formik.errors[name] && formik.touched[name] ? (
         <div className="text-primary">{formik.errors[name]}</div>
       ) : null}
     </div>

@@ -61,11 +61,18 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       setAddOrEditModalOn(false);
       const formData = new FormData();
       Object.entries(values).map((key, value) => {
-        if (key[0] === "image") {
-          formData.append("image", thumbnailImg.current);
-        } else if (key[0] === "images") {
-          imagesArr.map((img, i) => formData.append(`images[${i}]`, img));
-        } else formData.append(key[0], key[1]);
+        switch (key[0]) {
+          case "image":
+            formData.append("image", thumbnailImg.current);
+            break;
+          case "images":
+            imagesArr.map((img, i) => formData.append(`images[${i}]`, img));
+            break;
+          case "description":
+            formData.append("description", description.current);
+            break;
+          default : formData.append(key[0], key[1])
+        }
       });
       if (edit_id) {
         formData.append("id", edit_id);
