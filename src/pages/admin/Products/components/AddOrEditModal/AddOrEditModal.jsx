@@ -37,6 +37,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     const pro = products.find((pro) => pro.id == id);
     setImagesArr(pro.images);
     thumbnailImg.current = pro.image;
+    description.current = pro.description;
     return pro;
   };
 
@@ -71,7 +72,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           case "description":
             formData.append("description", description.current);
             break;
-          default : formData.append(key[0], key[1])
+          default:
+            formData.append(key[0], key[1]);
         }
       });
       if (edit_id) {
@@ -98,7 +100,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
     <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
         <div
-          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4"
+          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4 overflow-auto"
           style={{ height: "95%" }}
         >
           <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
@@ -107,7 +109,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
             </button>
             <p>افزودن/ویرایش کالا</p>
           </div>
-          <div className="flex justify-between h-min">
+          <div className="flex justify-between overflow-auto">
             <form onSubmit={formik.handleSubmit}>
               <div className="flex justify-between space-x-10 overflow-hidden h-56">
                 <div className="flex flex-wrap w-full h-min">

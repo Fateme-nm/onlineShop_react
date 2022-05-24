@@ -43,8 +43,9 @@ const FieldModal = ({
           onChange={(event, editor) => {
             description.current = editor.getData()
           }}
-          className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm"
+          className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm h-32"
         />
+        
       )}
       {select && (
         <select
