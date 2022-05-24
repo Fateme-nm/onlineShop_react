@@ -94,11 +94,13 @@ const ImageUploader = ({
                 formik.handleChange(e);
                 handleChangeImage(e);
               }}
-              onBlur={formik.handleBlur}
             />
           )}
         </label>
       </div>
+      {isThumbnail && formik.errors[name] ? (
+        <div className="text-primary">{formik.errors[name]}</div>
+      ) : null}
     </div>
   );
 };
