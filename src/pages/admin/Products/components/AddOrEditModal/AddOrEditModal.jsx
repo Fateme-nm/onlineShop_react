@@ -10,10 +10,7 @@ import ImageUploader from "./ImageUploader/ImageUploader";
 
 const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
-  name: Yup.string()
-    .min(8, "خیلی کوتاه است")
-    .max(60, "خیلی بلند است")
-    .required("این فیلد ضروری است"),
+  name: Yup.string().required("این فیلد ضروری است"),
   categoryId: Yup.string().required("این فیلد ضروری است"),
   price: Yup.number().required("این فیلد ضروری است"),
   count: Yup.number().required("این فیلد ضروری است"),
@@ -101,7 +98,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       <div className="flex h-screen justify-center items-center">
         <div
           className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-3/4 overflow-auto"
-          style={{ height: "95%" }}
+          style={{ height: "93%" }}
         >
           <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
             <button onClick={handleClose}>
