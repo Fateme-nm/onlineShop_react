@@ -6,7 +6,6 @@ import { postProduct, updateProduct } from "store/slices/products";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEditId } from "store/slices/editId";
 import ReactDOM from "react-dom";
-import httpService from "services/HttpService";
 import ImageUploader from "./ImageUploader/ImageUploader";
 
 const validationSchema = Yup.object().shape({

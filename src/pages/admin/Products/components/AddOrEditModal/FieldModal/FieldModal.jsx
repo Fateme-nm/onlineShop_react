@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const FieldModal = ({
   label,
@@ -17,7 +19,7 @@ const FieldModal = ({
   const selectFor = name === "colorId" ? colors : categories;
 
   return (
-    <div className={`${name !== "name" && 'mt-4'} w-full`}>
+    <div className={`${name !== "name" && "mt-4"} w-full`}>
       <label htmlFor={id} className="mb-2">
         {label}
       </label>
@@ -34,17 +36,14 @@ const FieldModal = ({
         />
       )}
       {textarea && (
-        <textarea
-          cols="30"
-          rows="5"
-          type={type}
-          name={name}
-          id={id}
-          value={formik.values[name]}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+        <CKEditor
+          editor={ClassicEditor}
+          data={formik.values[name]}
+          onChange={(event, editor) => {
+            formik.handleChange(event)
+          }}
           className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm"
-        ></textarea>
+        />
       )}
       {select && (
         <select
