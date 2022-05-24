@@ -11,7 +11,7 @@ const Table = ({ activeStatus, activeSort }) => {
   const {showOrders} = useSelector(state => state.orders)
   const [pageNumber, setPageNumber] = useState(0);
 
-  const ordersPerPage = 4;
+  const ordersPerPage = 5;
   const pagesVisited = pageNumber * ordersPerPage;
 
   useEffect(() => {

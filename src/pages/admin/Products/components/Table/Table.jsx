@@ -10,7 +10,7 @@ const Table = ({ categories }) => {
   const { removed } = useSelector((state) => state.removeId);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const productsPerPage = 4;
+  const productsPerPage = 5;
   const pagesVisited = pageNumber * productsPerPage;
 
   const getCategory = (categoryId) => {

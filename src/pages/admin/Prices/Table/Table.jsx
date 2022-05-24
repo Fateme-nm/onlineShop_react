@@ -7,7 +7,7 @@ import {separate, persinaDigit} from 'utils';
 const Table = ({ products, setIsSubmiting }) => {
   const [pageNumber, setPageNumber] = useState(0);
 
-  const pricesPerPage = 4;
+  const pricesPerPage = 5;
   const pagesVisited = pageNumber * pricesPerPage;
 
   return (
