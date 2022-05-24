@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { updateProduct } from "store/slices/products";
 import { useDispatch } from "react-redux";
 import { persinaDigit, separate } from "utils";
@@ -9,12 +9,12 @@ const TrTbody = ({ name, price, count, id, setIsSubmiting }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (key, value) => {
-    setIsSubmiting(true)
-    const formData = new FormData()
-    formData.append("id", id)
-    formData.append(key, value)
-    dispatch(updateProduct(formData))
-  }
+    setIsSubmiting(true);
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append(key, value);
+    dispatch(updateProduct(formData));
+  };
 
   return (
     <tr className="hover:bg-pink-50">
@@ -23,9 +23,11 @@ const TrTbody = ({ name, price, count, id, setIsSubmiting }) => {
           type={Types.NUMBER}
           value={persinaDigit(count)}
           name="count"
-          onValidate={value => {return (value != null && value >= 0)}}
+          onValidate={(value) => {
+            return value != null && value >= 0;
+          }}
           validationMessage="این ورودی مجاز نیست"
-          onSave={value => handleSubmit("count", value)}
+          onSave={(value) => handleSubmit("count", value)}
           className="text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 bg-transparent"
         />
       </td>
@@ -34,9 +36,11 @@ const TrTbody = ({ name, price, count, id, setIsSubmiting }) => {
           type={Types.NUMBER}
           value={persinaDigit(separate(price))}
           name="price"
-          onValidate={value => {return value != null && value >= 0}}
+          onValidate={(value) => {
+            return value != null && value >= 0;
+          }}
           validationMessage="این ورودی مجاز نیست"
-          onSave={value => handleSubmit("price", value)}
+          onSave={(value) => handleSubmit("price", value)}
           className="text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 bg-transparent"
         />
       </td>
