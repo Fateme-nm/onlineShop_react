@@ -178,7 +178,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     )}
                   </div>
                   <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2 h-56">
-                    {(!edit_id || editProduct) &&
+                    {(!edit_id || editProduct) && imagesArr &&
                       imagesArr.map((img) => (
                         <ImageUploader
                           isJustPreview={img}
