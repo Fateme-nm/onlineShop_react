@@ -2,68 +2,47 @@ import React, { useState, useEffect } from "react";
 import { updateProduct } from "store/slices/products";
 import { useDispatch } from "react-redux";
 import { persinaDigit } from "utils";
+import EasyEdit, { Types } from "";
 
 const TrTbody = ({ name, price, count, id, submitChanges }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
-  const [disCount, setDisCount] = useState(true);
-  const [disPrice, setDisPrice] = useState(true);
-  const [changeCount, setChangeCount] = useState()
-  const [changePrice, setChangePrice] = useState()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const handleClick = (e) => {
-    if (e.target.name === "count") setDisCount(false);
-    else setDisPrice(false);
-  };
-
-  const handleChange = (e) => {
-    if (e.target.name === "count") setChangeCount(e.target.value)
-    else setChangePrice(e.target.value)
-  }
-
-  useEffect(()=> {
-    if (submitChanges && (changeCount || changePrice)) {
-      if (changeCount) {
-        const formData = new FormData()
-        formData.append("count", changeCount)
-        formData.append("id", id)
-        dispatch(updateProduct(formData))
-        setDisCount(true) 
-      }
-      if (changePrice) {
-        const formData = new FormData()
-        formData.append("price", changePrice)
-        formData.append("id", id)
-        dispatch(updateProduct(formData))
-        setDisPrice(true)
-      }
-    }
-  }, [submitChanges])
+  // useEffect(() => {
+  //   if (submitChanges && (changeCount || changePrice)) {
+  //     if (changeCount) {
+  //       const formData = new FormData();
+  //       formData.append("count", changeCount);
+  //       formData.append("id", id);
+  //       dispatch(updateProduct(formData));
+  //       setDisCount(true);
+  //     }
+  //     if (changePrice) {
+  //       const formData = new FormData();
+  //       formData.append("price", changePrice);
+  //       formData.append("id", id);
+  //       dispatch(updateProduct(formData));
+  //       setDisPrice(true);
+  //     }
+  //   }
+  // }, [submitChanges]);
 
   return (
     <tr className="hover:bg-pink-50">
-      <td className={sameClassName} onClick={handleClick}>
-        <input
-          type="text"
-          disabled={disCount}
-          value={changeCount || count}
+      <td className={sameClassName}>
+        <EasyEdit
+          type={Types.TEXT}
+          value={count}
           name="count"
-          onChange={handleChange}
-          className={`text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 ${
-            disCount ? "bg-transparent" : "bg-zinc-200"
-          }`}
+          className="text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 bg-transparent"
         />
       </td>
-      <td className={sameClassName} onClick={handleClick}>
-        <input
-          type="text"
-          disabled={disPrice}
-          value={changePrice || price}
+      <td className={sameClassName}>
+        <EasyEdit
+          type={Types.TEXT}
+          value={price}
           name="price"
-          onChange={handleChange}
-          className={`text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 ${
-            disPrice ? "bg-transparent" : "bg-zinc-200"
-          }`}
+          className="text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 bg-transparent"
         />
       </td>
       <td className={sameClassName}>
