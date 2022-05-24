@@ -11,7 +11,7 @@ const Prices = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, [products]);
+  }, []);
 
   return (
     <div>
