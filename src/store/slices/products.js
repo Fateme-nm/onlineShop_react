@@ -96,11 +96,6 @@ const ordersSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        getProducts: (state, action) => {
-            httpService.get('products?_sort=id&_order=desc')
-                .then(res => state.products = res.data)
-                .catch(error => console.log(error))
-        },
         handleShowProducts: (state, action) => {
             const categoryId = action.payload;
             if (categoryId !== "all") {
