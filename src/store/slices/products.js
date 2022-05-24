@@ -2,12 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
 import AdminService from "services/admin.service";
 import { logout } from "./auth";
+import httpService from "services/HttpService";
 
 export const getProducts = createAsyncThunk(
   "panel/products",
   async (_, thunkAPI) => {
     try {
-      const res = await AdminService.getProducts();
+      const res = await httpService.get('products?_sort=id&_order=desc');
       return { products: res.data };
     } catch (error) {
         error.response.status === 401 && thunkAPI.dispatch(logout())
@@ -95,6 +96,11 @@ const ordersSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
+        getProducts: (state, action) => {
+            httpService.get('products?_sort=id&_order=desc')
+                .then(res => state.products = res.data)
+                .catch(error => console.log(error))
+        },
         handleShowProducts: (state, action) => {
             const categoryId = action.payload;
             if (categoryId !== "all") {
