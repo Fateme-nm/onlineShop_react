@@ -16,7 +16,6 @@ const validationSchema = Yup.object().shape({
     .max(60, "خیلی بلند است")
     .required("این فیلد ضروری است"),
   categoryId: Yup.string().required("این فیلد ضروری است"),
-  description: Yup.string().min(8, "خیلی کوتاه است").max(800, "خیلی بلند است"),
   price: Yup.number().required("این فیلد ضروری است"),
   count: Yup.number().required("این فیلد ضروری است"),
 });
