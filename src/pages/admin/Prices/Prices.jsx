@@ -22,7 +22,7 @@ const Prices = () => {
 
   return (
     <div>
-      <div className="pt-8 flex justify-between items-center flex-row-reverse container">
+      <div className="pt-8 flex justify-between items-center flex-row-reverse container h-20">
         <h2 className="text-2xl text-bold">مدیریت موجودی و قیمت ها</h2>
       </div>
       <Table products={products} setIsSubmiting={setIsSubmiting} />
