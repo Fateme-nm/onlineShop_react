@@ -12,8 +12,14 @@ const validationSchema = Yup.object().shape({
   image: Yup.string().required("این فیلد ضروری است"),
   name: Yup.string().required("این فیلد ضروری است"),
   categoryId: Yup.string().required("این فیلد ضروری است"),
-  price: Yup.number().required("این فیلد ضروری است"),
-  count: Yup.number().required("این فیلد ضروری است"),
+  colorId: Yup.string().required("این فیلد ضروری است"),
+  price: Yup.number()
+    .typeError("لطفا عدد وارد کنید")
+    .min(0, "حداقل قیمت صفر می باشد")
+    .required("این فیلد ضروری است"),
+  count: Yup.number()
+    .min(0, "حداقل تعداد صفر می باشد")
+    .required("این فیلد ضروری است"),
 });
 
 const AddOrEditModal = ({ setAddOrEditModalOn }) => {
