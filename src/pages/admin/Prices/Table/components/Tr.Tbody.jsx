@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { updateProduct } from "store/slices/products";
 import { useDispatch } from "react-redux";
+import { persinaDigit } from "utils";
 
 const TrTbody = ({ name, price, count, id, submitChanges }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";

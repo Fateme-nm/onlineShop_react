@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ThThead from "./components/Th.Thead";
 import TrTbody from "./components/Tr.Tbody";
 import ReactPaginate from "react-paginate";
-import {separate} from 'utils';
+import {separate, persinaDigit} from 'utils';
 
 const Table = ({ products, submitChanges }) => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -29,8 +29,8 @@ const Table = ({ products, submitChanges }) => {
                   return (
                     <TrTbody
                       name={product.name}
-                      price={separate(product.price)}
-                      count={product.count}
+                      price={persinaDigit(separate(product.price))}
+                      count={persinaDigit(product.count)}
                       id={product.id}
                       submitChanges={submitChanges}
                       key={product.id}
