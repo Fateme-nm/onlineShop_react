@@ -7,17 +7,25 @@ import { getProducts } from "store/slices/products";
 const Prices = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  useEffect(() => {
+    if (isSubmiting) {
+      dispatch(getProducts());
+      setIsSubmiting(false);
+    }
+  }, [isSubmiting]);
 
   return (
     <div>
       <div className="pt-8 flex justify-between items-center flex-row-reverse container">
         <h2 className="text-2xl text-bold">مدیریت موجودی و قیمت ها</h2>
       </div>
-      <Table products={products}/>
+      <Table products={products} setIsSubmiting={setIsSubmiting} />
     </div>
   );
 };

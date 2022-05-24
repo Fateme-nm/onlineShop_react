@@ -12,3 +12,12 @@
 tr:nth-child(odd) {
     @apply bg-gray-50;
 }
+
+.easy-edit-button-wrapper button {
+    display: none;
+}
+
+.easy-edit-validation-error {
+    font-size: small;
+    margin-top: 0.25rem;
+}

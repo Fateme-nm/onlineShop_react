@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { updateProduct } from "store/slices/products";
 import { useDispatch } from "react-redux";
 import { persinaDigit, separate } from "utils";
 import EasyEdit, { Types } from "react-easy-edit";
 
-const TrTbody = ({ name, price, count, id }) => {
+const TrTbody = ({ name, price, count, id, setIsSubmiting }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const dispatch = useDispatch();
-  const [isSubmiting, setIsSubmiting] = useState(false)
 
   const handleSubmit = (key, value) => {
     setIsSubmiting(true)
-    if (value < 0 ) return
     const formData = new FormData()
     formData.append("id", id)
     formData.append(key, value)
@@ -25,6 +23,8 @@ const TrTbody = ({ name, price, count, id }) => {
           type={Types.NUMBER}
           value={persinaDigit(count)}
           name="count"
+          onValidate={value => {return (value != null && value >= 0)}}
+          validationMessage="این ورودی مجاز نیست"
           onSave={value => handleSubmit("count", value)}
           className="text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 bg-transparent"
         />
@@ -34,6 +34,8 @@ const TrTbody = ({ name, price, count, id }) => {
           type={Types.NUMBER}
           value={persinaDigit(separate(price))}
           name="price"
+          onValidate={value => {return value != null && value >= 0}}
+          validationMessage="این ورودی مجاز نیست"
           onSave={value => handleSubmit("price", value)}
           className="text-sm leading-5 text-gray-900 cursor-pointer rounded-md p-2 bg-transparent"
         />
