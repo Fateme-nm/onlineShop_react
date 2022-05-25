@@ -54,16 +54,17 @@ const OrderModal = () => {
   }, [check_id]);
 
   return ReactDOM.createPortal(
-    <div className="bg-gray-50/75 fixed inset-0 z-50">
+    <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-6 px-8 border-4 border-primary rounded-xl overflow-hidden">
-          <div className="flex text-md justify-between items-center w-full">
+        <div className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-1/2 overflow-auto"
+        style={{ height: "93%" }}>
+          <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
             <button onClick={handleClose}>
-              <i className="fa fa-close bg-primary rounded px-2 py-1"></i>
+              <i className="fa fa-close rounded px-2 py-1 hover:text-primary"></i>
             </button>
             <p>نمایش سفارش</p>
           </div>
-          <div className="shadow-md p-4 my-5 rounded-md bg-gray-50">
+          <div className="shadow-md p-4 my-5 rounded-md bg-gray-50 divide-gray-300 divide-y divide-dashed">
             <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: نام مشتری</p>
               <p>
@@ -73,24 +74,24 @@ const OrderModal = () => {
                     checkOrder.customerDetail.lastName}
               </p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
+            <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: آدرس</p>
               <p>{checkOrder && checkOrder.customerDetail.billingAddress}</p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
+            <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: تلفن</p>
               <p>{checkOrder && checkOrder.customerDetail.phone}</p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
+            <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: زمان تحویل</p>
               <p>{checkOrder && jalaliDate(checkOrder.delivery)}</p>
             </div>
-            <div className="flex justify-between flex-row-reverse mb-2 text-sm">
+            <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: زمان سفارش</p>
               <p>{checkOrder && jalaliDate(checkOrder.orderDate)}</p>
             </div>
           </div>
-          <div className="overflow-y-scroll w-96 max-h-40 mb-4">
+          <div className="w-full py-8">
             <table className="w-full">
               <thead>
                 <tr>
