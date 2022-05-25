@@ -14,6 +14,11 @@ const TrTbody = ({ fullName, purchaseTotal, orderDate, id, orderItem }) => {
       <tr className="hover:bg-pink-50">
         <td className={sameClassName}>
           <div className="text-xs font-medium leading-5 text-gray-900">
+            {persinaDigit(separate(price * quantity))}
+          </div>
+        </td>
+        <td className={sameClassName}>
+          <div className="text-xs font-medium leading-5 text-gray-900">
             {persinaDigit(quantity)}
           </div>
         </td>

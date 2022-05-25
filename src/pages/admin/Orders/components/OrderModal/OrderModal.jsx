@@ -96,6 +96,7 @@ const OrderModal = () => {
             <table className="w-full">
               <thead>
                 <tr>
+                  <ThThead>قیمت کل</ThThead>
                   <ThThead>تعداد</ThThead>
                   <ThThead>(تومان) قیمت</ThThead>
                   <ThThead>کالا</ThThead>
