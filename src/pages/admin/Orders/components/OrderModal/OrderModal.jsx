@@ -18,32 +18,32 @@ const OrderModal = () => {
   };
 
   const handleClickDelivery = () => {
-      const date = new Date()
-      setCheckOrder({...checkOrder, deliveredAt: date, orderStatus: 1})
-  }
+    const date = new Date();
+    setCheckOrder({ ...checkOrder, deliveredAt: date, orderStatus: 1 });
+    dispatch(clearCheckId());
+  };
 
   useEffect(() => {
     if (checkOrder && checkOrder.deliveredAt) {
-        dispatch(updateOrder(checkOrder))
+      dispatch(updateOrder(checkOrder));
     }
-  }, [checkOrder])
+  }, [checkOrder]);
 
   const handleDelivery = () => {
     if (checkOrder && checkOrder.deliveredAt) {
-        return <p>{jalaliDate(checkOrder.deliveredAt)} : زمان تحویل</p>
+      return <p>{jalaliDate(checkOrder.deliveredAt)} : زمان تحویل</p>;
+    } else if (checkOrder && !checkOrder.deliveredAt) {
+      return (
+        <button
+          type="submit"
+          className="bg-submit rounded-md py-2 px-4"
+          onClick={handleClickDelivery}
+        >
+          تحویل شد
+        </button>
+      );
     }
-    else if (checkOrder && !checkOrder.deliveredAt) {
-        return (
-            <button 
-                type="submit" 
-                className="bg-submit rounded-md py-2 px-4" 
-                onClick={handleClickDelivery}
-            >
-                تحویل شد
-            </button>
-        )
-    }
-  }
+  };
 
   const getSelectedOrder = (id) => {
     return orders.find((order) => order.id == id);
@@ -66,8 +66,11 @@ const OrderModal = () => {
           <div className="shadow-md p-4 my-5 rounded-md bg-gray-50">
             <div className="flex justify-between flex-row-reverse mb-2 text-sm">
               <p className="font-medium">: نام مشتری</p>
-              <p>{checkOrder && checkOrder.customerDetail.firstName +
-                    " " + checkOrder.customerDetail.lastName}
+              <p>
+                {checkOrder &&
+                  checkOrder.customerDetail.firstName +
+                    " " +
+                    checkOrder.customerDetail.lastName}
               </p>
             </div>
             <div className="flex justify-between flex-row-reverse mb-2 text-sm">
@@ -89,24 +92,24 @@ const OrderModal = () => {
           </div>
           <div className="overflow-y-scroll w-96 max-h-40 mb-4">
             <table className="w-full">
-                <thead>
-                    <tr>
-                        <ThThead>تعداد</ThThead>
-                        <ThThead>قیمت</ThThead>
-                        <ThThead>کالا</ThThead>
-                    </tr>
-                </thead>
-                <tbody>
-                    {checkOrder && 
-                        React.Children.toArray(checkOrder.orderItems.map(item => {
-                            return <TrTbody orderItem={item} />
-                    }))}
-                </tbody>
+              <thead>
+                <tr>
+                  <ThThead>تعداد</ThThead>
+                  <ThThead>قیمت</ThThead>
+                  <ThThead>کالا</ThThead>
+                </tr>
+              </thead>
+              <tbody>
+                {checkOrder &&
+                  React.Children.toArray(
+                    checkOrder.orderItems.map((item) => {
+                      return <TrTbody orderItem={item} />;
+                    })
+                  )}
+              </tbody>
             </table>
           </div>
-          <div>
-              {handleDelivery()}
-          </div>
+          <div>{handleDelivery()}</div>
         </div>
       </div>
     </div>,
