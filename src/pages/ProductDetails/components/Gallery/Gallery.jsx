@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import GalleryModal from "./GalleryModal/GalleryModal";
+import { imageUrl } from "utils";
 
 const Gallery = ({ mainImg, images }) => {
   const [activeImage, setActiveImage] = useState(null);
   if (mainImg) {
     return (
       <div className="w-2/3">
-        <div>
+        <div onClick={() => setActiveImage(mainImg)}>
           <img
             id="main-img"
-            src={`http://localhost:3002${mainImg}`}
-            className="w-full"
+            src={imageUrl(mainImg)}
+            className="w-full cursor-pointer"
           />
         </div>
         <div className="grid grid-cols-4 gap-4 mb-8">
-          <div onClick={() => setActiveImage(mainImg)}>
-            <img
-              src={`http://localhost:3002${mainImg}`}
-              className="w-full cursor-pointer border border-gray-300 rounded-md hover:border-primary"
-            />
-          </div>
           {images &&
             images.map((img) => {
               return (
                 <div onClick={() => setActiveImage(img)}>
                   <img
-                    src={`http://localhost:3002${img}`}
+                    src={imageUrl(img)}
                     className="w-full cursor-pointer border border-gray-300 rounded-md hover:border-primary"
                   />
                 </div>
@@ -36,7 +31,7 @@ const Gallery = ({ mainImg, images }) => {
           <GalleryModal
             activeImage={activeImage}
             setActiveImage={setActiveImage}
-            images={[mainImg, ...images]}
+            images={images ? [mainImg, ...images] : [mainImg]}
           />
         )}
       </div>

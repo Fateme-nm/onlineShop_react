@@ -9,9 +9,10 @@ import { persinaDigit, separate } from "utils";
 import Button from "./components/Button/Button";
 import { useSelector } from "react-redux";
 import routes from "routes/routes";
+import { imageUrl } from "utils";
 
 const Productdetails = () => {
-  // const { name } = useParams();
+  // const { id } = useParams();
   const location = useLocation();
   const { id } = location.state;
   const [product, setProduct] = useState();
@@ -33,7 +34,7 @@ const Productdetails = () => {
 
   useEffect(() => {
     handleRequestProduct();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     product && handleRequestSimilarProducts();
@@ -103,18 +104,18 @@ const Productdetails = () => {
             محصولات مشابه
           </h2>
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
-            {React.Children.toArray(
-              products.map((pro) => {
+            {products.map((pro) => {
                 return (
                   <Card
-                    imgSrc={`http://localhost:3002${pro.image}`}
+                    imgSrc={imageUrl(pro.image)}
                     name={pro.name}
                     price={persinaDigit(separate(pro.price))}
                     id={pro.id}
+                    key={pro.id}
                   />
                 );
               })
-            )}
+            }
           </div>
         </div>
       </div>

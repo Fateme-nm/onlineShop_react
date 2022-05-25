@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { imageUrl } from "utils";
 
 const GalleryModal = ({ activeImage, setActiveImage, images }) => {
   return ReactDOM.createPortal(
@@ -26,7 +27,7 @@ const GalleryModal = ({ activeImage, setActiveImage, images }) => {
                     className="w-28 pr-3"
                   >
                     <img
-                      src={`http://localhost:3002${img}`}
+                      src={imageUrl(img)}
                       className={`cursor-pointer border rounded-md hover:border-primary w-full 
                       ${img === activeImage ? "border-primary": "border-gray-300"}`}
                     />
@@ -35,7 +36,7 @@ const GalleryModal = ({ activeImage, setActiveImage, images }) => {
               })}
             </div>
             <div className="w-96">
-              <img src={`http://localhost:3002${activeImage}`} />
+              <img src={imageUrl(activeImage)} />
             </div>
           </div>
         </div>

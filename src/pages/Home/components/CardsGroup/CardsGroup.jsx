@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "components/Card/Card";
 import { Link } from "react-router-dom";
 import httpService from "services/HttpService";
+import { imageUrl } from "utils";
 
 const CardsGroup = ({ title, id }) => {
   const [products, setProducts] = useState([]);
@@ -34,7 +35,7 @@ const CardsGroup = ({ title, id }) => {
                 name={pro.name}
                 price={pro.price}
                 id={pro.id}
-                imgSrc={`http://localhost:3002${pro.image}`}
+                imgSrc={imageUrl(pro.image)}
               />
             );
           })
