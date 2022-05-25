@@ -6,13 +6,14 @@ import TrTbody from "../Table/components/Tr.Tbody";
 import ThThead from "../Table/components/Th.Thead";
 import { updateOrder } from "store/slices/orders";
 import ReactDOM from "react-dom";
-import { persinaDigit } from "utils";
+import { persinaDigit, separate } from "utils";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
   const { check_id } = useSelector((state) => state.checkId);
   const { orders } = useSelector((state) => state.orders);
   const [checkOrder, setCheckOrder] = useState(null);
+  let totalPrice = 0;
 
   const handleClose = () => {
     dispatch(clearCheckId());
@@ -32,7 +33,9 @@ const OrderModal = () => {
 
   const handleDelivery = () => {
     if (checkOrder && checkOrder.deliveredAt) {
-      return <p>{persinaDigit(jalaliDate(checkOrder.deliveredAt))} : زمان تحویل</p>;
+      return (
+        <p>{persinaDigit(jalaliDate(checkOrder.deliveredAt))} : زمان تحویل</p>
+      );
     } else if (checkOrder && !checkOrder.deliveredAt) {
       return (
         <button
@@ -57,8 +60,10 @@ const OrderModal = () => {
   return ReactDOM.createPortal(
     <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-1/2 overflow-auto"
-        style={{ height: "93%" }}>
+        <div
+          className="flex-col justify-center bg-white py-6 px-8 rounded-xl shadow-2xl w-1/2 overflow-auto"
+          style={{ height: "93%" }}
+        >
           <div className="flex text-md justify-between items-center w-full pb-4 mb-4 border-b border-b-gray-150">
             <button onClick={handleClose}>
               <i className="fa fa-close rounded px-2 py-1 hover:text-primary"></i>
@@ -81,15 +86,21 @@ const OrderModal = () => {
             </div>
             <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: تلفن</p>
-              <p>{checkOrder && persinaDigit(checkOrder.customerDetail.phone)}</p>
+              <p>
+                {checkOrder && persinaDigit(checkOrder.customerDetail.phone)}
+              </p>
             </div>
             <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: زمان تحویل</p>
-              <p>{checkOrder && persinaDigit(jalaliDate(checkOrder.delivery))}</p>
+              <p>
+                {checkOrder && persinaDigit(jalaliDate(checkOrder.delivery))}
+              </p>
             </div>
             <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: زمان سفارش</p>
-              <p>{checkOrder && persinaDigit(jalaliDate(checkOrder.orderDate))}</p>
+              <p>
+                {checkOrder && persinaDigit(jalaliDate(checkOrder.orderDate))}
+              </p>
             </div>
           </div>
           <div className="w-full py-8">
@@ -106,11 +117,15 @@ const OrderModal = () => {
                 {checkOrder &&
                   React.Children.toArray(
                     checkOrder.orderItems.map((item) => {
+                      totalPrice = totalPrice + item.price * item.quantity;
                       return <TrTbody orderItem={item} />;
                     })
                   )}
               </tbody>
             </table>
+            <div className="bg-primary w-full mt-2 text-gray-50 p-2 text-sm">
+              قیمت نهایی: <span>{persinaDigit(separate(totalPrice))}</span> تومان
+            </div>
           </div>
           <div>{handleDelivery()}</div>
         </div>
