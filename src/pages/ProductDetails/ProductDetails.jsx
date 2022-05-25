@@ -10,6 +10,7 @@ import Button from "./components/Button/Button";
 import { useSelector } from "react-redux";
 import routes from "routes/routes";
 import { imageUrl } from "utils";
+import parse from 'html-react-parser';
 
 const Productdetails = () => {
   // const { id } = useParams();
@@ -95,7 +96,7 @@ const Productdetails = () => {
             توضیحات محصول
           </h3>
           <div className="space-y-3 text-gray-600 pt-3">
-            <p>{product.description}</p>
+            <p>{parse(product.description)}</p>
           </div>
         </div>
 
