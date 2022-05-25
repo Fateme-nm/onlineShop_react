@@ -16,9 +16,9 @@ const RemoveModal = () => {
   };
 
   return ReactDOM.createPortal(
-    <div className="bg-gray-50/75 fixed inset-0 z-50">
+    <div className="bg-gray-300/75 fixed inset-0 z-50">
       <div className="flex h-screen justify-center items-center">
-        <div className="flex-col justify-center bg-white py-10 px-24 border-4 border-primary rounded-xl">
+        <div className="flex-col justify-center bg-white py-10 px-24 rounded-xl shadow-2xl ">
           <div className="flex text-lg text-zinc-800 mb-6 flex-col items-center">
             <i className="fas fa-exclamation-circle mb-6 text-5xl text-gray-200"></i>
             <p>از حذف این کالا مطمئن هستید؟</p>
