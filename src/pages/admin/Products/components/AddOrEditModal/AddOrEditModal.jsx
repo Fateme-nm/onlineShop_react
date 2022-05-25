@@ -56,6 +56,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       name: editProduct ? editProduct.name : "",
       categoryId: editProduct ? editProduct.categoryId : "",
       colorId: editProduct ? editProduct.colorId : "",
+      // sizeId: editProduct ? editProduct.sizeId : "",
       description: editProduct ? editProduct.description : "",
       price: editProduct ? editProduct.price : "",
       count: editProduct ? editProduct.count : "",
@@ -81,8 +82,6 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       });
       if (edit_id) {
         formData.append("id", edit_id);
-        formData.append('sizeId[0]', 39)
-        formData.append('sizeId[1]', 40)
         dispatch(updateProduct(formData))
           .unwrap()
           .catch((err) => {
@@ -90,6 +89,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           })
           .finally(() => resetForm());
       } else {
+        formData.append('sizeId[0]', 1)
+        formData.append('sizeId[1]', 2)
         dispatch(postProduct(formData))
           .unwrap()
           .catch((err) => {
@@ -166,7 +167,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       select={true}
                     />
                   </div>
-                  <div className="w-1/2 pl-2">
+                  {/* <div className="w-1/2 pl-2">
                     <FieldModal
                       label="سایز"
                       id="sizeId"
@@ -174,7 +175,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       formik={formik}
                       multiSelect={true}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex w-full justify-start flex-row-reverse pr-2">
                   <div className="ml-4">

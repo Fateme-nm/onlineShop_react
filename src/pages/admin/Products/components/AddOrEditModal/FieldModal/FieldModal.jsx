@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { MultiSelect } from "react-multi-select-component";
+// import Select from "react-select";
 
 const FieldModal = ({
   label,
@@ -14,14 +14,15 @@ const FieldModal = ({
   input,
   select,
   multiSelect,
-  description
+  description,
 }) => {
-  const { categories } = useSelector((state) => state.products);
-  const { colors } = useSelector((state) => state.products);
-  const selectFor = name === "colorId" ? colors : categories;
+  const { categories, colors, sizes } = useSelector((state) => state.products);
+  let selectFor = name === "colorId" ? colors : categories;
 
   return (
-    <div className={`${name !== "name" && name !== "categoryId" && "mt-4"} w-full`}>
+    <div
+      className={`${name !== "name" && name !== "categoryId" && "mt-4"} w-full`}
+    >
       <label htmlFor={id} className="mb-2">
         {label}
       </label>
@@ -43,11 +44,10 @@ const FieldModal = ({
           editor={ClassicEditor}
           data={description.current}
           onChange={(event, editor) => {
-            description.current = editor.getData()
+            description.current = editor.getData();
           }}
           className="w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm h-32"
         />
-        
       )}
       {select && (
         <select
@@ -66,13 +66,16 @@ const FieldModal = ({
           ))}
         </select>
       )}
-      {multiSelect && (
-        <MultiSelect
-        options={options}
-        value={formik.values[name]}
-        onChange={formik.handleChange}
-      />
-      )}
+      {/* {multiSelect && (
+        <Select
+          options={sizes}
+          getOptionLabel={(option) => option.name}
+          getOptionValue={(option) => option.id}
+          value={formik.values[name]}
+          onChange={formik.handleChange}
+          classNamePrefix="react-select"
+        />
+      )} */}
       {!description && formik.errors[name] && formik.touched[name] ? (
         <div className="text-primary">{formik.errors[name]}</div>
       ) : null}
