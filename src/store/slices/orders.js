@@ -54,6 +54,7 @@ export const updateOrder = createAsyncThunk(
     "panel/updateOrder",
     async (checkOrder, _, thunkAPI) => {
         const {deliveredAt, orderStatus, id} = checkOrder
+        console.log(deliveredAt, orderStatus, id)
         try {
             await AdminService.updateOrder({deliveredAt, orderStatus}, id)
         } catch (error) {
