@@ -32,7 +32,7 @@ const Table = ({ activeStatus, activeSort }) => {
                     { name: "قدیمی ترین", value: "old" },
                   ]}
                 >
-                  زمان ثبت سفارش
+                  {activeStatus == 1 ? 'تاریخ تحویل' : 'تاریخ ثبت سفارش'}
                 </ThThead>
                 <ThThead>(تومان) مجموع مبلغ</ThThead>
                 <ThThead>نام کاربر</ThThead>
