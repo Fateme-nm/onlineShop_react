@@ -117,8 +117,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           <div className="flex justify-between overflow-auto">
             <form onSubmit={formik.handleSubmit}>
               <div className="flex justify-between space-x-10 overflow-auto">
-                <div className="flex flex-wrap w-full overflow-auto">
-                  <div className="w-full">
+                <div className="flex flex-wrap w-full overflow-auto flex-row-reverse">
+                  <div className="w-1/2 pl-2">
                     <FieldModal
                       label="نام کالا"
                       type="text"
@@ -164,6 +164,15 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       name="colorId"
                       formik={formik}
                       select={true}
+                    />
+                  </div>
+                  <div className="w-1/2 pl-2">
+                    <FieldModal
+                      label="سایز"
+                      id="sizeId"
+                      name="sizeId"
+                      formik={formik}
+                      multiSelect={true}
                     />
                   </div>
                 </div>

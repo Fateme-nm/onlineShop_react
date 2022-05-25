@@ -46,6 +46,18 @@ export const getColors = createAsyncThunk(
     }
 );
 
+export const getSizes = createAsyncThunk(
+    "panel/sizes", 
+    async (_, thunkAPI) => {
+        try {
+            const res = await httpService.get('size');
+            return { sizes: res.data };
+        } catch (error) {
+            return thunkAPI.rejectWithValue();
+        }
+    }
+);
+
 export const deleteProduct = createAsyncThunk(
     "panel/deletePro",
     async (id, _, thunkAPI) => {
@@ -88,6 +100,7 @@ const initialState = {
     showProducts: [],
     categories: [],
     colors: [],
+    sizes: [],
     priceEntityChanges: [],
     modifiedProducts: 0
 }
@@ -128,6 +141,9 @@ const ordersSlice = createSlice({
         }, 
         [getColors.fulfilled]: (state, action) => {
             state.colors = action.payload.colors
+        },
+        [getSizes.fulfilled]: (state, action) => {
+            state.sizes = action.payload.sizes
         },
         [postProduct.fulfilled]: (state,action) => {
             state.modifiedProducts = state.modifiedProducts + 1

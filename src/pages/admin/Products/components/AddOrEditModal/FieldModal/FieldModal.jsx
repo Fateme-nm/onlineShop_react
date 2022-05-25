@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { MultiSelect } from "react-multi-select-component";
 
 const FieldModal = ({
   label,
@@ -12,6 +13,7 @@ const FieldModal = ({
   id,
   input,
   select,
+  multiSelect,
   description
 }) => {
   const { categories } = useSelector((state) => state.products);
@@ -19,7 +21,7 @@ const FieldModal = ({
   const selectFor = name === "colorId" ? colors : categories;
 
   return (
-    <div className={`${name !== "name" && "mt-4"} w-full`}>
+    <div className={`${name !== "name" && name !== "categoryId" && "mt-4"} w-full`}>
       <label htmlFor={id} className="mb-2">
         {label}
       </label>
@@ -63,6 +65,13 @@ const FieldModal = ({
             </option>
           ))}
         </select>
+      )}
+      {multiSelect && (
+        <MultiSelect
+        options={options}
+        value={formik.values[name]}
+        onChange={formik.handleChange}
+      />
       )}
       {!description && formik.errors[name] && formik.touched[name] ? (
         <div className="text-primary">{formik.errors[name]}</div>
