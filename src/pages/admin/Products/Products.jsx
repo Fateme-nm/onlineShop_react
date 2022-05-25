@@ -3,7 +3,12 @@ import Table from "./components/Table/Table";
 import RemoveModal from "./components/RemoveModal/RemoveModal";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, getCategories, getColors } from "store/slices/products";
+import {
+  getProducts,
+  getCategories,
+  getColors,
+  getSizes,
+} from "store/slices/products";
 import AddOrEditModal from "./components/AddOrEditModal/AddOrEditModal";
 
 const Products = () => {
@@ -20,6 +25,7 @@ const Products = () => {
     dispatch(getProducts());
     dispatch(getCategories());
     dispatch(getColors());
+    dispatch(getSizes());
   }, []);
 
   useEffect(() => {
@@ -31,8 +37,8 @@ const Products = () => {
   }, [remove_id]);
 
   useEffect(() => {
-    setAddOrEditModalOn(edit_id ? true : false)
-  }, [edit_id])
+    setAddOrEditModalOn(edit_id ? true : false);
+  }, [edit_id]);
 
   return (
     <div>
@@ -45,7 +51,7 @@ const Products = () => {
           افزودن کالا
         </button>
       </div>
-      <Table categories={categories}/>
+      <Table categories={categories} />
       {removeModalOn && <RemoveModal />}
       {addOrEditModalOn && (
         <AddOrEditModal setAddOrEditModalOn={setAddOrEditModalOn} />
