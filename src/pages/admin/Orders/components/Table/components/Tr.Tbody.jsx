@@ -2,26 +2,32 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setCheckId } from "store/slices/checkId";
 import { Link } from "react-router-dom";
+import { persinaDigit, separate } from "utils";
 
 const TrTbody = ({ fullName, purchaseTotal, orderDate, id, orderItem }) => {
   const sameClassName = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
   const dispatch = useDispatch();
 
   if (orderItem) {
-    const {name, price, quantity} = orderItem
+    const { name, price, quantity } = orderItem;
     return (
       <tr className="hover:bg-pink-50">
         <td className={sameClassName}>
-          <div className="text-xs font-medium leading-5 text-gray-900">{quantity}</div>
+          <div className="text-xs font-medium leading-5 text-gray-900">
+            {persinaDigit(quantity)}
+          </div>
         </td>
         <td className={sameClassName}>
-          <div className="text-xs font-medium leading-5 text-gray-900">{price}</div>
+          <div className="text-xs font-medium leading-5 text-gray-900">
+            {persinaDigit(separate(price))}
+          </div>
         </td>
         <td className={sameClassName}>
-          <Link 
+          <Link
             to={`/product/${name}`}
             className="text-xs font-medium leading-5 text-gray-900 cursor-pointer hover:text-primary"
-          >{name}
+          >
+            {name}
           </Link>
         </td>
       </tr>
@@ -38,10 +44,14 @@ const TrTbody = ({ fullName, purchaseTotal, orderDate, id, orderItem }) => {
         </div>
       </td>
       <td className={sameClassName}>
-        <div className="text-sm leading-5 text-gray-900">{orderDate}</div>
+        <div className="text-sm leading-5 text-gray-900">
+          {persinaDigit(orderDate)}
+        </div>
       </td>
       <td className={sameClassName}>
-        <div className="text-sm leading-5 text-gray-900">{purchaseTotal}</div>
+        <div className="text-sm leading-5 text-gray-900">
+          {persinaDigit(purchaseTotal)}
+        </div>
       </td>
       <td className={sameClassName}>
         <div className="text-sm leading-5 text-gray-900">{fullName}</div>

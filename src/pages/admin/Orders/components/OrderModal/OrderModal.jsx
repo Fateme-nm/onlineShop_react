@@ -6,6 +6,7 @@ import TrTbody from "../Table/components/Tr.Tbody";
 import ThThead from "../Table/components/Th.Thead";
 import { updateOrder } from "store/slices/orders";
 import ReactDOM from "react-dom";
+import { persinaDigit } from "utils";
 
 const OrderModal = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const OrderModal = () => {
 
   const handleDelivery = () => {
     if (checkOrder && checkOrder.deliveredAt) {
-      return <p>{jalaliDate(checkOrder.deliveredAt)} : زمان تحویل</p>;
+      return <p>{persinaDigit(jalaliDate(checkOrder.deliveredAt))} : زمان تحویل</p>;
     } else if (checkOrder && !checkOrder.deliveredAt) {
       return (
         <button
@@ -80,15 +81,15 @@ const OrderModal = () => {
             </div>
             <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: تلفن</p>
-              <p>{checkOrder && checkOrder.customerDetail.phone}</p>
+              <p>{checkOrder && persinaDigit(checkOrder.customerDetail.phone)}</p>
             </div>
             <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: زمان تحویل</p>
-              <p>{checkOrder && jalaliDate(checkOrder.delivery)}</p>
+              <p>{checkOrder && persinaDigit(jalaliDate(checkOrder.delivery))}</p>
             </div>
             <div className="flex justify-between flex-row-reverse py-2 text-sm">
               <p className="font-medium">: زمان سفارش</p>
-              <p>{checkOrder && jalaliDate(checkOrder.orderDate)}</p>
+              <p>{checkOrder && persinaDigit(jalaliDate(checkOrder.orderDate))}</p>
             </div>
           </div>
           <div className="w-full py-8">
@@ -96,7 +97,7 @@ const OrderModal = () => {
               <thead>
                 <tr>
                   <ThThead>تعداد</ThThead>
-                  <ThThead>قیمت</ThThead>
+                  <ThThead>(تومان) قیمت</ThThead>
                   <ThThead>کالا</ThThead>
                 </tr>
               </thead>
