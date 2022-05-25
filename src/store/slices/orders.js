@@ -27,8 +27,8 @@ export const getShowOrders = createAsyncThunk(
         try {
             const sort = activeStatus == 1 ? 'deliveredAt' : 'orderDate'
             const res = await httpService
-                .get(`orders?orderStatus=${activeStatus}&_sort=${sort}&order=asc`)
-            const filterList2 = activeSort === "new" ? res.data : [...res.data].reverse()
+                .get(`orders?orderStatus=${activeStatus}&_sort=${sort}&order=desc`)
+            const filterList2 = activeSort === "new" ? [...res.data].reverse() : res.data
             return { showOrders: filterList2 };
         }catch(error) {
             return thunkAPI.rejectWithValue();

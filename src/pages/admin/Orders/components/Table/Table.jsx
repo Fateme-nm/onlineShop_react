@@ -7,15 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getShowOrders } from "store/slices/orders";
 
 const Table = ({ activeStatus, activeSort }) => {
-  const dispatch = useDispatch()
-  const {showOrders} = useSelector(state => state.orders)
+  const dispatch = useDispatch();
+  const { showOrders } = useSelector((state) => state.orders);
   const [pageNumber, setPageNumber] = useState(0);
 
   const ordersPerPage = 5;
   const pagesVisited = pageNumber * ordersPerPage;
 
   useEffect(() => {
-    dispatch(getShowOrders())
+    dispatch(getShowOrders());
   }, [activeStatus, activeSort]);
 
   return (
@@ -32,7 +32,7 @@ const Table = ({ activeStatus, activeSort }) => {
                     { name: "قدیمی ترین", value: "old" },
                   ]}
                 >
-                  {activeStatus == 1 ? 'تاریخ تحویل' : 'تاریخ ثبت سفارش'}
+                  {activeStatus == 1 ? "تاریخ تحویل" : "تاریخ ثبت سفارش"}
                 </ThThead>
                 <ThThead>(تومان) مجموع مبلغ</ThThead>
                 <ThThead>نام کاربر</ThThead>
@@ -50,7 +50,9 @@ const Table = ({ activeStatus, activeSort }) => {
                         order.customerDetail.lastName
                       }
                       purchaseTotal={separate(order.purchaseTotal)}
-                      orderDate={jalaliDate(order.orderDate)}
+                      orderDate={jalaliDate(
+                        activeStatus == 1 ? order.deliveredAt : order.orderDate
+                      )}
                       id={order.id}
                       key={order.id}
                     />
@@ -60,13 +62,13 @@ const Table = ({ activeStatus, activeSort }) => {
           </table>
         </div>
         <ReactPaginate
-            previousLabel={<i className="	fa fa-chevron-left text-primary"></i>}
-            nextLabel={<i className="	fa fa-chevron-right text-primary"></i>}
-            pageCount={Math.ceil(showOrders.length / ordersPerPage)}
-            onPageChange={({ selected }) => setPageNumber(selected)}
-            containerClassName={"flex space-x-5"}
-            activeClassName={"text-primary"}
-          />
+          previousLabel={<i className="	fa fa-chevron-left text-primary"></i>}
+          nextLabel={<i className="	fa fa-chevron-right text-primary"></i>}
+          pageCount={Math.ceil(showOrders.length / ordersPerPage)}
+          onPageChange={({ selected }) => setPageNumber(selected)}
+          containerClassName={"flex space-x-5"}
+          activeClassName={"text-primary"}
+        />
       </div>
     </div>
   );
