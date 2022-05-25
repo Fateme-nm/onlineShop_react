@@ -60,9 +60,9 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       price: editProduct ? editProduct.price : "",
       count: editProduct ? editProduct.count : "",
     },
-    onSubmit: async (values, { setSubmitting, resetForm }) => {
-      setSubmitting(false);
+    onSubmit: async (values, { resetForm }) => {
       setAddOrEditModalOn(false);
+      dispatch(clearEditId());
       const formData = new FormData();
       Object.entries(values).map((key, value) => {
         switch (key[0]) {
