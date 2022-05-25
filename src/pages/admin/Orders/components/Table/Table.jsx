@@ -4,7 +4,7 @@ import TrTbody from "./components/Tr.Tbody";
 import { jalaliDate, separate } from "utils";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
-import { handleShowOrders } from "store/slices/orders";
+import { getShowOrders } from "store/slices/orders";
 
 const Table = ({ activeStatus, activeSort }) => {
   const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const Table = ({ activeStatus, activeSort }) => {
   const pagesVisited = pageNumber * ordersPerPage;
 
   useEffect(() => {
-    dispatch(handleShowOrders())
+    dispatch(getShowOrders())
   }, [activeStatus, activeSort]);
 
   return (
@@ -34,7 +34,7 @@ const Table = ({ activeStatus, activeSort }) => {
                 >
                   زمان ثبت سفارش
                 </ThThead>
-                <ThThead>مجموع مبلغ</ThThead>
+                <ThThead>(تومان) مجموع مبلغ</ThThead>
                 <ThThead>نام کاربر</ThThead>
               </tr>
             </thead>

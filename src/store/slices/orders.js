@@ -2,12 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
 import AdminService from "services/admin.service";
 import { logout } from "./auth";
+import httpService from "services/HttpService";
 
 export const getOrders = createAsyncThunk(
   "panel/orders",
   async (_, thunkAPI) => {
     try {
-      const res = await AdminService.getOrders();
+      const res = await httpService.get('orders?_sort=orderDate&_order=desc')
       return { orders: res.data };
     } catch (error) {
         error.response.status === 401 && thunkAPI.dispatch(logout())
@@ -16,6 +17,24 @@ export const getOrders = createAsyncThunk(
     }
   }
 );
+
+export const getShowOrders = createAsyncThunk(
+    "panel/showOrders",
+    async(_, { getState }, thunkAPI) => {
+        const {orders, activeStatus, activeSort} = getState().orders
+        const filterList1 = activeSort === "new" ? orders : [...orders].reverse()
+        if (activeStatus === "all") return {showOrders: filterList1}
+        try {
+            const sort = activeStatus == 1 ? 'deliveredAt' : 'orderDate'
+            const res = await httpService
+                .get(`orders?orderStatus=${activeStatus}&_sort=${sort}&order=asc`)
+            const filterList2 = activeSort === "new" ? res.data : [...res.data].reverse()
+            return { showOrders: filterList2 };
+        }catch(error) {
+            return thunkAPI.rejectWithValue();
+        }
+    }
+)
 
 export const getStatusOrders = createAsyncThunk(
     "panel/statusOrders", 
@@ -66,19 +85,6 @@ const ordersSlice = createSlice({
             const sort = action.payload
             state.activeSort = sort
         },
-        handleShowOrders: (state, action) => {
-            const filterList1 =
-                state.activeSort === "new" ? 
-                    [...state.orders].reverse() : state.orders;
-            if (state.activeStatus !== "all") {
-                const filterList2 = filterList1.filter(
-                    (order) => order.orderStatus == state.activeStatus
-                );
-                state.showOrders = filterList2
-            } else {
-                state.showOrders = filterList1
-            }
-        }
     },
     extraReducers: {
         [getOrders.pending]: (state) => {
@@ -87,12 +93,19 @@ const ordersSlice = createSlice({
         [getOrders.fulfilled]: (state, action) => {
             const orders = action.payload.orders
             state.orders = orders;
-            state.showOrders = [...orders].reverse()
+            state.showOrders = orders;
             state.isLoading = false
         },
         [getOrders.rejected]: (state, action) => {
             state.orders = [];
             state.isLoading = false
+        },
+        [getShowOrders.fulfilled]: (state, action) => {
+            const showOrders = action.payload.showOrders;
+            state.showOrders = showOrders;
+        },
+        [getShowOrders.rejected]: (state, action) => {
+            console.log(action.payload)
         },
         [getStatusOrders.fulfilled]: (state, action) => {
             state.statusOrders = state.payload.statusOrders;
@@ -107,6 +120,6 @@ const { reducer, actions } = ordersSlice;
 export const { 
     setActiveStatus, 
     setActiveSort,
-    handleShowOrders } 
+} 
 = actions
 export default reducer;

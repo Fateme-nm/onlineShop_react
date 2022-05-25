@@ -123,8 +123,9 @@ const OrderModal = () => {
                   )}
               </tbody>
             </table>
-            <div className="bg-primary w-full mt-2 text-gray-50 p-2 text-sm">
-              قیمت نهایی: <span>{persinaDigit(separate(totalPrice))}</span> تومان
+            <div className="bg-primary w-full mt-2 text-gray-50 py-2 px-6 text-sm">
+              <span className="ml-3">مجموع مبلغ</span>
+              <span>{persinaDigit(separate(totalPrice))} تومان</span>
             </div>
           </div>
           <div>{handleDelivery()}</div>
