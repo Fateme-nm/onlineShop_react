@@ -6,6 +6,7 @@ import Card from "components/Card/Card";
 import httpService from "services/HttpService";
 import ReactPaginate from "react-paginate";
 import { useLocation } from "react-router-dom";
+import { imageUrl } from "utils";
 
 const Productslist = () => {
   const location = useLocation();
@@ -71,7 +72,7 @@ const Productslist = () => {
             .map((pro) => {
               return (
                 <Card
-                  imgSrc={`http://localhost:3002${pro.image}`}
+                  imgSrc={imageUrl(pro.image)}
                   name={pro.name}
                   price={pro.price}
                   id={pro.id}
