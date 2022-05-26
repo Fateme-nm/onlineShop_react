@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import httpService from "services/HttpService";
 import { persinaDigit } from "utils";
@@ -15,6 +15,8 @@ const Sidebar = ({
   // const handleChange = (catId) => {
   //   catId !== activeCategory && handleAcitveCategory(catId)
   // }
+  let minPrice = null;
+  let maxPrice = null;
   const handleClickSize = (sizeId) => {
     const filtereList = products.filter((pro) => {
       return !!pro.sizeId.find((size) => {
@@ -29,6 +31,20 @@ const Sidebar = ({
     httpService
       .get(`products?${catId}&colorId=${colorId}&_sort=id&_order=desc`)
       .then((res) => setShowProducts(res.data));
+  };
+
+  const handlePrice = (e) => {
+    let value = e.target.value;
+    value = value.length > 0 ? +value : null;
+    e.target.name === "min" ? (minPrice = value) : (maxPrice = value);
+    const filtereList = products.filter((pro) => {
+      if (minPrice && maxPrice) {
+        return pro.price <= maxPrice && pro.price >= minPrice;
+      } else if (minPrice && !maxPrice) return pro.price >= minPrice;
+      else if (!minPrice && maxPrice) return pro.price <= maxPrice;
+      else return true;
+    });
+    setShowProducts(filtereList);
   };
 
   return (
@@ -97,12 +113,18 @@ const Sidebar = ({
                 type="text"
                 className="w-full border-gray-300 focus:ring-0 focus:border-primary px-3 py-1 text-gray-600 text-sm shadow-sm rounded"
                 placeholder="حداقل"
+                value={minPrice}
+                name="min"
+                onChange={handlePrice}
               />
               <span className="mx-3 text-gray-500">-</span>
               <input
                 type="text"
                 className="w-full border-gray-300 focus:ring-0 focus:border-primary px-3 py-1 text-gray-600 text-sm shadow-sm rounded"
                 placeholder="حداکثر"
+                value={maxPrice}
+                name="max"
+                onChange={handlePrice}
               />
             </div>
           </div>
