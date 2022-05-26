@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import httpService from "services/HttpService";
 import { persinaDigit } from "utils";
 
 const Sidebar = ({
@@ -7,11 +8,22 @@ const Sidebar = ({
   categoris,
   colors,
   sizes,
+  setShowProducts,
+  products,
   handleAcitveCategory,
 }) => {
   // const handleChange = (catId) => {
   //   catId !== activeCategory && handleAcitveCategory(catId)
   // }
+  const handleClickSize = (sizeId) => {
+    const filtereList = products.filter(pro => {
+      return !!pro.sizeId.find(size => {
+        return size === sizeId
+      })
+    })
+    setShowProducts(filtereList)
+  }
+  
   return (
     <aside className="hidden lg:block lg:w-1/3 xl:w-1/2">
       <div className="col-span-1 bg-white px-4 pt-4 pb-6 shadow rounded lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
@@ -97,7 +109,7 @@ const Sidebar = ({
                   return (
                     <button
                       className="text-sm border border-gray-200 rounded-sm h-8 w-8 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
-                      onClick={() => {}}
+                      onClick={() => {handleClickSize(size.id)}}
                     >
                       {persinaDigit(size.name)}
                     </button>

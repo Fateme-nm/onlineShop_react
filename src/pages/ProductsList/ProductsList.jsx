@@ -13,6 +13,7 @@ const Productslist = () => {
   const { id } = location.state;
   //   const [activeCategory, setActiveCategory] = useState(id);
   const [products, setProducts] = useState([]);
+  const [showProducts, setShowProducts] = useState([])
   const [categoris, setCategories] = useState();
   const [sizes, setSizes] = useState();
   const [colors, setColors] = useState();
@@ -29,7 +30,7 @@ const Productslist = () => {
     const catId = id ? `categoryId=${id}&`: ""
     await httpService
       .get(`products?${catId}&_sort=id&_order=desc`)
-      .then((res) => setProducts(res.data));
+      .then((res) => {setProducts(res.data); setShowProducts(res.data)});
   };
 
   const handleRequestCategoris = async () => {
@@ -62,12 +63,14 @@ const Productslist = () => {
         categoris={categoris}
         colors={colors}
         sizes={sizes}
+        setShowProducts={setShowProducts}
+        products={products}
         // handleAcitveCategory={(catId) => handleAcitveCategory(catId)}
       />
       <div className="w-full flex flex-col lg:mr-10 xl:mr-20">
         <Filter />
         <div className="flex justify-center md:justify-between flex-wrap">
-          {products
+          {showProducts
             .slice(pagesVisited, pagesVisited + productsPerPage)
             .map((pro) => {
               return (
@@ -85,7 +88,7 @@ const Productslist = () => {
           <ReactPaginate
             previousLabel={<i className="	fa fa-chevron-left text-primary"></i>}
             nextLabel={<i className="	fa fa-chevron-right text-primary"></i>}
-            pageCount={Math.ceil(products.length / productsPerPage)}
+            pageCount={Math.ceil(showProducts.length / productsPerPage)}
             onPageChange={({ selected }) => setPageNumber(selected)}
             containerClassName={"flex space-x-5"}
             activeClassName={"text-primary"}
