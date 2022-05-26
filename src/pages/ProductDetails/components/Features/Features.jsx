@@ -18,21 +18,25 @@ const Features = ({ product, addToCart }) => {
   const [color, setColor] = useState(); //color obj of product selected
   const [sizes, setSizes] = useState(); //sizes array of product selected
   const [selectedSize, setSelectedSize] = useState(sizeId[0]); // selected size of product
+  const [writedQuantity, setWritedQuantity] = useState(1);
 
   const dispatch = useDispatch();
 
   const handleClickQuntity = (num) => {
-    if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
+    if (
+      typeof value === "number" &&
+      ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity))
+    ) {
       setQuantity(quantity + num);
     }
   };
 
   // const handleChangeQuntity = (e) => {
-  //   const value = e.target.value
-  //   if (typeof value === 'number' && value <= 1 && value >= maxQuantity) {
-  //     setQuantity(value)
+  //   const value = e.target.value;
+  //   if (typeof value === "number" && value <= 1 && value >= maxQuantity) {
+  //     setQuantity(value);
   //   }
-  // }
+  // };
 
   const handleRequestCategory = () => {
     httpService
@@ -124,8 +128,10 @@ const Features = ({ product, addToCart }) => {
           </button>
           <input
             className="h-8 w-10 flex items-center justify-center text-center focus:outline-none"
-            value={persinaDigit(quantity)}
-            // onChange={handleChangeQuntity}
+            // value={persinaDigit(quantity)}
+            onChange={(e) => handleClickQuntity(+(e.target.value))}
+            placeholder={persinaDigit(quantity)}
+            type="number"
           />
           <button
             className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
