@@ -23,7 +23,7 @@ const ImageUploader = ({
     httpService.post("upload", formData).then((res) => {
       const filename = res.data.filename;
       if (isThumbnail) setThumbnailImg(filename);
-      else setImagesArr([...imagesArr, filename]);
+      else setImagesArr(imagesArr ? [...imagesArr, filename]: [filename]);
       setShowPreview(res.data.filename);
     });
   };
