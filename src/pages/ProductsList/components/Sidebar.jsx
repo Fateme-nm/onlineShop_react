@@ -16,14 +16,21 @@ const Sidebar = ({
   //   catId !== activeCategory && handleAcitveCategory(catId)
   // }
   const handleClickSize = (sizeId) => {
-    const filtereList = products.filter(pro => {
-      return !!pro.sizeId.find(size => {
-        return size === sizeId
-      })
-    })
-    setShowProducts(filtereList)
-  }
-  
+    const filtereList = products.filter((pro) => {
+      return !!pro.sizeId.find((size) => {
+        return size === sizeId;
+      });
+    });
+    setShowProducts(filtereList);
+  };
+
+  const handleClickColor = (colorId) => {
+    const catId = activeCategory ? `categoryId=${activeCategory}&` : "";
+    httpService
+      .get(`products?${catId}&colorId=${colorId}&_sort=id&_order=desc`)
+      .then((res) => setShowProducts(res.data));
+  };
+
   return (
     <aside className="hidden lg:block lg:w-1/3 xl:w-1/2">
       <div className="col-span-1 bg-white px-4 pt-4 pb-6 shadow rounded lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
@@ -109,7 +116,9 @@ const Sidebar = ({
                   return (
                     <button
                       className="text-sm border border-gray-200 rounded-sm h-8 w-8 flex items-center justify-center cursor-pointer shadow-sm text-gray-600 focus:bg-primary focus:text-white"
-                      onClick={() => {handleClickSize(size.id)}}
+                      onClick={() => {
+                        handleClickSize(size.id);
+                      }}
                     >
                       {persinaDigit(size.name)}
                     </button>
@@ -126,6 +135,7 @@ const Sidebar = ({
                 colors.map((color) => {
                   return (
                     <button
+                      onClick={() => handleClickColor(color.id)}
                       className={`text-xs border border-gray-200 rounded-sm h-8 w-8 shadow-sm focus:ring-primary focus:ring-2`}
                       style={{ backgroundColor: `${color.hex}` }}
                     ></button>
