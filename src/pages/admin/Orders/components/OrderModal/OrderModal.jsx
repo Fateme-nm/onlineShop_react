@@ -22,12 +22,12 @@ const OrderModal = () => {
   const handleClickDelivery = () => {
     const date = new Date().getTime();
     setCheckOrder({ ...checkOrder, deliveredAt: date, orderStatus: 1 });
+    dispatch(clearCheckId());
   };
 
   useEffect(() => {
     if (checkOrder && checkOrder.deliveredAt) {
       dispatch(updateOrder(checkOrder));
-      dispatch(clearCheckId());
     }
   }, [checkOrder]);
 
