@@ -17,7 +17,7 @@ const TrTbody = ({ imgSrc, name, category, id }) => {
       </td>
       <td className={sameClassName}>
         <i
-          className="fas fa-edit text-blue-400 cursor-pointer text-xl"
+          className="fas fa-edit text-gray-500 cursor-pointer text-xl"
           onClick={() => dispatch(setEditId(id))}
         ></i>
       </td>
