@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getShowCartProducts, handleSyncStorage } from "store/slices/cart";
+import { getShowCartProducts } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
 import { imageUrl, persinaDigit } from "utils";
 
 const NavIcon = ({ icon, number, href, children, cart }) => {
   const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(handleSyncStorage())
-  }, [])
 
   useEffect(() => {
     cart && number && dispatch(getShowCartProducts());
