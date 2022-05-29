@@ -28,37 +28,44 @@ const NavIcon = ({ icon, number, href, children, cart }) => {
       </Link>
       {cart && number && (
         <div
-          className="invisible absolute left-0 top-full w-72 rounded-sm flex flex-col
+          className="invisible absolute left-0 top-full w-80 rounded-sm flex flex-col
         opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50 divide-y divide-gray-300 divide-dashed overflow-auto bg-white p-5 shadow-md max-h-96"
         >
           {showCartProducts.map((pro) => {
             return (
-              <div className="felx py-5">
-                <div>
+              <div className="py-5 flex justify-between flex-row-reverse w-full h-fit text-sm">
+                <div className="w-1/2 ml-5">
                   <img
                     src={imageUrl(pro.image)}
                     alt="image"
-                    className="w-16"
+                    className="w-full border-gray-200 border"
                   />
                   <p>
                     <span>تعداد: </span>
                     <span>{persinaDigit(pro.quantity)}</span>
                   </p>
                 </div>
-                <div>
-                  <p>{persinaDigit(pro.name)}</p>
-                  <p>
-                    <span>رنگ: </span>
-                    <span>{pro.color}</span>
-                  </p>
-                  <p>
-                    <span>سایز: </span>
-                    <span>{persinaDigit(pro.size)}</span>
-                  </p>
-                  <p>
-                    <span>{persinaDigit(pro.price)}</span>
+                <div className="w-1/2">
+                  <p className="mb-2 text-md">{persinaDigit(pro.name)}</p>
+                  <p className="flex flex-row-reverse text-xs">
+                    <span className="pl-1">{persinaDigit(pro.price)}</span>
                     <span>تومان</span>
                   </p>
+                  <div className="flex justify-between">
+                    <div className="mt-4 flex justify-start items-center flex-row-reverse">
+                      <h3 className="text-gray-800 ml-2">رنگ</h3>
+                      <button
+                        className={
+                          "text-xs border border-gray-200 rounded-sm h-5 w-5 shadow-sm"
+                        }
+                        style={{ backgroundColor: `${pro.color}` }}
+                      ></button>
+                    </div>
+                    <div className="mt-4 flex justify-start items-center flex-row-reverse">
+                      <h3 className="text-gray-800 ml-2">سایز</h3>
+                      <span>{persinaDigit(pro.size)}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             );
