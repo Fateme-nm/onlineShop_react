@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { persinaDigit } from "utils";
-import { handleShowProducts } from "store/slices/products";
+import { getShowCartProducts } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
+import { imageUrl, persinaDigit } from "utils";
 
 const NavIcon = ({ icon, number, href, children, cart }) => {
-  const { showCartProducts } = useSelector((state) => state.cart);
+  const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    cart && number && dispatch(handleShowProducts());
-  }, []);
+    cart && number && dispatch(getShowCartProducts());
+  }, [cartProducts]);
   return (
     <div className="group relative">
       <Link
@@ -30,29 +30,29 @@ const NavIcon = ({ icon, number, href, children, cart }) => {
           className="invisible absolute left-0 top-full w-72 rounded-sm flex flex-col
         opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50 divide-y divide-gray-300 divide-dashed overflow-auto bg-white p-5 shadow-md max-h-96"
         >
-          {cart.map((pro) => {
+          {showCartProducts.map((pro) => {
             return (
               <div className="felx py-5">
                 <div>
                   <img
-                    src={`http://localhost:3002${pro.image}`}
+                    src={imageUrl(pro.image)}
                     alt="image"
                     className="w-16"
                   />
                   <p>
                     <span>تعداد: </span>
-                    <span>{pro.quantity}</span>
+                    <span>{persinaDigit(pro.quantity)}</span>
                   </p>
                 </div>
                 <div>
-                  <p>{pro.name}</p>
+                  <p>{persinaDigit(pro.name)}</p>
                   <p>
                     <span>رنگ: </span>
-                    <span>{pro.colorId}</span>
+                    <span>{pro.color}</span>
                   </p>
                   <p>
                     <span>سایز: </span>
-                    <span>{pro.sizeId}</span>
+                    <span>{persinaDigit(pro.size)}</span>
                   </p>
                   <p>
                     <span>{persinaDigit(pro.price)}</span>
