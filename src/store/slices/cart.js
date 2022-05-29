@@ -5,8 +5,7 @@ export const getShowCartProducts = createAsyncThunk(
   'cart/showProducts',
   async (_, { getState }, thunkAPI) => {
     try {
-      // const { cartProducts } = getState().cart
-      const cartProducts = JSON.parse(localStorage.getItem("cart"))
+      const { cartProducts } = getState().cart
       const sizes = await httpService.get('size').then(res => res.data)
       const colors = await httpService.get('color').then(res => res.data)
       const products = await Promise.all(cartProducts.map(async (pro) => {
@@ -39,6 +38,11 @@ const cartSlice = createSlice({
       if (cart) {
         localStorage.setItem("cart", JSON.stringify([...JSON.parse(cart), action.payload]))
       } else localStorage.setItem("cart", JSON.stringify([action.payload]))
+    },
+    handleSyncStorage: (state) => {
+      if (localStorage.getItem("cart")) {
+        state.cartProducts = JSON.parse(localStorage.getItem("cart"))
+      }
     }
   },
   extraReducers: {
@@ -49,5 +53,5 @@ const cartSlice = createSlice({
 });
 
 const { reducer, actions } = cartSlice;
-export const { handleAddToCart } = actions
+export const { handleAddToCart, handleSyncStorage } = actions
 export default reducer;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getShowCartProducts } from "store/slices/cart";
+import { getShowCartProducts, handleSyncStorage } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
 import { imageUrl, persinaDigit } from "utils";
 
@@ -9,8 +9,13 @@ const NavIcon = ({ icon, number, href, children, cart }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(handleSyncStorage())
+  }, [])
+
+  useEffect(() => {
     cart && number && dispatch(getShowCartProducts());
   }, [cartProducts]);
+
   return (
     <div className="group relative">
       <Link
