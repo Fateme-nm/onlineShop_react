@@ -3,6 +3,7 @@ import { separate, persinaDigit } from "utils";
 import httpService from "services/HttpService";
 import { useDispatch } from "react-redux";
 import { handleAddToCart } from "store/slices/cart";
+import Count from "components/Count/Count";
 
 const Features = ({ product, addToCart }) => {
   const {
@@ -20,20 +21,6 @@ const Features = ({ product, addToCart }) => {
   const [selectedSize, setSelectedSize] = useState(sizeId[0]); // selected size of product
 
   const dispatch = useDispatch();
-
-  const handleClickQuntity = (num) => {
-    if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
-      setQuantity(Number(quantity) + num);
-    }
-  };
-
-  const handleChangeQuntity = (e) => {
-    let value = e.target.value
-    const [min, max] = [1, +maxQuantity];
-    if (value > max) value = max
-    else if (value < min) value = min
-    setQuantity(value);
-  };
 
   const handleRequestCategory = () => {
     httpService
@@ -114,30 +101,11 @@ const Features = ({ product, addToCart }) => {
           style={color && { backgroundColor: `${color.hex}` }}
         ></button>
       </div>
-      <div className="mt-4 flex justify-between items-center flex-row-reverse">
-        <h3 className="text-gray-800 mb-1">تعداد</h3>
-        <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
-          <button
-            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
-            onClick={() => handleClickQuntity(-1)}
-          >
-            -
-          </button>
-          <input
-            className="h-8 w-10 flex items-center justify-center text-center focus:outline-none"
-            onChange={handleChangeQuntity}
-            value={quantity}
-            // value={persinaDigit(quantity)}
-            type="text"
-          />
-          <button
-            className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
-            onClick={() => handleClickQuntity(1)}
-          >
-            +
-          </button>
-        </div>
-      </div>
+      <Count
+        quantity={quantity}
+        maxQuantity={maxQuantity}
+        setQuantity={setQuantity}
+      />
     </>
   );
 };
