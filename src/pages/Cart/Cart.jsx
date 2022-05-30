@@ -38,7 +38,7 @@ const Cart = () => {
             </h3>
           </div>
           <ul className="divide-y divide-dashed divide-gray-300">
-            {showCartProducts.map((pro) => (
+            {showCartProducts.products.map((pro) => (
               <li>
                 <CartItem pro={pro} />
               </li>

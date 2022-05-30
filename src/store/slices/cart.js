@@ -8,7 +8,7 @@ export const getShowCartProducts = createAsyncThunk(
       const { cartProducts } = getState().cart
       const sizes = await httpService.get('size').then(res => res.data)
       const colors = await httpService.get('color').then(res => res.data)
-      const [totalQuantity, totalPrice] = [0, 0]
+      let [totalQuantity, totalPrice] = [0, 0]
       const products = await Promise.all(cartProducts.map(async (pro) => {
         const {productId, colorId, sizeId, quantity} = pro
         const {name, price, count, image} = 

@@ -31,7 +31,7 @@ const NavIcon = ({ icon, number, href, children, cart }) => {
           className="invisible absolute left-0 top-full w-80 rounded-sm flex flex-col
         opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50 divide-y divide-gray-300 divide-dashed overflow-auto bg-white p-5 shadow-md max-h-96"
         >
-          {showCartProducts.map((pro) => {
+          {showCartProducts.products.map((pro) => {
             return (
               <div className="py-5 flex justify-between flex-row-reverse w-full h-fit text-sm">
                 <div className="w-1/2 ml-5">
