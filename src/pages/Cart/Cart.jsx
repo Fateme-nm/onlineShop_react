@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
-import CartItem from "./CartItem/CartItem";
+import CartItem from "./components/CartItem/CartItem";
 import { getShowCartProducts } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
-import OrderSummary from "./OrderSummary/OrderSummary";
+import OrderSummary from "./components/OrderSummary/OrderSummary";
 
 const Cart = () => {
   const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
@@ -18,7 +18,7 @@ const Cart = () => {
         <div class="w-3/4 bg-white px-10 py-10">
           <div class="flex justify-between border-b pb-8 flex-row-reverse">
             <h2 class="font-semibold text-xl">سبد خرید شما</h2>
-            <div className="flex items-center flex-row-reverse space-x-2 space-x-reverse cursor-pointer">
+            <div className="flex items-center flex-row-reverse space-x-2 space-x-reverse cursor-pointer" onClick={() => dispatch(clearCart())}>
               <h3>حذف همه</h3>
               <i className="fa fa-trash text-primary"></i>
             </div>
