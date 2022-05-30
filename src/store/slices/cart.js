@@ -42,6 +42,12 @@ const cartSlice = createSlice({
         localStorage.setItem("cart", JSON.stringify([...JSON.parse(cart), action.payload]))
       } else localStorage.setItem("cart", JSON.stringify([action.payload]))
     },
+    handleRemoveFromCart: (state, action) => {
+      const filterList = state.cartProducts.filter(pro => {
+        pro.productId !== action.payload
+      })
+      state.cartProducts = filterList
+    },
     handleSyncStorage: (state) => {
       if (localStorage.getItem("cart")) {
         state.cartProducts = JSON.parse(localStorage.getItem("cart"))
@@ -56,5 +62,5 @@ const cartSlice = createSlice({
 });
 
 const { reducer, actions } = cartSlice;
-export const { handleAddToCart, handleSyncStorage } = actions
+export const { handleAddToCart, handleSyncStorage, handleRemoveFromCart } = actions
 export default reducer;
