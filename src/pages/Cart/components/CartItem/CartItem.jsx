@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { imageUrl, persinaDigit, separate } from "utils";
-import { handleRemoveFromCart } from "store/slices/cart";
+import { handleRemoveFromCart, handleUpdateQuantity } from "store/slices/cart";
 import { useDispatch } from "react-redux";
 import Count from "components/Count/Count";
 
 const CartItem = ({ pro }) => {
-  const [quantity, setQuantity] = useState(pro.quantity);
   const dispatch = useDispatch();
+
+  const handleChangeQuntity = (num) => {
+    dispatch(handleUpdateQuantity({num, proId: pro.productId}))
+  }
+
   return (
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-8 flex-row-reverse">
       <div class="flex w-2/5 flex-row-reverse space-x-10 space-x-reverse">
@@ -38,9 +42,9 @@ const CartItem = ({ pro }) => {
       </div>
       <div class="flex justify-center w-1/5">
         <Count
-          quantity={quantity}
+          quantity={pro.quantity}
           maxQuantity={pro.count}
-          setQuantity={setQuantity}
+          setQuantity={(num) => handleChangeQuntity(num)}
         />
       </div>
       <span class="text-center w-1/5 font-semibold text-sm">

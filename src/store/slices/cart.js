@@ -42,12 +42,21 @@ const cartSlice = createSlice({
         localStorage.setItem("cart", JSON.stringify([...JSON.parse(cart), action.payload]))
       } else localStorage.setItem("cart", JSON.stringify([action.payload]))
     },
+    handleUpdateQuantity: (state, action) => {
+      const { num, proId } = action.payload
+      const updatedList = state.cartProducts.map(pro => {
+        if (pro.productId === proId) return {...pro, quantity: num}
+        else return pro
+      })
+      state.cartProducts = updatedList
+      localStorage.setItem("cart", JSON.stringify(updatedList))
+    },
     handleRemoveFromCart: (state, action) => {
-      const filterList = state.cartProducts.filter(pro => {
+      const filteredList = state.cartProducts.filter(pro => {
         return pro.productId !== action.payload
       })
-      state.cartProducts = filterList
-      localStorage.setItem("cart", JSON.stringify(filterList))
+      state.cartProducts = filteredList
+      localStorage.setItem("cart", JSON.stringify(filteredList))
     },
     clearCart: (state) => {
       localStorage.removeItem("cart")
@@ -69,6 +78,7 @@ const cartSlice = createSlice({
 const { reducer, actions } = cartSlice;
 export const { 
   handleAddToCart, 
+  handleUpdateQuantity,
   handleSyncStorage, 
   handleRemoveFromCart, 
   clearCart 

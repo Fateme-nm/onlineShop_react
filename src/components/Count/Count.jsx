@@ -18,7 +18,7 @@ const Count = ({ quantity, maxQuantity, setQuantity, withOutTitle }) => {
   return (
       <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
         <button
-          className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
+          className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm bg-white"
           onClick={() => handleClickQuntity(-1)}
         >
           -
@@ -31,7 +31,7 @@ const Count = ({ quantity, maxQuantity, setQuantity, withOutTitle }) => {
           type="text"
         />
         <button
-          className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
+          className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm bg-white"
           onClick={() => handleClickQuntity(1)}
         >
           +
