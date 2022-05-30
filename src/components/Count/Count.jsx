@@ -16,8 +16,6 @@ const Count = ({ quantity, maxQuantity, setQuantity, withOutTitle }) => {
   };
 
   return (
-    <div className="mt-4 flex justify-between items-center flex-row-reverse">
-      {!withOutTitle && <h3 className="text-gray-800 mb-1">تعداد</h3>}
       <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
         <button
           className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
@@ -39,7 +37,6 @@ const Count = ({ quantity, maxQuantity, setQuantity, withOutTitle }) => {
           +
         </button>
       </div>
-    </div>
   );
 };
 

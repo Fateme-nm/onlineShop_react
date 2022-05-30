@@ -41,7 +41,6 @@ const CartItem = ({ pro }) => {
           quantity={quantity}
           maxQuantity={pro.count}
           setQuantity={setQuantity}
-          withOutTitle={true}
         />
       </div>
       <span class="text-center w-1/5 font-semibold text-sm">

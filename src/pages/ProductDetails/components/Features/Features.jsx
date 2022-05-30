@@ -101,11 +101,14 @@ const Features = ({ product, addToCart }) => {
           style={color && { backgroundColor: `${color.hex}` }}
         ></button>
       </div>
-      <Count
-        quantity={quantity}
-        maxQuantity={maxQuantity}
-        setQuantity={setQuantity}
-      />
+      <div className="mt-4 flex justify-between items-center flex-row-reverse">
+        <h3 className="text-gray-800 mb-1">تعداد</h3>
+        <Count
+          quantity={quantity}
+          maxQuantity={maxQuantity}
+          setQuantity={setQuantity}
+        />
+      </div>
     </>
   );
 };
