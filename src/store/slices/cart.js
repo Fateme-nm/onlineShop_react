@@ -50,8 +50,8 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(filterList))
     },
     clearCart: (state) => {
-      state.cartProducts = [],
       localStorage.removeItem("cart")
+      return { ...state, cartProducts: [] }
     },
     handleSyncStorage: (state) => {
       if (localStorage.getItem("cart")) {
