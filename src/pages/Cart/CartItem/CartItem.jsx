@@ -1,7 +1,10 @@
 import React from "react";
 import { imageUrl, persinaDigit, separate } from "utils";
+import { handleRemoveFromCart } from "store/slices/cart";
+import { useDispatch } from "react-redux";
 
 const CartItem = ({ pro }) => {
+  const dispatch = useDispatch();
   return (
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-8 flex-row-reverse">
       <div class="flex w-2/5 flex-row-reverse space-x-10 space-x-reverse">
@@ -11,7 +14,10 @@ const CartItem = ({ pro }) => {
         <div class="flex flex-col justify-center ml-4 w-44">
           <span class="font-bold text-sm">{persinaDigit(pro.name)}</span>
           <div className="flex justify-end">
-            <i className="fa fa-trash text-primary cursor-pointer mt-4 mr-5 text-lg" onClick={() => }></i>
+            <i
+              className="fa fa-trash text-primary cursor-pointer mt-4 mr-5 text-lg"
+              onClick={() => dispatch(handleRemoveFromCart(pro.productId))}
+            ></i>
             <div className="mt-4 flex justify-start items-center flex-row-reverse mr-5 text-sm">
               <h3 className="text-gray-800 ml-1">رنگ</h3>
               <button
@@ -28,9 +34,7 @@ const CartItem = ({ pro }) => {
           </div>
         </div>
       </div>
-      <div class="flex justify-center w-1/5">
-        {pro.quantity}
-      </div>
+      <div class="flex justify-center w-1/5">{pro.quantity}</div>
       <span class="text-center w-1/5 font-semibold text-sm">
         {persinaDigit(separate(pro.price))}
       </span>
