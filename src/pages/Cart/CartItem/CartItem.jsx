@@ -1,4 +1,5 @@
 import React from "react";
+import { imageUrl, persinaDigit } from "utils";
 
 const TrBody = () => {
   return (

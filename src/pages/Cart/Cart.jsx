@@ -1,7 +1,16 @@
 import React from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
+import CartItem from "./CartItem/CartItem";
+import { getShowCartProducts } from "store/slices/cart";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
+  const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getShowCartProducts());
+  }, [cartProducts]);
   return (
     <div class="container mx-auto mt-10">
       <div class="flex shadow-md my-10 flex-row-reverse">
@@ -9,8 +18,8 @@ const Cart = () => {
           <div class="flex justify-between border-b pb-8 flex-row-reverse">
             <h2 class="font-semibold text-2xl">سبد خرید شما</h2>
             <div className="flex items-center flex-row-reverse space-x-2 space-x-reverse cursor-pointer">
-                <h3>حذف همه</h3>
-                <i className="fa fa-trash text-primary"></i>
+              <h3>حذف همه</h3>
+              <i className="fa fa-trash text-primary"></i>
             </div>
           </div>
           <div class="flex mt-10 mb-5 flex-row-reverse">
@@ -27,8 +36,12 @@ const Cart = () => {
               قیمت کل
             </h3>
           </div>
+          <ul>
+            <li>
+              <CartItem />
+            </li>
+          </ul>
         </div>
-
         <div id="summary" class="w-1/4 px-8 py-10">
           <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
           <div class="flex justify-between mt-10 mb-5">
