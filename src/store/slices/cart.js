@@ -8,15 +8,18 @@ export const getShowCartProducts = createAsyncThunk(
       const { cartProducts } = getState().cart
       const sizes = await httpService.get('size').then(res => res.data)
       const colors = await httpService.get('color').then(res => res.data)
+      const [totalQuantity, totalPrice] = [0, 0]
       const products = await Promise.all(cartProducts.map(async (pro) => {
         const {productId, colorId, sizeId, quantity} = pro
         const {name, price, count, image} = 
           await httpService.get(`products?id=${productId}`).then(res => res.data[0])
         const size = sizes.find(size => size.id == sizeId).name
         const color = colors.find(color => color.id == colorId).hex
+        totalQuantity = totalQuantity + quantity
+        totalPrice = totalPrice + ( price * quantity )
         return {productId, quantity, name, price, count, size, color, image}
     }))
-      return { products }
+      return { products, totalQuantity, totalPrice }
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
@@ -25,7 +28,7 @@ export const getShowCartProducts = createAsyncThunk(
 
 const initialState = {
     cartProducts: [],
-    showCartProducts: [],
+    showCartProducts: {products: [], totalQuantity: 0, totalPrice: 0},
 };
 
 const cartSlice = createSlice({
@@ -47,7 +50,7 @@ const cartSlice = createSlice({
   },
   extraReducers: {
     [getShowCartProducts.fulfilled]: (state, action) => {
-      state.showCartProducts = action.payload.products
+      state.showCartProducts = action.payload
     }
   }
 });
