@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import CartItem from "./CartItem/CartItem";
 import { getShowCartProducts } from "store/slices/cart";
@@ -36,7 +36,7 @@ const Cart = () => {
               قیمت کل
             </h3>
           </div>
-          <ul>
+          <ul className="divide-y divide-dashed divide-gray-300">
             {showCartProducts.map((pro) => (
               <li>
                 <CartItem pro={pro} />
