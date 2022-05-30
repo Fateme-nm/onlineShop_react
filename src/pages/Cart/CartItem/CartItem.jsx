@@ -1,7 +1,7 @@
 import React from "react";
 import { imageUrl, persinaDigit } from "utils";
 
-const TrBody = () => {
+const CartItem = ({pro}) => {
   return (
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5 flex-row-reverse">
       <div class="flex w-2/5 flex-row-reverse">
@@ -39,4 +39,4 @@ const TrBody = () => {
   );
 };
 
-export default TrBody;
+export default CartItem;

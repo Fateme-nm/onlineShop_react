@@ -37,9 +37,11 @@ const Cart = () => {
             </h3>
           </div>
           <ul>
-            <li>
-              <CartItem />
-            </li>
+            {showCartProducts.map((pro) => (
+              <li>
+                <CartItem pro={pro} />
+              </li>
+            ))}
           </ul>
         </div>
         <div id="summary" class="w-1/4 px-8 py-10">
