@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Cartitem = () => {
+const TrBody = () => {
     return (
         <div>
-            CartItem
+            
         </div>
     );
 }
 
-export default Cartitem;
+export default TrBody;
