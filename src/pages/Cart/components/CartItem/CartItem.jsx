@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import Count from "components/Count/Count";
 
 const CartItem = ({ pro }) => {
-  const [quantity, setQuantity] = useState(pro.quantity)
+  const [quantity, setQuantity] = useState(pro.quantity);
   const dispatch = useDispatch();
   return (
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-8 flex-row-reverse">
@@ -36,7 +36,14 @@ const CartItem = ({ pro }) => {
           </div>
         </div>
       </div>
-      <div class="flex justify-center w-1/5">{pro.quantity}</div>
+      <div class="flex justify-center w-1/5">
+        <Count
+          quantity={quantity}
+          maxQuantity={pro.count}
+          setQuantity={setQuantity}
+          withOutTitle={true}
+        />
+      </div>
       <span class="text-center w-1/5 font-semibold text-sm">
         {persinaDigit(separate(pro.price))}
       </span>

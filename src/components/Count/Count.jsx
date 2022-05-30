@@ -1,6 +1,6 @@
 import React from "react";
 
-const Count = ({quantity, maxQuantity, setQuantity}) => {
+const Count = ({ quantity, maxQuantity, setQuantity, withOutTitle }) => {
   const handleClickQuntity = (num) => {
     if ((num === -1 && quantity > 1) || (num === 1 && quantity < maxQuantity)) {
       setQuantity(Number(quantity) + num);
@@ -17,7 +17,7 @@ const Count = ({quantity, maxQuantity, setQuantity}) => {
 
   return (
     <div className="mt-4 flex justify-between items-center flex-row-reverse">
-      <h3 className="text-gray-800 mb-1">تعداد</h3>
+      {!withOutTitle && <h3 className="text-gray-800 mb-1">تعداد</h3>}
       <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300">
         <button
           className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer text-primary hover:bg-gray-100 shadow-sm rounded-sm"
