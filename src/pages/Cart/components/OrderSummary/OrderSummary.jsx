@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { persinaDigit, separate } from "utils";
+import routes from "routes/routes";
 
 const OrderSummary = () => {
   const { totalQuantity, totalPrice } = useSelector(
@@ -22,11 +24,11 @@ const OrderSummary = () => {
           سبد حذف می‌شوند
         </p>
       </div>
-      <div class="border-t mt-8">
+      <Link class="border-t mt-8" to={routes.FINALIZE_PURCHASE.path}>
         <button class="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white uppercase w-full mt-8 text-center rounded-md">
           نهایی کردن سبد خرید
         </button>
-      </div>
+      </Link>
     </div>
   );
 };
