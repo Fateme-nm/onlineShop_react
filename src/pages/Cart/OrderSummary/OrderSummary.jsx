@@ -1,16 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { persinaDigit, separate } from "utils";
 
 const OrderSummary = () => {
+  const { totalQuantity, totalPrice } = useSelector(
+    (state) => state.cart.showCartProducts
+  );
   return (
     <div class="w-1/4 px-8 py-10 border-r border-gray-200">
       <div class="flex justify-between mb-5 flex-row-reverse">
         <span class="font-semibold text-sm">تعداد کالا ها</span>
-        <span class="font-semibold text-sm">{persinaDigit(2)}</span>
+        <span class="font-semibold text-sm">{persinaDigit(totalQuantity)}</span>
       </div>
       <div class="flex justify-between mb-5 flex-row-reverse">
         <span class="font-semibold text-sm">جمع سبد خرید</span>
-        <span class="font-semibold text-sm">{persinaDigit(separate(2))}</span>
+        <span class="font-semibold text-sm">{persinaDigit(separate(totalPrice))}</span>
       </div>
       <div>
         <p className="text-sm text-gray-500">
