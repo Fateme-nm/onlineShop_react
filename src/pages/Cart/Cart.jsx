@@ -15,11 +15,11 @@ const Cart = () => {
     dispatch(getShowCartProducts());
   }, [cartProducts]);
   return (
-    <div class="container mx-auto mt-10">
-      <div class="flex shadow-md my-10 flex-row-reverse">
-        <div class="w-3/4 bg-white px-10 py-10">
-          <div class="flex justify-between border-b pb-8 flex-row-reverse">
-            <h2 class="font-semibold text-xl">سبد خرید شما</h2>
+    <div className="container mx-auto mt-10">
+      <div className="flex shadow-md my-10 flex-row-reverse">
+        <div className="w-3/4 bg-white px-10 py-10">
+          <div className="flex justify-between border-b pb-8 flex-row-reverse">
+            <h2 className="font-semibold text-xl">سبد خرید شما</h2>
             <div
               className="flex items-center flex-row-reverse space-x-2 space-x-reverse cursor-pointer"
               onClick={() => setOpenModal(true)}
@@ -28,17 +28,17 @@ const Cart = () => {
               <i className="fa fa-trash text-primary"></i>
             </div>
           </div>
-          <div class="flex mt-10 mb-5 flex-row-reverse">
-            <h3 class="font-semibold text-gray-600 text-xs w-2/5">
+          <div className="flex mt-10 mb-5 flex-row-reverse">
+            <h3 className="font-semibold text-gray-600 text-xs w-2/5">
               جزئیات محصول
             </h3>
-            <h3 class="font-semibold text-center text-gray-600 text-xs w-1/5">
+            <h3 className="font-semibold text-center text-gray-600 text-xs w-1/5">
               تعداد
             </h3>
-            <h3 class="font-semibold text-center text-gray-600 text-xs w-1/5 ">
+            <h3 className="font-semibold text-center text-gray-600 text-xs w-1/5 ">
               قیمت
             </h3>
-            <h3 class="font-semibold text-center text-gray-600 text-xs w-1/5 ">
+            <h3 className="font-semibold text-center text-gray-600 text-xs w-1/5 ">
               قیمت کل
             </h3>
           </div>

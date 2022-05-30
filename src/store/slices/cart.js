@@ -26,6 +26,23 @@ export const getShowCartProducts = createAsyncThunk(
   }
 )
 
+export const checkingCount = createAsyncThunk(
+  "cart/checkingCount",
+  async ({ getState }, thunkAPI) => {
+    try {
+      const { cartProducts } = getState().cart
+      const products = await Promise.all(cartProducts.filter(async pro => {
+        const count = await httpService
+          .get(`products?id=${pro.productId}`).then(res => res.data[0].count)
+        return count > 0 ? true : false
+      })) 
+      return { products }
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
+  }
+)
+
 const initialState = {
     cartProducts: [],
     showCartProducts: {products: [], totalQuantity: 0, totalPrice: 0},
@@ -71,6 +88,9 @@ const cartSlice = createSlice({
   extraReducers: {
     [getShowCartProducts.fulfilled]: (state, action) => {
       state.showCartProducts = action.payload
+    },
+    [checkingCount.fulfilled]: (state, action) => {
+      state.cartProducts = action.payload.products
     }
   }
 });
