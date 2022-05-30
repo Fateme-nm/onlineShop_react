@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { imageUrl, persinaDigit, separate } from "utils";
 import { handleRemoveFromCart } from "store/slices/cart";
 import { useDispatch } from "react-redux";
+import Count from "components/Count/Count";
 
 const CartItem = ({ pro }) => {
+  const [quantity, setQuantity] = useState(pro.quantity)
   const dispatch = useDispatch();
   return (
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-8 flex-row-reverse">
