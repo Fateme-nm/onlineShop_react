@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { imageUrl, persinaDigit, separate } from "utils";
 import { handleRemoveFromCart, handleUpdateQuantity } from "store/slices/cart";
 import { useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ const CartItem = ({ pro }) => {
           <img class="h-28 w-28" src={imageUrl(pro.image)} alt="img" />
         </div>
         <div class="flex flex-col justify-center ml-4 w-44">
-          <span class="font-bold text-sm">{persinaDigit(pro.name)}</span>
+          <span class="font-medium text-sm">{persinaDigit(pro.name)}</span>
           <div className="flex justify-end">
             <i
               className="fa fa-trash text-primary cursor-pointer mt-4 mr-5 text-lg"
@@ -47,10 +47,10 @@ const CartItem = ({ pro }) => {
           setQuantity={(num) => handleChangeQuntity(num)}
         />
       </div>
-      <span class="text-center w-1/5 font-semibold text-sm">
+      <span class="text-center w-1/5 font-medium text-sm">
         {persinaDigit(separate(pro.price))}
       </span>
-      <span class="text-center w-1/5 font-semibold text-sm">
+      <span class="text-center w-1/5 font-medium text-sm">
         {persinaDigit(separate(pro.price * pro.quantity))}
       </span>
     </div>
