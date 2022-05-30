@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import CartItem from "./components/CartItem/CartItem";
 import { getShowCartProducts } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
+import RemoveModal from "./components/RemoveModal/RemoveModal";
 
 const Cart = () => {
+  const [openModal, setOpenModal] = useState(false);
   const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -18,7 +20,10 @@ const Cart = () => {
         <div class="w-3/4 bg-white px-10 py-10">
           <div class="flex justify-between border-b pb-8 flex-row-reverse">
             <h2 class="font-semibold text-xl">سبد خرید شما</h2>
-            <div className="flex items-center flex-row-reverse space-x-2 space-x-reverse cursor-pointer" onClick={() => dispatch(clearCart())}>
+            <div
+              className="flex items-center flex-row-reverse space-x-2 space-x-reverse cursor-pointer"
+              onClick={() => setOpenModal(true)}
+            >
               <h3>حذف همه</h3>
               <i className="fa fa-trash text-primary"></i>
             </div>
@@ -47,6 +52,7 @@ const Cart = () => {
         </div>
         <OrderSummary />
       </div>
+      {openModal && <RemoveModal setOpenModal={setOpenModal} />}
     </div>
   );
 };
