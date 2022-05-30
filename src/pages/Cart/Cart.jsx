@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import CartItem from "./components/CartItem/CartItem";
-import { getShowCartProducts } from "store/slices/cart";
+import { getShowCartProducts, checkingCount } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
 import RemoveModal from "./components/RemoveModal/RemoveModal";
@@ -12,8 +12,13 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(checkingCount())
+  }, [])
+
+  useEffect(() => {
     dispatch(getShowCartProducts());
   }, [cartProducts]);
+
   return (
     <div className="container mx-auto mt-10">
       <div className="flex shadow-md my-10 flex-row-reverse">

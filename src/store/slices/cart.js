@@ -28,14 +28,16 @@ export const getShowCartProducts = createAsyncThunk(
 
 export const checkingCount = createAsyncThunk(
   "cart/checkingCount",
-  async ({ getState }, thunkAPI) => {
+  async (_, { getState }, thunkAPI) => {
     try {
       const { cartProducts } = getState().cart
       const products = await Promise.all(cartProducts.filter(async pro => {
         const count = await httpService
           .get(`products?id=${pro.productId}`).then(res => res.data[0].count)
-        return count > 0 ? true : false
+          console.log(count, count!=0)
+        return count != 0
       })) 
+      localStorage.setItem("cart", JSON.stringify(products))
       return { products }
     } catch (error) {
       return thunkAPI.rejectWithValue();
