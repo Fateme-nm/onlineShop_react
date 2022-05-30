@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import routes from "routes/routes";
 import logo from "assets/images/logo-daniellee_crop.png";
 import SearchBox from "./components/SearchBox/SearchBox";
 import NavIcon from "./components/NavIcon/NavIcon";
-import { useSelector } from "react-redux";
-import { persinaDigit } from "utils";
+import { getShowCartProducts } from "store/slices/cart";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
-  const {cartProducts} = useSelector(state => state.cart)
+  const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getShowCartProducts());
+  }, [cartProducts]);
+
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between">
@@ -22,15 +28,15 @@ const Header = () => {
           </NavIcon>
           <NavIcon
             icon={<i className="fas fa-shopping-bag"></i>}
-            number={cartProducts.length != 0 && persinaDigit(cartProducts.length)}
+            number={showCartProducts.totalQuantity}
             href={routes.CART.path}
-            cart={cartProducts}
+            cart={showCartProducts.products}
           >
             سبد خرید
           </NavIcon>
           <NavIcon
             icon={<i className="far fa-heart"></i>}
-            number={persinaDigit(8)}
+            number={8}
             href={routes.LOGIN_TO_PANEL.path}
           >
             ذخیره شده
