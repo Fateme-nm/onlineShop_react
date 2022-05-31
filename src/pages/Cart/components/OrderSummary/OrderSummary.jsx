@@ -30,7 +30,7 @@ const OrderSummary = () => {
       </div>
       <div className="border-t mt-8">
         <Link to={routes.FINALIZE_PURCHASE.path}>
-          <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white uppercase w-full mt-8 text-center rounded-md">
+          <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white w-full mt-8 text-center rounded-md">
             نهایی کردن سبد خرید
           </button>
         </Link>

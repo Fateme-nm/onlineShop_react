@@ -5,20 +5,22 @@ import { getShowCartProducts, checkingCount } from "store/slices/cart";
 import { useDispatch, useSelector } from "react-redux";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
 import RemoveModal from "./components/RemoveModal/RemoveModal";
+import EmptyCart from "./components/EmptyCart/EmptyCart";
 
 const Cart = () => {
   const [openModal, setOpenModal] = useState(false);
   const { cartProducts, showCartProducts } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(checkingCount())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(checkingCount());
+  // }, []);
 
   useEffect(() => {
     dispatch(getShowCartProducts());
   }, [cartProducts]);
 
+  if (cartProducts.length === 0) return <EmptyCart />;
   return (
     <div className="container mx-auto mt-10">
       <div className="flex shadow-md my-10 flex-row-reverse">
