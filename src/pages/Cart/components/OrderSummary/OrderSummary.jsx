@@ -10,7 +10,10 @@ const OrderSummary = () => {
   );
   return (
     <div className="w-1/4 px-8 py-10 border-r border-gray-200">
-      <div className="flex justify-between mb-5 flex-row-reverse">
+      <h3 className="font-semibold text-xl border-b border-gray-200 pb-8">
+        خلاصه فاکتور
+      </h3>
+      <div className="flex justify-between mb-5 flex-row-reverse pt-9">
         <span className="font-semibold text-sm">تعداد کالا ها</span>
         <span className="font-semibold text-sm">
           {persinaDigit(totalQuantity)}
