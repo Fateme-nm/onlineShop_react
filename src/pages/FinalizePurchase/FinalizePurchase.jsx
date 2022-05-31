@@ -1,6 +1,6 @@
 import React from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
-import PaymentSummary from "./components/PaymentSummary";
+import PaymentSummary from "./components/PaymentSummary/PaymentSummary";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Field from "./components/Field/Field";

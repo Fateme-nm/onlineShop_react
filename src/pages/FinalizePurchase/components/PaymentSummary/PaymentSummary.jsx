@@ -33,12 +33,12 @@ const PaymentSummary = () => {
       </div>
       <div>
         <p className="text-sm text-gray-500">
-          هزینه ارسال براساس آدرس، زمان تحویل، وزن و حجم مرسوله شما محاسبه شده
+           هزینه ارسال براساس آدرس، زمان تحویل، وزن و حجم مرسوله شما محاسبه شده است
         </p>
       </div>
       <div className="border-t mt-8">
-        <Link to={routes.FINALIZE_PURCHASE.path}>
-          <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white w-full mt-8 text-center rounded-md">
+        <Link to={routes.PAYMENT.path}>
+          <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white w-full mt-8 text-center rounded-md" type="submit">
             پرداخت
           </button>
         </Link>
