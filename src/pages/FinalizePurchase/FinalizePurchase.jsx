@@ -75,6 +75,14 @@ const Finalizepurchase = () => {
                   formik={formik}
                   input={true}
                 />
+                <Field
+                  label="تاریخ"
+                  type="text"
+                  id="date"
+                  name="date"
+                  formik={formik}
+                  datepicker={true}
+                />
               </div>
               <Field
                 label="آدرس"
