@@ -4,6 +4,7 @@ import PaymentSummary from "./components/PaymentSummary/PaymentSummary";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Field from "./components/Field/Field";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   firstname: Yup.string()
@@ -25,10 +26,12 @@ const validationSchema = Yup.object().shape({
     )
     .max(11, "این شماره نامعتبر است")
     .required("این فیلد ضروری است"),
+  date: Yup.string().required("این فیلد ضروری است"),
 });
 
 const Finalizepurchase = () => {
   const [date, setDate] = useState(new Date());
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -38,7 +41,9 @@ const Finalizepurchase = () => {
       phone: "",
       date: "",
     },
-    onSubmit: async (values, { resetForm }) => {},
+    onSubmit: async (values) => {
+      
+    },
     validationSchema,
   });
 
@@ -90,16 +95,15 @@ const Finalizepurchase = () => {
               </div>
               <Field
                 label="آدرس"
-                type="text"
-                id="lastname"
-                name="lastname"
+                id="address"
+                name="address"
                 formik={formik}
                 textarea={true}
               />
             </div>
           </div>
         </div>
-        <PaymentSummary />
+        <PaymentSummary handleSubmit={formik.handleSubmit} />
       </form>
     </div>
   );

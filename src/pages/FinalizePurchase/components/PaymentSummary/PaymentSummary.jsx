@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { persinaDigit, separate } from "utils";
 
-const PaymentSummary = () => {
+const PaymentSummary = ({handleSubmit}) => {
   const { totalQuantity, totalPrice } = useSelector(
     (state) => state.cart.showCartProducts
   );
@@ -35,7 +35,7 @@ const PaymentSummary = () => {
         </p>
       </div>
       <div className="border-t mt-8">
-          <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white w-full mt-8 text-center rounded-md" type="submit">
+          <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white w-full mt-8 text-center rounded-md" type="submit" onClick={handleSubmit}>
             پرداخت
           </button>
       </div>

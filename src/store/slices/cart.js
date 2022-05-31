@@ -47,6 +47,7 @@ export const checkingCount = createAsyncThunk(
 const initialState = {
     cartProducts: [],
     showCartProducts: {products: [], totalQuantity: 0, totalPrice: 0},
+    customerDetail: null
 };
 
 const cartSlice = createSlice({
