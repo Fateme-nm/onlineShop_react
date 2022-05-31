@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import PaymentSummary from "./components/PaymentSummary/PaymentSummary";
 import { useFormik } from "formik";
@@ -24,10 +24,12 @@ const validationSchema = Yup.object().shape({
       "این شماره نامعتبر است"
     )
     .max(11, "این شماره نامعتبر است")
-    .required("این فیلد ضروری است")
+    .required("این فیلد ضروری است"),
 });
 
 const Finalizepurchase = () => {
+  const [date, setDate] = useState(new Date());
+
   const formik = useFormik({
     initialValues: {
       lastname: "",
@@ -39,6 +41,7 @@ const Finalizepurchase = () => {
     onSubmit: async (values, { resetForm }) => {},
     validationSchema,
   });
+
   return (
     <div className="container mx-auto mt-10">
       <form className="flex shadow-md my-10 flex-row-reverse">
@@ -81,7 +84,8 @@ const Finalizepurchase = () => {
                   id="date"
                   name="date"
                   formik={formik}
-                  datepicker={true}
+                  date={date}
+                  setDate={setDate}
                 />
               </div>
               <Field
