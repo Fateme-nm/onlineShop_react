@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { persinaDigit, separate } from "utils";
-import routes from "routes/routes";
 
 const PaymentSummary = () => {
   const { totalQuantity, totalPrice } = useSelector(
@@ -37,11 +35,9 @@ const PaymentSummary = () => {
         </p>
       </div>
       <div className="border-t mt-8">
-        <Link to={routes.PAYMENT.path}>
           <button className="bg-primary font-semibold hover:bg-transparent hover:text-primary border border-primary transition-all py-3 text-sm text-white w-full mt-8 text-center rounded-md" type="submit">
             پرداخت
           </button>
-        </Link>
       </div>
     </div>
   );
