@@ -5,7 +5,27 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Field from "./components/Field/Field";
 
-const validationSchema = Yup.object().shape({});
+const validationSchema = Yup.object().shape({
+  firstname: Yup.string()
+    .min(4, "خیلی کوتاه است")
+    .max(50, "خیلی بلند است")
+    .required("این فیلد ضروری است"),
+  lastname: Yup.string()
+    .min(4, "خیلی کوتاه است")
+    .max(50, "خیلی بلند است")
+    .required("این فیلد ضروری است"),
+  address: Yup.string()
+    .min(4, "خیلی کوتاه است")
+    .max(200, "خیلی بلند است")
+    .required("این فیلد ضروری است"),
+  phone: Yup.string()
+    .matches(
+      /09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}/,
+      "این شماره نامعتبر است"
+    )
+    .max(11, "این شماره نامعتبر است")
+    .required("این فیلد ضروری است")
+});
 
 const Finalizepurchase = () => {
   const formik = useFormik({
@@ -27,23 +47,35 @@ const Finalizepurchase = () => {
             <h2 className="font-semibold text-xl">نهایی کردن خرید</h2>
           </div>
           <div>
-            <form>
-              <Field
-                label="نام"
-                type="text"
-                id="firstname"
-                name="firstname"
-                formik={formik}
-                input={true}
-              />
-              <Field
-                label="نام خانوادگی"
-                type="text"
-                id="lastname"
-                name="lastname"
-                formik={formik}
-                input={true}
-              />
+            <form className="space-y-8 mt-10">
+              <div className="flex flex-row-reverse justify-between items-center space-x-5 space-x-reverse">
+                <Field
+                  label="نام"
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  formik={formik}
+                  input={true}
+                />
+                <Field
+                  label="نام خانوادگی"
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  formik={formik}
+                  input={true}
+                />
+              </div>
+              <div className="flex flex-row-reverse justify-between items-center space-x-5 space-x-reverse">
+                <Field
+                  label="تلفن همراه"
+                  type="phone"
+                  id="phone"
+                  name="phone"
+                  formik={formik}
+                  input={true}
+                />
+              </div>
               <Field
                 label="آدرس"
                 type="text"
@@ -51,14 +83,6 @@ const Finalizepurchase = () => {
                 name="lastname"
                 formik={formik}
                 textarea={true}
-              />
-              <Field
-                label="نام"
-                type="phone"
-                id="phone"
-                name="phone"
-                formik={formik}
-                input={true}
               />
             </form>
           </div>

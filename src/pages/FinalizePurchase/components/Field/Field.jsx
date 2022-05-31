@@ -21,12 +21,10 @@ const Field = ({ label, type, formik, name, id, input, textarea }) => {
         <textarea
           name={name}
           id={id}
-          cols="30"
-          rows="10"
           value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border border-gray-300 focus:border-primary focus:outline-0 rounded-sm h-8"
+          className="w-full border border-gray-300 focus:border-primary focus:outline-0 rounded-sm h-24"
         ></textarea>
       )}
       {formik.errors[name] && formik.touched[name] ? (
