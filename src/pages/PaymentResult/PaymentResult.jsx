@@ -3,7 +3,7 @@ import WithLayoutpages from "hoc/WithLayoutPages";
 import { useSearchParams } from "react-router-dom";
 import httpService from "services/HttpService";
 import { useDispatch, useSelector } from "react-redux";
-import { getShowCartProducts, handleSyncStorage } from "store/slices/cart";
+import { clearCart, getShowCartProducts, handleSyncStorage } from "store/slices/cart";
 
 const Paymentresult = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -27,9 +27,8 @@ const Paymentresult = () => {
       const { lastName, firstName, phone, billingAddress, date } = JSON.parse(
         localStorage.getItem("order")
       );
-      localStorage.removeItem("order");
-      localStorage.removeItem("cart");
-      dispatch(handleSyncStorage())
+      localStorage.removeItem("order")
+      dispatch(clearCart())
 
       await httpService.post("orders", {
         customerDetail: { lastName, firstName, phone, billingAddress },
