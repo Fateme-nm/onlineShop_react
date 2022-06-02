@@ -13,9 +13,7 @@ import { imageUrl } from "utils";
 import parse from 'html-react-parser';
 
 const Productdetails = () => {
-  // const { id } = useParams();
-  const location = useLocation();
-  const { id } = location.state;
+  const { name } = useParams();
   const [product, setProduct] = useState();
   const [products, setProducts] = useState([]);
   const [addToCart, setAddToCart] = useState(false);
@@ -30,12 +28,12 @@ const Productdetails = () => {
   };
 
   const handleRequestProduct = () => {
-    httpService.get(`products?id=${id}`).then((res) => setProduct(res.data[0]));
+    httpService.get(`products?name=${name}`).then((res) => setProduct(res.data[0]));
   };
 
   useEffect(() => {
     handleRequestProduct();
-  }, [id]);
+  }, [name]);
 
   useEffect(() => {
     product && handleRequestSimilarProducts();
@@ -47,7 +45,7 @@ const Productdetails = () => {
         <Button classes={"bg-gray-400 border-gray-400"}>اتمام موجودی</Button>
       );
     } else {
-      const isExistInCart = cartProducts.find((pro) => pro.productId === id);
+      const isExistInCart = cartProducts.find((pro) => pro.productId === product.id);
       if (isExistInCart) {
         return (
           <Link to={routes.CART.path}>
