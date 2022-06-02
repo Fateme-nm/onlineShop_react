@@ -58,7 +58,7 @@ const Finalizepurchase = () => {
           </div>
           <div>
             <div className="space-y-8 mt-10">
-              <div className="flex flex-row-reverse justify-between items-center space-x-5 space-x-reverse">
+              <div className="flex flex-row-reverse justify-between items-start space-x-5 space-x-reverse">
                 <Field
                   label="نام"
                   type="text"
@@ -76,7 +76,7 @@ const Finalizepurchase = () => {
                   input={true}
                 />
               </div>
-              <div className="flex flex-row-reverse justify-between items-center space-x-5 space-x-reverse">
+              <div className="flex flex-row-reverse justify-between items-start space-x-5 space-x-reverse">
                 <Field
                   label="تلفن همراه"
                   type="phone"
