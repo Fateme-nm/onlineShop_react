@@ -37,7 +37,7 @@ export default Object.freeze({
     },
     PAYMENT_RESULT: {
         element: <PaymentResult />,
-        path: '/checkout/paymentResult/:status'
+        path: '/checkout/paymentResult'
     },
     PROUDUCT_DETAILS: {
         element: <ProductDetails />,

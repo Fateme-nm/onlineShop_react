@@ -83,6 +83,8 @@ const cartSlice = createSlice({
     handleSyncStorage: (state) => {
       if (localStorage.getItem("cart")) {
         state.cartProducts = JSON.parse(localStorage.getItem("cart"))
+      } else {
+        state.cartProducts = []
       }
     }
   },
