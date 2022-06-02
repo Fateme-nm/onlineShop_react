@@ -12,24 +12,22 @@
         <div class="flex flex-row-reverse justify-center space-x-5 space-x-reverse py-8">
           <button
             style="background-color: green;cursor: pointer;"
-            onclick="handlePayment()"
+            onclick="handleClick('success')"
           >
             پرداخت
           </button>
           <button
             style="background-color: yellow;cursor: pointer;"
-            onclick="handleCancle()"
+            onclick="handleClick('reject')"
           >
             انصراف
           </button>
         </div>
       </div>
       <script>
-          const handlePayment = () => {
-            window.location.replace("http://localhost:3000/checkout/paymentResult")
-          }
-          const handleCancle = () => {
-            window.location.replace("http://localhost:3000/checkout/paymentResult")
+          const handleClick = (state) => {
+            window.location.replace(
+                `http://localhost:3000/checkout/paymentResult/${state}`)
           }
       </script>
 </body>
