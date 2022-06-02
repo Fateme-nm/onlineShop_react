@@ -3,7 +3,6 @@ import FinalizePurchase from 'pages/FinalizePurchase/FinalizePurchase';
 import Home from 'pages/Home/Home';
 import LoginToPanel from 'pages/LoginToPanel/LoginToPanel';
 import NotFound from 'pages/NotFound/NotFound';
-import Payment from 'pages/Payment/Payment';
 import PaymentResult from 'pages/PaymentResult/PaymentResult';
 import ProductDetails from 'pages/ProductDetails/ProductDetails';
 import ProductsList from 'pages/ProductsList/ProductsList';
@@ -36,13 +35,9 @@ export default Object.freeze({
         element: <NotFound />,
         path: '*'
     },
-    PAYMENT: {
-        element: <Payment />,
-        path: '/checkout/payment'
-    },
     PAYMENT_RESULT: {
         element: <PaymentResult />,
-        path: '/checkout/paymentResult/:state'
+        path: '/checkout/paymentResult/:status'
     },
     PROUDUCT_DETAILS: {
         element: <ProductDetails />,

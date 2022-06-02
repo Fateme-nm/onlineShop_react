@@ -32,7 +32,6 @@ const AppRoutes = () => {
       <Route path={PROUDUCT_DETAILS.path} element={PROUDUCT_DETAILS.element} />
       <Route path={CART.path} element={CART.element} />
       <Route path={FINALIZE_PURCHASE.path} element={FINALIZE_PURCHASE.element} />
-      <Route path={PAYMENT.path} element={PAYMENT.element} />
       <Route path={PAYMENT_RESULT.path} element={PAYMENT_RESULT.element} />
       <Route path={ORDERS.path} element={<ProtectedRoute route={ORDERS}/>} />
       <Route path={PRICES.path} element={<ProtectedRoute route={PRICES}/>} />
