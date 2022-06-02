@@ -42,7 +42,7 @@ const Finalizepurchase = () => {
       date: "",
     },
     onSubmit: async (values) => {
-      navigate(routes.PAYMENT.path, {
+      window.open('http://127.0.0.1:5500/maktab66-front/public/payment.html', {
         state: { ...values, date: date.getTime() },
       });
     },
