@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../src/pages/Payment/Payment.jsx"></script>
 </head>
 <body style="box-sizing: border-box;padding: 0;margin: 0;">
     <div>
@@ -25,5 +24,13 @@
           </button>
         </div>
       </div>
+      <script>
+          const handlePayment = () => {
+            window.location.replace("http://localhost:3000/checkout/paymentResult")
+          }
+          const handleCancle = () => {
+            window.location.replace("http://localhost:3000/checkout/paymentResult")
+          }
+      </script>
 </body>
 </html>

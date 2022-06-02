@@ -5,18 +5,17 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Field from "./components/Field/Field";
 import { useNavigate } from "react-router-dom";
-import routes from "routes/routes";
 
 const validationSchema = Yup.object().shape({
-  firstname: Yup.string()
+  firstName: Yup.string()
     .min(4, "خیلی کوتاه است")
     .max(50, "خیلی بلند است")
     .required("این فیلد ضروری است"),
-  lastname: Yup.string()
+  lastName: Yup.string()
     .min(4, "خیلی کوتاه است")
     .max(50, "خیلی بلند است")
     .required("این فیلد ضروری است"),
-  address: Yup.string()
+  billingAddress: Yup.string()
     .min(4, "خیلی کوتاه است")
     .max(200, "خیلی بلند است")
     .required("این فیلد ضروری است"),
@@ -35,16 +34,19 @@ const Finalizepurchase = () => {
 
   const formik = useFormik({
     initialValues: {
-      lastname: "",
-      firstname: "",
-      address: "",
+      lastName: "",
+      firstName: "",
+      billingAddress: "",
       phone: "",
       date: "",
     },
     onSubmit: async (values) => {
-      window.open('http://127.0.0.1:5500/maktab66-front/public/payment.html', {
-        state: { ...values, date: date.getTime() },
-      });
+      localStorage.setItem(
+        "order",
+        JSON.stringify({ ...values, date: date.getTime() })
+      );
+      window.location.href =
+        "http://127.0.0.1:5500/maktab66-front/public/payment.html";
     },
     validationSchema,
   });
@@ -62,16 +64,16 @@ const Finalizepurchase = () => {
                 <Field
                   label="نام"
                   type="text"
-                  id="firstname"
-                  name="firstname"
+                  id="firstName"
+                  name="firstName"
                   formik={formik}
                   input={true}
                 />
                 <Field
                   label="نام خانوادگی"
                   type="text"
-                  id="lastname"
-                  name="lastname"
+                  id="lastName"
+                  name="lastName"
                   formik={formik}
                   input={true}
                 />
@@ -97,8 +99,8 @@ const Finalizepurchase = () => {
               </div>
               <Field
                 label="آدرس"
-                id="address"
-                name="address"
+                id="billingAddress"
+                name="billingAddress"
                 formik={formik}
                 textarea={true}
               />
