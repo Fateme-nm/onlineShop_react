@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import Select from "react-select";
+import Select from "react-select";
 
 const FieldModal = ({
   label,
