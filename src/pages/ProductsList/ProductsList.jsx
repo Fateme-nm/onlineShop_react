@@ -90,7 +90,7 @@ const Productslist = () => {
             nextLabel={<i className="	fa fa-chevron-right text-primary"></i>}
             pageCount={Math.ceil(showProducts.length / productsPerPage)}
             onPageChange={({ selected }) => setPageNumber(selected)}
-            containerClassName={"flex space-x-5"}
+            containerClassName={"flex space-x-5 list-none"}
             activeClassName={"text-primary"}
           />
         </div>

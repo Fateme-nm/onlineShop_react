@@ -66,7 +66,7 @@ const Table = ({ activeStatus, activeSort }) => {
           nextLabel={<i className="	fa fa-chevron-right text-primary"></i>}
           pageCount={Math.ceil(showOrders.length / ordersPerPage)}
           onPageChange={({ selected }) => setPageNumber(selected)}
-          containerClassName={"flex space-x-5"}
+          containerClassName={"flex space-x-5 list-none"}
           activeClassName={"text-primary"}
         />
       </div>
