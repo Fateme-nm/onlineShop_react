@@ -45,7 +45,7 @@ const Table = ({ products, setIsSubmiting }) => {
           nextLabel={<i className="	fa fa-chevron-right text-primary"></i>}
           pageCount={Math.ceil(products.length / pricesPerPage)}
           onPageChange={({ selected }) => setPageNumber(selected)}
-          containerClassName={"flex space-x-5"}
+          containerClassName={"flex space-x-5 list-none"}
           activeClassName={"text-primary"}
         />
       </div>
