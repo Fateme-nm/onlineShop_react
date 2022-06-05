@@ -1,57 +1,65 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
-import AuthService from "services/auth.service";
-
-const admin = localStorage.getItem("admin");
+import httpService from 'services/HttpService';
 
 export const login = createAsyncThunk(
   "auth/login",
   async ({ username, password }, thunkAPI) => {
     try {
-      const data = await AuthService.login(username, password);
-      return { admin: data };
+        const data = await httpService.post('auth/login', {username, password})
+            .then((response) => {
+                if (response.status === 200 && response.data.token) {
+                    localStorage.setItem("admin", JSON.stringify(response.data));
+                }
+                return response.data;
+            });
+        return { admin: data };
     } catch (error) {
     //   const message = error.response
     //   thunkAPI.dispatch(setMessage(message));
-      return thunkAPI.rejectWithValue();
+        return thunkAPI.rejectWithValue();
     }
   }
 );
 
-export const logout = createAsyncThunk(
-    "auth/logout", 
-    async () => {
-        await AuthService.logout();
+export const checkExpireTime = createAsyncThunk(
+    "auth/expireTime", 
+    async (_, thunkAPI) => {
+        try {
+            const response = await httpService.get('whoami').then(res => res.data)
+        } catch (err) {
+            return thunkAPI.rejectWithValue();
+        }
     }
 );
 
-const initialState = admin ? 
-    { isLoggedIn: true, isLoading: false, admin } : 
-    { isLoggedIn: false, isLoading: false, admin: null };
+const admin = localStorage.getItem("admin");
+
+const initialState = {
+    admin: admin ? JSON.parse(admin) : null
+}
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
+    reducers: {
+        logout: (state) => {
+            state.admin = null
+        }
+    },
     extraReducers: {
-        [login.pending]: (state) => {
-            state.isLoading = true
-        },
         [login.fulfilled]: (state, action) => {
-            state.isLoggedIn = true;
             state.admin = action.payload.admin;
-            state.isLoading = false
         },
         [login.rejected]: (state, action) => {
-            state.isLoggedIn = false;
-            state.admin = null;
-            state.isLoading = false
-        },
-        [logout.fulfilled]: (state, action) => {
-            state.isLoggedIn = false;
             state.admin = null;
         },
+        [checkExpireTime.rejected]: (state) => {
+            state.admin = null
+        }
     },
 });
 
-const { reducer } = authSlice;
+const { reducer, actions } = authSlice;
+export const {logout} = actions
 export default reducer;

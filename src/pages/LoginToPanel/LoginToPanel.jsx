@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import WithLayoutpages from "hoc/WithLayoutPages";
 import avatar from "assets/images/undraw_male_avatar.svg";
 import unlock from "assets/images/undraw_unlock.svg";
@@ -6,7 +6,7 @@ import InputLogin from "./InputLogin/InputLogin";
 import routes from "routes/routes";
 import Botton from "components/Botton/Botton";
 import { useFormik } from "formik";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/slices/auth";
 import { clearMessage } from "store/slices/message";
@@ -14,14 +14,8 @@ import * as Yup from "yup";
 import Loader from "components/Loader/Loader";
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(4, "خیلی کوتاه است")
-    .max(20, "خیلی بلند است")
-    .required("این فیلد ضروری است"),
-  password: Yup.string()
-    .min(4, "خیلی کوتاه است")
-    .max(50, "خیلی بلند است")
-    .required("این فیلد ضروری است"),
+  username: Yup.string().required("این فیلد ضروری است"),
+  password: Yup.string().required("این فیلد ضروری است"),
 });
 
 const Logintopanel = () => {
@@ -29,32 +23,29 @@ const Logintopanel = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.auth);
   // const [loadStatus, setLoadStatud] = useState(isLoading)
-  const { message } = useSelector((state) => state.message);
 
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
-    onSubmit: async (values, { setSubmitting, resetForm }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(false);
-      const {username, password} = values
-      dispatch(login({username, password}))
-        .unwrap()
-        .then(() => {
-          navigate(routes.ORDERS.path, { replace: true });
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-        .finally(() => resetForm())
+      const { username, password } = values;
+      try {
+        dispatch(login({ username, password })).then(() =>
+          navigate(routes.ORDERS.path, { replace: true })
+        );
+      } catch (err) {
+        console.log(err);
+      }
     },
     validationSchema,
   });
 
   useEffect(() => {
-    dispatch(clearMessage())
-  }, [dispatch])
+    dispatch(clearMessage());
+  }, [dispatch]);
 
   // useEffect(() => {
   //   setLoadStatud(isLoading)

@@ -1,11 +1,19 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
 import routes from "routes/routes";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { checkExpireTime } from "store/slices/auth";
 
 const CheckAuth = () => {
-    const { isLoggedIn } = useSelector(state => state.auth)
-    return isLoggedIn
+    const dispatch = useDispatch()
+    const { admin } = useSelector(state => state.auth)
+    if (!admin) return false
+    try {
+        dispatch(checkExpireTime())
+    } catch (err) {
+        return false
+    }
+    return true
 }
 
 const PrivateRoute = ({route}) => {
