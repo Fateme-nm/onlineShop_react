@@ -96,7 +96,6 @@ export const updateProduct = createAsyncThunk(
 )
 
 const initialState = {
-    isLoading: false,
     products: [],
     showProducts: [],
     categories: [],
@@ -124,18 +123,13 @@ const ordersSlice = createSlice({
         }
     },
     extraReducers: {
-        [getProducts.pending]: (state) => {
-            state.isLoading = true
-        },
         [getProducts.fulfilled]: (state, action) => {
             const products = action.payload.products;
             state.products = products
             state.showProducts = products
-            state.isLoading = false
         },
         [getProducts.rejected]: (state) => {
             state.products = [];
-            state.isLoading = false
         },
         [getCategories.fulfilled]: (state, action) => {
             state.categories = action.payload.categories;
