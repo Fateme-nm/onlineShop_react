@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
-import AdminService from "services/admin.service";
-import { logout } from "./auth";
 import httpService from "services/HttpService";
 
 export const getOrders = createAsyncThunk(
@@ -11,7 +9,7 @@ export const getOrders = createAsyncThunk(
       const res = await httpService.get('orders?_sort=orderDate&_order=desc')
       return { orders: res.data };
     } catch (error) {
-        error.response.status === 401 && thunkAPI.dispatch(logout())
+        error.response.status === 401 && localStorage.removeItem("admin")
     //   thunkAPI.dispatch(setMessage(message));
         return thunkAPI.rejectWithValue();
     }
@@ -31,6 +29,7 @@ export const getShowOrders = createAsyncThunk(
             const filterList2 = activeSort === "new" ? [...res.data].reverse() : res.data
             return { showOrders: filterList2 };
         }catch(error) {
+            error.response.status === 401 && localStorage.removeItem("admin")
             return thunkAPI.rejectWithValue();
         }
     }
@@ -40,10 +39,10 @@ export const getStatusOrders = createAsyncThunk(
     "panel/statusOrders", 
     async (_, thunkAPI) => {
         try {
-            const res = await AdminService.getStatusOrders();
+            const res = await httpService.get("orderStatus")
             return { statusOrders: res.data };
         } catch (error) {
-            error.response.status === 401 && thunkAPI.dispatch(logout())
+            error.response.status === 401 && localStorage.removeItem("admin")
           //   thunkAPI.dispatch(setMessage(message));
             return thunkAPI.rejectWithValue();
         }
@@ -54,18 +53,16 @@ export const updateOrder = createAsyncThunk(
     "panel/updateOrder",
     async (checkOrder, _, thunkAPI) => {
         const {deliveredAt, orderStatus, id} = checkOrder
-        console.log(deliveredAt, orderStatus, id)
         try {
-            await AdminService.updateOrder({deliveredAt, orderStatus}, id)
+            await httpService.patch(`orders/${id}`, {deliveredAt, orderStatus})
         } catch (error) {
-            error.response.status === 401 && thunkAPI.dispatch(logout())
+            error.response.status === 401 && localStorage.removeItem("admin")
             return thunkAPI.rejectWithValue();
         }
     }
 )
 
 const initialState = {
-    isLoading: false,
     orders: [],
     showOrders: [],
     statusOrders: [],
@@ -88,25 +85,17 @@ const ordersSlice = createSlice({
         },
     },
     extraReducers: {
-        [getOrders.pending]: (state) => {
-            state.isLoading = true
-        },
         [getOrders.fulfilled]: (state, action) => {
             const orders = action.payload.orders
             state.orders = orders;
             state.showOrders = orders;
-            state.isLoading = false
         },
         [getOrders.rejected]: (state, action) => {
             state.orders = [];
-            state.isLoading = false
         },
         [getShowOrders.fulfilled]: (state, action) => {
             const showOrders = action.payload.showOrders;
             state.showOrders = showOrders;
-        },
-        [getShowOrders.rejected]: (state, action) => {
-            console.log(action.payload)
         },
         [getStatusOrders.fulfilled]: (state, action) => {
             state.statusOrders = state.payload.statusOrders;
