@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Select from "react-select";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const FieldModal = ({
   label,
@@ -66,16 +65,32 @@ const FieldModal = ({
           ))}
         </select>
       )}
-      {/* {multiSelect && (
-        <Select
-          options={sizes}
-          getOptionLabel={(option) => option.name}
-          getOptionValue={(option) => option.id}
+      {multiSelect && (
+        <select
+          className="form-multiselect w-full border border-gray-300 focus:outline-0 focus:border-primary rounded-sm"
+          multiple
           value={formik.values[name]}
-          onChange={formik.handleChange}
-          classNamePrefix="react-select"
-        />
-      )} */}
+          onChange={(e) => {
+            const sizeId = formik.values["sizeId"];
+            const value = e.target.value;
+            const isExist = !!sizeId.find((size) => size == value);
+            !isExist && formik.setFieldValue("sizeId", [...sizeId, value]);
+          }}
+          size="2"
+          name={name}
+          id={id}
+        >
+          {sizes.map((size) => (
+            <option
+              value={size.id}
+              key={size.id}
+              className="hover:bg-primary hover:text-white"
+            >
+              {size.name}
+            </option>
+          ))}
+        </select>
+      )}
       {!description && formik.errors[name] && formik.touched[name] ? (
         <div className="text-primary">{formik.errors[name]}</div>
       ) : null}

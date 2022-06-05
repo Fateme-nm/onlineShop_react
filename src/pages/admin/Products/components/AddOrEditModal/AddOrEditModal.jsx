@@ -13,6 +13,7 @@ const validationSchema = Yup.object().shape({
   name: Yup.string().required("این فیلد ضروری است"),
   categoryId: Yup.string().required("این فیلد ضروری است"),
   colorId: Yup.string().required("این فیلد ضروری است"),
+  sizeId: Yup.array().min(1, "حداقل یک سایز انتخاب کنید"),
   price: Yup.number()
     .typeError("لطفا عدد وارد کنید")
     .min(0, "حداقل قیمت صفر می باشد")
@@ -38,7 +39,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
 
   const getSelectedProduct = (id) => {
     const pro = products.find((pro) => pro.id == id);
-    setImagesArr(pro.images);
+    setImagesArr(pro.images ? pro.images : []);
     thumbnailImg.current = pro.image;
     description.current = pro.description;
     return pro;
@@ -56,7 +57,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
       name: editProduct ? editProduct.name : "",
       categoryId: editProduct ? editProduct.categoryId : "",
       colorId: editProduct ? editProduct.colorId : "",
-      // sizeId: editProduct ? editProduct.sizeId : "",
+      sizeId: editProduct ? editProduct.sizeId : [],
       description: editProduct ? editProduct.description : "",
       price: editProduct ? editProduct.price : "",
       count: editProduct ? editProduct.count : "",
@@ -76,28 +77,20 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
           case "description":
             formData.append("description", description.current);
             break;
+          case "sizeId":
+            key[1].map((size, i) => formData.append(`sizeId[${i}]`, size));
+            break;
           default:
             formData.append(key[0], key[1]);
         }
       });
       if (edit_id) {
         formData.append("id", edit_id);
-        dispatch(updateProduct(formData))
-          .unwrap()
-          .catch((err) => {
-            console.log(err);
-          })
-          .finally(() => resetForm());
+        dispatch(updateProduct(formData));
       } else {
-        formData.append('sizeId[0]', 1)
-        formData.append('sizeId[1]', 2)
-        dispatch(postProduct(formData))
-          .unwrap()
-          .catch((err) => {
-            console.log(err);
-          })
-          .finally(() => resetForm());
+        dispatch(postProduct(formData));
       }
+      resetForm();
     },
     validationSchema,
   });
@@ -167,7 +160,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       select={true}
                     />
                   </div>
-                  {/* <div className="w-1/2 pl-2">
+                  <div className="w-1/2 pr-2">
                     <FieldModal
                       label="سایز"
                       id="sizeId"
@@ -175,7 +168,7 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                       formik={formik}
                       multiSelect={true}
                     />
-                  </div> */}
+                  </div>
                 </div>
                 <div className="flex w-full justify-start flex-row-reverse pr-2">
                   <div className="ml-4">
@@ -190,7 +183,8 @@ const AddOrEditModal = ({ setAddOrEditModalOn }) => {
                     )}
                   </div>
                   <div className="flex flex-row-reverse flex-wrap overflow-y-auto pr-2 space-y-2 h-56">
-                    {(!edit_id || editProduct) && imagesArr &&
+                    {(!edit_id || editProduct) &&
+                      imagesArr &&
                       imagesArr.map((img) => (
                         <ImageUploader
                           isJustPreview={img}
