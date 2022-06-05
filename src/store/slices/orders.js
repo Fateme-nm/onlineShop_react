@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
+import { logout } from "./auth";
 import httpService from "services/HttpService";
 
 export const getOrders = createAsyncThunk(
@@ -9,7 +10,7 @@ export const getOrders = createAsyncThunk(
       const res = await httpService.get('orders?_sort=orderDate&_order=desc')
       return { orders: res.data };
     } catch (error) {
-        error.response.status === 401 && localStorage.removeItem("admin")
+        error.response.status === 401 && thunkAPI.dispatch(logout())
     //   thunkAPI.dispatch(setMessage(message));
         return thunkAPI.rejectWithValue();
     }
@@ -29,7 +30,7 @@ export const getShowOrders = createAsyncThunk(
             const filterList2 = activeSort === "new" ? [...res.data].reverse() : res.data
             return { showOrders: filterList2 };
         }catch(error) {
-            error.response.status === 401 && localStorage.removeItem("admin")
+            error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
         }
     }
@@ -42,7 +43,7 @@ export const getStatusOrders = createAsyncThunk(
             const res = await httpService.get("orderStatus")
             return { statusOrders: res.data };
         } catch (error) {
-            error.response.status === 401 && localStorage.removeItem("admin")
+            error.response.status === 401 && thunkAPI.dispatch(logout())
           //   thunkAPI.dispatch(setMessage(message));
             return thunkAPI.rejectWithValue();
         }
@@ -56,7 +57,7 @@ export const updateOrder = createAsyncThunk(
         try {
             await httpService.patch(`orders/${id}`, {deliveredAt, orderStatus})
         } catch (error) {
-            error.response.status === 401 && localStorage.removeItem("admin")
+            error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
         }
     }

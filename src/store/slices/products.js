@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
-import AdminService from "services/admin.service";
 import { logout } from "./auth";
 import httpService from "services/HttpService";
+import axios from "axios";
 
 export const getProducts = createAsyncThunk(
   "panel/products",
@@ -22,7 +22,7 @@ export const getCategories = createAsyncThunk(
     "panel/categories", 
     async (_, thunkAPI) => {
         try {
-            const res = await AdminService.getCategoreis();
+            const res = await httpService.get("category")
             return { categories: res.data };
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
@@ -36,7 +36,7 @@ export const getColors = createAsyncThunk(
     "panel/colors", 
     async (_, thunkAPI) => {
         try {
-            const res = await AdminService.getColors();
+            const res = await httpService.get("color")
             return { colors: res.data };
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
@@ -62,7 +62,7 @@ export const deleteProduct = createAsyncThunk(
     "panel/deletePro",
     async (id, _, thunkAPI) => {
         try {
-            await AdminService.deleteProduct(id)
+            await httpService.delete(`products/${id}`)
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
@@ -74,7 +74,7 @@ export const postProduct = createAsyncThunk(
     "panel/postPro",
     async (formData, _, thunkAPI) => {
         try {
-            await AdminService.postProduct(formData)
+            await httpService.post("products", formData)
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
@@ -86,7 +86,8 @@ export const updateProduct = createAsyncThunk(
     "panel/updatePro",
     async (formData, _, thunkAPI) => {
         try {
-            await AdminService.updateProduct(formData, formData.get("id"))
+            await axios.patch(`products/${formData.get("id")}`, formData, 
+            {headers: {token: JSON.parse(localStorage.getItem("admin")).token, "Content-Type": "multipart/form-data"}})
         } catch (error) {
             error.response.status === 401 && thunkAPI.dispatch(logout())
             return thunkAPI.rejectWithValue();
@@ -132,7 +133,7 @@ const ordersSlice = createSlice({
             state.showProducts = products
             state.isLoading = false
         },
-        [getProducts.rejected]: (state, action) => {
+        [getProducts.rejected]: (state) => {
             state.products = [];
             state.isLoading = false
         },
@@ -145,13 +146,13 @@ const ordersSlice = createSlice({
         [getSizes.fulfilled]: (state, action) => {
             state.sizes = action.payload.sizes
         },
-        [postProduct.fulfilled]: (state,action) => {
+        [postProduct.fulfilled]: (state) => {
             state.modifiedProducts = state.modifiedProducts + 1
         },
-        [updateProduct.fulfilled]: (state, actions) => {
+        [updateProduct.fulfilled]: (state) => {
             state.modifiedProducts = state.modifiedProducts + 1
         },
-        [deleteProduct.fulfilled]: (state, action) => {
+        [deleteProduct.fulfilled]: (state) => {
             state.modifiedProducts = state.modifiedProducts + 1
         }
     },

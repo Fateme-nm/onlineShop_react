@@ -31,7 +31,8 @@ class HttpService {
 
     post = async(url, data) => {
         try {
-            const response = await axios.post(url, data)
+            const response = await axios.post(url, data, 
+                url === "products" && {"Content-Type": "multipart/form-data"})
             return response
         } catch (error) {
             return error
@@ -47,9 +48,9 @@ class HttpService {
         }
     }
 
-    delete = async(url, data) => {
+    delete = async(url) => {
         try {
-            const response = await axios.delete(url, data)
+            const response = await axios.delete(url)
             return response.data
         } catch (error) {
             return error
